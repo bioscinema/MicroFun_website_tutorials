@@ -1,8 +1,5 @@
 
-<img src="logo.png"
-     alt="MicroFun logo"
-     width="160"
-     style="float:right; max-width:35%; height:auto; margin:0 0 1rem 1.5rem;">
+<img src="logo.png" alt="MicroFun logo" class="microfun-home-logo">
 
 # MicroFun
 
@@ -10,7 +7,7 @@
 
 Analyze and visualize PICRUSt2 predictions, linking community-level functional patterns to taxon-specific contributions.
 
-<div style="clear:both;"></div>
+<div style="clear: both;"></div>
 
 <hr class="microfun-intro-divider">
 
