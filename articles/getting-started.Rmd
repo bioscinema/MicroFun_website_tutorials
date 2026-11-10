@@ -39,4 +39,4 @@ Follow [installation and dependency versions](installation.html), then [download
 ## Demonstration studies
 
 - [Demonstration Study (Stratified)](demonstration-stratified.html) follows both analysis directions through code and study figures.
-- [Demonstration Study (Standard)](demonstration-standard.html) will present community-level analysis and figures.
+- [Demonstration Study (Standard)](demonstration-standard.html) presents community-level KO and KEGG results.

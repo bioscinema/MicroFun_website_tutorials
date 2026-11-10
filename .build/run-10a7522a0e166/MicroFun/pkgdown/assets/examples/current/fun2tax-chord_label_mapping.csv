@@ -1,0 +1,19 @@
+"key","side","rank","full_name","code","display_label","colour","abbreviated","leader","visible"
+"Taxa|Phylum|Bacillota","Taxa","Phylum","Bacillota","","Bacillota","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Phylum|Bacteroidota","Taxa","Phylum","Bacteroidota","","Bacteroidota","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Class|Bacillota|Bacilli","Taxa","Class","Bacilli","","Bacilli","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Class|Bacillota|Clostridia","Taxa","Class","Clostridia","","Clostridia","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Class|Bacteroidota|Bacteroidia","Taxa","Class","Bacteroidia","","Bacteroidia","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Lactobacillales","Taxa","Order","Lactobacillales","","Lactobacillales","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Order|Bacillota|Clostridia|Eubacteriales","Taxa","Order","Eubacteriales","","Eubacteriales","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Order|Bacteroidota|Bacteroidia|Bacteroidales","Taxa","Order","Bacteroidales","","Bacteroidales","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Family|Bacillota|Bacilli|Lactobacillales|Lactobacillaceae","Taxa","Family","Lactobacillaceae","","Lactobacillaceae","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Family|Bacillota|Clostridia|Eubacteriales|Lachnospiraceae","Taxa","Family","Lachnospiraceae","","Lachnospiraceae","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Family|Bacteroidota|Bacteroidia|Bacteroidales|Bacteroidaceae","Taxa","Family","Bacteroidaceae","","Bacteroidaceae","#B6C9C0",FALSE,FALSE,TRUE
+"Function|group|Metabolism","Function","Group","Metabolism","","Metabolism","#6E8FB2",FALSE,FALSE,TRUE
+"Taxa|terminal|Lactobacillus","Taxa","Genus","Lactobacillus","","Lactobacillus","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|terminal|Roseburia","Taxa","Genus","Roseburia","","Roseburia","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|terminal|Bacteroides","Taxa","Genus","Bacteroides","","Bacteroides","#B6C9C0",FALSE,FALSE,TRUE
+"Function|terminal|K00001","Function","KO","Alcohol dehydrogenase[K00001]","","Alcohol dehydrogenase[K00001]","#6E8FB2",FALSE,FALSE,TRUE
+"Function|terminal|K00002","Function","KO","NADP alcohol dehydrogenase[K00002]","C","C","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00844","Function","KO","Hexokinase[K00844]","","Hexokinase[K00844]","#6E8FB2",FALSE,FALSE,TRUE

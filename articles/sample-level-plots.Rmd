@@ -153,7 +153,7 @@ The ratio panel shows the descriptive log2 ratio of Pro-inflammatory to Pro-surv
 
 ## Continue with your own data
 
-Replace the abundance matrices and metadata with matching inputs from your study. For the error-bar plot, also replace the supplied results with a single method and contrast fitted to your own samples. The [standard PICRUSt2 workflow](standard-pipeline.html) explains data preparation and analysis; the [standard demonstration](demonstration-standard.html) will present the completed study application.
+Replace the abundance matrices and metadata with matching inputs from your study. For the error-bar plot, also replace the supplied results with a single method and contrast fitted to your own samples. The [standard PICRUSt2 workflow](standard-pipeline.html) explains data preparation and analysis; the [standard demonstration](demonstration-standard.html) presents the STS/LTS study application.
 
 If you have functional profiles from more than one method, `compare_metagenome_results()` can compare feature-aligned and sample-aligned matrices. See the [function reference](../reference/compare_metagenome_results.html) for inputs and returned correlation objects.
 

@@ -96,8 +96,7 @@ for the setup instructions.
 - **Demonstration studies:** [Demonstration Study
   (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
   and [Demonstration Study
-  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-  (in preparation).
+  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md).
 - [Export and
   redraw](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md),
   and
@@ -106,7 +105,7 @@ for the setup instructions.
 ## Explore MicroFun visualizations
 
 Three representative views of predicted functional contributions. Select
-a figure for the full-size image; see the [stratified
+a figure to explore the corresponding result; see the [stratified
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
 for boxplots, signed effects and additional views.
 
@@ -120,15 +119,15 @@ Compare predicted contributions and model-effect direction.
 [Explore the example
 →](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
 
-[![Dendrogram organizing taxon-function
-associations](examples/study/images/tax2fun-dendro-01.png)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-dendro-01.png)
+[![Genus-level overview of taxon-function
+associations](examples/study/images/tax2fun-dendro-genus-overview.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
 
 ### Association dendrogram
 
-Explore modeled associations between taxa and functions.
+Explore the association overview across retained genera.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
 
 [![Sankey with a taxonomic side
 tree](examples/study/images/tax2fun-sankey-01.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-sankey-01.svg)

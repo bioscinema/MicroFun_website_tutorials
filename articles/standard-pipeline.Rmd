@@ -84,7 +84,7 @@ Follow [the shared setup](plotting-setup.html) and [Community-level visualizatio
 
 The error-bar ratio is a descriptive log2 ratio of group means; its direction depends on the first factor level. It is different from the signed MaAsLin2 AST coefficients used in stratified association plots.
 
-The [standard demonstration study](demonstration-standard.html) is reserved for the forthcoming figures and analysis.
+The [standard demonstration study](demonstration-standard.html) shows the KO and KEGG study results with plotting code and interpretation.
 
 ## What should a result mean?
 

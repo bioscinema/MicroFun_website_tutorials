@@ -214,7 +214,7 @@ with a single method and contrast fitted to your own samples. The
 workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md)
 explains data preparation and analysis; the [standard
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-will present the completed study application.
+presents the STS/LTS study application.
 
 If you have functional profiles from more than one method,
 [`compare_metagenome_results()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_metagenome_results.md)

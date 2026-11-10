@@ -44,12 +44,12 @@ Install **MicroFun** from the source package. See [installation and dependencies
 - [Standard PICRUSt2 workflow](articles/standard-pipeline.html) and [stratified PICRUSt2 workflow](articles/stratified-pipeline.html).
 - [Example data and plotting setup](articles/plotting-setup.html).
 - [Taxon-to-function](articles/taxon-to-function.html) and [function-to-taxon](articles/function-to-taxon.html) visualizations.
-- **Demonstration studies:** [Demonstration Study (Stratified)](articles/demonstration-stratified.html) and [Demonstration Study (Standard)](articles/demonstration-standard.html) (in preparation).
+- **Demonstration studies:** [Demonstration Study (Stratified)](articles/demonstration-stratified.html) and [Demonstration Study (Standard)](articles/demonstration-standard.html).
 - [Export and redraw](articles/plot-export.html), and [troubleshooting](articles/troubleshooting.html).
 
 ## Explore MicroFun visualizations
 
-Three representative views of predicted functional contributions. Select a figure for the full-size image; see the [stratified demonstration](articles/demonstration-stratified.html) for boxplots, signed effects and additional views.
+Three representative views of predicted functional contributions. Select a figure to explore the corresponding result; see the [stratified demonstration](articles/demonstration-stratified.html) for boxplots, signed effects and additional views.
 
 <div class="microfun-gallery">
 <figure class="microfun-result">
@@ -57,8 +57,8 @@ Three representative views of predicted functional contributions. Select a figur
 <figcaption><h3>Chord diagram</h3><p>Compare predicted contributions and model-effect direction.</p><a href="articles/demonstration-stratified.html#taxon-centered">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
-<a class="microfun-result-image" href="examples/study/images/tax2fun-dendro-01.png" aria-label="View full-size Association dendrogram"><img src="examples/study/images/tax2fun-dendro-01.png" alt="Dendrogram organizing taxon-function associations" loading="lazy"></a>
-<figcaption><h3>Association dendrogram</h3><p>Explore modeled associations between taxa and functions.</p><a href="articles/demonstration-stratified.html#taxon-centered">Explore the example &rarr;</a></figcaption>
+<a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/images/tax2fun-dendro-genus-overview.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>
+<figcaption><h3>Association dendrogram</h3><p>Explore the association overview across retained genera.</p><a href="articles/demonstration-stratified.html#genus-dendrogram-overview">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
 <a class="microfun-result-image" href="examples/study/images/tax2fun-sankey-01.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/images/tax2fun-sankey-01.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>

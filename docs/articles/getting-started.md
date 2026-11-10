@@ -55,4 +55,4 @@ Table 1. MicroFun workflows
   follows both analysis directions through code and study figures.
 - [Demonstration Study
   (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-  will present community-level analysis and figures.
+  presents community-level KO and KEGG results.

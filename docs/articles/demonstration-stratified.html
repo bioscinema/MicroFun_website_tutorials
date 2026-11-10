@@ -400,11 +400,51 @@ comparing panels; a shared visual height does not necessarily imply the
 same abundance on the original scale.</p>
 </div>
 <div class="section level3">
-<h3 id="dendrograms-organize-the-associations">Dendrograms organize the associations<a class="anchor" aria-label="anchor" href="#dendrograms-organize-the-associations"></a>
+<h3 id="genus-dendrogram-overview">Dendrogram overview at genus level<a class="anchor" aria-label="anchor" href="#genus-dendrogram-overview"></a>
 </h3>
+<p>Start with the overall association structure before choosing a few
+taxa to inspect. This genus-level overview excludes entries labelled
+incertae sedis or Other and shows up to five functions per retained
+genus, ranked by absolute modeled effect. The overview covers the
+retained genera; it is not an unrestricted display of every tested
+association.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p_tax_dendro</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_dendro.html">tax2fun_dendro</a></span><span class="op">(</span></span>
-<span>  <span class="va">result_taxa</span>, top_n_per_taxon <span class="op">=</span> <span class="fl">3</span>, label_size <span class="op">=</span> <span class="fl">2.6</span>, wrap_width <span class="op">=</span> <span class="fl">20</span></span>
+<code class="sourceCode R"><span><span class="va">overview_genera</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">result_taxa</span><span class="op">)</span><span class="op">[</span></span>
+<span>  <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"incertae|(^|[ _])other($|[ _])"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">result_taxa</span><span class="op">)</span>,</span>
+<span>         ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">]</span></span>
+<span><span class="va">p_tax_overview</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_dendro.html">tax2fun_dendro</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_taxa</span>, taxa_list <span class="op">=</span> <span class="va">overview_genera</span>, taxon_level <span class="op">=</span> <span class="st">"Genus"</span>,</span>
+<span>  top_n_per_taxon <span class="op">=</span> <span class="fl">5</span>, label_size <span class="op">=</span> <span class="fl">2</span>, wrap_width <span class="op">=</span> <span class="fl">36</span></span>
+<span><span class="op">)</span><span class="op">$</span><span class="va">plot</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_dendrogram_genus_overview.svg"</span><span class="op">)</span>,</span>
+<span>                <span class="va">p_tax_overview</span>, width <span class="op">=</span> <span class="fl">14</span>, height <span class="op">=</span> <span class="fl">13</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="../examples/study/images/tax2fun-dendro-genus-overview.svg" alt="Figure 10. Genus-level association dendrogram overview"><div class="figcaption">Figure 10. Genus-level association dendrogram
+overview</div>
+</div>
+<p>Colours identify genera, branches connect each genus to its displayed
+functions, and point size represents absolute model effect. Repeated
+labels such as ABC transporters, purine metabolism and ribosome show
+that related functional categories occur among several genera’s selected
+associations. They do not establish the same effect direction, equal
+contributions, or evolutionary proximity. This is an association
+diagram, not a phylogenetic tree.</p>
+<p><a href="../examples/study/images/tax2fun-dendro-genus-overview.svg">Open
+the full-size genus overview</a> to read the individual labels.</p>
+</div>
+<div class="section level3">
+<h3 id="selected-taxa-dendrogram">Choose taxa for a focused dendrogram<a class="anchor" aria-label="anchor" href="#selected-taxa-dendrogram"></a>
+</h3>
+<p>The next figure is a focused selection of taxa, rather than the full
+genus overview. Use <code>taxa_list</code> to choose the genera that
+match your biological question. Replace the example names below with
+entries from <code>names(result_taxa)</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">taxa_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Saccharopolyspora"</span>, <span class="st">"Streptomyces"</span>, <span class="st">"Pseudoxanthomonas"</span><span class="op">)</span></span>
+<span><span class="va">p_tax_dendro</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_dendro.html">tax2fun_dendro</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_taxa</span>, taxa_list <span class="op">=</span> <span class="va">taxa_of_interest</span>,</span>
+<span>  top_n_per_taxon <span class="op">=</span> <span class="fl">3</span>, label_size <span class="op">=</span> <span class="fl">2.6</span>, wrap_width <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">plot</span></span>
 <span><span class="va">p_tax_dendro</span> <span class="op">&lt;-</span> <span class="va">p_tax_dendro</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span></span>
 <span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span></span>
@@ -412,7 +452,8 @@ same abundance on the original scale.</p>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_dendrogram.pdf"</span><span class="op">)</span>, <span class="va">p_tax_dendro</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">7.5</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/tax2fun-dendro-01.png" alt="Figure 10. Circular association dendrogram"><div class="figcaption">Figure 10. Circular association dendrogram</div>
+<img src="../examples/study/images/tax2fun-dendro-01.png" alt="Figure 11. Association dendrogram for selected taxa"><div class="figcaption">Figure 11. Association dendrogram for selected
+taxa</div>
 </div>
 <p>The circular view places related parts of the analysis on branches so
 that several selected relationships can be inspected together. Point
@@ -423,14 +464,14 @@ abundance-clustering result.</p>
 <div class="section level3">
 <h3 id="signed-effects-reveal-the-contrast">Signed effects reveal the contrast<a class="anchor" aria-label="anchor" href="#signed-effects-reveal-the-contrast"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tax_effects</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_logfc.html">tax2fun_logfc</a></span><span class="op">(</span><span class="va">result_taxa</span>, top_n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">p_tax_effect</span> <span class="op">&lt;-</span> <span class="va">tax_effects</span><span class="op">[[</span><span class="va">selected_taxon</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"MaAsLin2 AST coefficient"</span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_effect.pdf"</span><span class="op">)</span>, <span class="va">p_tax_effect</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/tax2fun-logfc-01.png" alt="Figure 11. Signed MaAsLin2 AST coefficients"><div class="figcaption">Figure 11. Signed MaAsLin2 AST
+<img src="../examples/study/images/tax2fun-logfc-01.png" alt="Figure 12. Signed MaAsLin2 AST coefficients"><div class="figcaption">Figure 12. Signed MaAsLin2 AST
 coefficients</div>
 </div>
 <p>Finally, look directly at the modeled direction and magnitude.
@@ -450,7 +491,7 @@ plotted estimates answer that question directly.</p>
 <div class="section level3">
 <h3 id="sankey-diagrams-follow-the-selected-associations-1">Sankey diagrams follow the selected associations<a class="anchor" aria-label="anchor" href="#sankey-diagrams-follow-the-selected-associations-1"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">study_tree</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">p_fun_phylogeny</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun</span>,</span>
@@ -460,7 +501,7 @@ plotted estimates answer that question directly.</p>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-sankey-01.svg" alt="Figure 12. Sankey with an ASV phylogeny"><div class="figcaption">Figure 12. Sankey with an ASV phylogeny</div>
+<img src="../examples/study/images/fun2tax-sankey-01.svg" alt="Figure 13. Sankey with an ASV phylogeny"><div class="figcaption">Figure 13. Sankey with an ASV phylogeny</div>
 </div>
 <p>Follow a ribbon from one endpoint to the other. Where do the selected
 relationships concentrate, and which taxa or functions would you like to
@@ -470,7 +511,7 @@ relationships. The taxon-side tree appears on the right in this
 orientation.</p>
 <details><summary>
 Compare the taxonomy view
-</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_taxonomy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun</span>,</span>
 <span>  pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -478,12 +519,12 @@ Compare the taxonomy view
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-sankey-02.svg" alt="Figure 13. Sankey with taxonomy context"><div class="figcaption">Figure 13. Sankey with taxonomy context</div>
+<img src="../examples/study/images/fun2tax-sankey-02.svg" alt="Figure 14. Sankey with taxonomy context"><div class="figcaption">Figure 14. Sankey with taxonomy context</div>
 </div>
 </details><div class="section level4">
 <h4 id="adjust-the-sankey-nodes-1">Adjust the Sankey nodes<a class="anchor" aria-label="anchor" href="#adjust-the-sankey-nodes-1"></a>
 </h4>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_plain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun</span>,</span>
 <span>  pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -493,7 +534,7 @@ Compare the taxonomy view
 <figure class="microfun-interactive-figure"><iframe class="microfun-widget" id="fun2tax-interactive" title="Interactive fun2tax Sankey without a tree" src="../examples/study/widgets/fun2tax-sankey-no-tree.html" sandbox="allow-scripts" loading="lazy">
 </iframe>
 <figcaption>
-Figure 14. Draggable function-to-taxon Sankey
+Figure 15. Draggable function-to-taxon Sankey
 </figcaption></figure><p>Drag a node up or down to arrange the relationships you want to
 inspect. The links follow the node. <a href="../examples/study/widgets/fun2tax-sankey-no-tree.html">Open the
 draggable diagram in its own page</a>.</p>
@@ -506,7 +547,7 @@ layouts.</p>
 <div class="section level3">
 <h3 id="chord-diagrams-add-contribution-weights-1">Chord diagrams add contribution weights<a class="anchor" aria-label="anchor" href="#chord-diagrams-add-contribution-weights-1"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_chord</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_chord.html">fun2tax_chord</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun</span>, <span class="va">strat_path</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
 <span>  contrast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span>, functions <span class="op">=</span> <span class="va">selected_function</span>,</span>
@@ -515,7 +556,7 @@ layouts.</p>
 <span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_fun_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_chord.png"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_fun_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_chord.pdf"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-chord-01.png" alt="Figure 15. Contribution-weighted Chord diagram"><div class="figcaption">Figure 15. Contribution-weighted Chord
+<img src="../examples/study/images/fun2tax-chord-01.png" alt="Figure 16. Contribution-weighted Chord diagram"><div class="figcaption">Figure 16. Contribution-weighted Chord
 diagram</div>
 </div>
 <p>Now ask how much predicted contribution is attached to the selected
@@ -536,17 +577,17 @@ main PDF includes the legend pages. Sector codes are recorded in
 <code>fun2tax_chord_label_mapping.csv</code>. The four images below show
 those companion legend views.</p>
 <div class="float">
-<img src="../examples/study/images/fun2tax-chord-02.png" alt="Figure 16. Taxon bands and sector codes"><div class="figcaption">Figure 16. Taxon bands and sector codes</div>
+<img src="../examples/study/images/fun2tax-chord-02.png" alt="Figure 17. Taxon bands and sector codes"><div class="figcaption">Figure 17. Taxon bands and sector codes</div>
 </div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-chord-03.png" alt="Figure 17. Functional categories and sector codes"><div class="figcaption">Figure 17. Functional categories and sector
+<img src="../examples/study/images/fun2tax-chord-03.png" alt="Figure 18. Functional categories and sector codes"><div class="figcaption">Figure 18. Functional categories and sector
 codes</div>
 </div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-chord-04.png" alt="Figure 18. Effect-direction colour key"><div class="figcaption">Figure 18. Effect-direction colour key</div>
+<img src="../examples/study/images/fun2tax-chord-04.png" alt="Figure 19. Effect-direction colour key"><div class="figcaption">Figure 19. Effect-direction colour key</div>
 </div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-chord-05.png" alt="Figure 19. Contribution-width and effect-bar key"><div class="figcaption">Figure 19. Contribution-width and effect-bar
+<img src="../examples/study/images/fun2tax-chord-05.png" alt="Figure 20. Contribution-width and effect-bar key"><div class="figcaption">Figure 20. Contribution-width and effect-bar
 key</div>
 </div>
 </details>
@@ -554,7 +595,7 @@ key</div>
 <div class="section level3">
 <h3 id="boxplots-return-to-the-sample-distributions-1">Boxplots return to the sample distributions<a class="anchor" aria-label="anchor" href="#boxplots-return-to-the-sample-distributions-1"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fun_boxes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_box.html">fun2tax_box</a></span><span class="op">(</span></span>
 <span>  <span class="va">strat_path</span>, <span class="va">result_fun</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
 <span>  pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -563,7 +604,7 @@ key</div>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_box.pdf"</span><span class="op">)</span>, <span class="va">p_fun_box</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-box-01.png" alt="Figure 20. Predicted contribution distributions across groups"><div class="figcaption">Figure 20. Predicted contribution distributions
+<img src="../examples/study/images/fun2tax-box-01.png" alt="Figure 21. Predicted contribution distributions across groups"><div class="figcaption">Figure 21. Predicted contribution distributions
 across groups</div>
 </div>
 <p>A summary diagram cannot show every sample. Use the boxplots to
@@ -573,9 +614,9 @@ comparing panels; a shared visual height does not necessarily imply the
 same abundance on the original scale.</p>
 </div>
 <div class="section level3">
-<h3 id="dendrograms-organize-the-associations-1">Dendrograms organize the associations<a class="anchor" aria-label="anchor" href="#dendrograms-organize-the-associations-1"></a>
+<h3 id="dendrograms-organize-the-associations">Dendrograms organize the associations<a class="anchor" aria-label="anchor" href="#dendrograms-organize-the-associations"></a>
 </h3>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_dendro</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_dendro.html">fun2tax_dendro</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun</span>, top_n_per_function <span class="op">=</span> <span class="fl">3</span>, label_size <span class="op">=</span> <span class="fl">2.6</span>, wrap_width <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span><span class="op">$</span><span class="va">plot</span></span>
@@ -585,7 +626,7 @@ same abundance on the original scale.</p>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_dendrogram.pdf"</span><span class="op">)</span>, <span class="va">p_fun_dendro</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">7.5</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-dendro-01.png" alt="Figure 21. Circular association dendrogram"><div class="figcaption">Figure 21. Circular association dendrogram</div>
+<img src="../examples/study/images/fun2tax-dendro-01.png" alt="Figure 22. Circular association dendrogram"><div class="figcaption">Figure 22. Circular association dendrogram</div>
 </div>
 <p>The circular view places related parts of the analysis on branches so
 that several selected relationships can be inspected together. Point
@@ -596,14 +637,14 @@ abundance-clustering result.</p>
 <div class="section level3">
 <h3 id="signed-effects-reveal-the-contrast-1">Signed effects reveal the contrast<a class="anchor" aria-label="anchor" href="#signed-effects-reveal-the-contrast-1"></a>
 </h3>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fun_effects</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_logfc.html">fun2tax_logfc</a></span><span class="op">(</span><span class="va">result_fun</span>, top_n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">p_fun_effect</span> <span class="op">&lt;-</span> <span class="va">fun_effects</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"MaAsLin2 AST coefficient"</span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_effect.pdf"</span><span class="op">)</span>, <span class="va">p_fun_effect</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/images/fun2tax-logfc-01.png" alt="Figure 22. Signed MaAsLin2 AST coefficients"><div class="figcaption">Figure 22. Signed MaAsLin2 AST
+<img src="../examples/study/images/fun2tax-logfc-01.png" alt="Figure 23. Signed MaAsLin2 AST coefficients"><div class="figcaption">Figure 23. Signed MaAsLin2 AST
 coefficients</div>
 </div>
 <p>Finally, look directly at the modeled direction and magnitude.

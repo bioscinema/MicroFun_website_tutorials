@@ -8,4 +8,5 @@
   function-centered results.
 - [Demonstration Study
   (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-  is in preparation. Its analysis and figures are being prepared.
+  compares KO and KEGG community profiles using PCA, heatmaps and group
+  abundance summaries.

@@ -1,0 +1,340 @@
+# MicroFun
+
+![MicroFun logo](logo.png)
+
+**Connect microbial taxa to predicted functions.**
+
+Analyze and visualize PICRUSt2 predictions, linking community-level
+functional patterns to taxon-specific contributions.
+
+------------------------------------------------------------------------
+
+## From community profiles to individual contributors
+
+Understanding microbial communities requires knowing both which microbes
+are present and what they can do. Functional profiling helps
+characterize their roles in ecosystems, host physiology and disease. For
+16S rRNA studies, PICRUSt2 predicts functional potential from reference
+genomes and sequence abundances, making downstream analysis accessible
+when shotgun metagenomic data are unavailable.
+
+Community-level functional profiles summarize predictions across
+contributors, but can obscure the taxa behind a functional difference.
+An increase in a function may be driven by only a few taxa, while a
+stable total may conceal shifts in its contributors. Analyzing taxonomic
+abundance and pooled functional profiles separately cannot recover these
+links.
+
+**MicroFun** is an R package for downstream analysis and visualization
+of standard and stratified PICRUSt2 output. Building on
+[ggpicrust2](https://github.com/cafferychen777/ggpicrust2), it
+integrates data preparation, statistical analysis, functional annotation
+and visualization, and extends the workflow with two complementary
+analyses of stratified contributions:
+
+- **Taxon-centered analysis** tests for group-associated differences in
+  predicted functional contributions within each taxon.
+- **Function-centered analysis** tests for group-associated differences
+  in taxon contributions to each function.
+
+Together, these analyses help identify which taxa contribute to
+functional differences and how predicted contributions vary across
+groups, while retaining the links between taxa and functions.
+
+## Connect statistical results to visual interpretation
+
+MicroFun combines these analyses with complementary visualizations that
+keep taxa and functions connected. Users can explore the functions
+associated with a taxon or examine the taxa contributing to a function,
+moving between an overview of significant relationships and detailed
+group comparisons.
+
+- **Bidirectional Sankey diagrams** summarize selected taxa–function
+  associations, with optional taxonomy or ASV phylogeny on the taxon
+  side. Ribbon width counts the displayed associations. Explore
+  [taxon-to-function](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md)
+  and
+  [function-to-taxon](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md)
+  views.
+- **Chord diagrams** show mean predicted contributions as ribbon width
+  and absolute model effects as outer bars, connecting [taxa to
+  functions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.html#tax2fun-chord)
+  or [functions to
+  taxa](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.html#fun2tax-chord).
+- **Contribution box plots** compare predicted contributions across
+  groups, organized by
+  [taxon](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.html#tax2fun-box)
+  or
+  [function](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.html#fun2tax-box).
+- **Signed-effect plots and association dendrograms** show model effects
+  and organize selected relationships in both analysis directions. For
+  MaAsLin2, signed effects are AST coefficients. For evolutionary
+  relationships, use the phylogeny mode of Sankey.
+
+By bringing data preparation, statistical testing, annotation and
+plotting into one workflow, MicroFun helps users explore functional
+differences together with their microbial contributors.
+
+## Installation
+
+Install **MicroFun** from the source package. See [installation and
+dependencies](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.md)
+for the setup instructions.
+
+## Tutorials
+
+- [Standard PICRUSt2
+  workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md)
+  and [stratified PICRUSt2
+  workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md).
+- [Example data and plotting
+  setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md).
+- [Taxon-to-function](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md)
+  and
+  [function-to-taxon](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md)
+  visualizations.
+- **Demonstration studies:** [Demonstration Study
+  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
+  and [Demonstration Study
+  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md).
+- [Export and
+  redraw](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md),
+  and
+  [troubleshooting](https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.md).
+
+## Explore MicroFun visualizations
+
+Three representative views of predicted functional contributions. Select
+a figure to explore the corresponding result; see the [stratified
+demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
+for boxplots, signed effects and additional views.
+
+[![Chord showing predicted taxon-function
+contributions](examples/study/images/tax2fun-chord-01.png)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-chord-01.png)
+
+### Chord diagram
+
+Compare predicted contributions and model-effect direction.
+
+[Explore the example
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
+
+[![Genus-level overview of taxon-function
+associations](examples/study/images/tax2fun-dendro-genus-overview.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+
+### Association dendrogram
+
+Explore the association overview across retained genera.
+
+[Explore the example
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+
+[![Sankey with a taxonomic side
+tree](examples/study/images/tax2fun-sankey-01.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-sankey-01.svg)
+
+### Sankey diagram
+
+Trace selected taxa–function associations with taxonomy context.
+
+[Explore the example
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
+
+## Documentation
+
+- [Getting
+  started](https://bioscinema.github.io/MicroFun_website_tutorials/articles/getting-started.md):
+  installation and a guide to the documentation.
+- [Function
+  reference](https://bioscinema.github.io/MicroFun_website_tutorials/reference/index.md):
+  arguments, usage and examples from the package source.
+- [Changelog](https://bioscinema.github.io/MicroFun_website_tutorials/news/index.md):
+  package updates.
+
+## Support
+
+Ask questions or report issues on
+[GitHub](https://github.com/bioscinema/MicroFun/issues).
+
+# Package index
+
+## Taxonomy to function
+
+- [`tax2fun_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_box.md)
+  : Plot Functional Abundance Boxplots for Driving Taxa
+- [`tax2fun_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  [`print(`*`<microfun_chord>`*`)`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  [`plot(`*`<microfun_chord>`*`)`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  : Chord diagram of taxon-resolved functional contributions
+- [`tax2fun_dendro()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_dendro.md)
+  : Dendrogram of top stratified functions per taxon (circular)
+- [`tax2fun_logfc()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_logfc.md)
+  : Plot signed logFC pathways for each taxon (list of plots)
+- [`tax2fun_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_sankey.md)
+  : Sankey diagram of taxon -\> pathway-class contributions (PICRUSt2
+  stratified)
+
+## Function to taxonomy
+
+- [`fun2tax_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_box.md)
+  : Plot function-to-taxon contributions as grouped boxplots
+- [`fun2tax_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_chord.md)
+  : Chord diagram from function-oriented differential results
+- [`fun2tax_dendro()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_dendro.md)
+  : Dendrogram of top differential taxa per function
+- [`fun2tax_logfc()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_logfc.md)
+  : Plot signed taxon effects for each function
+- [`fun2tax_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_sankey.md)
+  : Sankey diagram: functions (KO/EC/MetaCyc) to taxa/features
+
+## Pathway analysis and visualization
+
+- [`pathway_annotation()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_annotation.md)
+  : Pathway information annotation
+- [`pathway_daa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_daa.md)
+  : Differential Abundance Analysis for Predicted Functional Pathways
+- [`pathway_errorbar`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_errorbar.md)
+  : The function pathway_errorbar() is used to visualize the results of
+  functional pathway differential abundance analysis as error bar plots.
+- [`pathway_heatmap`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_heatmap.md)
+  : Create pathway heatmap
+- [`pathway_pca()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_pca.md)
+  : Perform Principal Component Analysis (PCA) on functional pathway
+  abundance data
+- [`pathway_sdaa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_sdaa.md)
+  : Stratified pathway-level DAA workflow for PICRUSt2 outputs
+
+## Data preparation and comparison
+
+- [`ko2kegg_abundance()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko2kegg_abundance.md)
+  : Convert KO abundance in picrust2 export files to KEGG pathway
+  abundance
+- [`import_MicrobiomeAnalyst_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/import_MicrobiomeAnalyst_daa_results.md)
+  : Import Differential Abundance Analysis (DAA) results from
+  MicrobiomeAnalyst
+- [`compare_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_daa_results.md)
+  : Compare the Consistency of Statistically Significant Features
+- [`compare_metagenome_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_metagenome_results.md)
+  : Compare Metagenome Results
+
+## Export and appearance
+
+- [`save_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/save_sankey.md)
+  : Export a Sankey (standard or tree-integrated)
+- [`redraw_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/redraw_sankey.md)
+  : Redraw saved tree-integrated Sankey results
+- [`save_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/save_chord.md)
+  : Export a chord diagram
+- [`microfun_palette()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/microfun_palette.md)
+  : MicroFun categorical palettes
+
+## Example datasets and other helpers
+
+- [`compare_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_daa_results.md)
+  : Compare the Consistency of Statistically Significant Features
+- [`compare_metagenome_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_metagenome_results.md)
+  : Compare Metagenome Results
+- [`daa_annotated_results_df`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/daa_annotated_results_df.md)
+  : Differentially Abundant Analysis Results with Annotation
+- [`daa_results_df`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/daa_results_df.md)
+  : DAA Results Dataset
+- [`fun2tax_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_box.md)
+  : Plot function-to-taxon contributions as grouped boxplots
+- [`fun2tax_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_chord.md)
+  : Chord diagram from function-oriented differential results
+- [`fun2tax_dendro()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_dendro.md)
+  : Dendrogram of top differential taxa per function
+- [`fun2tax_logfc()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_logfc.md)
+  : Plot signed taxon effects for each function
+- [`fun2tax_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_sankey.md)
+  : Sankey diagram: functions (KO/EC/MetaCyc) to taxa/features
+- [`import_MicrobiomeAnalyst_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/import_MicrobiomeAnalyst_daa_results.md)
+  : Import Differential Abundance Analysis (DAA) results from
+  MicrobiomeAnalyst
+- [`kegg_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/kegg_abundance.md)
+  : KEGG Abundance Dataset
+- [`ko2kegg_abundance()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko2kegg_abundance.md)
+  : Convert KO abundance in picrust2 export files to KEGG pathway
+  abundance
+- [`ko_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko_abundance.md)
+  : KO Abundance Dataset
+- [`metacyc_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/metacyc_abundance.md)
+  : MetaCyc Abundance Dataset
+- [`metadata`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/metadata.md)
+  : Metadata for ggpicrust2 Demonstration
+- [`microfun_palette()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/microfun_palette.md)
+  : MicroFun categorical palettes
+- [`pathway_annotation()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_annotation.md)
+  : Pathway information annotation
+- [`pathway_daa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_daa.md)
+  : Differential Abundance Analysis for Predicted Functional Pathways
+- [`pathway_errorbar`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_errorbar.md)
+  : The function pathway_errorbar() is used to visualize the results of
+  functional pathway differential abundance analysis as error bar plots.
+- [`pathway_heatmap`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_heatmap.md)
+  : Create pathway heatmap
+- [`pathway_pca()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_pca.md)
+  : Perform Principal Component Analysis (PCA) on functional pathway
+  abundance data
+- [`pathway_sdaa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_sdaa.md)
+  : Stratified pathway-level DAA workflow for PICRUSt2 outputs
+- [`redraw_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/redraw_sankey.md)
+  : Redraw saved tree-integrated Sankey results
+- [`safe_extract()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/safe_extract.md)
+  : Safely Extract Elements from a List
+- [`save_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/save_chord.md)
+  : Export a chord diagram
+- [`save_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/save_sankey.md)
+  : Export a Sankey (standard or tree-integrated)
+- [`tax2fun_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_box.md)
+  : Plot Functional Abundance Boxplots for Driving Taxa
+- [`tax2fun_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  [`print(`*`<microfun_chord>`*`)`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  [`plot(`*`<microfun_chord>`*`)`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_chord.md)
+  : Chord diagram of taxon-resolved functional contributions
+- [`tax2fun_dendro()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_dendro.md)
+  : Dendrogram of top stratified functions per taxon (circular)
+- [`tax2fun_logfc()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_logfc.md)
+  : Plot signed logFC pathways for each taxon (list of plots)
+- [`tax2fun_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_sankey.md)
+  : Sankey diagram of taxon -\> pathway-class contributions (PICRUSt2
+  stratified)
+
+# Articles
+
+### Getting started
+
+- [Getting started with
+  MicroFun](https://bioscinema.github.io/MicroFun_website_tutorials/articles/getting-started.md):
+- [Installation, dependencies and software
+  versions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.md):
+
+### PICRUSt2 workflows
+
+- [Pipeline for PICRUSt2 standard
+  output](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md):
+- [Stratified PICRUSt2 analysis with inputs and two SDAA
+  directions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md):
+
+### Visualization guides
+
+- [Example inputs and plotting
+  setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md):
+- [Community-level
+  visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/sample-level-plots.md):
+- [Taxon-to-function
+  visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md):
+- [Function-to-taxon
+  visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md):
+- [Export and redraw
+  figures](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md):
+- [Input checks and
+  troubleshooting](https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.md):
+
+### Demonstration studies
+
+- [Demonstration Study
+  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md):
+- [Demonstration Study
+  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md):
+- [Demonstration
+  studies](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-study.md):

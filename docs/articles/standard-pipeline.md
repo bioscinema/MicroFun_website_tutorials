@@ -122,7 +122,8 @@ signed MaAsLin2 AST coefficients used in stratified association plots.
 
 The [standard demonstration
 study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-is reserved for the forthcoming figures and analysis.
+shows the KO and KEGG study results with plotting code and
+interpretation.
 
 ## What should a result mean?
 

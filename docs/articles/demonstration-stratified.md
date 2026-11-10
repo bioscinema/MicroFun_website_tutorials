@@ -330,12 +330,58 @@ relationship. Read the group labels and axis transformation before
 comparing panels; a shared visual height does not necessarily imply the
 same abundance on the original scale.
 
-### Dendrograms organize the associations
+### Dendrogram overview at genus level
+
+Start with the overall association structure before choosing a few taxa
+to inspect. This genus-level overview excludes entries labelled incertae
+sedis or Other and shows up to five functions per retained genus, ranked
+by absolute modeled effect. The overview covers the retained genera; it
+is not an unrestricted display of every tested association.
 
 ``` r
 
+overview_genera <- names(result_taxa)[
+  !grepl("incertae|(^|[ _])other($|[ _])", names(result_taxa),
+         ignore.case = TRUE)
+]
+p_tax_overview <- tax2fun_dendro(
+  result_taxa, taxa_list = overview_genera, taxon_level = "Genus",
+  top_n_per_taxon = 5, label_size = 2, wrap_width = 36
+)$plot
+ggplot2::ggsave(file.path(out, "tax2fun_dendrogram_genus_overview.svg"),
+                p_tax_overview, width = 14, height = 13)
+```
+
+![Figure 10. Genus-level association dendrogram
+overview](../examples/study/images/tax2fun-dendro-genus-overview.svg)
+
+Figure 10. Genus-level association dendrogram overview
+
+Colours identify genera, branches connect each genus to its displayed
+functions, and point size represents absolute model effect. Repeated
+labels such as ABC transporters, purine metabolism and ribosome show
+that related functional categories occur among several genera’s selected
+associations. They do not establish the same effect direction, equal
+contributions, or evolutionary proximity. This is an association
+diagram, not a phylogenetic tree.
+
+[Open the full-size genus
+overview](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-dendro-genus-overview.svg)
+to read the individual labels.
+
+### Choose taxa for a focused dendrogram
+
+The next figure is a focused selection of taxa, rather than the full
+genus overview. Use `taxa_list` to choose the genera that match your
+biological question. Replace the example names below with entries from
+`names(result_taxa)`.
+
+``` r
+
+taxa_of_interest <- c("Saccharopolyspora", "Streptomyces", "Pseudoxanthomonas")
 p_tax_dendro <- tax2fun_dendro(
-  result_taxa, top_n_per_taxon = 3, label_size = 2.6, wrap_width = 20
+  result_taxa, taxa_list = taxa_of_interest,
+  top_n_per_taxon = 3, label_size = 2.6, wrap_width = 20
 )$plot
 p_tax_dendro <- p_tax_dendro + ggplot2::coord_fixed(
   xlim = c(-1.6, 1.6), ylim = c(-1.6, 1.6), clip = "off"
@@ -344,10 +390,10 @@ ggplot2::ggsave(file.path(out, "tax2fun_dendrogram.pdf"), p_tax_dendro,
                 width = 10, height = 7.5)
 ```
 
-![Figure 10. Circular association
-dendrogram](../examples/study/images/tax2fun-dendro-01.png)
+![Figure 11. Association dendrogram for selected
+taxa](../examples/study/images/tax2fun-dendro-01.png)
 
-Figure 10. Circular association dendrogram
+Figure 11. Association dendrogram for selected taxa
 
 The circular view places related parts of the analysis on branches so
 that several selected relationships can be inspected together. Point
@@ -366,10 +412,10 @@ ggplot2::ggsave(file.path(out, "tax2fun_effect.pdf"), p_tax_effect,
                 width = 8, height = 5)
 ```
 
-![Figure 11. Signed MaAsLin2 AST
+![Figure 12. Signed MaAsLin2 AST
 coefficients](../examples/study/images/tax2fun-logfc-01.png)
 
-Figure 11. Signed MaAsLin2 AST coefficients
+Figure 12. Signed MaAsLin2 AST coefficients
 
 Finally, look directly at the modeled direction and magnitude. Positive
 and negative bars refer to the recorded target-versus-reference
@@ -397,10 +443,10 @@ p_fun_phylogeny <- fun2tax_sankey(
 save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_phylogeny.html"))
 ```
 
-![Figure 12. Sankey with an ASV
+![Figure 13. Sankey with an ASV
 phylogeny](../examples/study/images/fun2tax-sankey-01.svg)
 
-Figure 12. Sankey with an ASV phylogeny
+Figure 13. Sankey with an ASV phylogeny
 
 Follow a ribbon from one endpoint to the other. Where do the selected
 relationships concentrate, and which taxa or functions would you like to
@@ -421,10 +467,10 @@ p_fun_taxonomy <- fun2tax_sankey(
 save_sankey(p_fun_taxonomy, file.path(out, "fun2tax_taxonomy.html"))
 ```
 
-![Figure 13. Sankey with taxonomy
+![Figure 14. Sankey with taxonomy
 context](../examples/study/images/fun2tax-sankey-02.svg)
 
-Figure 13. Sankey with taxonomy context
+Figure 14. Sankey with taxonomy context
 
 #### Adjust the Sankey nodes
 
@@ -438,7 +484,7 @@ p_fun_plain <- fun2tax_sankey(
 save_sankey(p_fun_plain, file.path(out, "fun2tax_draggable.html"))
 ```
 
-Figure 14. Draggable function-to-taxon Sankey
+Figure 15. Draggable function-to-taxon Sankey
 
 Drag a node up or down to arrange the relationships you want to inspect.
 The links follow the node. [Open the draggable diagram in its own
@@ -462,10 +508,10 @@ save_chord(p_fun_chord, file.path(out, "fun2tax_chord.png"))
 save_chord(p_fun_chord, file.path(out, "fun2tax_chord.pdf"))
 ```
 
-![Figure 15. Contribution-weighted Chord
+![Figure 16. Contribution-weighted Chord
 diagram](../examples/study/images/fun2tax-chord-01.png)
 
-Figure 15. Contribution-weighted Chord diagram
+Figure 16. Contribution-weighted Chord diagram
 
 Now ask how much predicted contribution is attached to the selected
 relationships. Chord widths use the balanced mean contribution, giving
@@ -488,25 +534,25 @@ calls above also export the legends. The PNG has a companion
 Sector codes are recorded in `fun2tax_chord_label_mapping.csv`. The four
 images below show those companion legend views.
 
-![Figure 16. Taxon bands and sector
+![Figure 17. Taxon bands and sector
 codes](../examples/study/images/fun2tax-chord-02.png)
 
-Figure 16. Taxon bands and sector codes
+Figure 17. Taxon bands and sector codes
 
-![Figure 17. Functional categories and sector
+![Figure 18. Functional categories and sector
 codes](../examples/study/images/fun2tax-chord-03.png)
 
-Figure 17. Functional categories and sector codes
+Figure 18. Functional categories and sector codes
 
-![Figure 18. Effect-direction colour
+![Figure 19. Effect-direction colour
 key](../examples/study/images/fun2tax-chord-04.png)
 
-Figure 18. Effect-direction colour key
+Figure 19. Effect-direction colour key
 
-![Figure 19. Contribution-width and effect-bar
+![Figure 20. Contribution-width and effect-bar
 key](../examples/study/images/fun2tax-chord-05.png)
 
-Figure 19. Contribution-width and effect-bar key
+Figure 20. Contribution-width and effect-bar key
 
 ### Boxplots return to the sample distributions
 
@@ -521,10 +567,10 @@ ggplot2::ggsave(file.path(out, "fun2tax_box.pdf"), p_fun_box,
                 width = 10, height = 6)
 ```
 
-![Figure 20. Predicted contribution distributions across
+![Figure 21. Predicted contribution distributions across
 groups](../examples/study/images/fun2tax-box-01.png)
 
-Figure 20. Predicted contribution distributions across groups
+Figure 21. Predicted contribution distributions across groups
 
 A summary diagram cannot show every sample. Use the boxplots to inspect
 spread, overlap and possible unusual observations in a selected
@@ -546,10 +592,10 @@ ggplot2::ggsave(file.path(out, "fun2tax_dendrogram.pdf"), p_fun_dendro,
                 width = 10, height = 7.5)
 ```
 
-![Figure 21. Circular association
+![Figure 22. Circular association
 dendrogram](../examples/study/images/fun2tax-dendro-01.png)
 
-Figure 21. Circular association dendrogram
+Figure 22. Circular association dendrogram
 
 The circular view places related parts of the analysis on branches so
 that several selected relationships can be inspected together. Point
@@ -568,10 +614,10 @@ ggplot2::ggsave(file.path(out, "fun2tax_effect.pdf"), p_fun_effect,
                 width = 8, height = 5)
 ```
 
-![Figure 22. Signed MaAsLin2 AST
+![Figure 23. Signed MaAsLin2 AST
 coefficients](../examples/study/images/fun2tax-logfc-01.png)
 
-Figure 22. Signed MaAsLin2 AST coefficients
+Figure 23. Signed MaAsLin2 AST coefficients
 
 Finally, look directly at the modeled direction and magnitude. Positive
 and negative bars refer to the recorded target-versus-reference
