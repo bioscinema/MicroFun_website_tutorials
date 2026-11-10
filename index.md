@@ -2,6 +2,14 @@
 
 **Connect microbial taxa to predicted functions.**
 
+<h1>
+  MicroFun
+  <img src="logo.png"
+       alt="MicroFun logo"
+       align="right"
+       width="160">
+</h1>
+
 Analyze and visualize PICRUSt2 predictions, linking community-level functional patterns to taxon-specific contributions.
 
 <hr class="microfun-intro-divider">
