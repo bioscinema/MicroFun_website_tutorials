@@ -1,0 +1,78 @@
+# Input checks and troubleshooting
+
+Most problems are easier to solve when you separate the steps. First
+check that the inputs describe the same samples and ASVs. Then check
+whether the model has eligible data and the intended comparison. Only
+after that should you investigate plotting or export settings.
+
+We recommend starting with a small subset whose contents you can
+inspect. An error message about missing identifiers, for example, is a
+reason to compare the identifiers rather than change the significance
+threshold. The checks below follow that order.
+
+## Find the step that needs attention
+
+Table 1. Analysis inputs and options
+
+| Symptom | Check |
+|----|----|
+| Missing columns or no sample overlap | Inspect the contribution table header and compare its sample IDs to `sample_names(ps)`. Use a stratified long table for SDAA. |
+| Few eligible taxa or missing tree tips | Compare contribution ASV IDs, taxonomy row names, and tree tip labels. Check rank assignments and whether you supplied a tree from the same ASVs. |
+| `TSS` or `AST` fails | Look for selected samples with zero total contribution in the individual taxon or function table. Also check whether the corresponding model retains enough features and samples. |
+| No significant biomarkers | Inspect the model and annotation messages, the group contrast, and the prespecified threshold. For taxon-oriented KEGG results, check `KEGGREST` availability and access to KEGG. |
+| Chord reports no matching contrast or missing effects | Compare `group1` and `group2` with the requested `contrast`. Use one method and contrast with finite signed effect estimates. The supplied `limma voom` and `edgeR` wrappers return p-values without signed effects. |
+| Expected class names but see genus labels | Check `attr(result, "microfun")$taxon_level`. If the fit was at genus level, refit at Class. For a legacy result without the attribute, pass the original rank explicitly to the plot. |
+
+Functional abundances and taxon contributions come from PICRUSt2
+predictions. Interpret the plots together with the reference group,
+model, and adjustment scope recorded for the analysis.
+
+## What if no results are selected?
+
+An empty result is not automatically a software failure. Read the model
+and annotation messages, check the contrast and confirm that enough
+samples and features remain. If those checks pass, the analysis may
+simply have no rows meeting the prespecified threshold. Changing the
+threshold after looking at a plot changes the question and should be
+documented.
+
+## KEGG annotation cannot connect
+
+Confirm that `KEGGREST` is installed and that your R session can access
+the KEGG service. Academic REST access does not require an API key, so a
+connection error is not an instruction to register for one.
+
+Local KO-to-pathway conversion can work while online annotation fails. A
+local `kegg_map` does not turn off the online annotation performed by
+the taxon-centered KO workflow. Check the annotation messages separately
+from model or sample-matching errors. The [mapping and network access
+guide](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html#kegg-mapping-and-annotation)
+lists the local and online steps. The bundled community plotting
+examples use preannotated results and do not need a KEGG connection.
+
+## The plot looks different from what you expected
+
+Begin with the quantity being shown. Sankey widths count associations,
+Chord widths show mean contributions, and signed bars show model
+coefficients. Boxplot group colours identify the groups, while ribbon
+colours identify effect direction. These choices can make two correct
+views look different.
+
+Next compare the saved rank and selected cohort. A genus-level analysis
+and a class-level analysis are different aggregations; changing only the
+plot title cannot convert one into the other.
+
+## The analysis works, but the export fails
+
+Check the export format and its optional dependencies. Tree Sankey
+PNG/PDF needs `rsvg`; tiled PDF also needs `qpdf`. Ordinary no-tree
+Sankey supports HTML and RDS. Chord SVG/HTML also needs a working SVG
+graphics device on your platform. Keep any adjacent HTML asset folders
+with the exported file.
+
+If you ask for help, include the function call, the full error, a
+compact description of the input columns and
+[`sessionInfo()`](https://rdrr.io/r/utils/sessionInfo.html). A small
+reproducible example is more useful than a screenshot of the last line
+alone. Report issues through
+[GitHub](https://github.com/bioscinema/MicroFun/issues).
