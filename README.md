@@ -1,5 +1,10 @@
 # MicroFun Website and Tutorials
 
+<img src="assets/logo.png"
+     alt="MicroFun logo"
+     width="150"
+     align="right">
+     
 This repository contains the official documentation website and tutorials for **MicroFun**, an R package for statistical analysis and visualization of taxon-resolved functional contributions in microbiome research.
 
 - **R package:** [bioscinema/MicroFun](https://github.com/bioscinema/MicroFun)
