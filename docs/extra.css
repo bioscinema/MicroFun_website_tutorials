@@ -93,3 +93,33 @@ main .microfun-table-caption {
 }
 main .microfun-interactive-figure { margin: 1rem 0 1.5rem; }
 main .microfun-table-caption { font-weight: 600; margin-bottom: .6rem; }
+
+.microfun-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.microfun-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.microfun-hero-logo {
+  width: 160px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .microfun-hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .microfun-hero-logo {
+    width: 120px;
+  }
+}

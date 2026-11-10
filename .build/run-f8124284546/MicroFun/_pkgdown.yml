@@ -1,0 +1,144 @@
+title: MicroFun
+url: https://bioscinema.github.io/MicroFun_website_tutorials/
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  light-switch: true
+  bslib:
+    bg: "#FFFFFF"
+    fg: "#000000"
+    primary: "#1557B0"
+    secondary: "#527267"
+    success: "#31836A"
+    link-color: "#1557B0"
+    border-color: "#DEE2E6"
+home:
+  title: Taxon-resolved functional analysis with MicroFun
+  description: Analyze community-level and taxon-resolved PICRUSt2 functional predictions with MicroFun.
+  sidebar:
+    structure: [links, license, citation, developers]
+    components:
+      developers:
+        title: Developers
+        text: |
+          - Ruitao Liu
+          - Liangliang Zhang
+          - Chenyu Liu
+          - Zilin Li
+          - Yaoran Yu
+navbar:
+  structure:
+    left: [start, plotting, studies, reference, news]
+    right: [search, github]
+  components:
+    start:
+      text: Get started
+      menu:
+        - text: Getting started
+          href: articles/getting-started.html
+        - text: Installation and dependencies
+          href: articles/installation.html
+        - text: Standard PICRUSt2 workflow
+          href: articles/standard-pipeline.html
+        - text: Stratified PICRUSt2 workflow
+          href: articles/stratified-pipeline.html
+    studies:
+      text: Demonstration Study
+      menu:
+        - text: Demonstration Study (Stratified)
+          href: articles/demonstration-stratified.html
+        - text: Demonstration Study (Standard)
+          href: articles/demonstration-standard.html
+    plotting:
+      text: Visualization guides
+      menu:
+        - text: Plotting setup
+          href: articles/plotting-setup.html
+        - text: Community-level visualizations
+          href: articles/sample-level-plots.html
+        - text: Taxon-to-function plots
+          href: articles/taxon-to-function.html
+        - text: Function-to-taxon plots
+          href: articles/function-to-taxon.html
+        - text: Export and redraw
+          href: articles/plot-export.html
+        - text: Troubleshooting
+          href: articles/troubleshooting.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
+    github:
+      icon: fa-github
+      href: https://github.com/bioscinema/MicroFun
+      aria-label: MicroFun source code
+
+reference:
+- title: Taxonomy to function
+  contents:
+  - starts_with("tax2fun_")
+- title: Function to taxonomy
+  contents:
+  - starts_with("fun2tax_")
+- title: Pathway analysis and visualization
+  contents:
+  - starts_with("pathway_")
+- title: Data preparation and comparison
+  contents:
+  - ko2kegg_abundance
+  - import_MicrobiomeAnalyst_daa_results
+  - starts_with("compare_")
+- title: Export and appearance
+  contents:
+  - save_sankey
+  - redraw_sankey
+  - save_chord
+  - microfun_palette
+- title: Example datasets and other helpers
+  contents:
+  - matches(".*")
+
+articles:
+- title: Getting started
+  navbar: ~
+  contents:
+  - getting-started
+  - installation
+- title: PICRUSt2 workflows
+  navbar: ~
+  contents:
+  - standard-pipeline
+  - stratified-pipeline
+- title: Visualization guides
+  navbar: ~
+  contents:
+  - plotting-setup
+  - sample-level-plots
+  - taxon-to-function
+  - function-to-taxon
+  - plot-export
+  - troubleshooting
+- title: Demonstration studies
+  navbar: ~
+  contents:
+  - demonstration-stratified
+  - demonstration-standard
+  - demonstration-study
+
+# Package links remain separate from the website repository.
+repo:
+  url:
+    home: https://github.com/bioscinema/MicroFun/
+    source: ~
+    issue: https://github.com/bioscinema/MicroFun/issues/
+    user: https://github.com/
+
+footer:
+  structure:
+    left: [developers]
+    right: [website_source, built_with]
+  components:
+    website_source: "[Website source](https://github.com/bioscinema/MicroFun_website_tutorials)"
+    developers: Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.

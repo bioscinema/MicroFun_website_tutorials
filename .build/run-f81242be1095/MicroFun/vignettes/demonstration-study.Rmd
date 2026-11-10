@@ -1,0 +1,13 @@
+---
+title: "Demonstration studies"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Demonstration studies}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Choose the PICRUSt2 output type
+
+- [Demonstration Study (Stratified)](demonstration-stratified.html) presents the complete visualization set for both taxon-centered and function-centered results.
+- [Demonstration Study (Standard)](demonstration-standard.html) is in preparation. Its analysis and figures are being prepared.

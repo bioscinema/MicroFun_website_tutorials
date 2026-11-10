@@ -1,0 +1,66 @@
+---
+title: "Taxon-resolved functional analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Taxon-resolved functional analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+MicroFun takes a PICRUSt2 contribution table and a phyloseq object containing
+sample metadata and ASV taxonomy. Match ASV and sample identifiers before analysis.
+The examples below use user-supplied files and a metadata column named `Group`.
+
+```{r}
+library(MicroFun)
+ps <- readRDS("phyloseq.rds")
+contributions <- "picrust2_out/KO_metagenome_out/pred_metagenome_contrib.tsv.gz"
+
+result_taxa <- pathway_sdaa(
+  contributions, ps, group = "Group", taxon_level = "Genus",
+  direction = "taxa", pathway = "KO", reference = "Control"
+)
+result_function <- pathway_sdaa(
+  contributions, ps, group = "Group", taxon_level = "Genus",
+  direction = "function", pathway = "KO", reference = "Control"
+)
+```
+
+Each direction has its own statistical analysis. Do not transpose a taxon-centred
+result and treat it as function-centred inference.
+
+```{r}
+p <- tax2fun_sankey(
+  result_taxa, tree_mode = "phylogeny", physeq = ps,
+  picrust2_dir = "picrust2_out", taxon_level = "Genus"
+)
+q <- fun2tax_sankey(
+  result_function, tree_mode = "taxonomy", physeq = ps,
+  taxon_level = "Genus"
+)
+save_sankey(p, "taxa_to_function.html")
+save_sankey(p, "taxa_to_function.pdf")
+save_sankey(q, "function_to_taxa.html")
+```
+
+Use unagglomerated ASV taxonomy to match tree tips. Independent trees form a
+forest. A non-monophyletic genus can occupy multiple branches; only pure taxon
+clades collapse together. Mapping connectors do not multiply association weights.
+
+```{r}
+c <- tax2fun_chord(
+  result_taxa, contributions, ps, group = "Group", taxon_level = "Genus",
+  contrast = c("Control", "Treatment"), draw = FALSE
+)
+save_chord(c, "chord.html")
+save_chord(c, "chord.pdf", width = 18, height = 16)
+saveRDS(c, "chord.rds")
+```
+
+Chord widths represent contributions, while bar heights represent absolute model
+effects. In particular, Maaslin2 AST coefficients are not log fold changes.
+Inspect `c$links`, `c$settings` and `c$diagnostics` to review the plotted data.
