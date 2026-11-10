@@ -4,7 +4,7 @@
 
 <h1>
   MicroFun
-  <img src="MicroFun logo.png"
+  <img src="logo.png"
        alt="MicroFun logo"
        align="right"
        width="160">
