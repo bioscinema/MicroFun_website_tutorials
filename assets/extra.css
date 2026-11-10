@@ -383,3 +383,20 @@ main .microfun-table-caption {
     width: 120px;
   }
 }
+
+/* MicroFun homepage logo */
+
+.microfun-home-logo {
+  float: right;
+  width: 160px;
+  max-width: 35%;
+  height: auto;
+  margin: 0 0 1rem 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .microfun-home-logo {
+    width: 110px;
+    margin-left: 1rem;
+  }
+}
