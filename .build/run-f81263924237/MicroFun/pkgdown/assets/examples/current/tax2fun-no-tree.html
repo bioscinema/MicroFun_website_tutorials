@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<link href="tax2fun-no-tree_files/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="tax2fun-no-tree_files/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="tax2fun-no-tree_files/d3-4.9.1/d3.min.js"></script>
+<script src="tax2fun-no-tree_files/sankey-1/sankey.js"></script>
+<script src="tax2fun-no-tree_files/sankeyNetwork-binding-0.4.1/sankeyNetwork.js"></script>
+  <title>sankeyNetwork</title>
+</head>
+<body>
+<div id="htmlwidget_container">
+  <div class="sankeyNetwork html-widget html-fill-item" id="htmlwidget-10308783dc318fb07b1e" style="width:960px;height:500px;"></div>
+</div>
+<script type="application/json" data-for="htmlwidget-10308783dc318fb07b1e">{"x":{"links":{"source":[0,0,0,1,1,1,2,2,2],"target":[3,3,3,3,3,3,3,3,3],"value":[1,1,1,1,1,1,1,1,1],"group":["Up","Down","Up","Down","Up","Down","Up","Down","Up"]},"nodes":{"name":["Lactobacillus","Roseburia","Bacteroides","Metabolism"],"group":["node_1","node_2","node_3","node_4"]},"options":{"NodeID":"name","NodeGroup":"node_group","LinkGroup":"group","colourScale":"d3.scaleOrdinal().domain([\"node_1\",\"node_2\",\"node_3\",\"node_4\",\"Up\",\"Down\"]).range([\"#B6C9C0\",\"#F5D8B7\",\"#B5C3D7\",\"#6E8FB2\",\"#F5BB7C\",\"#B4CBE0\"])","fontSize":18,"fontFamily":null,"nodeWidth":28,"nodePadding":10,"units":"","margin":{"top":10,"right":140,"bottom":10,"left":160},"iterations":32,"sinksRight":true},"microfun_colours":{"name":["Lactobacillus","Roseburia","Bacteroides","Metabolism"],"side":["left","left","left","right"],"kind":["taxa","taxa","taxa","function"],"category":["Lactobacillus","Roseburia","Bacteroides","Metabolism"],"colour":["#B6C9C0","#F5D8B7","#B5C3D7","#6E8FB2"]},"microfun_taxon_level":"Genus"},"evals":[],"jsHooks":{"render":[{"code":"\n      function(el, x){\n        var svg = d3.select(el).select('svg');\n        svg.selectAll('.node text')\n          .attr('text-anchor', function(d){\n            var isLeft = (d.side === 'left') || (d.x0 === 0 || d.x === 0);\n            return isLeft ? 'end' : 'start';\n          })\n          .attr('x', function(d){\n            var w = (d.x1 !== undefined && d.x0 !== undefined) ? (d.x1 - d.x0)\n                    : (d.dx !== undefined ? d.dx : 24);\n            var isLeft = (d.side === 'left') || (d.x0 === 0 || d.x === 0);\n            return isLeft ? -6 : (w + 6);\n          });\n      }\n    ","data":null},{"code":"function(el,x){\n    d3.select(el).selectAll('.link').style('stroke-opacity', 0.48);\n    d3.select(el).selectAll('.node text').style('font-family','Arial, Helvetica, sans-serif');\n  }","data":null}]}}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-10308783dc318fb07b1e">{"viewer":{"width":450,"height":350,"padding":10,"fill":true},"browser":{"width":960,"height":500,"padding":10,"fill":true}}</script>
+</body>
+</html>
