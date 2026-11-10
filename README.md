@@ -33,10 +33,6 @@ The website provides:
 
 The website is built using [pkgdown](https://pkgdown.r-lib.org/).
 
-**Important:** Edit the source files rather than the generated files in `docs/`. Changes made directly to `docs/` may be overwritten during the next build.
-
-The bundled package snapshot is used for website generation and does not replace the official MicroFun package repository.
-
 ## Software and Citation
 
 For the MicroFun source code, software updates, issue reporting, and citation information, please visit the [main MicroFun repository](https://github.com/bioscinema/MicroFun).
