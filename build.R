@@ -103,6 +103,16 @@ message("Source: ", input)
 message("MicroFun version: ", metadata[1, "Version"])
 message(if (full) "Full build: installing package and running reference examples."
         else "Preview build: reference examples are displayed without execution.")
+logo_source <- file.path(script_root, "assets", "logo.png")
+logo_target <- file.path(staged, "man", "figures", "logo.png")
+
+if (file.exists(logo_source)) {
+  dir.create(dirname(logo_target),
+             recursive = TRUE,
+             showWarnings = FALSE)
+
+  stopifnot(file.copy(logo_source, logo_target,
+                      overwrite = TRUE))
 pkgdown::build_site(
   pkg = staged,
   override = list(destination = file.path(run_root, "site")),
