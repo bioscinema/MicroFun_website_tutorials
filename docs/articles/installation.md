@@ -34,6 +34,7 @@ Extract the source ZIP into a folder containing `DESCRIPTION`,
 Restart R before replacing a loaded package.
 
 ``` r
+
 source_dir <- "path/to/MicroFun"
 stopifnot(file.exists(file.path(source_dir, "DESCRIPTION")))
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -188,6 +189,7 @@ separates input issues from plotting and export issues.
 ## Record the resolved environment
 
 ``` r
+
 sessionInfo()
 writeLines(capture.output(sessionInfo()), "MicroFun_sessionInfo.txt")
 ```

@@ -1,0 +1,21 @@
+pandoc: 3.8.3
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  demonstration-standard: demonstration-standard.html
+  demonstration-stratified: demonstration-stratified.html
+  demonstration-study: demonstration-study.html
+  function-to-taxon: function-to-taxon.html
+  getting-started: getting-started.html
+  installation: installation.html
+  plot-export: plot-export.html
+  plotting-setup: plotting-setup.html
+  sample-level-plots: sample-level-plots.html
+  standard-pipeline: standard-pipeline.html
+  stratified-pipeline: stratified-pipeline.html
+  taxon-to-function: taxon-to-function.html
+  troubleshooting: troubleshooting.html
+last_built: 2026-11-10T18:01Z
+urls:
+  reference: https://bioscinema.github.io/MicroFun_website_tutorials/reference
+  article: https://bioscinema.github.io/MicroFun_website_tutorials/articles

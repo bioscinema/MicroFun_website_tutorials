@@ -33,6 +33,7 @@ count displayed associations. Positive effects use yellow/orange
 phylogeny are optional side-tree modes.
 
 ``` r
+
 p_tax_sankey <- tax2fun_sankey(
   result_taxa, tree_mode = "taxonomy", physeq = ps,
   tree_options = list(font_size = 16)
@@ -67,6 +68,7 @@ sign; outer bar height encodes absolute effect. Use the same sample
 subset and rank as the fitted analysis.
 
 ``` r
+
 p_tax_chord <- tax2fun_chord(
   result_taxa, strat_path, ps, group = group_col,
   contrast = c(reference, target), draw = FALSE
@@ -94,6 +96,7 @@ reference group and yellow/orange the target group for a two-group
 contrast; these are group colours, not individual effect signs.
 
 ``` r
+
 tax_boxes <- tax2fun_box(strat_path, result_taxa, ps, group = group_col)
 p_tax_box <- tax_boxes[["Lactobacillus"]]
 ggplot2::ggsave(file.path(out, "tax2fun_box.pdf"), p_tax_box,
@@ -113,6 +116,7 @@ effects. This is an association view, not an evolutionary tree. Use
 `top_n_per_taxon`; `top_n_per_genus` remains a compatible alias.
 
 ``` r
+
 p_tax_dendro <- tax2fun_dendro(
   result_taxa, top_n_per_taxon = 3, label_size = 2.6,
   wrap_width = 20
@@ -140,6 +144,7 @@ the actual estimate. For a MaAsLin2 analysis, use an AST-coefficient
 label rather than assuming the values are log fold changes.
 
 ``` r
+
 tax_effects <- tax2fun_logfc(result_taxa, top_n = 3)
 p_tax_effect <- tax_effects[["Lactobacillus"]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")

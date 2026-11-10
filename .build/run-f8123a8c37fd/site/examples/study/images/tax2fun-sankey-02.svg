@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2300.00" height="1321.60" viewBox="0 0 2300.00 1321.60" role="img" aria-label="Genus-to-pathway associations">
+  <rect width="100%" height="100%" fill="white"/>
+  <style>.mf-hover .mf-link{opacity:.08}.mf-hover .mf-link.mf-active{opacity:1}</style>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="40" y="32" font-size="27" font-weight="bold" fill="#233044">Genus-to-pathway associations</text>
+    <text x="40" y="75.00" font-size="14" fill="#677386">LTS relative to STS | 45 selected associations</text>
+    <text x="40.00" y="97.00" font-size="18.00" text-anchor="start" fill="#273444" font-weight="bold">Phylogenetic tree</text>
+    <text x="1050.00" y="97.00" font-size="18.00" text-anchor="end" fill="#273444" font-weight="bold">Taxon (Genus)</text>
+    <text x="2000.00" y="97.00" font-size="18.00" text-anchor="start" fill="#273444" font-weight="bold">Function</text>
+    <path class="mf-link" data-taxon="Pseudoxanthomonas" data-function="Alanine, aspartate and glutamate metabolism [ko00250]" d="M 1068.00 122.00 C 1487.40 122.00 1580.60 122.00 2000.00 122.00 L 2000.00 129.76 C 1580.60 129.76 1487.40 129.76 1068.00 129.76 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Pseudoxanthomonas | Alanine, aspartate and glutamate metabolism [ko00250]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Pseudoxanthomonas" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 129.76 C 1487.40 129.76 1580.60 200.31 2000.00 200.31 L 2000.00 208.07 C 1580.60 208.07 1487.40 137.51 1068.00 137.51 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Pseudoxanthomonas | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Pseudoxanthomonas" data-function="Purine metabolism [ko00230]" d="M 1068.00 137.51 C 1487.40 137.51 1580.60 912.85 2000.00 912.85 L 2000.00 920.61 C 1580.60 920.61 1487.40 145.27 1068.00 145.27 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Pseudoxanthomonas | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Devosia" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 200.31 C 1487.40 200.31 1580.60 208.07 2000.00 208.07 L 2000.00 215.82 C 1580.60 215.82 1487.40 208.07 1068.00 208.07 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Devosia | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Devosia" data-function="Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]" d="M 1068.00 208.07 C 1487.40 208.07 1580.60 787.26 2000.00 787.26 L 2000.00 795.01 C 1580.60 795.01 1487.40 215.82 1068.00 215.82 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Devosia | Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Devosia" data-function="Purine metabolism [ko00230]" d="M 1068.00 215.82 C 1487.40 215.82 1580.60 920.61 2000.00 920.61 L 2000.00 928.36 C 1580.60 928.36 1487.40 223.58 1068.00 223.58 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Devosia | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Collinsella" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 278.62 C 1487.40 278.62 1580.60 301.89 2000.00 301.89 L 2000.00 309.64 C 1580.60 309.64 1487.40 286.38 1068.00 286.38 Z" fill="#B4CBE0" fill-opacity="0.48">
+      <title>Collinsella | Glycerophospholipid metabolism [ko00564]; Down; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Collinsella" data-function="Nicotinate and nicotinamide metabolism [ko00760]" d="M 1068.00 286.38 C 1487.40 286.38 1580.60 544.57 2000.00 544.57 L 2000.00 552.33 C 1580.60 552.33 1487.40 294.13 1068.00 294.13 Z" fill="#B4CBE0" fill-opacity="0.48">
+      <title>Collinsella | Nicotinate and nicotinamide metabolism [ko00760]; Down; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Collinsella" data-function="Pentose phosphate pathway [ko00030]" d="M 1068.00 294.13 C 1487.40 294.13 1580.60 638.39 2000.00 638.39 L 2000.00 646.15 C 1580.60 646.15 1487.40 301.89 1068.00 301.89 Z" fill="#B4CBE0" fill-opacity="0.48">
+      <title>Collinsella | Pentose phosphate pathway [ko00030]; Down; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermobispora" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 356.93 C 1487.40 356.93 1580.60 215.82 2000.00 215.82 L 2000.00 223.58 C 1580.60 223.58 1487.40 364.68 1068.00 364.68 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermobispora | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermobispora" data-function="Nicotinate and nicotinamide metabolism [ko00760]" d="M 1068.00 364.68 C 1487.40 364.68 1580.60 552.33 2000.00 552.33 L 2000.00 560.09 C 1580.60 560.09 1487.40 372.44 1068.00 372.44 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermobispora | Nicotinate and nicotinamide metabolism [ko00760]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermobispora" data-function="Peptidoglycan biosynthesis [ko00550]" d="M 1068.00 372.44 C 1487.40 372.44 1580.60 708.95 2000.00 708.95 L 2000.00 716.70 C 1580.60 716.70 1487.40 380.20 1068.00 380.20 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermobispora | Peptidoglycan biosynthesis [ko00550]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermopolyspora" data-function="Glycine, serine and threonine metabolism [ko00260]" d="M 1068.00 435.24 C 1487.40 435.24 1580.60 403.47 2000.00 403.47 L 2000.00 411.22 C 1580.60 411.22 1487.40 442.99 1068.00 442.99 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermopolyspora | Glycine, serine and threonine metabolism [ko00260]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermopolyspora" data-function="Pyrimidine metabolism [ko00240]" d="M 1068.00 442.99 C 1487.40 442.99 1580.60 1014.43 2000.00 1014.43 L 2000.00 1022.18 C 1580.60 1022.18 1487.40 450.75 1068.00 450.75 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermopolyspora | Pyrimidine metabolism [ko00240]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Thermopolyspora" data-function="Pyruvate metabolism [ko00620]" d="M 1068.00 450.75 C 1487.40 450.75 1580.60 1084.98 2000.00 1084.98 L 2000.00 1092.74 C 1580.60 1092.74 1487.40 458.51 1068.00 458.51 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Thermopolyspora | Pyruvate metabolism [ko00620]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Saccharopolyspora" data-function="Nicotinate and nicotinamide metabolism [ko00760]" d="M 1068.00 513.55 C 1487.40 513.55 1580.60 560.09 2000.00 560.09 L 2000.00 567.84 C 1580.60 567.84 1487.40 521.30 1068.00 521.30 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Saccharopolyspora | Nicotinate and nicotinamide metabolism [ko00760]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Saccharopolyspora" data-function="Peptidoglycan biosynthesis [ko00550]" d="M 1068.00 521.30 C 1487.40 521.30 1580.60 716.70 2000.00 716.70 L 2000.00 724.46 C 1580.60 724.46 1487.40 529.06 1068.00 529.06 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Saccharopolyspora | Peptidoglycan biosynthesis [ko00550]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Saccharopolyspora" data-function="Pyruvate metabolism [ko00620]" d="M 1068.00 529.06 C 1487.40 529.06 1580.60 1092.74 2000.00 1092.74 L 2000.00 1100.49 C 1580.60 1100.49 1487.40 536.82 1068.00 536.82 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Saccharopolyspora | Pyruvate metabolism [ko00620]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Streptomyces" data-function="Alanine, aspartate and glutamate metabolism [ko00250]" d="M 1068.00 591.86 C 1487.40 591.86 1580.60 129.76 2000.00 129.76 L 2000.00 137.51 C 1580.60 137.51 1487.40 599.61 1068.00 599.61 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Streptomyces | Alanine, aspartate and glutamate metabolism [ko00250]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Streptomyces" data-function="Glycolysis / Gluconeogenesis [ko00010]" d="M 1068.00 599.61 C 1487.40 599.61 1580.60 474.02 2000.00 474.02 L 2000.00 481.78 C 1580.60 481.78 1487.40 607.37 1068.00 607.37 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Streptomyces | Glycolysis / Gluconeogenesis [ko00010]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Streptomyces" data-function="Purine metabolism [ko00230]" d="M 1068.00 607.37 C 1487.40 607.37 1580.60 928.36 2000.00 928.36 L 2000.00 936.12 C 1580.60 936.12 1487.40 615.13 1068.00 615.13 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Streptomyces | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cellulomonas" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 670.17 C 1487.40 670.17 1580.60 223.58 2000.00 223.58 L 2000.00 231.34 C 1580.60 231.34 1487.40 677.92 1068.00 677.92 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cellulomonas | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cellulomonas" data-function="Peptidoglycan biosynthesis [ko00550]" d="M 1068.00 677.92 C 1487.40 677.92 1580.60 724.46 2000.00 724.46 L 2000.00 732.22 C 1580.60 732.22 1487.40 685.68 1068.00 685.68 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cellulomonas | Peptidoglycan biosynthesis [ko00550]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cellulomonas" data-function="Pyrimidine metabolism [ko00240]" d="M 1068.00 685.68 C 1487.40 685.68 1580.60 1022.18 2000.00 1022.18 L 2000.00 1029.94 C 1580.60 1029.94 1487.40 693.43 1068.00 693.43 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cellulomonas | Pyrimidine metabolism [ko00240]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Weissella" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 748.47 C 1487.40 748.47 1580.60 309.64 2000.00 309.64 L 2000.00 317.40 C 1580.60 317.40 1487.40 756.23 1068.00 756.23 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Weissella | Glycerophospholipid metabolism [ko00564]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Weissella" data-function="Glycolysis / Gluconeogenesis [ko00010]" d="M 1068.00 756.23 C 1487.40 756.23 1580.60 481.78 2000.00 481.78 L 2000.00 489.53 C 1580.60 489.53 1487.40 763.99 1068.00 763.99 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Weissella | Glycolysis / Gluconeogenesis [ko00010]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Weissella" data-function="Purine metabolism [ko00230]" d="M 1068.00 763.99 C 1487.40 763.99 1580.60 936.12 2000.00 936.12 L 2000.00 943.88 C 1580.60 943.88 1487.40 771.74 1068.00 771.74 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Weissella | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Dyadobacter" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 826.78 C 1487.40 826.78 1580.60 317.40 2000.00 317.40 L 2000.00 325.16 C 1580.60 325.16 1487.40 834.54 1068.00 834.54 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Dyadobacter | Glycerophospholipid metabolism [ko00564]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Dyadobacter" data-function="Nicotinate and nicotinamide metabolism [ko00760]" d="M 1068.00 834.54 C 1487.40 834.54 1580.60 567.84 2000.00 567.84 L 2000.00 575.60 C 1580.60 575.60 1487.40 842.30 1068.00 842.30 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Dyadobacter | Nicotinate and nicotinamide metabolism [ko00760]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Dyadobacter" data-function="Pyruvate metabolism [ko00620]" d="M 1068.00 842.30 C 1487.40 842.30 1580.60 1100.49 2000.00 1100.49 L 2000.00 1108.25 C 1580.60 1108.25 1487.40 850.05 1068.00 850.05 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Dyadobacter | Pyruvate metabolism [ko00620]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cloacibacterium" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 905.09 C 1487.40 905.09 1580.60 325.16 2000.00 325.16 L 2000.00 332.91 C 1580.60 332.91 1487.40 912.85 1068.00 912.85 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cloacibacterium | Glycerophospholipid metabolism [ko00564]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cloacibacterium" data-function="Porphyrin metabolism [ko00860]" d="M 1068.00 912.85 C 1487.40 912.85 1580.60 850.05 2000.00 850.05 L 2000.00 857.81 C 1580.60 857.81 1487.40 920.61 1068.00 920.61 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cloacibacterium | Porphyrin metabolism [ko00860]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Cloacibacterium" data-function="Starch and sucrose metabolism [ko00500]" d="M 1068.00 920.61 C 1487.40 920.61 1580.60 1171.05 2000.00 1171.05 L 2000.00 1178.80 C 1580.60 1178.80 1487.40 928.36 1068.00 928.36 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Cloacibacterium | Starch and sucrose metabolism [ko00500]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Brevibacillus" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 983.40 C 1487.40 983.40 1580.60 231.34 2000.00 231.34 L 2000.00 239.09 C 1580.60 239.09 1487.40 991.16 1068.00 991.16 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Brevibacillus | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Brevibacillus" data-function="Glycine, serine and threonine metabolism [ko00260]" d="M 1068.00 991.16 C 1487.40 991.16 1580.60 411.22 2000.00 411.22 L 2000.00 418.98 C 1580.60 418.98 1487.40 998.92 1068.00 998.92 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Brevibacillus | Glycine, serine and threonine metabolism [ko00260]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Brevibacillus" data-function="Purine metabolism [ko00230]" d="M 1068.00 998.92 C 1487.40 998.92 1580.60 943.88 2000.00 943.88 L 2000.00 951.63 C 1580.60 951.63 1487.40 1006.67 1068.00 1006.67 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Brevibacillus | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Geobacillus" data-function="Citrate cycle (TCA cycle) [ko00020]" d="M 1068.00 1061.71 C 1487.40 1061.71 1580.60 239.09 2000.00 239.09 L 2000.00 246.85 C 1580.60 246.85 1487.40 1069.47 1068.00 1069.47 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Geobacillus | Citrate cycle (TCA cycle) [ko00020]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Geobacillus" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 1069.47 C 1487.40 1069.47 1580.60 332.91 2000.00 332.91 L 2000.00 340.67 C 1580.60 340.67 1487.40 1077.22 1068.00 1077.22 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Geobacillus | Glycerophospholipid metabolism [ko00564]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Geobacillus" data-function="Nicotinate and nicotinamide metabolism [ko00760]" d="M 1068.00 1077.22 C 1487.40 1077.22 1580.60 575.60 2000.00 575.60 L 2000.00 583.35 C 1580.60 583.35 1487.40 1084.98 1068.00 1084.98 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Geobacillus | Nicotinate and nicotinamide metabolism [ko00760]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Shouchella" data-function="Alanine, aspartate and glutamate metabolism [ko00250]" d="M 1068.00 1140.02 C 1487.40 1140.02 1580.60 137.51 2000.00 137.51 L 2000.00 145.27 C 1580.60 145.27 1487.40 1147.78 1068.00 1147.78 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Shouchella | Alanine, aspartate and glutamate metabolism [ko00250]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Shouchella" data-function="Pentose phosphate pathway [ko00030]" d="M 1068.00 1147.78 C 1487.40 1147.78 1580.60 646.15 2000.00 646.15 L 2000.00 653.91 C 1580.60 653.91 1487.40 1155.53 1068.00 1155.53 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Shouchella | Pentose phosphate pathway [ko00030]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Shouchella" data-function="Purine metabolism [ko00230]" d="M 1068.00 1155.53 C 1487.40 1155.53 1580.60 951.63 2000.00 951.63 L 2000.00 959.39 C 1580.60 959.39 1487.40 1163.29 1068.00 1163.29 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Shouchella | Purine metabolism [ko00230]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Mammaliicoccus" data-function="Glycerophospholipid metabolism [ko00564]" d="M 1068.00 1218.33 C 1487.40 1218.33 1580.60 340.67 2000.00 340.67 L 2000.00 348.43 C 1580.60 348.43 1487.40 1226.09 1068.00 1226.09 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Mammaliicoccus | Glycerophospholipid metabolism [ko00564]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Mammaliicoccus" data-function="Pyruvate metabolism [ko00620]" d="M 1068.00 1226.09 C 1487.40 1226.09 1580.60 1108.25 2000.00 1108.25 L 2000.00 1116.01 C 1580.60 1116.01 1487.40 1233.84 1068.00 1233.84 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Mammaliicoccus | Pyruvate metabolism [ko00620]; Up; records = 1; weight = 1</title>
+    </path>
+    <path class="mf-link" data-taxon="Mammaliicoccus" data-function="Thiamine metabolism [ko00730]" d="M 1068.00 1233.84 C 1487.40 1233.84 1580.60 1233.84 2000.00 1233.84 L 2000.00 1241.60 C 1580.60 1241.60 1487.40 1241.60 1068.00 1241.60 Z" fill="#F5BB7C" fill-opacity="0.48">
+      <title>Mammaliicoccus | Thiamine metabolism [ko00730]; Up; records = 1; weight = 1</title>
+    </path>
+    <path d="M 40.00 503.51 V 276.00 H 57.75 M 57.75 276.00 V 174.30 H 219.43 M 57.75 276.00 V 377.70 H 334.66 M 40.00 503.51 V 731.01 H 79.54 M 79.54 731.01 V 487.74 H 132.79 M 132.79 487.74 V 431.74 H 452.20 M 132.79 487.74 V 543.74 H 193.98 M 193.98 543.74 V 472.71 H 215.05 M 193.98 543.74 V 614.77 H 241.48 M 241.48 614.77 V 534.52 H 286.33 M 286.33 534.52 V 517.21 H 293.52 M 286.33 534.52 V 551.83 H 334.91 M 241.48 614.77 V 695.02 H 273.08 M 273.08 695.02 V 618.54 H 288.61 M 288.61 618.54 V 578.67 H 342.48 M 288.61 618.54 V 658.40 H 351.54 M 273.08 695.02 V 771.51 H 333.23 M 79.54 731.01 V 974.27 H 98.00 M 98.00 974.27 V 876.01 H 151.57 M 151.57 876.01 V 828.02 H 256.95 M 151.57 876.01 V 924.00 H 473.92 M 473.92 924.00 V 885.06 H 687.82 M 473.92 924.00 V 962.94 H 733.10 M 98.00 974.27 V 1072.54 H 125.16 M 125.16 1072.54 V 1039.93 H 173.07 M 125.16 1072.54 V 1105.14 H 165.16 M 165.16 1105.14 V 1071.72 H 176.74 M 165.16 1105.14 V 1138.56 H 168.64 M 168.64 1138.56 V 1094.32 H 172.40 M 168.64 1138.56 V 1182.80 H 187.65 M 187.65 1182.80 V 1135.65 H 234.24 M 187.65 1182.80 V 1229.95 H 278.84" fill="none" stroke="#6D7785" stroke-width="1.3"/>
+    <path d="M 219.43 174.30 L 760.00 133.63" fill="none" stroke="#E4E3BF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 219.43 174.30 l 7.00 -4 v 8 Z" fill="#E4E3BF">
+      <title>Pseudoxanthomonas; 15 matched tips</title>
+    </path>
+    <path d="M 760.00 133.63 L 1050.00 133.63" fill="none" stroke="#E4E3BF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="131.63" width="4" height="4" fill="#E4E3BF">
+      <title>Pseudoxanthomonas annotation junction</title>
+    </rect>
+    <path d="M 334.66 377.70 L 760.00 211.94" fill="none" stroke="#DDAEAB" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 334.66 377.70 l 7.00 -4 v 8 Z" fill="#DDAEAB">
+      <title>Devosia; 11 matched tips</title>
+    </path>
+    <path d="M 760.00 211.94 L 1050.00 211.94" fill="none" stroke="#DDAEAB" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="209.94" width="4" height="4" fill="#DDAEAB">
+      <title>Devosia annotation junction</title>
+    </rect>
+    <path d="M 452.20 431.74 L 760.00 290.25" fill="none" stroke="#F1D0C6" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 452.20 431.74 l 7.00 -4 v 8 Z" fill="#F1D0C6">
+      <title>Collinsella; 4 matched tips</title>
+    </path>
+    <path d="M 760.00 290.25 L 1050.00 290.25" fill="none" stroke="#F1D0C6" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="288.25" width="4" height="4" fill="#F1D0C6">
+      <title>Collinsella annotation junction</title>
+    </rect>
+    <path d="M 215.05 472.71 L 760.00 368.56" fill="none" stroke="#F1D0C6" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 215.05 472.71 l 7.00 -4 v 8 Z" fill="#F1D0C6">
+      <title>Thermobispora; 2 matched tips</title>
+    </path>
+    <path d="M 334.91 551.83 L 760.00 368.56" fill="none" stroke="#F1D0C6" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 334.91 551.83 l 7.00 -4 v 8 Z" fill="#F1D0C6">
+      <title>Thermobispora; 2 matched tips</title>
+    </path>
+    <path d="M 760.00 368.56 L 1050.00 368.56" fill="none" stroke="#F1D0C6" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="366.56" width="4" height="4" fill="#F1D0C6">
+      <title>Thermobispora annotation junction</title>
+    </rect>
+    <path d="M 293.52 517.21 L 760.00 446.87" fill="none" stroke="#DDAEAB" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 293.52 517.21 l 7.00 -4 v 8 Z" fill="#DDAEAB">
+      <title>Thermopolyspora; 5 matched tips</title>
+    </path>
+    <path d="M 760.00 446.87 L 1050.00 446.87" fill="none" stroke="#DDAEAB" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="444.87" width="4" height="4" fill="#DDAEAB">
+      <title>Thermopolyspora annotation junction</title>
+    </rect>
+    <path d="M 342.48 578.67 L 760.00 525.18" fill="none" stroke="#B5C3D7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 342.48 578.67 l 7.00 -4 v 8 Z" fill="#B5C3D7">
+      <title>Saccharopolyspora; 4 matched tips</title>
+    </path>
+    <path d="M 760.00 525.18 L 1050.00 525.18" fill="none" stroke="#B5C3D7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="523.18" width="4" height="4" fill="#B5C3D7">
+      <title>Saccharopolyspora annotation junction</title>
+    </rect>
+    <path d="M 351.54 658.40 L 760.00 603.49" fill="none" stroke="#F5D8B7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 351.54 658.40 l 7.00 -4 v 8 Z" fill="#F5D8B7">
+      <title>Streptomyces; 13 matched tips</title>
+    </path>
+    <path d="M 760.00 603.49 L 1050.00 603.49" fill="none" stroke="#F5D8B7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="601.49" width="4" height="4" fill="#F5D8B7">
+      <title>Streptomyces annotation junction</title>
+    </rect>
+    <path d="M 333.23 771.51 L 760.00 681.80" fill="none" stroke="#B6C9C0" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 333.23 771.51 l 7.00 -4 v 8 Z" fill="#B6C9C0">
+      <title>Cellulomonas; 5 matched tips</title>
+    </path>
+    <path d="M 760.00 681.80 L 1050.00 681.80" fill="none" stroke="#B6C9C0" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="679.80" width="4" height="4" fill="#B6C9C0">
+      <title>Cellulomonas annotation junction</title>
+    </rect>
+    <path d="M 256.95 828.02 L 760.00 760.11" fill="none" stroke="#D0E0EF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 256.95 828.02 l 7.00 -4 v 8 Z" fill="#D0E0EF">
+      <title>Weissella; 5 matched tips</title>
+    </path>
+    <path d="M 760.00 760.11 L 1050.00 760.11" fill="none" stroke="#D0E0EF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="758.11" width="4" height="4" fill="#D0E0EF">
+      <title>Weissella annotation junction</title>
+    </rect>
+    <path d="M 687.82 885.06 L 760.00 838.42" fill="none" stroke="#D0E0EF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 687.82 885.06 l 7.00 -4 v 8 Z" fill="#D0E0EF">
+      <title>Dyadobacter; 7 matched tips</title>
+    </path>
+    <path d="M 760.00 838.42 L 1050.00 838.42" fill="none" stroke="#D0E0EF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="836.42" width="4" height="4" fill="#D0E0EF">
+      <title>Dyadobacter annotation junction</title>
+    </rect>
+    <path d="M 733.10 962.94 L 760.00 916.73" fill="none" stroke="#F5D8B7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 733.10 962.94 l 7.00 -4 v 8 Z" fill="#F5D8B7">
+      <title>Cloacibacterium; 4 matched tips</title>
+    </path>
+    <path d="M 760.00 916.73 L 1050.00 916.73" fill="none" stroke="#F5D8B7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="914.73" width="4" height="4" fill="#F5D8B7">
+      <title>Cloacibacterium annotation junction</title>
+    </rect>
+    <path d="M 173.07 1039.93 L 760.00 995.04" fill="none" stroke="#B5C3D7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 173.07 1039.93 l 7.00 -4 v 8 Z" fill="#B5C3D7">
+      <title>Brevibacillus; 6 matched tips</title>
+    </path>
+    <path d="M 760.00 995.04 L 1050.00 995.04" fill="none" stroke="#B5C3D7" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="993.04" width="4" height="4" fill="#B5C3D7">
+      <title>Brevibacillus annotation junction</title>
+    </rect>
+    <path d="M 176.74 1071.72 L 760.00 1073.35" fill="none" stroke="#E9CDDF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 176.74 1071.72 l 7.00 -4 v 8 Z" fill="#E9CDDF">
+      <title>Geobacillus; 2 matched tips</title>
+    </path>
+    <path d="M 172.40 1094.32 L 760.00 1073.35" fill="none" stroke="#E9CDDF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 172.40 1094.32 l 7.00 -4 v 8 Z" fill="#E9CDDF">
+      <title>Geobacillus; 2 matched tips</title>
+    </path>
+    <path d="M 760.00 1073.35 L 1050.00 1073.35" fill="none" stroke="#E9CDDF" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="1071.35" width="4" height="4" fill="#E9CDDF">
+      <title>Geobacillus annotation junction</title>
+    </rect>
+    <path d="M 234.24 1135.65 L 760.00 1151.66" fill="none" stroke="#B6C9C0" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 234.24 1135.65 l 7.00 -4 v 8 Z" fill="#B6C9C0">
+      <title>Shouchella; 10 matched tips</title>
+    </path>
+    <path d="M 760.00 1151.66 L 1050.00 1151.66" fill="none" stroke="#B6C9C0" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="1149.66" width="4" height="4" fill="#B6C9C0">
+      <title>Shouchella annotation junction</title>
+    </rect>
+    <path d="M 278.84 1229.95 L 760.00 1229.97" fill="none" stroke="#C8BFD9" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <path d="M 278.84 1229.95 l 7.00 -4 v 8 Z" fill="#C8BFD9">
+      <title>Mammaliicoccus; 2 matched tips</title>
+    </path>
+    <path d="M 760.00 1229.97 L 1050.00 1229.97" fill="none" stroke="#C8BFD9" stroke-width="1.3" stroke-dasharray="3 4"/>
+    <rect x="758.00" y="1227.97" width="4" height="4" fill="#C8BFD9">
+      <title>Mammaliicoccus annotation junction</title>
+    </rect>
+    <g class="mf-node" data-taxon="Pseudoxanthomonas">
+      <rect x="1050.00" y="122.00" width="18.00" height="23.27" fill="#E4E3BF" stroke="#FFFFFF" stroke-width="1">
+        <title>Pseudoxanthomonas</title>
+      </rect>
+      <rect x="875.68" y="122.51" width="165.32" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="138.39" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Pseudoxanthomonas</title>Pseudoxanthomonas</text>
+    </g>
+    <g class="mf-node" data-taxon="Devosia">
+      <rect x="1050.00" y="200.31" width="18.00" height="23.27" fill="#DDAEAB" stroke="#FFFFFF" stroke-width="1">
+        <title>Devosia</title>
+      </rect>
+      <rect x="965.28" y="200.82" width="75.72" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="216.70" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Devosia</title>Devosia</text>
+    </g>
+    <g class="mf-node" data-taxon="Collinsella">
+      <rect x="1050.00" y="278.62" width="18.00" height="23.27" fill="#F1D0C6" stroke="#FFFFFF" stroke-width="1">
+        <title>Collinsella</title>
+      </rect>
+      <rect x="929.44" y="279.13" width="111.56" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="295.01" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Collinsella</title>Collinsella</text>
+    </g>
+    <g class="mf-node" data-taxon="Thermobispora">
+      <rect x="1050.00" y="356.93" width="18.00" height="23.27" fill="#F1D0C6" stroke="#FFFFFF" stroke-width="1">
+        <title>Thermobispora</title>
+      </rect>
+      <rect x="911.52" y="357.44" width="129.48" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="373.32" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Thermobispora</title>Thermobispora</text>
+    </g>
+    <g class="mf-node" data-taxon="Thermopolyspora">
+      <rect x="1050.00" y="435.24" width="18.00" height="23.27" fill="#DDAEAB" stroke="#FFFFFF" stroke-width="1">
+        <title>Thermopolyspora</title>
+      </rect>
+      <rect x="893.60" y="435.75" width="147.40" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="451.63" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Thermopolyspora</title>Thermopolyspora</text>
+    </g>
+    <g class="mf-node" data-taxon="Saccharopolyspora">
+      <rect x="1050.00" y="513.55" width="18.00" height="23.27" fill="#B5C3D7" stroke="#FFFFFF" stroke-width="1">
+        <title>Saccharopolyspora</title>
+      </rect>
+      <rect x="875.68" y="514.06" width="165.32" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="529.94" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Saccharopolyspora</title>Saccharopolyspora</text>
+    </g>
+    <g class="mf-node" data-taxon="Streptomyces">
+      <rect x="1050.00" y="591.86" width="18.00" height="23.27" fill="#F5D8B7" stroke="#FFFFFF" stroke-width="1">
+        <title>Streptomyces</title>
+      </rect>
+      <rect x="920.48" y="592.37" width="120.52" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="608.25" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Streptomyces</title>Streptomyces</text>
+    </g>
+    <g class="mf-node" data-taxon="Cellulomonas">
+      <rect x="1050.00" y="670.17" width="18.00" height="23.27" fill="#B6C9C0" stroke="#FFFFFF" stroke-width="1">
+        <title>Cellulomonas</title>
+      </rect>
+      <rect x="920.48" y="670.68" width="120.52" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="686.56" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Cellulomonas</title>Cellulomonas</text>
+    </g>
+    <g class="mf-node" data-taxon="Weissella">
+      <rect x="1050.00" y="748.47" width="18.00" height="23.27" fill="#D0E0EF" stroke="#FFFFFF" stroke-width="1">
+        <title>Weissella</title>
+      </rect>
+      <rect x="947.36" y="748.99" width="93.64" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="764.87" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Weissella</title>Weissella</text>
+    </g>
+    <g class="mf-node" data-taxon="Dyadobacter">
+      <rect x="1050.00" y="826.78" width="18.00" height="23.27" fill="#D0E0EF" stroke="#FFFFFF" stroke-width="1">
+        <title>Dyadobacter</title>
+      </rect>
+      <rect x="929.44" y="827.30" width="111.56" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="843.18" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Dyadobacter</title>Dyadobacter</text>
+    </g>
+    <g class="mf-node" data-taxon="Cloacibacterium">
+      <rect x="1050.00" y="905.09" width="18.00" height="23.27" fill="#F5D8B7" stroke="#FFFFFF" stroke-width="1">
+        <title>Cloacibacterium</title>
+      </rect>
+      <rect x="893.60" y="905.61" width="147.40" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="921.49" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Cloacibacterium</title>Cloacibacterium</text>
+    </g>
+    <g class="mf-node" data-taxon="Brevibacillus">
+      <rect x="1050.00" y="983.40" width="18.00" height="23.27" fill="#B5C3D7" stroke="#FFFFFF" stroke-width="1">
+        <title>Brevibacillus</title>
+      </rect>
+      <rect x="911.52" y="983.92" width="129.48" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="999.80" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Brevibacillus</title>Brevibacillus</text>
+    </g>
+    <g class="mf-node" data-taxon="Geobacillus">
+      <rect x="1050.00" y="1061.71" width="18.00" height="23.27" fill="#E9CDDF" stroke="#FFFFFF" stroke-width="1">
+        <title>Geobacillus</title>
+      </rect>
+      <rect x="929.44" y="1062.23" width="111.56" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="1078.11" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Geobacillus</title>Geobacillus</text>
+    </g>
+    <g class="mf-node" data-taxon="Shouchella">
+      <rect x="1050.00" y="1140.02" width="18.00" height="23.27" fill="#B6C9C0" stroke="#FFFFFF" stroke-width="1">
+        <title>Shouchella</title>
+      </rect>
+      <rect x="938.40" y="1140.54" width="102.60" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="1156.42" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Shouchella</title>Shouchella</text>
+    </g>
+    <g class="mf-node" data-taxon="Mammaliicoccus">
+      <rect x="1050.00" y="1218.33" width="18.00" height="23.27" fill="#C8BFD9" stroke="#FFFFFF" stroke-width="1">
+        <title>Mammaliicoccus</title>
+      </rect>
+      <rect x="902.56" y="1218.85" width="138.44" height="22.24" fill="white" fill-opacity="0.94"/>
+      <text x="1038.00" y="1234.73" font-size="14.00" text-anchor="end" fill="#273444" font-weight="normal"><title>Mammaliicoccus</title>Mammaliicoccus</text>
+    </g>
+    <g class="mf-node" data-function="Alanine, aspartate and glutamate metabolism [ko00250]">
+      <rect x="2000.00" y="122.00" width="18.00" height="23.27" fill="#6E8FB2" stroke="#FFFFFF" stroke-width="1">
+        <title>Alanine, aspartate and glutamate metabolism [ko00250]</title>
+      </rect>
+      <text x="2030.00" y="130.55" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Alanine, aspartate and glutamate metabolism [ko00250]</title>Alanine, aspartate and</text>
+      <text x="2030.00" y="146.23" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Alanine, aspartate and glutamate metabolism [ko00250]</title>glutamate metabolism [ko00250]</text>
+    </g>
+    <g class="mf-node" data-function="Citrate cycle (TCA cycle) [ko00020]">
+      <rect x="2000.00" y="200.31" width="18.00" height="46.54" fill="#7DA494" stroke="#FFFFFF" stroke-width="1">
+        <title>Citrate cycle (TCA cycle) [ko00020]</title>
+      </rect>
+      <text x="2030.00" y="220.50" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Citrate cycle (TCA cycle) [ko00020]</title>Citrate cycle (TCA cycle)</text>
+      <text x="2030.00" y="236.18" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Citrate cycle (TCA cycle) [ko00020]</title>[ko00020]</text>
+    </g>
+    <g class="mf-node" data-function="Glycerophospholipid metabolism [ko00564]">
+      <rect x="2000.00" y="301.89" width="18.00" height="46.54" fill="#EAB67A" stroke="#FFFFFF" stroke-width="1">
+        <title>Glycerophospholipid metabolism [ko00564]</title>
+      </rect>
+      <text x="2030.00" y="322.08" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycerophospholipid metabolism [ko00564]</title>Glycerophospholipid metabolism</text>
+      <text x="2030.00" y="337.76" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycerophospholipid metabolism [ko00564]</title>[ko00564]</text>
+    </g>
+    <g class="mf-node" data-function="Glycine, serine and threonine metabolism [ko00260]">
+      <rect x="2000.00" y="403.47" width="18.00" height="15.51" fill="#E5A79A" stroke="#FFFFFF" stroke-width="1">
+        <title>Glycine, serine and threonine metabolism [ko00260]</title>
+      </rect>
+      <text x="2030.00" y="408.14" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycine, serine and threonine metabolism [ko00260]</title>Glycine, serine and threonine</text>
+      <text x="2030.00" y="423.82" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycine, serine and threonine metabolism [ko00260]</title>metabolism [ko00260]</text>
+    </g>
+    <g class="mf-node" data-function="Glycolysis / Gluconeogenesis [ko00010]">
+      <rect x="2000.00" y="474.02" width="18.00" height="15.51" fill="#C16E71" stroke="#FFFFFF" stroke-width="1">
+        <title>Glycolysis / Gluconeogenesis [ko00010]</title>
+      </rect>
+      <text x="2030.00" y="478.70" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycolysis / Gluconeogenesis [ko00010]</title>Glycolysis / Gluconeogenesis</text>
+      <text x="2030.00" y="494.38" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Glycolysis / Gluconeogenesis [ko00010]</title>[ko00010]</text>
+    </g>
+    <g class="mf-node" data-function="Nicotinate and nicotinamide metabolism [ko00760]">
+      <rect x="2000.00" y="544.57" width="18.00" height="38.78" fill="#ABC8E5" stroke="#FFFFFF" stroke-width="1">
+        <title>Nicotinate and nicotinamide metabolism [ko00760]</title>
+      </rect>
+      <text x="2030.00" y="560.88" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Nicotinate and nicotinamide metabolism [ko00760]</title>Nicotinate and nicotinamide</text>
+      <text x="2030.00" y="576.56" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Nicotinate and nicotinamide metabolism [ko00760]</title>metabolism [ko00760]</text>
+    </g>
+    <g class="mf-node" data-function="Pentose phosphate pathway [ko00030]">
+      <rect x="2000.00" y="638.39" width="18.00" height="15.51" fill="#D8A0C1" stroke="#FFFFFF" stroke-width="1">
+        <title>Pentose phosphate pathway [ko00030]</title>
+      </rect>
+      <text x="2030.00" y="643.07" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Pentose phosphate pathway [ko00030]</title>Pentose phosphate pathway</text>
+      <text x="2030.00" y="658.75" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Pentose phosphate pathway [ko00030]</title>[ko00030]</text>
+    </g>
+    <g class="mf-node" data-function="Peptidoglycan biosynthesis [ko00550]">
+      <rect x="2000.00" y="708.95" width="18.00" height="23.27" fill="#9F8DB8" stroke="#FFFFFF" stroke-width="1">
+        <title>Peptidoglycan biosynthesis [ko00550]</title>
+      </rect>
+      <text x="2030.00" y="717.50" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Peptidoglycan biosynthesis [ko00550]</title>Peptidoglycan biosynthesis</text>
+      <text x="2030.00" y="733.18" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Peptidoglycan biosynthesis [ko00550]</title>[ko00550]</text>
+    </g>
+    <g class="mf-node" data-function="Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]">
+      <rect x="2000.00" y="787.26" width="18.00" height="7.76" fill="#D0D08A" stroke="#FFFFFF" stroke-width="1">
+        <title>Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]</title>
+      </rect>
+      <text x="2030.00" y="780.22" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]</title>Phenylalanine, tyrosine and</text>
+      <text x="2030.00" y="795.90" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]</title>tryptophan biosynthesis</text>
+      <text x="2030.00" y="811.58" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Phenylalanine, tyrosine and tryptophan biosynthesis [ko00400]</title>[ko00400]</text>
+    </g>
+    <g class="mf-node" data-function="Porphyrin metabolism [ko00860]">
+      <rect x="2000.00" y="850.05" width="18.00" height="7.76" fill="#6E8FB2" stroke="#FFFFFF" stroke-width="1">
+        <title>Porphyrin metabolism [ko00860]</title>
+      </rect>
+      <text x="2030.00" y="858.69" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Porphyrin metabolism [ko00860]</title>Porphyrin metabolism [ko00860]</text>
+    </g>
+    <g class="mf-node" data-function="Purine metabolism [ko00230]">
+      <rect x="2000.00" y="912.85" width="18.00" height="46.54" fill="#7DA494" stroke="#FFFFFF" stroke-width="1">
+        <title>Purine metabolism [ko00230]</title>
+      </rect>
+      <text x="2030.00" y="940.88" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Purine metabolism [ko00230]</title>Purine metabolism [ko00230]</text>
+    </g>
+    <g class="mf-node" data-function="Pyrimidine metabolism [ko00240]">
+      <rect x="2000.00" y="1014.43" width="18.00" height="15.51" fill="#EAB67A" stroke="#FFFFFF" stroke-width="1">
+        <title>Pyrimidine metabolism [ko00240]</title>
+      </rect>
+      <text x="2030.00" y="1026.94" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Pyrimidine metabolism [ko00240]</title>Pyrimidine metabolism [ko00240]</text>
+    </g>
+    <g class="mf-node" data-function="Pyruvate metabolism [ko00620]">
+      <rect x="2000.00" y="1084.98" width="18.00" height="31.03" fill="#E5A79A" stroke="#FFFFFF" stroke-width="1">
+        <title>Pyruvate metabolism [ko00620]</title>
+      </rect>
+      <text x="2030.00" y="1105.25" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Pyruvate metabolism [ko00620]</title>Pyruvate metabolism [ko00620]</text>
+    </g>
+    <g class="mf-node" data-function="Starch and sucrose metabolism [ko00500]">
+      <rect x="2000.00" y="1171.05" width="18.00" height="7.76" fill="#C16E71" stroke="#FFFFFF" stroke-width="1">
+        <title>Starch and sucrose metabolism [ko00500]</title>
+      </rect>
+      <text x="2030.00" y="1171.85" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Starch and sucrose metabolism [ko00500]</title>Starch and sucrose metabolism</text>
+      <text x="2030.00" y="1187.53" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Starch and sucrose metabolism [ko00500]</title>[ko00500]</text>
+    </g>
+    <g class="mf-node" data-function="Thiamine metabolism [ko00730]">
+      <rect x="2000.00" y="1233.84" width="18.00" height="7.76" fill="#ABC8E5" stroke="#FFFFFF" stroke-width="1">
+        <title>Thiamine metabolism [ko00730]</title>
+      </rect>
+      <text x="2030.00" y="1242.48" font-size="14.00" text-anchor="start" fill="#273444" font-weight="normal"><title>Thiamine metabolism [ko00730]</title>Thiamine metabolism [ko00730]</text>
+    </g>
+    <rect x="40" y="1281.60" width="18" height="12" fill="#F5BB7C"/>
+    <text x="66" y="1292.60" font-size="13" fill="#455468">Positive effect</text>
+    <rect x="250" y="1281.60" width="18" height="12" fill="#B4CBE0"/>
+    <text x="276" y="1292.60" font-size="13" fill="#455468">Non-positive effect</text>
+    <path d="M 40.00 1263.60 L 266.84 1263.60" fill="none" stroke="#6D7785" stroke-width="1.3"/>
+    <text x="153.42" y="1256.60" font-size="11.00" text-anchor="middle" fill="#273444" font-weight="normal">0.2 branch-length units</text>
+  </g>
+</svg>
