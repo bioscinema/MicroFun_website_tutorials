@@ -1,18 +1,16 @@
-<div class="microfun-hero">
-  <div class="microfun-hero-text">
-    <h1>MicroFun</h1>
-    <p><strong>Connect microbial taxa to predicted functions.</strong></p>
-    <p>
-      Analyze and visualize PICRUSt2 predictions,
-      linking community-level functional patterns
-      to taxon-specific contributions.
-    </p>
-  </div>
 
-  <img src="logo.png"
-       alt="MicroFun logo"
-       class="microfun-hero-logo">
-</div>
+<img src="logo.png"
+     alt="MicroFun logo"
+     width="160"
+     style="float:right; max-width:35%; height:auto; margin:0 0 1rem 1.5rem;">
+
+# MicroFun
+
+**Connect microbial taxa to predicted functions.**
+
+Analyze and visualize PICRUSt2 predictions, linking community-level functional patterns to taxon-specific contributions.
+
+<div style="clear:both;"></div>
 
 <hr class="microfun-intro-divider">
 
