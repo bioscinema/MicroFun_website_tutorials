@@ -36,7 +36,6 @@ Table 1. Inputs for the Standard study
 ## 1. Prepare the community profiles
 
 ``` r
-
 library(MicroFun)
 
 ko_input <- read.delim(
@@ -85,7 +84,6 @@ so preserve that information from the study’s saved result tables when
 reproducing them.
 
 ``` r
-
 # Load the study's saved annotated results rather than substitute teaching results.
 daa_ko <- readRDS("my_study/KO_annotated_results.rds")
 daa_kegg <- readRDS("my_study/KEGG_annotated_results.rds")
@@ -106,7 +104,6 @@ into a local folder named `study_features`. These preserve the displayed
 selection without trying to reconstruct it from a rendered figure.
 
 ``` r
-
 ko_features <- read.csv("study_features/KO_features.csv")$feature
 kegg_features <- read.csv("study_features/KEGG_features.csv")$feature
 stopifnot(all(ko_features %in% rownames(ko_abundance)))
@@ -122,7 +119,6 @@ sample_groups <- factor(
 ### PCA at KO level
 
 ``` r
-
 ko_variance <- apply(ko_abundance, 1, stats::var)
 p_ko_pca <- pathway_pca(
   ko_abundance[is.finite(ko_variance) & ko_variance > 0, , drop = FALSE],
@@ -147,7 +143,6 @@ not itself a test of a group difference.
 ### PCA at KEGG pathway level
 
 ``` r
-
 kegg_variance <- apply(kegg_abundance, 1, stats::var)
 p_kegg_pca <- pathway_pca(
   kegg_abundance[is.finite(kegg_variance) & kegg_variance > 0, , drop = FALSE],
@@ -174,7 +169,6 @@ statistically significant than the KO analysis.
 ### Heatmap of selected KOs
 
 ``` r
-
 p_ko_heatmap <- pathway_heatmap(
   ko_abundance[ko_features, , drop = FALSE], meta,
   group = "group", font_size = 8
@@ -198,7 +192,6 @@ features rather than an independent confirmation of group separation.
 ### Heatmap of selected KEGG pathways
 
 ``` r
-
 p_kegg_heatmap <- pathway_heatmap(
   kegg_abundance[kegg_features, , drop = FALSE], meta,
   group = "group", font_size = 8
@@ -224,7 +217,6 @@ abundance.
 ### Error-bar plot at KO level
 
 ``` r
-
 p_ko_errorbar <- pathway_errorbar(
   abundance = ko_abundance, daa_results_df = daa_ko,
   Group = sample_groups, select = ko_features,
@@ -254,7 +246,6 @@ here; those displayed labels cannot be interpreted as valid p-values.
 ### Error-bar plot at KEGG pathway level
 
 ``` r
-
 kegg_groups <- factor(
   meta$group[match(colnames(kegg_abundance), meta$sample_name)],
   levels = c(reference, target)

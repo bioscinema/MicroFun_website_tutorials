@@ -29,7 +29,6 @@ Functions appear on the left and taxa on the right. Set
 ASV phylogeny appears on the taxon side.
 
 ``` r
-
 p_fun_sankey <- fun2tax_sankey(
   result_fun, pathway = "KO", group_functions = FALSE,
   tree_mode = "phylogeny", physeq = ps, phylo_tree = demo$phylo_tree
@@ -54,7 +53,6 @@ interfaces match the taxon-to-function Chord. Use function-oriented
 results and select relevant function IDs.
 
 ``` r
-
 hexokinase <- data.frame(
   function_id = "K00844", function_group = "Carbohydrate metabolism",
   function_name = "Hexokinase"
@@ -80,7 +78,6 @@ An ungrouped call returns one named plot per function. The y-axis is
 `log10(contribution + 1e-6)`.
 
 ``` r
-
 fun_boxes <- fun2tax_box(
   strat_path, result_fun, ps, group = group_col,
   pathway = "KO", group_functions = FALSE
@@ -102,7 +99,6 @@ Functions label branches, and contributing taxa label the leaves.
 `top_n_per_function` controls how many taxa are displayed per function.
 
 ``` r
-
 p_fun_dendro <- fun2tax_dendro(
   result_fun, top_n_per_function = 3, label_size = 2.6,
   wrap_width = 20
@@ -122,7 +118,6 @@ lengths, and remember that a large coefficient does not by itself imply
 the largest absolute contribution.
 
 ``` r
-
 fun_effects <- fun2tax_logfc(result_fun, top_n = 3)
 p_fun_effect <- fun_effects[["K00844"]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")

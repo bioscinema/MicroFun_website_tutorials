@@ -1,0 +1,42 @@
+---
+title: "Getting started with MicroFun"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with MicroFun}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+MicroFun starts from a simple idea. A community's predicted functional profile is easier to understand when we can still see its microbial contributors. We want to move from a change in a function to the taxa associated with that change, and then inspect how their predicted contributions vary across samples.
+
+A pooled profile is useful for asking whether a function differs between groups. But the same total can be produced by different combinations of contributors. Stratified profiles let us keep those links, rather than trying to reconstruct them from separate taxonomic and functional analyses.
+
+## Two perspectives on microbial function
+
+If you want a community-wide overview, start with standard PICRUSt2 output. If your question concerns contributors, use stratified output and choose the perspective that matches your question.
+
+- **Start with a taxon.** Which of its predicted functional contributions differ between groups?
+- **Start with a function.** Which taxa contribute differently to that function?
+
+These are complementary analyses. They use different feature tables and collections of tests, so one fitted result should not simply be rotated or transposed to stand in for the other.
+
+## Install and prepare inputs
+
+Follow [installation and dependency versions](installation.html), then [download the example data and run the setup](plotting-setup.html). The installation page also explains the dependency policy and how to record your analysis environment.
+
+## Choose a workflow
+
+<div class="microfun-table-caption">Table 1. MicroFun workflows</div>
+
+| Input or task | Tutorial |
+|---|---|
+| Community-level functional profiles | [Standard PICRUSt2 workflow](standard-pipeline.html) |
+| Taxon-resolved contributions | [Stratified PICRUSt2 workflow](stratified-pipeline.html) |
+| Plots organized by taxon | [Taxon-to-function plots](taxon-to-function.html) |
+| Plots organized by function | [Function-to-taxon plots](function-to-taxon.html) |
+| Saving and redrawing figures | [Export guide](plot-export.html) |
+
+## Demonstration studies
+
+- [Demonstration Study (Stratified)](demonstration-stratified.html) follows both analysis directions through code and study figures.
+- [Demonstration Study (Standard)](demonstration-standard.html) presents community-level KO and KEGG results.

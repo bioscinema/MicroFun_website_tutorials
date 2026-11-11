@@ -181,7 +181,7 @@ Drag a node up or down to arrange the relationships you want to inspect. The lin
 
 Dragging changes the browser layout, not the contributions or model results. Positions are not automatically saved back to R and reset when the page is reloaded. The taxonomy and phylogeny variants use fixed layouts.
 
-### Chord diagrams add contribution weights
+### Chord diagrams add contribution weights {#chord-diagrams-add-contribution-weights}
 
 
 ```r

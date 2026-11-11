@@ -24,7 +24,6 @@ examples are separate from the STS/LTS study figures in the [stratified
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md).
 
 ``` r
-
 library(MicroFun)
 data("metadata", package = "MicroFun")
 data("metacyc_abundance", package = "MicroFun")
@@ -60,7 +59,6 @@ excluded because scaled PCA cannot use a feature with zero variance.
 ## PCA summarizes the overall profiles
 
 ``` r
-
 p_pca <- pathway_pca(
   abundance, meta_demo, group = "Environment"
 )
@@ -93,7 +91,6 @@ significant result on its own.
 ## A heatmap brings the individual pathways into view
 
 ``` r
-
 pathway_variance <- apply(abundance, 1, stats::var)
 shown_heatmap <- head(
   names(sort(pathway_variance, decreasing = TRUE)), 8L
@@ -131,7 +128,6 @@ necessarily a more abundant pathway than another row.
 ## Error bars connect abundance summaries with supplied test results
 
 ``` r
-
 data("kegg_abundance", package = "MicroFun")
 data("daa_annotated_results_df", package = "MicroFun")
 

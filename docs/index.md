@@ -117,7 +117,7 @@ contributions](examples/study/images/tax2fun-chord-01.png)](https://bioscinema.g
 Compare predicted contributions and model-effect direction.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights)
 
 [![Genus-level overview of taxon-function
 associations](examples/study/images/tax2fun-dendro-genus-overview.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)

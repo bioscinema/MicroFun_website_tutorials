@@ -54,7 +54,7 @@ Three representative views of predicted functional contributions. Select a figur
 <div class="microfun-gallery">
 <figure class="microfun-result">
 <a class="microfun-result-image" href="examples/study/images/tax2fun-chord-01.png" aria-label="View full-size Chord diagram"><img src="examples/study/images/tax2fun-chord-01.png" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
-<figcaption><h3>Chord diagram</h3><p>Compare predicted contributions and model-effect direction.</p><a href="articles/demonstration-stratified.html#taxon-centered">Explore the example &rarr;</a></figcaption>
+<figcaption><h3>Chord diagram</h3><p>Compare predicted contributions and model-effect direction.</p><a href="articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
 <a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/images/tax2fun-dendro-genus-overview.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>

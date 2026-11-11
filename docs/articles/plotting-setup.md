@@ -29,7 +29,6 @@ findings.
 Run once per R session before the plotting tutorials.
 
 ``` r
-
 library(MicroFun)
 
 demo_dir <- "MicroFun_example_data"

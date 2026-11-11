@@ -63,7 +63,6 @@ reference and LTS is the target; change both labels if your comparison
 differs.
 
 ``` r
-
 library(MicroFun)
 library(phyloseq)
 
@@ -128,7 +127,6 @@ access](https://bioscinema.github.io/MicroFun_website_tutorials/articles/install
 before running the study analysis offline.
 
 ``` r
-
 result_taxa <- pathway_sdaa(
   stratified_path = strat_path, physeq = ps,
   taxon_level = rank, group = group_col,
@@ -167,7 +165,6 @@ either selection with a name printed above when you have a particular
 question in mind.
 
 ``` r
-
 available_taxa <- names(result_taxa)[vapply(result_taxa, nrow, integer(1)) > 0L]
 available_functions <- names(result_fun)[vapply(result_fun, nrow, integer(1)) > 0L]
 stopifnot(length(available_taxa) > 0L, length(available_functions) > 0L)
@@ -191,7 +188,6 @@ inspect their weights, sample distributions and signed effects.
 ### Sankey diagrams follow the selected associations
 
 ``` r
-
 p_tax_taxonomy <- tax2fun_sankey(
   result_taxa,
   tree_mode = "taxonomy", physeq = ps
@@ -214,7 +210,6 @@ orientation.
 Compare the phylogeny view
 
 ``` r
-
 stopifnot(!is.null(study_tree))
 p_tax_phylogeny <- tax2fun_sankey(
   result_taxa,
@@ -232,7 +227,6 @@ Figure 2. Sankey with an ASV phylogeny
 #### Adjust the Sankey nodes
 
 ``` r
-
 p_tax_plain <- tax2fun_sankey(
   result_taxa,
   tree_mode = "none"
@@ -254,7 +248,6 @@ layouts.
 ### Chord diagrams add contribution weights
 
 ``` r
-
 p_tax_chord <- tax2fun_chord(
   result_taxa, strat_path, ps, group = group_col,
   contrast = c(reference, target), draw = FALSE
@@ -312,7 +305,6 @@ Figure 8. Contribution-width and effect-bar key
 ### Boxplots return to the sample distributions
 
 ``` r
-
 tax_boxes <- tax2fun_box(strat_path, result_taxa, ps, group = group_col)
 p_tax_box <- tax_boxes[[selected_taxon]]
 ggplot2::ggsave(file.path(out, "tax2fun_box.pdf"), p_tax_box,
@@ -339,7 +331,6 @@ by absolute modeled effect. The overview covers the retained genera; it
 is not an unrestricted display of every tested association.
 
 ``` r
-
 overview_genera <- names(result_taxa)[
   !grepl("incertae|(^|[ _])other($|[ _])", names(result_taxa),
          ignore.case = TRUE)
@@ -377,7 +368,6 @@ biological question. Replace the example names below with entries from
 `names(result_taxa)`.
 
 ``` r
-
 taxa_of_interest <- c("Saccharopolyspora", "Streptomyces", "Pseudoxanthomonas")
 p_tax_dendro <- tax2fun_dendro(
   result_taxa, taxa_list = taxa_of_interest,
@@ -404,7 +394,6 @@ abundance-clustering result.
 ### Signed effects reveal the contrast
 
 ``` r
-
 tax_effects <- tax2fun_logfc(result_taxa, top_n = 3)
 p_tax_effect <- tax_effects[[selected_taxon]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")
@@ -432,7 +421,6 @@ plotted estimates answer that question directly.
 ### Sankey diagrams follow the selected associations
 
 ``` r
-
 stopifnot(!is.null(study_tree))
 p_fun_phylogeny <- fun2tax_sankey(
   result_fun,
@@ -458,7 +446,6 @@ orientation.
 Compare the taxonomy view
 
 ``` r
-
 p_fun_taxonomy <- fun2tax_sankey(
   result_fun,
   pathway = "KO", group_functions = FALSE,
@@ -475,7 +462,6 @@ Figure 14. Sankey with taxonomy context
 #### Adjust the Sankey nodes
 
 ``` r
-
 p_fun_plain <- fun2tax_sankey(
   result_fun,
   pathway = "KO", group_functions = FALSE,
@@ -498,7 +484,6 @@ layouts.
 ### Chord diagrams add contribution weights
 
 ``` r
-
 p_fun_chord <- fun2tax_chord(
   result_fun, strat_path, ps, group = group_col,
   contrast = c(reference, target), functions = selected_function,
@@ -557,7 +542,6 @@ Figure 20. Contribution-width and effect-bar key
 ### Boxplots return to the sample distributions
 
 ``` r
-
 fun_boxes <- fun2tax_box(
   strat_path, result_fun, ps, group = group_col,
   pathway = "KO", group_functions = FALSE
@@ -581,7 +565,6 @@ same abundance on the original scale.
 ### Dendrograms organize the associations
 
 ``` r
-
 p_fun_dendro <- fun2tax_dendro(
   result_fun, top_n_per_function = 3, label_size = 2.6, wrap_width = 20
 )$plot
@@ -606,7 +589,6 @@ abundance-clustering result.
 ### Signed effects reveal the contrast
 
 ``` r
-
 fun_effects <- fun2tax_logfc(result_fun, top_n = 3)
 p_fun_effect <- fun_effects[[selected_function]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")

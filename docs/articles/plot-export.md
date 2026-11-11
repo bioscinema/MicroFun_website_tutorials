@@ -36,7 +36,6 @@ tall diagram, decide whether one fitted page or continuation pages will
 make the labels easier to read.
 
 ``` r
-
 save_sankey(p_tax_sankey, file.path(out, "sankey.html"))
 save_sankey(p_tax_sankey, file.path(out, "sankey.svg"))
 save_sankey(p_tax_sankey, file.path(out, "sankey.pdf"))
@@ -56,7 +55,6 @@ original result and tree for redrawing without recomputing the
 statistical analysis.
 
 ``` r
-
 p_plain <- tax2fun_sankey(result_taxa, tree_mode = "none")
 save_sankey(p_plain, file.path(out, "sankey_no_tree.html"), selfcontained = FALSE)
 ```
@@ -74,7 +72,6 @@ a sector; the static PDF is useful when you want a figure and its
 complete legend in a document.
 
 ``` r
-
 save_chord(p_tax_chord, file.path(out, "chord.html"))
 save_chord(p_tax_chord, file.path(out, "chord.pdf"), width = 12, height = 11)
 save_chord(p_tax_chord, file.path(out, "chord.png"))
@@ -93,7 +90,6 @@ legends may continue on separate PDF pages or companion files.
 ## ggplot figures
 
 ``` r
-
 ggplot2::ggsave(file.path(out, "boxplot.pdf"), p_tax_box,
                 width = 10, height = 6)
 ```

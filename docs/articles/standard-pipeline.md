@@ -58,7 +58,6 @@ For `ko2kegg_abundance(data = ...)`, use a data frame whose first column
 contains KO IDs, followed by sample abundance columns.
 
 ``` r
-
 library(MicroFun)
 data("ko_abundance", package = "MicroFun")
 data("metadata", package = "MicroFun")
@@ -81,7 +80,6 @@ comparison if sample identifiers have been lost or reordered.
 ## Fit community-level differential abundance
 
 ``` r
-
 daa_results_df <- pathway_daa(
   abundance = kegg_abundance, metadata = metadata,
   group = "Environment", daa_method = "LinDA"

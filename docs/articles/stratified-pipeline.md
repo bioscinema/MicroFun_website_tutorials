@@ -57,7 +57,6 @@ modes accept `norm_taxon_function_contrib` with a compatible backend.
 Keep contributions finite and nonnegative.
 
 ``` r
-
 library(phyloseq)
 
 strat_path <- "my_study/KO_contrib.tsv.gz"
@@ -147,7 +146,6 @@ and online
 annotation](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html#kegg-mapping-and-annotation).
 
 ``` r
-
 result_taxa <- pathway_sdaa(
   stratified_path = strat_path, physeq = ps,
   taxon_level = rank, group = group_col,
@@ -185,7 +183,6 @@ with `p_adjust < threshold` in their result lists. Each direction fits
 its own models and defines a separate collection of tests.
 
 ``` r
-
 out <- "MicroFun_results"
 dir.create(out, showWarnings = FALSE)
 saveRDS(result_taxa, file.path(out, "sdaa_taxa.rds"))
