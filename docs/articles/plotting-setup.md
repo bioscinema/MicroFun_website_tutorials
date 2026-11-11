@@ -1,81 +1,50 @@
-# Example inputs and plotting setup
+# Using the visualization guides
 
-Here we load the same objects for every plotting tutorial, so you can
-change the visual presentation without repeatedly preparing the inputs.
+## Learn through the demonstration studies
 
-The toy data are deliberately small. They help you see how an ASV-level
-contribution table, taxonomy, a tree and a result list fit together. The
-[Demonstration Study
-(Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
-shows the richer example-study figures; its displayed STS/LTS
-comparisons are distinct from the Control/Treatment toy inputs used
-here.
+Start with [Study data and
+downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md),
+then follow
+[Standard](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
+for community profiles or
+[Stratified](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
+for taxon and function contributions. These pages contain the complete
+input preparation, analysis, plotting code, figures and interpretation.
 
-## Download the example data
+## Look up plotting choices here
 
-[Download the MicroFun example
-data](https://bioscinema.github.io/MicroFun_website_tutorials/downloads/MicroFun_example_data.zip)
-and extract the `MicroFun_example_data` folder into your R working
-directory.
+The visualization guides are a reference for changing a figure after
+running the corresponding study. Use them to choose a plot, adjust
+parameters, filter taxa or functions, and save HTML or PDF. They reuse
+the objects created by the studies and require no separate dataset or
+initialization workflow.
 
-This synthetic toy dataset contains six samples, three genera and three
-KOs, together with taxonomy, an ASV tree and illustrative differential
-result lists. Effects and p-values are supplied for plotting practice;
-they were not fitted to the synthetic counts and are not biological
-findings.
+Table 1. Choose a visualization guide
 
-## Shared setup
+| Task | Guide | Starting point |
+|----|----|----|
+| Change PCA colours, heatmap features or error-bar selections | [Community-level visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/sample-level-plots.md) | Complete the Standard analysis. |
+| Adjust taxon-to-function diagrams | [Taxon-to-function visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md) | Fit the taxon-centered Stratified analysis. |
+| Select and plot function contributors | [Function-to-taxon visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md) | Run the selected-KO function-centered analysis. |
+| Save an interactive preview or a focused static figure | [Export and redraw](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md) | Use the plot objects from either study or guide. |
+| Resolve an input or rendering issue | [Troubleshooting](https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.md) | Inspect the relevant analysis or plotting step. |
 
-Run once per R session before the plotting tutorials.
+## Reuse the study objects
 
-``` r
-library(MicroFun)
+Keep the relevant study session open while consulting a guide. The
+studies also save their fitted results as RDS files so you can return to
+them later.
 
-demo_dir <- "MicroFun_example_data"
-stopifnot(file.exists(file.path(demo_dir, "synthetic_inputs.RData")))
-demo <- new.env()
-load(file.path(demo_dir, "synthetic_inputs.RData"), envir = demo)
-strat_path <- file.path(demo_dir, "synthetic_KO_contrib.tsv")
-ps <- demo$physeq
-result_taxa <- demo$taxa_result
-result_fun <- demo$function_result
-group_col <- "group"
-reference <- "Control"
-target <- "Treatment"
-out <- "MicroFun_plot_examples"
-dir.create(out, recursive = TRUE, showWarnings = FALSE)
-```
+Table 2. Objects used by the guides
 
-The taxon-oriented toy list is explicitly KO-level. In a fitted study
-with `direction = "taxa", pathway = "KO"`, MicroFun aggregates mapped
-KOs to KEGG pathways before fitting. Keep that distinction in mind when
-replacing the toy data with study results.
+| From the study | Objects used in the guide |
+|----|----|
+| Standard | `ko_abundance`, `kegg_abundance`, `meta`, `daa_ko`, `daa_kegg`, `kegg_features`, `reference`, `target`, `out`. |
+| Stratified taxon-centered route | `ps`, `strat_path`, `study_tree`, `result_taxa`, `result_taxa_box`, `rank`, `group_col`, `reference`, `target`, `out`. |
+| Stratified function-centered route | The same sample and grouping objects, plus `fun_strat_path`, `result_fun`, `result_fun_box`, `ko_candidates` and the selected function list. |
 
-## What have we loaded?
-
-`strat_path` points to the long contribution table. `ps` keeps the ASV
-taxonomy and sample metadata together. `result_taxa` is a list named by
-taxon, while `result_fun` is named by function. The plotting functions
-use these names to decide what each panel or diagram represents.
-
-Before selecting a plot, inspect `names(result_taxa)` or
-`names(result_fun)`. Using a name, such as a genus or KO ID, is clearer
-than selecting `[[1]]`, whose meaning can change when the list is
-reordered. The `reference` and `target` variables also make the intended
-comparison explicit.
-
-For your own study, replace both the contribution inputs and the fitted
-result lists. Keeping a toy result list while changing only the raw data
-would create a figure whose statistics and contributions describe
-different analyses.
-
-## Next steps
-
-- [Taxon-to-function
-  plots](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md)
-- [Function-to-taxon
-  plots](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md)
-- [Stratified demonstration
-  figures](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
-- [Use your own
-  study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md)
+All input paths are resolved from the extracted
+`MicroFun_demonstration_data` folder. The [download
+page](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.html#files-after-extraction)
+lists the archive contents and exact filenames; fitted result and figure
+output paths are defined in each study.

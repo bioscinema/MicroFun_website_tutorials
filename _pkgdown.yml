@@ -16,19 +16,10 @@ home:
   title: Taxon-resolved functional analysis with MicroFun
   description: Analyze community-level and taxon-resolved PICRUSt2 functional predictions with MicroFun.
   sidebar:
-    structure: [links, license, citation, developers]
-    components:
-      developers:
-        title: Developers
-        text: |
-          - Ruitao Liu
-          - Liangliang Zhang
-          - Chenyu Liu
-          - Zilin Li
-          - Yaoran Yu
+    structure: [links, license, citation, authors]
 navbar:
   structure:
-    left: [start, plotting, studies, reference, news]
+    left: [start, studies, plotting, reference, news]
     right: [search, github]
   components:
     start:
@@ -38,21 +29,23 @@ navbar:
           href: articles/getting-started.html
         - text: Installation and dependencies
           href: articles/installation.html
-        - text: Standard PICRUSt2 workflow
-          href: articles/standard-pipeline.html
-        - text: Stratified PICRUSt2 workflow
-          href: articles/stratified-pipeline.html
+        - text: Differential analysis options
+          href: articles/analysis-options.html
+        - text: Prepare your own data
+          href: articles/prepare-your-data.html
     studies:
       text: Demonstration Study
       menu:
-        - text: Demonstration Study (Stratified)
-          href: articles/demonstration-stratified.html
+        - text: Study data and downloads
+          href: articles/study-data.html
         - text: Demonstration Study (Standard)
           href: articles/demonstration-standard.html
+        - text: Demonstration Study (Stratified)
+          href: articles/demonstration-stratified.html
     plotting:
       text: Visualization guides
       menu:
-        - text: Plotting setup
+        - text: Guide overview
           href: articles/plotting-setup.html
         - text: Community-level visualizations
           href: articles/sample-level-plots.html
@@ -72,7 +65,7 @@ navbar:
       href: news/index.html
     github:
       icon: fa-github
-      href: https://github.com/bioscinema/MicroFun
+      href: https://github.com/bioscinema/MicroFun_0.1.0
       aria-label: MicroFun source code
 
 reference:
@@ -106,11 +99,14 @@ articles:
   contents:
   - getting-started
   - installation
-- title: PICRUSt2 workflows
+  - analysis-options
+  - prepare-your-data
+- title: Demonstration studies
   navbar: ~
   contents:
-  - standard-pipeline
-  - stratified-pipeline
+  - study-data
+  - demonstration-standard
+  - demonstration-stratified
 - title: Visualization guides
   navbar: ~
   contents:
@@ -120,25 +116,18 @@ articles:
   - function-to-taxon
   - plot-export
   - troubleshooting
-- title: Demonstration studies
-  navbar: ~
-  contents:
-  - demonstration-stratified
-  - demonstration-standard
-  - demonstration-study
 
 # Package links remain separate from the website repository.
 repo:
   url:
-    home: https://github.com/bioscinema/MicroFun/
+    home: https://github.com/bioscinema/MicroFun_0.1.0/
     source: ~
-    issue: https://github.com/bioscinema/MicroFun/issues/
+    issue: https://github.com/bioscinema/MicroFun_0.1.0/issues/
     user: https://github.com/
 
 footer:
   structure:
-    left: [developers]
+    left: [developed_by]
     right: [website_source, built_with]
   components:
     website_source: "[Website source](https://github.com/bioscinema/MicroFun_website_tutorials)"
-    developers: Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.

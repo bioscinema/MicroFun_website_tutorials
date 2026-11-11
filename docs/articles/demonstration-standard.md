@@ -6,106 +6,114 @@ features and their group summaries. Unlike the [stratified
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md),
 these tables pool the ASV contributions within each sample.
 
-## Study data
-
-Two functional resolutions are shown. KO profiles retain individual KEGG
-Orthology identifiers such as `K18766`. KEGG pathway profiles combine
-mapped member KOs into pathways such as `ko04740`. These are predicted
-functional profiles from PICRUSt2, rather than direct measurements of
-functional genes or metabolic activity.
-
-The supplied study exports contain six figures and two lists of 30
-features used in the significant-feature heatmaps. The plots compare
-short-term survivors (STS, blue) with long-term survivors (LTS, orange).
-The figure exports do not include the underlying abundance tables,
-sample metadata or full fitted results. Use the matching study inputs
-for the code below; the [bundled plotting
-examples](https://bioscinema.github.io/MicroFun_website_tutorials/articles/sample-level-plots.md)
-provide a separate runnable practice dataset.
-
-Table 1. Inputs for the Standard study
-
-| Input | What it supplies |
-|----|----|
-| Unstratified KO table | KO-by-sample predicted abundances from standard PICRUSt2 output. |
-| Sample metadata | Sample identifiers and the STS/LTS group assignment. |
-| KO-to-KEGG mapping | The membership table used to aggregate KOs to pathways. Retain the same mapping throughout the analysis. |
-| Annotated differential results | One fitted method and STS/LTS contrast at each functional resolution. |
-| Exported feature lists | The 30 KO IDs and 30 pathway IDs selected for the displayed heatmaps. |
+Before running this study, follow [Study data and
+downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md).
+The code uses the extracted `MicroFun_demonstration_data` folder.
 
 ## 1. Prepare the community profiles
 
 ``` r
 library(MicroFun)
+# Use the fixed vegan release in a fresh R session.
+stopifnot(requireNamespace("vegan", quietly = TRUE),
+          getNamespaceVersion("vegan") == package_version("2.7.2"))
 
-ko_input <- read.delim(
-  "my_study/KO_metagenome_out/pred_metagenome_unstrat.tsv.gz",
-  check.names = FALSE
-)
-meta <- read.delim("my_study/sample_metadata.tsv", check.names = FALSE)
+data_dir <- normalizePath("MicroFun_demonstration_data", mustWork = TRUE)
+study <- new.env()
+load(file.path(data_dir, "phyloseq_asv.RData"), envir = study)
+meta <- study$metadata
+cohort <- "MDA"
+meta <- meta[meta$Cohort == cohort, , drop = FALSE]
 reference <- "STS"
 target <- "LTS"
-meta <- meta[meta$group %in% c(reference, target), , drop = FALSE]
 meta$group <- factor(meta$group, levels = c(reference, target))
-stopifnot(!anyDuplicated(meta$sample_name))
-stopifnot(all(meta$sample_name %in% names(ko_input)[-1]))
-ko_input <- ko_input[, c(names(ko_input)[1], meta$sample_name), drop = FALSE]
-ko_abundance <- as.matrix(ko_input[, -1, drop = FALSE])
-rownames(ko_abundance) <- ko_input[[1]]
-stopifnot(is.numeric(ko_abundance), all(is.finite(ko_abundance)))
 
-# Reuse the mapping used by the study. The default is the bundled map.
-kegg_abundance <- ko2kegg_abundance(data = ko_input)
-# For a saved custom membership file, use this instead.
-# kegg_abundance <- ko2kegg_abundance(
-#   data = ko_input, kegg_map = "my_study/KO_to_KEGG_mapping.tsv"
-# )
-
+read_profile <- function(path, samples) {
+  x <- read.delim(path, check.names = FALSE)
+  x[[1]] <- sub("^ko:", "", x[[1]], ignore.case = TRUE)
+  stopifnot(!anyDuplicated(x[[1]]), all(samples %in% names(x)[-1]))
+  y <- as.matrix(x[, samples, drop = FALSE])
+  rownames(y) <- x[[1]]
+  stopifnot(is.numeric(y), all(is.finite(y)))
+  y
+}
+ko_abundance <- read_profile(
+  file.path(data_dir, "standard", "KO.tsv.gz"), meta$sample_name
+)
+ko_table <- data.frame(
+  function_id = rownames(ko_abundance),
+  as.data.frame(ko_abundance, check.names = FALSE), check.names = FALSE
+)
+kegg_abundance <- ko2kegg_abundance(data = ko_table)
+table(meta$group)
 out <- "MicroFun_standard_study"
 dir.create(out, recursive = TRUE, showWarnings = FALSE)
 ```
 
-Check the group assignments and sample identifiers before comparing
-panels. KO-to-pathway aggregation uses a local membership mapping; it
-does not update that mapping from KEGG. See [mapping and online
-annotation](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html#kegg-mapping-and-annotation)
-for the steps that require a network connection.
+The reader removes the `ko:` prefix from KO IDs so they match the local
+annotations and supplied feature lists. The KO and metadata files use
+the same new sample identifiers. The bundled mapping reproduces the
+displayed KEGG PCA proportions and contains all 30 pathway IDs selected
+for the heatmap. The separately supplied `KEGG_2026-11-04.tsv.gz` is an
+alternative pathway snapshot with different membership coverage; it is
+not the input used for these displayed KEGG figures.
 
-## 2. Keep the fitted contrast and feature selection together
+## 2. Fit and annotate the comparison
 
-Use the KO and pathway results fitted to the same cohort. The [Standard
-workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.html#fit-community-level-differential-abundance)
-shows how to fit with
-[`pathway_daa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_daa.md)
-and annotate with
-[`pathway_annotation()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_annotation.md).
-The supplied figures alone do not establish the original fitting method,
-so preserve that information from the study’s saved result tables when
-reproducing them.
+The examples below use Maaslin2, with STS as the reference. Set
+`chosen_method` to another supported backend if it matches your input
+and study design. [Differential analysis
+options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md)
+lists LinDA, Lefser and the other available choices. Figures on this
+page are the supplied study exports; use the saved settings and result
+tables when matching a particular numerical export.
 
 ``` r
-# Load the study's saved annotated results rather than substitute teaching results.
-daa_ko <- readRDS("my_study/KO_annotated_results.rds")
-daa_kegg <- readRDS("my_study/KEGG_annotated_results.rds")
-required <- c("feature", "method", "group1", "group2", "p_adjust")
-stopifnot(all(required %in% names(daa_ko)))
-stopifnot(all(required %in% names(daa_kegg)))
-stopifnot(length(unique(daa_ko$method)) == 1L)
-stopifnot(length(unique(daa_kegg$method)) == 1L)
-unique(daa_ko[c("method", "group1", "group2")])
-unique(daa_kegg[c("method", "group1", "group2")])
+chosen_method <- "Maaslin2"
+daa_ko_fit <- pathway_daa(
+  abundance = ko_abundance, metadata = meta, group = "group",
+  daa_method = chosen_method, reference = reference, p.adjust = "BH"
+)
+daa_kegg_fit <- pathway_daa(
+  abundance = kegg_abundance, metadata = meta, group = "group",
+  daa_method = chosen_method, reference = reference, p.adjust = "BH"
+)
+# Read KO names from the dictionary bundled with the installed package.
+ko_reference <- new.env()
+load(system.file("extdata", "KO_reference.RData", package = "MicroFun"),
+     envir = ko_reference)
+ko_dictionary <- ko_reference$KO_reference
+ko_dictionary <- ko_dictionary[!duplicated(ko_dictionary$KO), , drop = FALSE]
+daa_ko <- daa_ko_fit
+daa_ko$description <- ko_dictionary$KoDescription[
+  match(daa_ko$feature, ko_dictionary$KO)
+]
+missing_names <- is.na(daa_ko$description) | !nzchar(daa_ko$description)
+daa_ko$description[missing_names] <- daa_ko$feature[missing_names]
+daa_kegg <- pathway_annotation(
+  pathway = "KO", daa_results_df = daa_kegg_fit, ko_to_kegg = TRUE
+)
+saveRDS(daa_ko, file.path(out, "KO_annotated_results.rds"))
+saveRDS(daa_kegg, file.path(out, "KEGG_annotated_results.rds"))
+write.csv(daa_ko, file.path(out, "KO_annotated_results.csv"), row.names = FALSE)
+write.csv(daa_kegg, file.path(out, "KEGG_annotated_results.csv"), row.names = FALSE)
 ```
 
-Download the [KO feature
-list](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/standard/KO_features.csv)
-and [KEGG feature
-list](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/standard/KEGG_features.csv)
-into a local folder named `study_features`. These preserve the displayed
-selection without trying to reconstruct it from a rendered figure.
+KO descriptions are available locally. The KEGG pathway annotation call
+contacts KEGG through `KEGGREST`; academic users do not need to apply
+for an API key. See [mapping and network
+access](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html#kegg-mapping-and-annotation).
+
+The display feature lists are included in the core archive and can also
+be downloaded as
+[KO](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/standard/KO_features.csv)
+and
+[KEGG](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/standard/KEGG_features.csv)
+CSV files.
 
 ``` r
-ko_features <- read.csv("study_features/KO_features.csv")$feature
-kegg_features <- read.csv("study_features/KEGG_features.csv")$feature
+ko_features <- read.csv(file.path(data_dir, "standard", "KO_figure_features.csv"))$feature
+kegg_features <- read.csv(file.path(data_dir, "standard", "KEGG_figure_features.csv"))$feature
 stopifnot(all(ko_features %in% rownames(ko_abundance)))
 stopifnot(all(kegg_features %in% rownames(kegg_abundance)))
 sample_groups <- factor(
@@ -214,6 +222,12 @@ abundance.
 
 ## 5. Examine group abundance summaries
 
+The code leaves the p-value label panel off because its formatter can
+truncate scientific notation. Read exact adjusted p-values from
+`KO_annotated_results.csv` and `KEGG_annotated_results.csv` in
+`MicroFun_standard_study`. The abundance summaries and significance
+filter still use the numeric results.
+
 ### Error-bar plot at KO level
 
 ``` r
@@ -221,7 +235,7 @@ p_ko_errorbar <- pathway_errorbar(
   abundance = ko_abundance, daa_results_df = daa_ko,
   Group = sample_groups, select = ko_features,
   p_values_threshold = 0.05, order = "p_values",
-  ko_to_kegg = FALSE, x_lab = "description", p_value_bar = TRUE
+  ko_to_kegg = FALSE, x_lab = "description", p_value_bar = FALSE
 )
 ggplot2::ggsave(file.path(out, "KO_errorbar.svg"), p_ko_errorbar,
                 width = 16, height = 14)
@@ -254,7 +268,7 @@ p_kegg_errorbar <- pathway_errorbar(
   abundance = kegg_abundance, daa_results_df = daa_kegg,
   Group = kegg_groups, select = kegg_features,
   p_values_threshold = 0.05, order = "p_values",
-  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = TRUE
+  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = FALSE
 )
 ggplot2::ggsave(file.path(out, "KEGG_errorbar.svg"), p_kegg_errorbar,
                 width = 16, height = 14)
@@ -275,5 +289,5 @@ Use the original result table for exact values.
 
 Community-level differences summarize all contributors together.
 Continue with the [Stratified
-study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
 to ask which genera and functions are linked within that total.

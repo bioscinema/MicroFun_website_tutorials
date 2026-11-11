@@ -35,17 +35,19 @@ MicroFun combines these analyses with complementary visualizations that keep tax
 
 By bringing data preparation, statistical testing, annotation and plotting into one workflow, MicroFun helps users explore functional differences together with their microbial contributors.
 
+<figure class="microfun-graphical-abstract">
+<a href="images/microfun_abstract.png"><img src="images/microfun_abstract.png" alt="MicroFun graphical abstract connecting microbial communities, predicted functions and visualizations" loading="lazy"></a>
+</figure>
+
 ## Installation
 
 Install **MicroFun** from the source package. See [installation and dependencies](articles/installation.html) for the setup instructions.
 
 ## Tutorials
 
-- [Standard PICRUSt2 workflow](articles/standard-pipeline.html) and [stratified PICRUSt2 workflow](articles/stratified-pipeline.html).
-- [Example data and plotting setup](articles/plotting-setup.html).
-- [Taxon-to-function](articles/taxon-to-function.html) and [function-to-taxon](articles/function-to-taxon.html) visualizations.
-- **Demonstration studies:** [Demonstration Study (Stratified)](articles/demonstration-stratified.html) and [Demonstration Study (Standard)](articles/demonstration-standard.html).
-- [Export and redraw](articles/plot-export.html), and [troubleshooting](articles/troubleshooting.html).
+- **Demonstration Study:** [Study data and downloads](articles/study-data.html) → [Standard](articles/demonstration-standard.html) → [Stratified](articles/demonstration-stratified.html).
+- [Prepare your own data](articles/prepare-your-data.html) for PICRUSt2 outputs and input checks.
+- [Visualization guides](articles/plotting-setup.html) for plot controls, selections, export and troubleshooting.
 
 ## Explore MicroFun visualizations
 
@@ -53,15 +55,15 @@ Three representative views of predicted functional contributions. Select a figur
 
 <div class="microfun-gallery">
 <figure class="microfun-result">
-<a class="microfun-result-image" href="examples/study/images/tax2fun-chord-01.png" aria-label="View full-size Chord diagram"><img src="examples/study/images/tax2fun-chord-01.png" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
+<a class="microfun-result-image" href="examples/study/class/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/class/images/tax2fun-chord.svg" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
 <figcaption><h3>Chord diagram</h3><p>Compare predicted contributions and model-effect direction.</p><a href="articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
-<a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/images/tax2fun-dendro-genus-overview.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>
-<figcaption><h3>Association dendrogram</h3><p>Explore the association overview across retained genera.</p><a href="articles/demonstration-stratified.html#genus-dendrogram-overview">Explore the example &rarr;</a></figcaption>
+<a class="microfun-result-image" href="articles/demonstration-stratified.html#class-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/class/images/tax2fun-dendrogram-class.svg" alt="Class-level overview of taxon-function associations" loading="lazy"></a>
+<figcaption><h3>Association dendrogram</h3><p>Explore the association overview across retained classes.</p><a href="articles/demonstration-stratified.html#class-dendrogram-overview">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
-<a class="microfun-result-image" href="examples/study/images/tax2fun-sankey-01.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/images/tax2fun-sankey-01.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>
+<a class="microfun-result-image" href="examples/study/class/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/class/images/tax2fun-taxonomy.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>
 <figcaption><h3>Sankey diagram</h3><p>Trace selected taxa–function associations with taxonomy context.</p><a href="articles/demonstration-stratified.html#taxon-centered">Explore the example &rarr;</a></figcaption>
 </figure>
 </div>
@@ -74,4 +76,4 @@ Three representative views of predicted functional contributions. Select a figur
 
 ## Support
 
-Ask questions or report issues on [GitHub](https://github.com/bioscinema/MicroFun/issues).
+Ask questions or report issues on [GitHub](https://github.com/bioscinema/MicroFun_0.1.0/issues).

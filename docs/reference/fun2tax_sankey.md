@@ -101,7 +101,8 @@ fun2tax_sankey(
 - margin:
 
   Named list with pixel margins `top`, `right`, `bottom`, `left`. Passed
-  to `networkD3::sankeyNetwork()`.
+  to
+  [`networkD3::sankeyNetwork()`](https://rdrr.io/pkg/networkD3/man/sankeyNetwork.html).
 
 - height, width:
 

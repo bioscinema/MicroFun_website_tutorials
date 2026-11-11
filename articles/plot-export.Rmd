@@ -7,73 +7,65 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-A figure needs to remain useful after you close the plotting session. Choose the format according to what you want to do next. Use PDF or SVG for a scalable static figure, HTML for exploration, and RDS when you want to return to the same object and change its appearance.
-
-Saving a plot and saving an analysis are different tasks. Keep your fitted result lists, input data and contrast settings as well as the exported picture. A PNG is convenient to share, but it cannot tell you all the choices that produced it.
-
-## Current export interfaces
+Save Sankey and Chord diagrams as HTML first. HTML is suitable for inspecting dense connections and deciding which taxa or functions to keep in a static figure. Create the objects using the [taxon-to-function](taxon-to-function.html) or [function-to-taxon](function-to-taxon.html) guide.
 
 <div class="microfun-table-caption">Table 1. Figure export formats</div>
 
-| Figure object | Saving interface |
-|---|---|
-| PCA, heatmap, error-bar, contribution boxplot, dendrogram and effect ggplots | `ggplot2::ggsave()` |
-| Taxonomy/phylogeny Sankey | `save_sankey()`; HTML, SVG, PDF, PNG and RDS |
-| Ordinary Sankey (`tree_mode = "none"`) | `save_sankey()`; HTML or RDS |
-| Chord | `save_chord()`; HTML, SVG, PDF, PNG and RDS |
+| Plot type | Preview and exploration | Static output |
+|---|---|---|
+| PCA, heatmap, error bars, boxplots, dendrograms and signed-effect plots | Display the ggplot in R | `ggplot2::ggsave()` |
+| Sankey with taxonomy or phylogeny | `save_sankey()` to HTML | SVG, PNG or PDF with `save_sankey()` |
+| Adjustable Sankey without a tree | HTML is required for dragging nodes | Keep HTML or save the reusable object as RDS |
+| Chord | `save_chord()` to HTML | Filter taxa/functions in R, regenerate the Chord and save a focused PDF |
 
-Use `ggsave()` for the returned ggplots, and the dedicated `save_sankey()` or `save_chord()` functions for those diagram objects.
-
-## Sankey
-
-Tree-enabled Sankey diagrams keep a fixed layout across their HTML and static exports. This is useful when you want to explore a relationship interactively and then present the same geometry in a report. For a very tall diagram, decide whether one fitted page or continuation pages will make the labels easier to read.
-
+## Sankey HTML with a side tree
 
 ```r
-save_sankey(p_tax_sankey, file.path(out, "sankey.html"))
-save_sankey(p_tax_sankey, file.path(out, "sankey.svg"))
-save_sankey(p_tax_sankey, file.path(out, "sankey.pdf"))
-save_sankey(p_tax_sankey, file.path(out, "sankey.png"), width = 1800)
-save_sankey(p_tax_sankey, file.path(out, "sankey.rds"))
-
-p_redrawn <- redraw_sankey(
-  file.path(out, "sankey.rds"), tree_options = list(font_size = 16)
-)
-save_sankey(p_redrawn, file.path(out, "sankey_redrawn.html"))
+save_sankey(p_tax_taxonomy, file.path(out, "sankey_taxonomy.html"))
+save_sankey(p_tax_phylogeny, file.path(out, "sankey_phylogeny.html"))
+save_sankey(p_tax_taxonomy, file.path(out, "sankey_taxonomy.rds"))
 ```
 
-Tree PNG/PDF export requires `rsvg`. For very large tree diagrams, `pdf_mode = "tiles"` writes vertical continuation pages and requires `qpdf`; labels or ribbons can cross page boundaries. RDS keeps the original result and tree for redrawing without recomputing the statistical analysis.
+Both taxonomy and phylogeny Sankeys can be saved as HTML. Their side trees use fixed layouts; HTML preserves the supported hover and link inspection behaviour. For a static copy, use `save_sankey(p_tax_taxonomy, file.path(out, "sankey_taxonomy.pdf"))`. Tree PNG/PDF export requires `rsvg`.
+
+## Adjustable Sankey HTML
 
 ```r
 p_plain <- tax2fun_sankey(result_taxa, tree_mode = "none")
-save_sankey(p_plain, file.path(out, "sankey_no_tree.html"), selfcontained = FALSE)
+save_sankey(p_plain, file.path(out, "sankey_adjustable.html"),
+            selfcontained = FALSE)
 ```
 
-Keep the adjacent dependency folder with ordinary HTML exports when `selfcontained = FALSE`. A self-contained ordinary HTML export requires Pandoc. Static SVG/PDF/PNG exports require a tree mode.
+Open the HTML in a browser and drag nodes up or down. The links follow their new positions. Save HTML for this version because a static PDF cannot preserve dragging. Keep the adjacent `_files` folder with this HTML file. `selfcontained = FALSE` avoids a Pandoc requirement. Browser adjustments do not automatically update the saved R object or persist after reloading the HTML.
 
-## Chord
-
-A Chord can contain more labels than comfortably fit around its circle. Export the label mapping and legends with the graphic so that compact labels remain interpretable. The interactive HTML is useful for finding a sector; the static PDF is useful when you want a figure and its complete legend in a document.
-
+## Preview a Chord before exporting PDF
 
 ```r
-save_chord(p_tax_chord, file.path(out, "chord.html"))
-save_chord(p_tax_chord, file.path(out, "chord.pdf"), width = 12, height = 11)
-save_chord(p_tax_chord, file.path(out, "chord.png"))
-save_chord(p_tax_chord, file.path(out, "chord.rds"))
-
-# The explicit extension is included along with the additional formats.
-save_chord(p_tax_chord, file.path(out, "chord.html"), formats = c("pdf", "png"))
+save_chord(p_tax_chord, file.path(out, "chord_overview.html"))
+save_chord(p_tax_chord, file.path(out, "chord_overview.rds"))
 ```
 
-Chord HTML includes zoom controls and a searchable sector legend. Selecting a legend entry highlights its sector; select it again or press Escape to clear. Labels that do not fit can be omitted from the graphic. The mapping CSV retains all labels and their `visible` status. Static legends may continue on separate PDF pages or companion files.
+A full Chord can contain many sectors and ribbons. Start with HTML to inspect the overview. Large full PDFs can be slow to load. For a taxon-centered figure, choose the taxa in R and regenerate a focused figure for PDF export. For a function-centered figure, choose the functions.
 
-## ggplot figures
+```r
+taxa_of_interest <- head(unique(p_tax_chord$links$taxon), 3L)
+p_focus <- tax2fun_chord(
+  result_taxa, strat_path, ps, group = group_col,
+  contrast = c(reference, target),
+  taxa_list = taxa_of_interest, max_functions_per_taxon = 10,
+  draw = FALSE
+)
+save_chord(p_focus, file.path(out, "chord_focus.html"))
+save_chord(p_focus, file.path(out, "chord_focus.pdf"))
+```
+
+For function-to-taxon Chords, first filter the fitted result list and pass explicit function IDs to `fun2tax_chord()`. The [function-to-taxon guide](function-to-taxon.html#select-functions-before-plotting) shows that selection. HTML inspection helps you choose a subset; apply that choice in R before exporting the PDF.
+
+## Save ggplots
 
 ```r
 ggplot2::ggsave(file.path(out, "boxplot.pdf"), p_tax_box,
                 width = 10, height = 6)
 ```
 
-Create the objects first using the [taxon-to-function](taxon-to-function.html) or [function-to-taxon](function-to-taxon.html) plotting examples.
-
+Keep the fitted result RDS files, input paths, selected functions, taxonomic rank and group contrast with the figures. These let you return to the same analysis and redraw a different selection later.

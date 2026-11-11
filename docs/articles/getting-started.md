@@ -31,28 +31,30 @@ or transposed to stand in for the other.
 
 Follow [installation and dependency
 versions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.md),
-then [download the example data and run the
-setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md).
+then [Study data and
+downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md).
 The installation page also explains the dependency policy and how to
 record your analysis environment.
 
-## Choose a workflow
+## Follow the demonstration studies
 
-Table 1. MicroFun workflows
+Start with [Study data and
+downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md),
+then follow
+[Standard](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
+for community-level profiles and
+[Stratified](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
+for contributor analysis. Each study contains the preparation, analysis,
+plotting code and results in one place.
 
-| Input or task | Tutorial |
-|----|----|
-| Community-level functional profiles | [Standard PICRUSt2 workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md) |
-| Taxon-resolved contributions | [Stratified PICRUSt2 workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md) |
-| Plots organized by taxon | [Taxon-to-function plots](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md) |
-| Plots organized by function | [Function-to-taxon plots](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md) |
-| Saving and redrawing figures | [Export guide](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md) |
+## Adapt the workflow
 
-## Demonstration studies
+Use [Prepare your own
+data](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.md)
+for PICRUSt2 output formats and input checks. See [Differential analysis
+options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md)
+when choosing a statistical method.
 
-- [Demonstration Study
-  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
-  follows both analysis directions through code and study figures.
-- [Demonstration Study
-  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
-  presents community-level KO and KEGG results.
+After fitting, use [Visualization
+guides](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md)
+to look up plot controls, selections and export choices.

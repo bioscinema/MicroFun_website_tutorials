@@ -47,8 +47,9 @@ local `kegg_map` does not turn off the online annotation performed by
 the taxon-centered KO workflow. Check the annotation messages separately
 from model or sample-matching errors. The [mapping and network access
 guide](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html#kegg-mapping-and-annotation)
-lists the local and online steps. The bundled community plotting
-examples use preannotated results and do not need a KEGG connection.
+lists the local and online steps. After saving the annotated Standard
+results, plotting those saved tables needs no additional KEGG
+connection.
 
 ## The plot looks different from what you expected
 
@@ -75,4 +76,4 @@ compact description of the input columns and
 [`sessionInfo()`](https://rdrr.io/r/utils/sessionInfo.html). A small
 reproducible example is more useful than a screenshot of the last line
 alone. Report issues through
-[GitHub](https://github.com/bioscinema/MicroFun/issues).
+[GitHub](https://github.com/bioscinema/MicroFun_0.1.0/issues).

@@ -35,26 +35,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-get-started">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting started</a></li>
     <li><a class="dropdown-item" href="../articles/installation.html">Installation and dependencies</a></li>
-    <li><a class="dropdown-item" href="../articles/standard-pipeline.html">Standard PICRUSt2 workflow</a></li>
-    <li><a class="dropdown-item" href="../articles/stratified-pipeline.html">Stratified PICRUSt2 workflow</a></li>
-  </ul>
-</li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
-<li><a class="dropdown-item" href="../articles/plotting-setup.html">Plotting setup</a></li>
-    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
-    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
-    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
-    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
-    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
+    <li><a class="dropdown-item" href="../articles/analysis-options.html">Differential analysis options</a></li>
+    <li><a class="dropdown-item" href="../articles/prepare-your-data.html">Prepare your own data</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-demonstration-study" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Demonstration Study</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-demonstration-study">
-<li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+<li><a class="dropdown-item" href="../articles/study-data.html">Study data and downloads</a></li>
     <li><a class="dropdown-item" href="../articles/demonstration-standard.html">Demonstration Study (Standard)</a></li>
+    <li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+  </ul>
+</li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
+<li><a class="dropdown-item" href="../articles/plotting-setup.html">Guide overview</a></li>
+    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
+    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
+    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
+    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
+    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -64,7 +65,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun_0.1.0" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -177,9 +178,9 @@ fails. A local <code>kegg_map</code> does not turn off the online
 annotation performed by the taxon-centered KO workflow. Check the
 annotation messages separately from model or sample-matching errors. The
 <a href="installation.html#kegg-mapping-and-annotation">mapping and
-network access guide</a> lists the local and online steps. The bundled
-community plotting examples use preannotated results and do not need a
-KEGG connection.</p>
+network access guide</a> lists the local and online steps. After saving
+the annotated Standard results, plotting those saved tables needs no
+additional KEGG connection.</p>
 </div>
 <div class="section level2">
 <h2 id="the-plot-looks-different-from-what-you-expected">The plot looks different from what you expected<a class="anchor" aria-label="anchor" href="#the-plot-looks-different-from-what-you-expected"></a>
@@ -204,7 +205,7 @@ asset folders with the exported file.</p>
 <p>If you ask for help, include the function call, the full error, a
 compact description of the input columns and <code><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo()</a></code>.
 A small reproducible example is more useful than a screenshot of the
-last line alone. Report issues through <a href="https://github.com/bioscinema/MicroFun/issues" class="external-link">GitHub</a>.</p>
+last line alone. Report issues through <a href="https://github.com/bioscinema/MicroFun_0.1.0/issues" class="external-link">GitHub</a>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -213,11 +214,11 @@ last line alone. Report issues through <a href="https://github.com/bioscinema/Mi
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.</p>
+  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

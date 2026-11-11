@@ -1,0 +1,25 @@
+KO,description,selection_basis
+K00027,"ME2, sfcA, maeA; malate dehydrogenase (oxaloacetate-decarboxylating) [EC:1.1.1.38]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00074,"paaH, hbd, fadB, mmgB; 3-hydroxybutyryl-CoA dehydrogenase [EC:1.1.1.157]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00432,"gpx, btuE, bsaA; glutathione peroxidase [EC:1.11.1.9]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00453,"TDO2, kynA; tryptophan 2,3-dioxygenase [EC:1.13.11.11]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00548,"metH, MTR; 5-methyltetrahydrofolate--homocysteine methyltransferase [EC:2.1.1.13]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00615,"E2.2.1.1, tktA, tktB; transketolase [EC:2.2.1.1]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00681,ggt; gamma-glutamyltranspeptidase / glutathione hydrolase [EC:2.3.2.2 3.4.19.13],Biological-interest candidate for demonstration; not a validated disease biomarker
+K00757,"udp, UPP; uridine phosphorylase [EC:2.4.2.3]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00761,"upp, UPRT; uracil phosphoribosyltransferase [EC:2.4.2.9]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00797,"speE, SRM, SPE3; spermidine synthase [EC:2.5.1.16]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00812,aspB; aspartate aminotransferase [EC:2.6.1.1],Biological-interest candidate for demonstration; not a validated disease biomarker
+K00826,"E2.6.1.42, ilvE; branched-chain amino acid aminotransferase [EC:2.6.1.42]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K00845,glk; glucokinase [EC:2.7.1.2],Biological-interest candidate for demonstration; not a validated disease biomarker
+K01424,"E3.5.1.1, ansA, ansB; L-asparaginase [EC:3.5.1.1]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K01489,"cdd, CDA; cytidine deaminase [EC:3.5.4.5]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K01491,folD; methylenetetrahydrofolate dehydrogenase (NADP+) / methenyltetrahydrofolate cyclohydrolase [EC:1.5.1.5 3.5.4.9],Biological-interest candidate for demonstration; not a validated disease biomarker
+K01609,trpC; indole-3-glycerol phosphate synthase [EC:4.1.1.48],Biological-interest candidate for demonstration; not a validated disease biomarker
+K01647,"CS, gltA; citrate synthase [EC:2.3.3.1]",Biological-interest candidate for demonstration; not a validated disease biomarker
+K01667,tnaA; tryptophanase [EC:4.1.99.1],Biological-interest candidate for demonstration; not a validated disease biomarker
+K01738,cysK; cysteine synthase [EC:2.5.1.47],Biological-interest candidate for demonstration; not a validated disease biomarker
+K01808,rpiB; ribose 5-phosphate isomerase B [EC:5.3.1.6],Biological-interest candidate for demonstration; not a validated disease biomarker
+K03778,ldhA; D-lactate dehydrogenase [EC:1.1.1.28],Biological-interest candidate for demonstration; not a validated disease biomarker
+K10536,aguA; agmatine deiminase [EC:3.5.3.12],Biological-interest candidate for demonstration; not a validated disease biomarker
+K11754,folC; dihydrofolate synthase / folylpolyglutamate synthase [EC:6.3.2.12 6.3.2.17],Biological-interest candidate for demonstration; not a validated disease biomarker

@@ -82,8 +82,9 @@ tax2fun_sankey(
 - margin:
 
   A named list with `top`, `right`, `bottom`, `left` margins (pixels)
-  passed to `networkD3::sankeyNetwork()`. Increase `left` when
-  `label_left_sources = TRUE` to avoid clipping.
+  passed to
+  [`networkD3::sankeyNetwork()`](https://rdrr.io/pkg/networkD3/man/sankeyNetwork.html).
+  Increase `left` when `label_left_sources = TRUE` to avoid clipping.
 
 - taxon_palette:
 
@@ -172,8 +173,9 @@ RStudio Viewer or a web browser, and embedded in R Markdown/Quarto.
 
 The function constructs a long table of edges (taxon -\> pathway class),
 assigns a link group `'Up'` or `'Down'` by the sign of `logFC`, builds
-unique node names, and then calls `networkD3::sankeyNetwork()`. A
-post-render D3 callback adjusts text anchors so that left-side labels
+unique node names, and then calls
+[`networkD3::sankeyNetwork()`](https://rdrr.io/pkg/networkD3/man/sankeyNetwork.html).
+A post-render D3 callback adjusts text anchors so that left-side labels
 appear to the left of their rectangles while right-side labels remain on
 the right. Nodes use the selected categorical palettes by default, and
 links retain their Up/Down colours. Named palettes preserve mappings

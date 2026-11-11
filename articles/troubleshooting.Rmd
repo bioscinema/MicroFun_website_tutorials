@@ -34,7 +34,7 @@ An empty result is not automatically a software failure. Read the model and anno
 
 Confirm that `KEGGREST` is installed and that your R session can access the KEGG service. Academic REST access does not require an API key, so a connection error is not an instruction to register for one.
 
-Local KO-to-pathway conversion can work while online annotation fails. A local `kegg_map` does not turn off the online annotation performed by the taxon-centered KO workflow. Check the annotation messages separately from model or sample-matching errors. The [mapping and network access guide](installation.html#kegg-mapping-and-annotation) lists the local and online steps. The bundled community plotting examples use preannotated results and do not need a KEGG connection.
+Local KO-to-pathway conversion can work while online annotation fails. A local `kegg_map` does not turn off the online annotation performed by the taxon-centered KO workflow. Check the annotation messages separately from model or sample-matching errors. The [mapping and network access guide](installation.html#kegg-mapping-and-annotation) lists the local and online steps. After saving the annotated Standard results, plotting those saved tables needs no additional KEGG connection.
 
 ## The plot looks different from what you expected
 
@@ -46,4 +46,4 @@ Next compare the saved rank and selected cohort. A genus-level analysis and a cl
 
 Check the export format and its optional dependencies. Tree Sankey PNG/PDF needs `rsvg`; tiled PDF also needs `qpdf`. Ordinary no-tree Sankey supports HTML and RDS. Chord SVG/HTML also needs a working SVG graphics device on your platform. Keep any adjacent HTML asset folders with the exported file.
 
-If you ask for help, include the function call, the full error, a compact description of the input columns and `sessionInfo()`. A small reproducible example is more useful than a screenshot of the last line alone. Report issues through [GitHub](https://github.com/bioscinema/MicroFun/issues).
+If you ask for help, include the function call, the full error, a compact description of the input columns and `sessionInfo()`. A small reproducible example is more useful than a screenshot of the last line alone. Report issues through [GitHub](https://github.com/bioscinema/MicroFun_0.1.0/issues).

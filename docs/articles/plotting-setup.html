@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Example inputs and plotting setup • MicroFun</title>
+<title>Using the visualization guides • MicroFun</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Example inputs and plotting setup">
+<meta property="og:title" content="Using the visualization guides">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -35,26 +35,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-get-started">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting started</a></li>
     <li><a class="dropdown-item" href="../articles/installation.html">Installation and dependencies</a></li>
-    <li><a class="dropdown-item" href="../articles/standard-pipeline.html">Standard PICRUSt2 workflow</a></li>
-    <li><a class="dropdown-item" href="../articles/stratified-pipeline.html">Stratified PICRUSt2 workflow</a></li>
-  </ul>
-</li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
-<li><a class="dropdown-item" href="../articles/plotting-setup.html">Plotting setup</a></li>
-    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
-    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
-    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
-    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
-    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
+    <li><a class="dropdown-item" href="../articles/analysis-options.html">Differential analysis options</a></li>
+    <li><a class="dropdown-item" href="../articles/prepare-your-data.html">Prepare your own data</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-demonstration-study" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Demonstration Study</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-demonstration-study">
-<li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+<li><a class="dropdown-item" href="../articles/study-data.html">Study data and downloads</a></li>
     <li><a class="dropdown-item" href="../articles/demonstration-standard.html">Demonstration Study (Standard)</a></li>
+    <li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+  </ul>
+</li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
+<li><a class="dropdown-item" href="../articles/plotting-setup.html">Guide overview</a></li>
+    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
+    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
+    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
+    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
+    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -64,7 +65,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun_0.1.0" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -78,7 +79,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Example inputs and plotting setup</h1>
+      <h1>Using the visualization guides</h1>
             
       
 
@@ -87,82 +88,117 @@
 
     
     
-<p>Here we load the same objects for every plotting tutorial, so you can
-change the visual presentation without repeatedly preparing the
-inputs.</p>
-<p>The toy data are deliberately small. They help you see how an
-ASV-level contribution table, taxonomy, a tree and a result list fit
-together. The <a href="demonstration-stratified.html">Demonstration
-Study (Stratified)</a> shows the richer example-study figures; its
-displayed STS/LTS comparisons are distinct from the Control/Treatment
-toy inputs used here.</p>
 <div class="section level2">
-<h2 id="download-the-example-data">Download the example data<a class="anchor" aria-label="anchor" href="#download-the-example-data"></a>
+<h2 id="learn-through-the-demonstration-studies">Learn through the demonstration studies<a class="anchor" aria-label="anchor" href="#learn-through-the-demonstration-studies"></a>
 </h2>
-<p><a href="../downloads/MicroFun_example_data.zip">Download the
-MicroFun example data</a> and extract the
-<code>MicroFun_example_data</code> folder into your R working
-directory.</p>
-<p>This synthetic toy dataset contains six samples, three genera and
-three KOs, together with taxonomy, an ASV tree and illustrative
-differential result lists. Effects and p-values are supplied for
-plotting practice; they were not fitted to the synthetic counts and are
-not biological findings.</p>
+<p>Start with <a href="study-data.html">Study data and downloads</a>,
+then follow <a href="demonstration-standard.html">Standard</a> for
+community profiles or <a href="demonstration-stratified.html">Stratified</a> for taxon and
+function contributions. These pages contain the complete input
+preparation, analysis, plotting code, figures and interpretation.</p>
 </div>
 <div class="section level2">
-<h2 id="shared-setup">Shared setup<a class="anchor" aria-label="anchor" href="#shared-setup"></a>
+<h2 id="look-up-plotting-choices-here">Look up plotting choices here<a class="anchor" aria-label="anchor" href="#look-up-plotting-choices-here"></a>
 </h2>
-<p>Run once per R session before the plotting tutorials.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">MicroFun</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">demo_dir</span> <span class="op">&lt;-</span> <span class="st">"MicroFun_example_data"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">demo_dir</span>, <span class="st">"synthetic_inputs.RData"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">demo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">demo_dir</span>, <span class="st">"synthetic_inputs.RData"</span><span class="op">)</span>, envir <span class="op">=</span> <span class="va">demo</span><span class="op">)</span></span>
-<span><span class="va">strat_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">demo_dir</span>, <span class="st">"synthetic_KO_contrib.tsv"</span><span class="op">)</span></span>
-<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="va">demo</span><span class="op">$</span><span class="va">physeq</span></span>
-<span><span class="va">result_taxa</span> <span class="op">&lt;-</span> <span class="va">demo</span><span class="op">$</span><span class="va">taxa_result</span></span>
-<span><span class="va">result_fun</span> <span class="op">&lt;-</span> <span class="va">demo</span><span class="op">$</span><span class="va">function_result</span></span>
-<span><span class="va">group_col</span> <span class="op">&lt;-</span> <span class="st">"group"</span></span>
-<span><span class="va">reference</span> <span class="op">&lt;-</span> <span class="st">"Control"</span></span>
-<span><span class="va">target</span> <span class="op">&lt;-</span> <span class="st">"Treatment"</span></span>
-<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="st">"MicroFun_plot_examples"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">out</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p>The taxon-oriented toy list is explicitly KO-level. In a fitted study
-with <code>direction = "taxa", pathway = "KO"</code>, MicroFun
-aggregates mapped KOs to KEGG pathways before fitting. Keep that
-distinction in mind when replacing the toy data with study results.</p>
+<p>The visualization guides are a reference for changing a figure after
+running the corresponding study. Use them to choose a plot, adjust
+parameters, filter taxa or functions, and save HTML or PDF. They reuse
+the objects created by the studies and require no separate dataset or
+initialization workflow.</p>
+<div class="microfun-table-caption">
+Table 1. Choose a visualization guide
+</div>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Task</th>
+<th>Guide</th>
+<th>Starting point</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Change PCA colours, heatmap features or error-bar selections</td>
+<td><a href="sample-level-plots.html">Community-level
+visualizations</a></td>
+<td>Complete the Standard analysis.</td>
+</tr>
+<tr class="even">
+<td>Adjust taxon-to-function diagrams</td>
+<td><a href="taxon-to-function.html">Taxon-to-function
+visualizations</a></td>
+<td>Fit the taxon-centered Stratified analysis.</td>
+</tr>
+<tr class="odd">
+<td>Select and plot function contributors</td>
+<td><a href="function-to-taxon.html">Function-to-taxon
+visualizations</a></td>
+<td>Run the selected-KO function-centered analysis.</td>
+</tr>
+<tr class="even">
+<td>Save an interactive preview or a focused static figure</td>
+<td><a href="plot-export.html">Export and redraw</a></td>
+<td>Use the plot objects from either study or guide.</td>
+</tr>
+<tr class="odd">
+<td>Resolve an input or rendering issue</td>
+<td><a href="troubleshooting.html">Troubleshooting</a></td>
+<td>Inspect the relevant analysis or plotting step.</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level2">
-<h2 id="what-have-we-loaded">What have we loaded?<a class="anchor" aria-label="anchor" href="#what-have-we-loaded"></a>
+<h2 id="reuse-the-study-objects">Reuse the study objects<a class="anchor" aria-label="anchor" href="#reuse-the-study-objects"></a>
 </h2>
-<p><code>strat_path</code> points to the long contribution table.
-<code>ps</code> keeps the ASV taxonomy and sample metadata together.
-<code>result_taxa</code> is a list named by taxon, while
-<code>result_fun</code> is named by function. The plotting functions use
-these names to decide what each panel or diagram represents.</p>
-<p>Before selecting a plot, inspect <code>names(result_taxa)</code> or
-<code>names(result_fun)</code>. Using a name, such as a genus or KO ID,
-is clearer than selecting <code>[[1]]</code>, whose meaning can change
-when the list is reordered. The <code>reference</code> and
-<code>target</code> variables also make the intended comparison
-explicit.</p>
-<p>For your own study, replace both the contribution inputs and the
-fitted result lists. Keeping a toy result list while changing only the
-raw data would create a figure whose statistics and contributions
-describe different analyses.</p>
+<p>Keep the relevant study session open while consulting a guide. The
+studies also save their fitted results as RDS files so you can return to
+them later.</p>
+<div class="microfun-table-caption">
+Table 2. Objects used by the guides
 </div>
-<div class="section level2">
-<h2 id="next-steps">Next steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
-</h2>
-<ul>
-<li><a href="taxon-to-function.html">Taxon-to-function plots</a></li>
-<li><a href="function-to-taxon.html">Function-to-taxon plots</a></li>
-<li><a href="demonstration-stratified.html">Stratified demonstration
-figures</a></li>
-<li><a href="stratified-pipeline.html">Use your own study</a></li>
-</ul>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>From the study</th>
+<th>Objects used in the guide</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Standard</td>
+<td>
+<code>ko_abundance</code>, <code>kegg_abundance</code>,
+<code>meta</code>, <code>daa_ko</code>, <code>daa_kegg</code>,
+<code>kegg_features</code>, <code>reference</code>, <code>target</code>,
+<code>out</code>.</td>
+</tr>
+<tr class="even">
+<td>Stratified taxon-centered route</td>
+<td>
+<code>ps</code>, <code>strat_path</code>, <code>study_tree</code>,
+<code>result_taxa</code>, <code>result_taxa_box</code>,
+<code>rank</code>, <code>group_col</code>, <code>reference</code>,
+<code>target</code>, <code>out</code>.</td>
+</tr>
+<tr class="odd">
+<td>Stratified function-centered route</td>
+<td>The same sample and grouping objects, plus
+<code>fun_strat_path</code>, <code>result_fun</code>,
+<code>result_fun_box</code>, <code>ko_candidates</code> and the selected
+function list.</td>
+</tr>
+</tbody>
+</table>
+<p>All input paths are resolved from the extracted
+<code>MicroFun_demonstration_data</code> folder. The <a href="study-data.html#files-after-extraction">download page</a> lists
+the archive contents and exact filenames; fitted result and figure
+output paths are defined in each study.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -171,11 +207,11 @@ figures</a></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.</p>
+  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

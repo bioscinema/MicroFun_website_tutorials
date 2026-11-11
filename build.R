@@ -17,6 +17,9 @@ script_root <- local({
   dirname(normalizePath(path, mustWork = TRUE))
 })
 
+local_library <- file.path(script_root, ".build", "library")
+if (dir.exists(local_library)) .libPaths(c(local_library, .libPaths()))
+
 args <- commandArgs(trailingOnly = TRUE)
 full <- "--full" %in% args
 inputs <- args[!startsWith(args, "--")]

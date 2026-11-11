@@ -35,26 +35,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-get-started">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting started</a></li>
     <li><a class="dropdown-item" href="../articles/installation.html">Installation and dependencies</a></li>
-    <li><a class="dropdown-item" href="../articles/standard-pipeline.html">Standard PICRUSt2 workflow</a></li>
-    <li><a class="dropdown-item" href="../articles/stratified-pipeline.html">Stratified PICRUSt2 workflow</a></li>
-  </ul>
-</li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
-<li><a class="dropdown-item" href="../articles/plotting-setup.html">Plotting setup</a></li>
-    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
-    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
-    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
-    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
-    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
+    <li><a class="dropdown-item" href="../articles/analysis-options.html">Differential analysis options</a></li>
+    <li><a class="dropdown-item" href="../articles/prepare-your-data.html">Prepare your own data</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-demonstration-study" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Demonstration Study</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-demonstration-study">
-<li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+<li><a class="dropdown-item" href="../articles/study-data.html">Study data and downloads</a></li>
     <li><a class="dropdown-item" href="../articles/demonstration-standard.html">Demonstration Study (Standard)</a></li>
+    <li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+  </ul>
+</li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
+<li><a class="dropdown-item" href="../articles/plotting-setup.html">Guide overview</a></li>
+    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
+    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
+    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
+    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
+    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -64,7 +65,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun_0.1.0" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -87,207 +88,122 @@
 
     
     
-<p>Before focusing on individual contributors, look at how the
-functional profiles behave across samples. Do the groups show a broad
-pattern? Are a few samples unusual? Which pathways vary together?</p>
-<p>We use PCA, heatmaps and abundance summaries to examine different
-parts of that question. Each section below pairs runnable code with its
-output and an explanation of what the figure shows.</p>
-<p>These three plotting examples use bundled data and already annotated
-results. After software installation, they do not need to contact KEGG
-or use an API key. Preparing new KEGG annotations for your own study is
-a separate step described in <a href="installation.html#kegg-mapping-and-annotation">mapping and network
-access</a>.</p>
+<p>Use this guide to adjust figures after running the <a href="demonstration-standard.html">Standard demonstration</a>. It reuses
+that study’s matrices, metadata and fitted results. For data
+preparation, complete code, figures and interpretation, follow the study
+itself.</p>
+<div class="microfun-table-caption">
+Table 1. Community-level plotting choices
+</div>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr class="header">
+<th>Plot</th>
+<th>Useful controls</th>
+<th>Study example</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="../reference/pathway_pca.html">pathway_pca()</a></code></td>
+<td>Feature subset and group <code>colors</code>.</td>
+<td>
+<a href="demonstration-standard.html#compare-overall-functional-profiles">KO
+and KEGG PCA</a>.</td>
+</tr>
+<tr class="even">
+<td><code><a href="../reference/pathway_heatmap.html">pathway_heatmap()</a></code></td>
+<td>Displayed features, <code>font_size</code>,
+<code>show_row_names</code>, <code>show_legend</code>, group
+<code>colors</code>.</td>
+<td>
+<a href="demonstration-standard.html#inspect-selected-features-across-samples">Selected-feature
+heatmaps</a>.</td>
+</tr>
+<tr class="odd">
+<td><code><a href="../reference/pathway_errorbar.html">pathway_errorbar()</a></code></td>
+<td>
+<code>select</code>, <code>p_values_threshold</code>,
+<code>order</code>, <code>x_lab</code>, <code>p_value_bar</code>.</td>
+<td>
+<a href="demonstration-standard.html#examine-group-abundance-summaries">Group
+abundance summaries</a>.</td>
+</tr>
+</tbody>
+</table>
 <div class="section level2">
-<h2 id="load-the-bundled-example-data">Load the bundled example data<a class="anchor" aria-label="anchor" href="#load-the-bundled-example-data"></a>
+<h2 id="pca-colours-and-feature-selection">PCA colours and feature selection<a class="anchor" aria-label="anchor" href="#pca-colours-and-feature-selection"></a>
 </h2>
-<p>The package supplies metadata for 50 samples, split equally between
-the Pro-inflammatory and Pro-survival groups. We use the bundled MetaCyc
-abundance table for PCA and the heatmap, then the KEGG abundance table
-and its supplied annotated LinDA results for the error-bar plot. These
-examples are separate from the STS/LTS study figures in the <a href="demonstration-stratified.html">stratified demonstration</a>.</p>
+<p>The matrix rows are features and its columns are samples. Keep
+metadata aligned by sample identifier. Remove constant rows before
+scaled PCA, then supply one colour for each group in factor-level
+order.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">MicroFun</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"metadata"</span>, package <span class="op">=</span> <span class="st">"MicroFun"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"metacyc_abundance"</span>, package <span class="op">=</span> <span class="st">"MicroFun"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">meta_demo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  sample_name <span class="op">=</span> <span class="va">metadata</span><span class="op">$</span><span class="va">sample_name</span>,</span>
-<span>  Environment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span></span>
-<span>    <span class="va">metadata</span><span class="op">$</span><span class="va">Environment</span>,</span>
-<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pro-inflammatory"</span>, <span class="st">"Pro-survival"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">abundance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">metacyc_abundance</span>, check.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">abundance</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">abundance</span><span class="op">$</span><span class="va">pathway</span></span>
-<span><span class="va">abundance</span><span class="op">$</span><span class="va">pathway</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
-<span></span>
-<span><span class="va">sample_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">abundance</span><span class="op">)</span>, <span class="va">meta_demo</span><span class="op">$</span><span class="va">sample_name</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">anyNA</a></span><span class="op">(</span><span class="va">sample_index</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html" class="external-link">anyDuplicated</a></span><span class="op">(</span><span class="va">meta_demo</span><span class="op">$</span><span class="va">sample_name</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">meta_demo</span> <span class="op">&lt;-</span> <span class="va">meta_demo</span><span class="op">[</span><span class="va">sample_index</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
-<span><span class="va">pathway_variance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">abundance</span>, <span class="fl">1</span>, <span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">)</span></span>
-<span><span class="va">keep</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.finite</a></span><span class="op">(</span><span class="va">pathway_variance</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">pathway_variance</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
-<span><span class="va">abundance</span> <span class="op">&lt;-</span> <span class="va">abundance</span><span class="op">[</span><span class="va">keep</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">meta_demo</span><span class="op">$</span><span class="va">Environment</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">abundance</span><span class="op">)</span></span>
-<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="st">"MicroFun_community_figures"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">out</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p>The prepared matrix contains 316 nonconstant MetaCyc pathways across
-the 50 samples. Samples are matched by identifier, and constant pathways
-are excluded because scaled PCA cannot use a feature with zero
-variance.</p>
+<code class="sourceCode R"><span><span class="va">pathway_variance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">kegg_abundance</span>, <span class="fl">1</span>, <span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">)</span></span>
+<span><span class="va">p_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_pca.html">pathway_pca</a></span><span class="op">(</span></span>
+<span>  <span class="va">kegg_abundance</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.finite</a></span><span class="op">(</span><span class="va">pathway_variance</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">pathway_variance</span> <span class="op">&gt;</span> <span class="fl">0</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>,</span>
+<span>  <span class="va">meta</span>, group <span class="op">=</span> <span class="st">"group"</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#B4CBE0"</span>, <span class="st">"#F5BB7C"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>See the <a href="demonstration-standard.html#pca-at-kegg-pathway-level">Standard
+PCA</a> for the resulting study view. Use the complete feature matrix
+for an overview, or a defined subset when you want to explore specific
+functions.</p>
 </div>
 <div class="section level2">
-<h2 id="pca-summarizes-the-overall-profiles">PCA summarizes the overall profiles<a class="anchor" aria-label="anchor" href="#pca-summarizes-the-overall-profiles"></a>
+<h2 id="heatmap-feature-selection-and-labels">Heatmap feature selection and labels<a class="anchor" aria-label="anchor" href="#heatmap-feature-selection-and-labels"></a>
 </h2>
+<p>Choose the displayed features explicitly. <code>kegg_features</code>
+is the list used in the Standard study; the following example narrows it
+to ten pathways. Rows are standardized within the plotting function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_pca.html">pathway_pca</a></span><span class="op">(</span></span>
-<span>  <span class="va">abundance</span>, <span class="va">meta_demo</span>, group <span class="op">=</span> <span class="st">"Environment"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">p_pca</span></span>
-<span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"community_pca.png"</span><span class="op">)</span>, <span class="va">p_pca</span>,</span>
-<span>  width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">7</span>, dpi <span class="op">=</span> <span class="fl">180</span>, bg <span class="op">=</span> <span class="st">"white"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="../examples/community/community-pca.png" alt="Figure 1. PCA of the bundled MetaCyc functional profiles"><div class="figcaption">Figure 1. PCA of the bundled MetaCyc functional
-profiles</div>
-</div>
-<p>PC1 explains 39.0% of the variation and PC2 explains 13.4%, together
-accounting for 52.4%. Each point is a sample; nearby points have more
-similar profiles in this projection. The marginal density plots show the
-distribution of each group along the two components.</p>
-<p>The groups overlap substantially. Pro-inflammatory samples span a
-wider range along PC1, while several Pro-survival samples extend toward
-higher PC2 values. Look for the extent of overlap as well as the
-distance between group centres. These axes summarize the scaled pathway
-abundances, rather than testing a group difference. An apparent
-separation should lead to a statistical question, not be treated as a
-significant result on its own.</p>
-</div>
-<div class="section level2">
-<h2 id="a-heatmap-brings-the-individual-pathways-into-view">A heatmap brings the individual pathways into view<a class="anchor" aria-label="anchor" href="#a-heatmap-brings-the-individual-pathways-into-view"></a>
-</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">pathway_variance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">abundance</span>, <span class="fl">1</span>, <span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">)</span></span>
-<span><span class="va">shown_heatmap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="va">pathway_variance</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>, <span class="fl">8L</span></span>
-<span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">selected_pathways</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">kegg_features</span>, <span class="fl">10L</span><span class="op">)</span></span>
 <span><span class="va">p_heatmap</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_heatmap.html">pathway_heatmap</a></span><span class="op">(</span></span>
-<span>  <span class="va">abundance</span><span class="op">[</span><span class="va">shown_heatmap</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">meta_demo</span>,</span>
-<span>  group <span class="op">=</span> <span class="st">"Environment"</span>, font_size <span class="op">=</span> <span class="fl">9</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">p_heatmap</span></span>
-<span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"community_heatmap.png"</span><span class="op">)</span>, <span class="va">p_heatmap</span>,</span>
-<span>  width <span class="op">=</span> <span class="fl">11</span>, height <span class="op">=</span> <span class="fl">5.5</span>, dpi <span class="op">=</span> <span class="fl">180</span>, bg <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="va">kegg_abundance</span><span class="op">[</span><span class="va">selected_pathways</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">meta</span>,</span>
+<span>  group <span class="op">=</span> <span class="st">"group"</span>, colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#B4CBE0"</span>, <span class="st">"#F5BB7C"</span><span class="op">)</span>,</span>
+<span>  font_size <span class="op">=</span> <span class="fl">9</span>, show_row_names <span class="op">=</span> <span class="cn">TRUE</span>, show_legend <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="../examples/community/community-heatmap.png" alt="Figure 2. Eight variable MetaCyc pathways across the example samples"><div class="figcaption">Figure 2. Eight variable MetaCyc pathways across
-the example samples</div>
-</div>
-<p>Each column is a sample and each row is a pathway. Samples are
-arranged by group. Several rows share similar sample-wise bands, with
-both high and low z-scores within each group, rather than a uniform
-split between the two groups. The eight rows were selected for their
-abundance variance, not their p-values, so this selection does not
-establish differential abundance.</p>
-<p>MicroFun standardizes each row to a z-score. Orange indicates a value
-above that pathway’s mean across the displayed samples; blue indicates a
-value below it. Compare colours within a row to see whether a pattern is
-shared across samples or concentrated in a few. A warmer row is not
-necessarily a more abundant pathway than another row.</p>
+<p>See the <a href="demonstration-standard.html#heatmap-of-selected-kegg-pathways">Standard
+heatmaps</a> for the full displayed selection and interpretation.
+Smaller selections make individual labels easier to read.</p>
 </div>
 <div class="section level2">
-<h2 id="error-bars-connect-abundance-summaries-with-supplied-test-results">Error bars connect abundance summaries with supplied test
-results<a class="anchor" aria-label="anchor" href="#error-bars-connect-abundance-summaries-with-supplied-test-results"></a>
+<h2 id="error-bar-selection-and-annotations">Error-bar selection and annotations<a class="anchor" aria-label="anchor" href="#error-bar-selection-and-annotations"></a>
+</h2>
+<p>Use the study’s <code>daa_kegg</code> result table.
+<code>select</code> controls the displayed IDs and
+<code>p_values_threshold</code> controls the significance filter. Keep
+the full abundance matrix as input so sample normalization precedes
+feature selection. As in Standard, leave
+<code>p_value_bar = FALSE</code> and use the exported CSV tables for
+exact adjusted p-values.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span></span>
+<span>  <span class="va">meta</span><span class="op">$</span><span class="va">group</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">kegg_abundance</span><span class="op">)</span>, <span class="va">meta</span><span class="op">$</span><span class="va">sample_name</span><span class="op">)</span><span class="op">]</span>,</span>
+<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">p_errorbar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_errorbar.html">pathway_errorbar</a></span><span class="op">(</span></span>
+<span>  abundance <span class="op">=</span> <span class="va">kegg_abundance</span>, daa_results_df <span class="op">=</span> <span class="va">daa_kegg</span>,</span>
+<span>  Group <span class="op">=</span> <span class="va">sample_groups</span>, select <span class="op">=</span> <span class="va">selected_pathways</span>,</span>
+<span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>, order <span class="op">=</span> <span class="st">"p_values"</span>,</span>
+<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>, x_lab <span class="op">=</span> <span class="st">"pathway_name"</span>, p_value_bar <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Use <code>x_lab = "description"</code> with the annotated KO results
+and <code>x_lab = "pathway_name"</code> with KEGG pathway results. See
+<a href="demonstration-standard.html#error-bar-plot-at-kegg-pathway-level">Standard
+error bars</a> for the study output.</p>
+</div>
+<div class="section level2">
+<h2 id="export-a-changed-figure">Export a changed figure<a class="anchor" aria-label="anchor" href="#export-a-changed-figure"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"kegg_abundance"</span>, package <span class="op">=</span> <span class="st">"MicroFun"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"daa_annotated_results_df"</span>, package <span class="op">=</span> <span class="st">"MicroFun"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">sample_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">kegg_abundance</span><span class="op">)</span>, <span class="va">meta_demo</span><span class="op">$</span><span class="va">sample_name</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">anyNA</a></span><span class="op">(</span><span class="va">sample_index</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">sample_groups</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span></span>
-<span>  <span class="va">meta_demo</span><span class="op">$</span><span class="va">Environment</span><span class="op">[</span><span class="va">sample_index</span><span class="op">]</span>,</span>
-<span>  levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pro-inflammatory"</span>, <span class="st">"Pro-survival"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># The bundled results contain one LinDA comparison.</span></span>
-<span><span class="va">daa_demo</span> <span class="op">&lt;-</span> <span class="va">daa_annotated_results_df</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">daa_demo</span><span class="op">$</span><span class="va">method</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1L</span><span class="op">)</span></span>
-<span><span class="va">eligible</span> <span class="op">&lt;-</span> <span class="va">daa_demo</span><span class="op">[</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.finite</a></span><span class="op">(</span><span class="va">daa_demo</span><span class="op">$</span><span class="va">p_adjust</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">daa_demo</span><span class="op">$</span><span class="va">p_adjust</span> <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="op">&amp;</span></span>
-<span>    <span class="va">daa_demo</span><span class="op">$</span><span class="va">feature</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">kegg_abundance</span><span class="op">)</span>,</span>
-<span>  , drop <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">]</span></span>
-<span><span class="va">shown_errorbar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span></span>
-<span>  <span class="va">eligible</span><span class="op">$</span><span class="va">feature</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">eligible</span><span class="op">$</span><span class="va">p_adjust</span><span class="op">)</span><span class="op">]</span>, <span class="fl">6L</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">shown_errorbar</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0L</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">p_errorbar</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_errorbar.html">pathway_errorbar</a></span><span class="op">(</span></span>
-<span>  abundance <span class="op">=</span> <span class="va">kegg_abundance</span>,</span>
-<span>  daa_results_df <span class="op">=</span> <span class="va">daa_demo</span>,</span>
-<span>  Group <span class="op">=</span> <span class="va">sample_groups</span>,</span>
-<span>  select <span class="op">=</span> <span class="va">shown_errorbar</span>,</span>
-<span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  order <span class="op">=</span> <span class="st">"p_values"</span>,</span>
-<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  x_lab <span class="op">=</span> <span class="st">"pathway_name"</span>,</span>
-<span>  p_value_bar <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">p_errorbar</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">p_errorbar</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
-<span>  axis.title.x <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span></span>
-<span>    margin <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">p_errorbar</span></span>
-<span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"community_errorbar.png"</span><span class="op">)</span>, <span class="va">p_errorbar</span>,</span>
-<span>  width <span class="op">=</span> <span class="fl">13</span>, height <span class="op">=</span> <span class="fl">6.5</span>, dpi <span class="op">=</span> <span class="fl">180</span>, bg <span class="op">=</span> <span class="st">"white"</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="../examples/community/community-errorbar.png" alt="Figure 3. KEGG pathway abundance summaries with bundled LinDA results"><div class="figcaption">Figure 3. KEGG pathway abundance summaries with
-bundled LinDA results</div>
-</div>
-<p>This example uses the compact layout without a pathway-class side
-panel. The six displayed pathways have the smallest adjusted p-values
-among eligible bundled results. This example reuses the supplied LinDA
-estimates and annotations; it does not fit a new differential abundance
-analysis. The annotations are KEGG pathway names attached to predicted
-functional profiles.</p>
-<p>All six selected pathways have larger group means in
-Pro-inflammatory, while their absolute abundances and spreads vary. The
-abundance bars show group mean relative abundance, calculated using the
-full KEGG table before selecting pathways. The whiskers extend from zero
-to the group mean plus one standard deviation in this function. The
-upper ends reflect within-group variation and are not confidence
-intervals.</p>
-<p>The ratio panel shows the descriptive log2 ratio of Pro-inflammatory
-to Pro-survival group means. A positive value therefore indicates a
-larger mean in Pro-inflammatory, and a negative value a larger mean in
-Pro-survival. Read that ratio alongside the abundance bars and the
-supplied BH-adjusted p-values. It is a different quantity from a
-MaAsLin2 AST coefficient.</p>
-</div>
-<div class="section level2">
-<h2 id="continue-with-your-own-data">Continue with your own data<a class="anchor" aria-label="anchor" href="#continue-with-your-own-data"></a>
-</h2>
-<p>Replace the abundance matrices and metadata with matching inputs from
-your study. For the error-bar plot, also replace the supplied results
-with a single method and contrast fitted to your own samples. The <a href="standard-pipeline.html">standard PICRUSt2 workflow</a> explains
-data preparation and analysis; the <a href="demonstration-standard.html">standard demonstration</a> presents
-the STS/LTS study application.</p>
-<p>If you have functional profiles from more than one method,
-<code><a href="../reference/compare_metagenome_results.html">compare_metagenome_results()</a></code> can compare feature-aligned
-and sample-aligned matrices. See the <a href="../reference/compare_metagenome_results.html">function
-reference</a> for inputs and returned correlation objects.</p>
-<p>Use <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggplot2::ggsave()</a></code> for these ggplots. See <a href="plot-export.html">the export guide</a> for other formats.</p>
+<code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"selected_pathways_heatmap.pdf"</span><span class="op">)</span>, <span class="va">p_heatmap</span>,</span>
+<span>                width <span class="op">=</span> <span class="fl">11</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<p>Use <a href="plot-export.html">Export and redraw</a> for Sankey and
+Chord formats, and the <a href="../reference/index.html">function
+reference</a> for complete argument lists.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -296,11 +212,11 @@ reference</a> for inputs and returned correlation objects.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.</p>
+  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

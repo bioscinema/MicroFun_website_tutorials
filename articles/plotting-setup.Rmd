@@ -1,56 +1,40 @@
 ---
-title: "Example inputs and plotting setup"
+title: "Using the visualization guides"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Example inputs and plotting setup}
+  %\VignetteIndexEntry{Using the visualization guides}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-Here we load the same objects for every plotting tutorial, so you can change the visual presentation without repeatedly preparing the inputs.
 
-The toy data are deliberately small. They help you see how an ASV-level contribution table, taxonomy, a tree and a result list fit together. The [Demonstration Study (Stratified)](demonstration-stratified.html) shows the richer example-study figures; its displayed STS/LTS comparisons are distinct from the Control/Treatment toy inputs used here.
+## Learn through the demonstration studies
 
-## Download the example data
+Start with [Study data and downloads](study-data.html), then follow [Standard](demonstration-standard.html) for community profiles or [Stratified](demonstration-stratified.html) for taxon and function contributions. These pages contain the complete input preparation, analysis, plotting code, figures and interpretation.
 
-[Download the MicroFun example data](../downloads/MicroFun_example_data.zip) and extract the `MicroFun_example_data` folder into your R working directory.
+## Look up plotting choices here
 
-This synthetic toy dataset contains six samples, three genera and three KOs, together with taxonomy, an ASV tree and illustrative differential result lists. Effects and p-values are supplied for plotting practice; they were not fitted to the synthetic counts and are not biological findings.
+The visualization guides are a reference for changing a figure after running the corresponding study. Use them to choose a plot, adjust parameters, filter taxa or functions, and save HTML or PDF. They reuse the objects created by the studies and require no separate dataset or initialization workflow.
 
-## Shared setup
+<div class="microfun-table-caption">Table 1. Choose a visualization guide</div>
 
-Run once per R session before the plotting tutorials.
+| Task | Guide | Starting point |
+|---|---|---|
+| Change PCA colours, heatmap features or error-bar selections | [Community-level visualizations](sample-level-plots.html) | Complete the Standard analysis. |
+| Adjust taxon-to-function diagrams | [Taxon-to-function visualizations](taxon-to-function.html) | Fit the taxon-centered Stratified analysis. |
+| Select and plot function contributors | [Function-to-taxon visualizations](function-to-taxon.html) | Run the selected-KO function-centered analysis. |
+| Save an interactive preview or a focused static figure | [Export and redraw](plot-export.html) | Use the plot objects from either study or guide. |
+| Resolve an input or rendering issue | [Troubleshooting](troubleshooting.html) | Inspect the relevant analysis or plotting step. |
 
-```r
-library(MicroFun)
+## Reuse the study objects
 
-demo_dir <- "MicroFun_example_data"
-stopifnot(file.exists(file.path(demo_dir, "synthetic_inputs.RData")))
-demo <- new.env()
-load(file.path(demo_dir, "synthetic_inputs.RData"), envir = demo)
-strat_path <- file.path(demo_dir, "synthetic_KO_contrib.tsv")
-ps <- demo$physeq
-result_taxa <- demo$taxa_result
-result_fun <- demo$function_result
-group_col <- "group"
-reference <- "Control"
-target <- "Treatment"
-out <- "MicroFun_plot_examples"
-dir.create(out, recursive = TRUE, showWarnings = FALSE)
-```
+Keep the relevant study session open while consulting a guide. The studies also save their fitted results as RDS files so you can return to them later.
 
-The taxon-oriented toy list is explicitly KO-level. In a fitted study with `direction = "taxa", pathway = "KO"`, MicroFun aggregates mapped KOs to KEGG pathways before fitting. Keep that distinction in mind when replacing the toy data with study results.
+<div class="microfun-table-caption">Table 2. Objects used by the guides</div>
 
-## What have we loaded?
+| From the study | Objects used in the guide |
+|---|---|
+| Standard | `ko_abundance`, `kegg_abundance`, `meta`, `daa_ko`, `daa_kegg`, `kegg_features`, `reference`, `target`, `out`. |
+| Stratified taxon-centered route | `ps`, `strat_path`, `study_tree`, `result_taxa`, `result_taxa_box`, `rank`, `group_col`, `reference`, `target`, `out`. |
+| Stratified function-centered route | The same sample and grouping objects, plus `fun_strat_path`, `result_fun`, `result_fun_box`, `ko_candidates` and the selected function list. |
 
-`strat_path` points to the long contribution table. `ps` keeps the ASV taxonomy and sample metadata together. `result_taxa` is a list named by taxon, while `result_fun` is named by function. The plotting functions use these names to decide what each panel or diagram represents.
-
-Before selecting a plot, inspect `names(result_taxa)` or `names(result_fun)`. Using a name, such as a genus or KO ID, is clearer than selecting `[[1]]`, whose meaning can change when the list is reordered. The `reference` and `target` variables also make the intended comparison explicit.
-
-For your own study, replace both the contribution inputs and the fitted result lists. Keeping a toy result list while changing only the raw data would create a figure whose statistics and contributions describe different analyses.
-
-## Next steps
-
-- [Taxon-to-function plots](taxon-to-function.html)
-- [Function-to-taxon plots](function-to-taxon.html)
-- [Stratified demonstration figures](demonstration-stratified.html)
-- [Use your own study](stratified-pipeline.html)
+All input paths are resolved from the extracted `MicroFun_demonstration_data` folder. The [download page](study-data.html#files-after-extraction) lists the archive contents and exact filenames; fitted result and figure output paths are defined in each study.

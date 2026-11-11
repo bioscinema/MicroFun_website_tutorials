@@ -35,26 +35,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-get-started">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting started</a></li>
     <li><a class="dropdown-item" href="../articles/installation.html">Installation and dependencies</a></li>
-    <li><a class="dropdown-item" href="../articles/standard-pipeline.html">Standard PICRUSt2 workflow</a></li>
-    <li><a class="dropdown-item" href="../articles/stratified-pipeline.html">Stratified PICRUSt2 workflow</a></li>
-  </ul>
-</li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
-<li><a class="dropdown-item" href="../articles/plotting-setup.html">Plotting setup</a></li>
-    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
-    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
-    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
-    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
-    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
+    <li><a class="dropdown-item" href="../articles/analysis-options.html">Differential analysis options</a></li>
+    <li><a class="dropdown-item" href="../articles/prepare-your-data.html">Prepare your own data</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-demonstration-study" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Demonstration Study</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-demonstration-study">
-<li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+<li><a class="dropdown-item" href="../articles/study-data.html">Study data and downloads</a></li>
     <li><a class="dropdown-item" href="../articles/demonstration-standard.html">Demonstration Study (Standard)</a></li>
+    <li><a class="dropdown-item" href="../articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+  </ul>
+</li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
+<li><a class="dropdown-item" href="../articles/plotting-setup.html">Guide overview</a></li>
+    <li><a class="dropdown-item" href="../articles/sample-level-plots.html">Community-level visualizations</a></li>
+    <li><a class="dropdown-item" href="../articles/taxon-to-function.html">Taxon-to-function plots</a></li>
+    <li><a class="dropdown-item" href="../articles/function-to-taxon.html">Function-to-taxon plots</a></li>
+    <li><a class="dropdown-item" href="../articles/plot-export.html">Export and redraw</a></li>
+    <li><a class="dropdown-item" href="../articles/troubleshooting.html">Troubleshooting</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -64,7 +65,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun_0.1.0" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -87,119 +88,113 @@
 
     
     
-<p>A figure needs to remain useful after you close the plotting session.
-Choose the format according to what you want to do next. Use PDF or SVG
-for a scalable static figure, HTML for exploration, and RDS when you
-want to return to the same object and change its appearance.</p>
-<p>Saving a plot and saving an analysis are different tasks. Keep your
-fitted result lists, input data and contrast settings as well as the
-exported picture. A PNG is convenient to share, but it cannot tell you
-all the choices that produced it.</p>
-<div class="section level2">
-<h2 id="current-export-interfaces">Current export interfaces<a class="anchor" aria-label="anchor" href="#current-export-interfaces"></a>
-</h2>
+<p>Save Sankey and Chord diagrams as HTML first. HTML is suitable for
+inspecting dense connections and deciding which taxa or functions to
+keep in a static figure. Create the objects using the <a href="taxon-to-function.html">taxon-to-function</a> or <a href="function-to-taxon.html">function-to-taxon</a> guide.</p>
 <div class="microfun-table-caption">
 Table 1. Figure export formats
 </div>
 <table class="table">
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col width="33%">
+<col width="33%">
+<col width="33%">
 </colgroup>
 <thead><tr class="header">
-<th>Figure object</th>
-<th>Saving interface</th>
+<th>Plot type</th>
+<th>Preview and exploration</th>
+<th>Static output</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>PCA, heatmap, error-bar, contribution boxplot, dendrogram and effect
-ggplots</td>
+<td>PCA, heatmap, error bars, boxplots, dendrograms and signed-effect
+plots</td>
+<td>Display the ggplot in R</td>
 <td><code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggplot2::ggsave()</a></code></td>
 </tr>
 <tr class="even">
-<td>Taxonomy/phylogeny Sankey</td>
+<td>Sankey with taxonomy or phylogeny</td>
 <td>
-<code><a href="../reference/save_sankey.html">save_sankey()</a></code>; HTML, SVG, PDF, PNG and RDS</td>
+<code><a href="../reference/save_sankey.html">save_sankey()</a></code> to HTML</td>
+<td>SVG, PNG or PDF with <code><a href="../reference/save_sankey.html">save_sankey()</a></code>
+</td>
 </tr>
 <tr class="odd">
-<td>Ordinary Sankey (<code>tree_mode = "none"</code>)</td>
-<td>
-<code><a href="../reference/save_sankey.html">save_sankey()</a></code>; HTML or RDS</td>
+<td>Adjustable Sankey without a tree</td>
+<td>HTML is required for dragging nodes</td>
+<td>Keep HTML or save the reusable object as RDS</td>
 </tr>
 <tr class="even">
 <td>Chord</td>
 <td>
-<code><a href="../reference/save_chord.html">save_chord()</a></code>; HTML, SVG, PDF, PNG and RDS</td>
+<code><a href="../reference/save_chord.html">save_chord()</a></code> to HTML</td>
+<td>Filter taxa/functions in R, regenerate the Chord and save a focused
+PDF</td>
 </tr>
 </tbody>
 </table>
-<p>Use <code>ggsave()</code> for the returned ggplots, and the dedicated
-<code><a href="../reference/save_sankey.html">save_sankey()</a></code> or <code><a href="../reference/save_chord.html">save_chord()</a></code> functions for
-those diagram objects.</p>
+<div class="section level2">
+<h2 id="sankey-html-with-a-side-tree">Sankey HTML with a side tree<a class="anchor" aria-label="anchor" href="#sankey-html-with-a-side-tree"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_taxonomy.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Both taxonomy and phylogeny Sankeys can be saved as HTML. Their side
+trees use fixed layouts; HTML preserves the supported hover and link
+inspection behaviour. For a static copy, use
+<code>save_sankey(p_tax_taxonomy, file.path(out, "sankey_taxonomy.pdf"))</code>.
+Tree PNG/PDF export requires <code>rsvg</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="sankey">Sankey<a class="anchor" aria-label="anchor" href="#sankey"></a>
+<h2 id="adjustable-sankey-html">Adjustable Sankey HTML<a class="anchor" aria-label="anchor" href="#adjustable-sankey-html"></a>
 </h2>
-<p>Tree-enabled Sankey diagrams keep a fixed layout across their HTML
-and static exports. This is useful when you want to explore a
-relationship interactively and then present the same geometry in a
-report. For a very tall diagram, decide whether one fitted page or
-continuation pages will make the labels easier to read.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_sankey</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.html"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_sankey</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.svg"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_sankey</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.pdf"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_sankey</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.png"</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">1800</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_sankey</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.rds"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">p_redrawn</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/redraw_sankey.html">redraw_sankey</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey.rds"</span><span class="op">)</span>, tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_redrawn</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_redrawn.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Tree PNG/PDF export requires <code>rsvg</code>. For very large tree
-diagrams, <code>pdf_mode = "tiles"</code> writes vertical continuation
-pages and requires <code>qpdf</code>; labels or ribbons can cross page
-boundaries. RDS keeps the original result and tree for redrawing without
-recomputing the statistical analysis.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_plain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span><span class="va">result_taxa</span>, tree_mode <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_plain</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_no_tree.html"</span><span class="op">)</span>, selfcontained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p>Keep the adjacent dependency folder with ordinary HTML exports when
-<code>selfcontained = FALSE</code>. A self-contained ordinary HTML
-export requires Pandoc. Static SVG/PDF/PNG exports require a tree
-mode.</p>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_plain</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"sankey_adjustable.html"</span><span class="op">)</span>,</span>
+<span>            selfcontained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p>Open the HTML in a browser and drag nodes up or down. The links
+follow their new positions. Save HTML for this version because a static
+PDF cannot preserve dragging. Keep the adjacent <code>_files</code>
+folder with this HTML file. <code>selfcontained = FALSE</code> avoids a
+Pandoc requirement. Browser adjustments do not automatically update the
+saved R object or persist after reloading the HTML.</p>
 </div>
 <div class="section level2">
-<h2 id="chord">Chord<a class="anchor" aria-label="anchor" href="#chord"></a>
+<h2 id="preview-a-chord-before-exporting-pdf">Preview a Chord before exporting PDF<a class="anchor" aria-label="anchor" href="#preview-a-chord-before-exporting-pdf"></a>
 </h2>
-<p>A Chord can contain more labels than comfortably fit around its
-circle. Export the label mapping and legends with the graphic so that
-compact labels remain interpretable. The interactive HTML is useful for
-finding a sector; the static PDF is useful when you want a figure and
-its complete legend in a document.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord.html"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord.pdf"</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">12</span>, height <span class="op">=</span> <span class="fl">11</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord.png"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord.rds"</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># The explicit extension is included along with the additional formats.</span></span>
-<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord.html"</span><span class="op">)</span>, formats <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pdf"</span>, <span class="st">"png"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Chord HTML includes zoom controls and a searchable sector legend.
-Selecting a legend entry highlights its sector; select it again or press
-Escape to clear. Labels that do not fit can be omitted from the graphic.
-The mapping CSV retains all labels and their <code>visible</code>
-status. Static legends may continue on separate PDF pages or companion
-files.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord_overview.html"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_tax_chord</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord_overview.rds"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>A full Chord can contain many sectors and ribbons. Start with HTML to
+inspect the overview. Large full PDFs can be slow to load. For a
+taxon-centered figure, choose the taxa in R and regenerate a focused
+figure for PDF export. For a function-centered figure, choose the
+functions.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">taxa_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">p_tax_chord</span><span class="op">$</span><span class="va">links</span><span class="op">$</span><span class="va">taxon</span><span class="op">)</span>, <span class="fl">3L</span><span class="op">)</span></span>
+<span><span class="va">p_focus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_chord.html">tax2fun_chord</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_taxa</span>, <span class="va">strat_path</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
+<span>  contrast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span>,</span>
+<span>  taxa_list <span class="op">=</span> <span class="va">taxa_of_interest</span>, max_functions_per_taxon <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  draw <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_focus</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord_focus.html"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_chord.html">save_chord</a></span><span class="op">(</span><span class="va">p_focus</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"chord_focus.pdf"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>For function-to-taxon Chords, first filter the fitted result list and
+pass explicit function IDs to <code><a href="../reference/fun2tax_chord.html">fun2tax_chord()</a></code>. The <a href="function-to-taxon.html#select-functions-before-plotting">function-to-taxon
+guide</a> shows that selection. HTML inspection helps you choose a
+subset; apply that choice in R before exporting the PDF.</p>
 </div>
 <div class="section level2">
-<h2 id="ggplot-figures">ggplot figures<a class="anchor" aria-label="anchor" href="#ggplot-figures"></a>
+<h2 id="save-ggplots">Save ggplots<a class="anchor" aria-label="anchor" href="#save-ggplots"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"boxplot.pdf"</span><span class="op">)</span>, <span class="va">p_tax_box</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
-<p>Create the objects first using the <a href="taxon-to-function.html">taxon-to-function</a> or <a href="function-to-taxon.html">function-to-taxon</a> plotting
-examples.</p>
+<p>Keep the fitted result RDS files, input paths, selected functions,
+taxonomic rank and group contrast with the figures. These let you return
+to the same analysis and redraw a different selection later.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -208,11 +203,11 @@ examples.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.</p>
+  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

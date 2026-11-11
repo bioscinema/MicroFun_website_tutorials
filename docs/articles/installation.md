@@ -12,8 +12,11 @@ Table 1. Software requirements
 | vegan | **2.7.2** (CRAN package spelling **2.7-2**) | **Fixed version** |
 | Other CRAN/Bioconductor dependencies | Latest compatible release | Not pinned |
 
-The only dependency with an exact-version requirement is vegan. The
-[CRAN archive](https://cran.r-project.org/src/contrib/Archive/vegan/)
+The only dependency with an exact-version requirement is vegan. This pin
+matters for the stratified workflow, where some genera have zero
+contributions in individual samples. Use a fresh R session after
+installing it. The [CRAN
+archive](https://cran.r-project.org/src/contrib/Archive/vegan/)
 distributes the required release as `vegan_2.7-2.tar.gz`; R treats
 `2.7.2` and `2.7-2` as the same package version. Record the exact
 versions resolved in your own analysis session with
@@ -29,9 +32,11 @@ installation errors.
 
 ## Install the source package
 
-Extract the source ZIP into a folder containing `DESCRIPTION`,
-`NAMESPACE` and `R/`. Replace `path/to/MicroFun` below with that folder.
-Restart R before replacing a loaded package.
+Download the source ZIP from the [MicroFun
+repository](https://github.com/bioscinema/MicroFun_0.1.0). Extract it
+into a folder containing `DESCRIPTION`, `NAMESPACE` and `R/`. Replace
+`path/to/MicroFun` below with that folder. Restart R before replacing a
+loaded package.
 
 ``` r
 source_dir <- "path/to/MicroFun"
@@ -42,7 +47,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 imports <- read.dcf(file.path(source_dir, "DESCRIPTION"), fields = "Imports")[1, 1]
 dependencies <- trimws(strsplit(imports, ",", fixed = TRUE)[[1]])
 dependencies <- sub("[[:space:]]*\\(.*$", "", dependencies)
-dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "ComplexHeatmap"))
+dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "ComplexHeatmap", "svglite"))
 BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
 install.packages(source_dir, repos = NULL, type = "source")
 
@@ -54,7 +59,11 @@ library(MicroFun)
 ```
 
 If vegan was already loaded, restart R after changing its version before
-running an analysis.
+running an analysis. Installing this archived release from source
+requires a working compiler toolchain. On macOS, use the matching
+Fortran compiler from the [R for macOS tools
+page](https://mac.r-project.org/tools/); on Windows, use the Rtools
+version for your R release.
 
 ## R packages used by MicroFun
 
@@ -110,6 +119,7 @@ Table 3. Optional and documentation packages
 | Package          | Version policy                        |
 |------------------|---------------------------------------|
 | `rsvg`           | Latest compatible release; not pinned |
+| `svglite`        | Latest compatible release; not pinned |
 | `qpdf`           | Latest compatible release; not pinned |
 | `Biobase`        | Latest compatible release; not pinned |
 | `KEGGREST`       | Latest compatible release; not pinned |
@@ -126,8 +136,12 @@ Table 3. Optional and documentation packages
 
 `rsvg` enables tree Sankey PNG/PDF export; `qpdf` enables
 continuation-page PDF export; `ComplexHeatmap` is used for metagenome
-comparison heatmaps. Chord SVG/HTML export uses the graphics device
-available on your platform.
+comparison heatmaps. `svglite` is used by
+[`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) for
+the Standard SVG figures. Chord SVG/HTML uses R’s Cairo SVG device. On
+macOS, if export reports a missing `/opt/X11` library or a failed Cairo
+DLL, install [XQuartz](https://www.xquartz.org/) and restart R before
+exporting.
 
 ## Local KO–KEGG mapping and online annotation
 
@@ -141,9 +155,10 @@ Table 4. Local reference data and KEGG network access
 | Step | Data source and behaviour | KEGG connection required |
 |----|----|----|
 | KO-to-KEGG pathway abundance conversion | [`ko2kegg_abundance()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko2kegg_abundance.md) uses the bundled `ko_to_kegg_reference` by default, or a local mapping supplied through `kegg_map`. | No |
-| Local KO, EC or MetaCyc descriptions | `pathway_annotation(..., ko_to_kegg = FALSE)` uses the corresponding bundled reference files. | No |
+| Local KO descriptions | Standard reads `KO` and `KoDescription` from the bundled `KO_reference.RData` dictionary and matches the KO IDs. | No |
+| Local EC or MetaCyc descriptions | `pathway_annotation(..., ko_to_kegg = FALSE)` uses the corresponding bundled reference files. | No |
 | Online KEGG pathway annotation | `pathway_annotation(..., ko_to_kegg = TRUE)` uses `KEGGREST` to query KEGG for names and classification information. Entries already queried may be reused from the current R session’s cache. | Yes |
-| Bundled community visualization examples | The PCA, heatmap and error-bar examples use packaged abundance tables, metadata and supplied annotated results. | No |
+| Plotting fitted study results | PCA, heatmap and error-bar calls reuse the matrices and annotation tables created in Standard. | No additional connection after annotation |
 
 The bundled KO–KEGG mapping is a local snapshot, not a live connection
 to KEGG. It does not update automatically when online annotations are
@@ -169,11 +184,11 @@ KEGG pathway IDs also uses online pathway annotation. The
 function-centered KO workflow keeps the KO identifiers and does not
 invoke this KEGG pathway annotation step.
 
-Once the software is installed, the local-reference steps and bundled
-community plotting examples can run without contacting KEGG. Initial
-software installation may still require internet access. An annotation
-connection failure is a reason to check network access or KEGG
-availability, rather than look for a missing API key.
+Once the software is installed, local-reference steps and plotting saved
+annotated results can run without contacting KEGG. Initial software
+installation may still require internet access. An annotation connection
+failure is a reason to check network access or KEGG availability, rather
+than look for a missing API key.
 
 ## Before you move on
 
@@ -192,7 +207,7 @@ sessionInfo()
 writeLines(capture.output(sessionInfo()), "MicroFun_sessionInfo.txt")
 ```
 
-Continue with [example data and
-setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md),
+Continue with [Study data and
+downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md),
 or [prepare your own
-study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md).
+study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.md).

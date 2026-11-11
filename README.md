@@ -7,7 +7,7 @@
      
 This repository contains the official documentation website and tutorials for **MicroFun**, an R package for statistical analysis and visualization of taxon-resolved functional contributions in microbiome research.
 
-- **R package:** [bioscinema/MicroFun](https://github.com/bioscinema/MicroFun)
+- **R package:** [bioscinema/MicroFun](https://github.com/bioscinema/MicroFun_0.1.0)
 - **Website:** [bioscinema.github.io/MicroFun_website_tutorials](https://bioscinema.github.io/MicroFun_website_tutorials/)
 
 The website is maintained separately from the R package, allowing documentation, tutorials, and examples to be updated independently of package development.
@@ -40,4 +40,27 @@ The website is built using [pkgdown](https://pkgdown.r-lib.org/).
 
 ## Software and Citation
 
-For the MicroFun source code, software updates, issue reporting, and citation information, please visit the [main MicroFun repository](https://github.com/bioscinema/MicroFun).
+For the MicroFun source code, software updates, issue reporting, and citation information, please visit the [main MicroFun repository](https://github.com/bioscinema/MicroFun_0.1.0).
+
+## Build tools and study downloads
+
+The site is currently built with pkgdown 2.2.1. Install or update pkgdown with
+`install.packages("pkgdown")` before rebuilding. A project-local installation in
+`.build/library/` is used when available; that directory is not committed.
+
+The processed public study downloads are stored in `assets/downloads/study/` and
+copied to `docs/downloads/study/` by the build. Each download is below GitHub's
+100 MiB single-file limit. KO contributions are transferred in two parts and
+reassembled with the included R script. The private original-to-demo sample-ID
+lookup is not included in the website or the download archives.
+
+## Learning flow
+
+Start with Study data and downloads, then follow the Standard and Stratified
+demonstration studies. Dataset provenance, cohort descriptions and download
+instructions are maintained on the data page. Visualization guides are a plotting
+reference that reuses the study objects; they have no independent example dataset
+or setup workflow.
+
+PICRUSt2 input generation and checks are consolidated in `articles/prepare-your-data.Rmd`.
+The separate workflow pages and link-only demonstration overview have been retired.

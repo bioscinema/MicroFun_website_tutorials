@@ -22,21 +22,14 @@ These are complementary analyses. They use different feature tables and collecti
 
 ## Install and prepare inputs
 
-Follow [installation and dependency versions](installation.html), then [download the example data and run the setup](plotting-setup.html). The installation page also explains the dependency policy and how to record your analysis environment.
+Follow [installation and dependency versions](installation.html), then [Study data and downloads](study-data.html). The installation page also explains the dependency policy and how to record your analysis environment.
 
-## Choose a workflow
+## Follow the demonstration studies
 
-<div class="microfun-table-caption">Table 1. MicroFun workflows</div>
+Start with [Study data and downloads](study-data.html), then follow [Standard](demonstration-standard.html) for community-level profiles and [Stratified](demonstration-stratified.html) for contributor analysis. Each study contains the preparation, analysis, plotting code and results in one place.
 
-| Input or task | Tutorial |
-|---|---|
-| Community-level functional profiles | [Standard PICRUSt2 workflow](standard-pipeline.html) |
-| Taxon-resolved contributions | [Stratified PICRUSt2 workflow](stratified-pipeline.html) |
-| Plots organized by taxon | [Taxon-to-function plots](taxon-to-function.html) |
-| Plots organized by function | [Function-to-taxon plots](function-to-taxon.html) |
-| Saving and redrawing figures | [Export guide](plot-export.html) |
+## Adapt the workflow
 
-## Demonstration studies
+Use [Prepare your own data](prepare-your-data.html) for PICRUSt2 output formats and input checks. See [Differential analysis options](analysis-options.html) when choosing a statistical method.
 
-- [Demonstration Study (Stratified)](demonstration-stratified.html) follows both analysis directions through code and study figures.
-- [Demonstration Study (Standard)](demonstration-standard.html) presents community-level KO and KEGG results.
+After fitting, use [Visualization guides](plotting-setup.html) to look up plot controls, selections and export choices.

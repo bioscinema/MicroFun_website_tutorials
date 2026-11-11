@@ -75,6 +75,10 @@ By bringing data preparation, statistical testing, annotation and
 plotting into one workflow, MicroFun helps users explore functional
 differences together with their microbial contributors.
 
+[![MicroFun graphical abstract connecting microbial communities,
+predicted functions and
+visualizations](images/microfun_abstract.png)](https://bioscinema.github.io/MicroFun_website_tutorials/images/microfun_abstract.png)
+
 ## Installation
 
 Install **MicroFun** from the source package. See [installation and
@@ -83,24 +87,18 @@ for the setup instructions.
 
 ## Tutorials
 
-- [Standard PICRUSt2
-  workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md)
-  and [stratified PICRUSt2
-  workflow](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md).
-- [Example data and plotting
-  setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md).
-- [Taxon-to-function](https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.md)
-  and
-  [function-to-taxon](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.md)
-  visualizations.
-- **Demonstration studies:** [Demonstration Study
-  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
-  and [Demonstration Study
-  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md).
-- [Export and
-  redraw](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md),
-  and
-  [troubleshooting](https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.md).
+- **Demonstration Study:** [Study data and
+  downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md)
+  →
+  [Standard](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md)
+  →
+  [Stratified](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md).
+- [Prepare your own
+  data](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.md)
+  for PICRUSt2 outputs and input checks.
+- [Visualization
+  guides](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md)
+  for plot controls, selections, export and troubleshooting.
 
 ## Explore MicroFun visualizations
 
@@ -110,7 +108,7 @@ demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/
 for boxplots, signed effects and additional views.
 
 [![Chord showing predicted taxon-function
-contributions](examples/study/images/tax2fun-chord-01.png)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-chord-01.png)
+contributions](examples/study/class/images/tax2fun-chord.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/images/tax2fun-chord.svg)
 
 ### Chord diagram
 
@@ -119,18 +117,18 @@ Compare predicted contributions and model-effect direction.
 [Explore the example
 →](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights)
 
-[![Genus-level overview of taxon-function
-associations](examples/study/images/tax2fun-dendro-genus-overview.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+[![Class-level overview of taxon-function
+associations](examples/study/class/images/tax2fun-dendrogram-class.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#class-dendrogram-overview)
 
 ### Association dendrogram
 
-Explore the association overview across retained genera.
+Explore the association overview across retained classes.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#class-dendrogram-overview)
 
 [![Sankey with a taxonomic side
-tree](examples/study/images/tax2fun-sankey-01.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/images/tax2fun-sankey-01.svg)
+tree](examples/study/class/images/tax2fun-taxonomy.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/images/tax2fun-taxonomy.svg)
 
 ### Sankey diagram
 
@@ -153,4 +151,4 @@ Trace selected taxa–function associations with taxonomy context.
 ## Support
 
 Ask questions or report issues on
-[GitHub](https://github.com/bioscinema/MicroFun/issues).
+[GitHub](https://github.com/bioscinema/MicroFun_0.1.0/issues).

@@ -1,20 +1,22 @@
 # Taxon-to-function visualizations
 
-Start here when a taxon is your point of interest. Perhaps it differs
-between groups, or perhaps you want to understand its role in a
-functional pattern. We first look at the selected associations, then
-examine contribution weights, sample distributions and model effects.
-
-No single plot captures all four. A taxon can have many selected
-associations without making the largest predicted contribution, and a
-large contribution need not have the largest group-associated effect.
-MicroFun keeps these quantities separate so you can ask which one
-matters for your question.
-
-Use the named result list from `direction = "taxa"`. Run [the shared
-setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md)
-first. All representative outputs appear in [the stratified
+Use this guide to adjust the taxon-centered figures after fitting the
+[Stratified
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered).
+The study contains the full workflow and representative results; this
+page focuses on plotting controls and selections.
+
+The demonstration defaults to Class and selects Actinomycetes for an
+individual panel. Reuse `ps`, `strat_path`, `study_tree`,
+`result_taxa_box`, `result_taxa`, the group contrast and output
+directory from that study. Choose a taxon from the fitted results when
+making an individual panel.
+
+``` r
+available_taxa <- names(result_taxa)[vapply(result_taxa, nrow, integer(1)) > 0L]
+stopifnot(length(available_taxa) > 0L)
+selected_taxon <- if ("Actinomycetes" %in% available_taxa) "Actinomycetes" else available_taxa[1]
+```
 
 ## Sankey
 
@@ -22,6 +24,12 @@ Use a Sankey as an overview. Which functional categories connect to each
 taxon, and where do the selected associations concentrate? Read a wide
 ribbon as more displayed associations in this view. It is not a direct
 abundance measurement.
+
+The taxon-centered demonstration selects Class labels in `result_taxa`,
+omitting Alphaproteobacteria and Candidatus_Peribacteria from this
+direction. Its boxplots, Chord, dendrogram and signed-effect views reuse
+the same selection. The function-centered example keeps those classes as
+possible contributors.
 
 The taxonomy side tree helps you place taxa within their classification.
 The phylogeny mode instead uses relationships among the matching ASVs.
@@ -33,16 +41,16 @@ count displayed associations. Positive effects use yellow/orange
 phylogeny are optional side-tree modes.
 
 ``` r
-p_tax_sankey <- tax2fun_sankey(
+p_tax_taxonomy <- tax2fun_sankey(
   result_taxa, tree_mode = "taxonomy", physeq = ps,
   tree_options = list(font_size = 16)
 )
-save_sankey(p_tax_sankey, file.path(out, "tax2fun_sankey.html"))
-save_sankey(p_tax_sankey, file.path(out, "tax2fun_sankey.pdf"))
+save_sankey(p_tax_taxonomy, file.path(out, "tax2fun_sankey.html"))
+
 
 p_tax_phylogeny <- tax2fun_sankey(
   result_taxa, tree_mode = "phylogeny", physeq = ps,
-  phylo_tree = demo$phylo_tree
+  phylo_tree = study_tree
 )
 ```
 
@@ -61,6 +69,9 @@ when group sizes differ. Read ribbon width, effect colour and outer bar
 height separately. They represent contribution, direction and absolute
 effect, respectively.
 
+This preview keeps up to ten functions per taxon. Set
+`max_functions_per_taxon = Inf` to include the complete association set.
+
 Chord width is the mean predicted contribution, with equal weight
 assigned to the two group means by default. Ribbon colour encodes effect
 sign; outer bar height encodes absolute effect. Use the same sample
@@ -69,10 +80,20 @@ subset and rank as the fitted analysis.
 ``` r
 p_tax_chord <- tax2fun_chord(
   result_taxa, strat_path, ps, group = group_col,
-  contrast = c(reference, target), draw = FALSE
+  contrast = c(reference, target), max_functions_per_taxon = 10,
+  draw = FALSE
 )
-save_chord(p_tax_chord, file.path(out, "tax2fun_chord.png"))
-save_chord(p_tax_chord, file.path(out, "tax2fun_chord.pdf"))
+save_chord(p_tax_chord, file.path(out, "tax2fun_chord.html"))
+
+# Pick taxa and functions after inspecting the HTML overview.
+chord_taxa <- head(unique(p_tax_chord$links$taxon), 3L)
+p_tax_focus <- tax2fun_chord(
+  result_taxa, strat_path, ps, group = group_col,
+  contrast = c(reference, target), taxa_list = chord_taxa,
+  max_functions_per_taxon = 10, draw = FALSE
+)
+save_chord(p_tax_focus, file.path(out, "tax2fun_chord_focus.html"))
+save_chord(p_tax_focus, file.path(out, "tax2fun_chord_focus.pdf"))
 head(p_tax_chord$links)
 ```
 
@@ -94,8 +115,14 @@ reference group and yellow/orange the target group for a two-group
 contrast; these are group colours, not individual effect signs.
 
 ``` r
-tax_boxes <- tax2fun_box(strat_path, result_taxa, ps, group = group_col)
-p_tax_box <- tax_boxes[["Lactobacillus"]]
+result_taxa_box <- result_taxa[selected_taxon]
+z <- result_taxa_box[[selected_taxon]]
+box_functions <- intersect(c("ko02010", "ko00230", "ko03010", "ko00240", "ko02020"), z$feature)
+if (!length(box_functions)) box_functions <- head(z$feature[order(z$p_adjust)], 5L)
+result_taxa_box[[selected_taxon]] <- z[match(box_functions, z$feature), , drop = FALSE]
+attr(result_taxa_box, "microfun") <- attr(result_taxa, "microfun")
+tax_boxes <- tax2fun_box(strat_path, result_taxa_box, ps, group = group_col)
+p_tax_box <- tax_boxes[[selected_taxon]]
 ggplot2::ggsave(file.path(out, "tax2fun_box.pdf"), p_tax_box,
                 width = 10, height = 6)
 ```
@@ -110,7 +137,8 @@ branch proximity should not be interpreted as evolutionary distance.
 
 Branches organize functions by taxon; point sizes encode absolute model
 effects. This is an association view, not an evolutionary tree. Use
-`top_n_per_taxon`; `top_n_per_genus` remains a compatible alias.
+`top_n_per_taxon`; `top_n_per_genus` remains a compatible alias for
+older code; new examples use `top_n_per_taxon`.
 
 ``` r
 p_tax_dendro <- tax2fun_dendro(
@@ -135,20 +163,17 @@ coefficients. A positive value means a positive target-versus-reference
 effect under the fitted model; its scientific meaning depends on the
 model and input scale.
 
-The function name retains `logfc`, but the axis label should describe
-the actual estimate. For a MaAsLin2 analysis, use an AST-coefficient
-label rather than assuming the values are log fold changes.
+For the MaAsLin2 example, the axis is labelled with its AST coefficient.
 
 ``` r
 tax_effects <- tax2fun_logfc(result_taxa, top_n = 3)
-p_tax_effect <- tax_effects[["Lactobacillus"]] +
+p_tax_effect <- tax_effects[[selected_taxon]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")
 ggplot2::ggsave(file.path(out, "tax2fun_effect.pdf"), p_tax_effect,
                 width = 8, height = 5)
 ```
 
 Positive values describe a positive target-versus-reference model
-effect. For MaAsLin2, interpret these as AST coefficients and verify
-`effect_type` before reporting them. See [export
+effect. See [export
 formats](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md)
 for the current saving interfaces.

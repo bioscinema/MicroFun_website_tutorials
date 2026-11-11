@@ -37,26 +37,27 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-get-started">
 <li><a class="dropdown-item" href="articles/getting-started.html">Getting started</a></li>
     <li><a class="dropdown-item" href="articles/installation.html">Installation and dependencies</a></li>
-    <li><a class="dropdown-item" href="articles/standard-pipeline.html">Standard PICRUSt2 workflow</a></li>
-    <li><a class="dropdown-item" href="articles/stratified-pipeline.html">Stratified PICRUSt2 workflow</a></li>
-  </ul>
-</li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
-<li><a class="dropdown-item" href="articles/plotting-setup.html">Plotting setup</a></li>
-    <li><a class="dropdown-item" href="articles/sample-level-plots.html">Community-level visualizations</a></li>
-    <li><a class="dropdown-item" href="articles/taxon-to-function.html">Taxon-to-function plots</a></li>
-    <li><a class="dropdown-item" href="articles/function-to-taxon.html">Function-to-taxon plots</a></li>
-    <li><a class="dropdown-item" href="articles/plot-export.html">Export and redraw</a></li>
-    <li><a class="dropdown-item" href="articles/troubleshooting.html">Troubleshooting</a></li>
+    <li><a class="dropdown-item" href="articles/analysis-options.html">Differential analysis options</a></li>
+    <li><a class="dropdown-item" href="articles/prepare-your-data.html">Prepare your own data</a></li>
   </ul>
 </li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-demonstration-study" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Demonstration Study</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-demonstration-study">
-<li><a class="dropdown-item" href="articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+<li><a class="dropdown-item" href="articles/study-data.html">Study data and downloads</a></li>
     <li><a class="dropdown-item" href="articles/demonstration-standard.html">Demonstration Study (Standard)</a></li>
+    <li><a class="dropdown-item" href="articles/demonstration-stratified.html">Demonstration Study (Stratified)</a></li>
+  </ul>
+</li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-visualization-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Visualization guides</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-visualization-guides">
+<li><a class="dropdown-item" href="articles/plotting-setup.html">Guide overview</a></li>
+    <li><a class="dropdown-item" href="articles/sample-level-plots.html">Community-level visualizations</a></li>
+    <li><a class="dropdown-item" href="articles/taxon-to-function.html">Taxon-to-function plots</a></li>
+    <li><a class="dropdown-item" href="articles/function-to-taxon.html">Function-to-taxon plots</a></li>
+    <li><a class="dropdown-item" href="articles/plot-export.html">Export and redraw</a></li>
+    <li><a class="dropdown-item" href="articles/troubleshooting.html">Troubleshooting</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
@@ -66,7 +67,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/bioscinema/MicroFun_0.1.0" aria-label="MicroFun source code"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -113,6 +114,8 @@
 <strong>Signed-effect plots and association dendrograms</strong> show model effects and organize selected relationships in both analysis directions. For MaAsLin2, signed effects are AST coefficients. For evolutionary relationships, use the phylogeny mode of Sankey.</li>
 </ul>
 <p>By bringing data preparation, statistical testing, annotation and plotting into one workflow, MicroFun helps users explore functional differences together with their microbial contributors.</p>
+<figure class="microfun-graphical-abstract"><a href="images/microfun_abstract.png"><img src="images/microfun_abstract.png" alt="MicroFun graphical abstract connecting microbial communities, predicted functions and visualizations" loading="lazy"></a>
+</figure>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -124,15 +127,11 @@
 </h2>
 <ul>
 <li>
-<a href="articles/standard-pipeline.html">Standard PICRUSt2 workflow</a> and <a href="articles/stratified-pipeline.html">stratified PICRUSt2 workflow</a>.</li>
+<strong>Demonstration Study:</strong> <a href="articles/study-data.html">Study data and downloads</a> → <a href="articles/demonstration-standard.html">Standard</a> → <a href="articles/demonstration-stratified.html">Stratified</a>.</li>
 <li>
-<a href="articles/plotting-setup.html">Example data and plotting setup</a>.</li>
+<a href="articles/prepare-your-data.html">Prepare your own data</a> for PICRUSt2 outputs and input checks.</li>
 <li>
-<a href="articles/taxon-to-function.html">Taxon-to-function</a> and <a href="articles/function-to-taxon.html">function-to-taxon</a> visualizations.</li>
-<li>
-<strong>Demonstration studies:</strong> <a href="articles/demonstration-stratified.html">Demonstration Study (Stratified)</a> and <a href="articles/demonstration-standard.html">Demonstration Study (Standard)</a>.</li>
-<li>
-<a href="articles/plot-export.html">Export and redraw</a>, and <a href="articles/troubleshooting.html">troubleshooting</a>.</li>
+<a href="articles/plotting-setup.html">Visualization guides</a> for plot controls, selections, export and troubleshooting.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -140,7 +139,7 @@
 </h2>
 <p>Three representative views of predicted functional contributions. Select a figure to explore the corresponding result; see the <a href="articles/demonstration-stratified.html">stratified demonstration</a> for boxplots, signed effects and additional views.</p>
 <div class="microfun-gallery">
-<figure class="microfun-result"><a class="microfun-result-image" href="examples/study/images/tax2fun-chord-01.png" aria-label="View full-size Chord diagram"><img src="examples/study/images/tax2fun-chord-01.png" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
+<figure class="microfun-result"><a class="microfun-result-image" href="examples/study/class/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/class/images/tax2fun-chord.svg" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
 <figcaption><h3>
 Chord diagram
 </h3>
@@ -148,15 +147,15 @@ Chord diagram
 Compare predicted contributions and model-effect direction.
 </p>
 <a href="articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights">Explore the example →</a>
-</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/images/tax2fun-dendro-genus-overview.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>
+</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="articles/demonstration-stratified.html#class-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/class/images/tax2fun-dendrogram-class.svg" alt="Class-level overview of taxon-function associations" loading="lazy"></a>
 <figcaption><h3>
 Association dendrogram
 </h3>
 <p>
-Explore the association overview across retained genera.
+Explore the association overview across retained classes.
 </p>
-<a href="articles/demonstration-stratified.html#genus-dendrogram-overview">Explore the example →</a>
-</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="examples/study/images/tax2fun-sankey-01.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/images/tax2fun-sankey-01.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>
+<a href="articles/demonstration-stratified.html#class-dendrogram-overview">Explore the example →</a>
+</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="examples/study/class/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/class/images/tax2fun-taxonomy.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>
 <figcaption><h3>
 Sankey diagram
 </h3>
@@ -182,15 +181,15 @@ Trace selected taxa–function associations with taxonomy context.
 <div class="section level2">
 <h2 id="support">Support<a class="anchor" aria-label="anchor" href="#support"></a>
 </h2>
-<p>Ask questions or report issues on <a href="https://github.com/bioscinema/MicroFun/issues" class="external-link">GitHub</a>.</p>
+<p>Ask questions or report issues on <a href="https://github.com/bioscinema/MicroFun_0.1.0/issues" class="external-link">GitHub</a>.</p>
 </div>
 </div>
 
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/bioscinema/MicroFun/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/bioscinema/MicroFun/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/bioscinema/MicroFun_0.1.0/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/bioscinema/MicroFun_0.1.0/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -213,13 +212,11 @@ Trace selected taxa–function associations with taxonomy context.
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><ul>
-<li>Ruitao Liu</li>
-<li>Liangliang Zhang</li>
-<li>Chenyu Liu</li>
-<li>Zilin Li</li>
-<li>Yaoran Yu</li>
-</ul></li>
+<li>Zilin Li <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Yaoran Yu <br><small class="roles"> Author </small>   </li>
+<li>Chenyu Liu <br><small class="roles"> Author </small>   </li>
+<li>Ruitao Liu <br><small class="roles"> Author </small>   </li>
+<li>Liangliang Zhang <br><small class="roles"> Author </small>   </li>
 </ul>
 </div>
 
@@ -228,11 +225,11 @@ Trace selected taxa–function associations with taxonomy context.
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Ruitao Liu, Liangliang Zhang, Chenyu Liu, Zilin Li, and Yaoran Yu.</p>
+  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p><a href="https://github.com/bioscinema/MicroFun_website_tutorials" class="external-link">Website source</a> Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

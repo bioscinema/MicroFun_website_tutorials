@@ -1,18 +1,18 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/404.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/LICENSE-text.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html</loc></url>
-<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-study.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/getting-started.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/index.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/sample-level-plots.html</loc></url>
-<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.html</loc></url>
-<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/taxon-to-function.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/authors.html</loc></url>
@@ -22,6 +22,14 @@
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/current/tax2fun-no-tree.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/current/tax2fun-phylogeny.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/current/tax2fun-taxonomy.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/fun2tax_chord.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/fun2tax_none.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/fun2tax_phylogeny.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/fun2tax_taxonomy.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/tax2fun_chord_top10.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/tax2fun_draggable.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/tax2fun_phylogeny.html</loc></url>
+<url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/widgets/tax2fun_taxonomy.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/widgets/fun2tax-sankey-no-tree.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/widgets/tax2fun-sankey-no-tree.html</loc></url>
 <url><loc>https://bioscinema.github.io/MicroFun_website_tutorials/index.html</loc></url>

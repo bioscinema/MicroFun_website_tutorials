@@ -6,18 +6,24 @@
   MicroFun](https://bioscinema.github.io/MicroFun_website_tutorials/articles/getting-started.md):
 - [Installation, dependencies and software
   versions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.md):
+- [Differential analysis
+  options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md):
+- [Prepare your own
+  data](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.md):
 
-### PICRUSt2 workflows
+### Demonstration studies
 
-- [Pipeline for PICRUSt2 standard
-  output](https://bioscinema.github.io/MicroFun_website_tutorials/articles/standard-pipeline.md):
-- [Stratified PICRUSt2 analysis with inputs and two SDAA
-  directions](https://bioscinema.github.io/MicroFun_website_tutorials/articles/stratified-pipeline.md):
+- [Study data and
+  downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md):
+- [Demonstration Study
+  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md):
+- [Demonstration Study
+  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md):
 
 ### Visualization guides
 
-- [Example inputs and plotting
-  setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md):
+- [Using the visualization
+  guides](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md):
 - [Community-level
   visualizations](https://bioscinema.github.io/MicroFun_website_tutorials/articles/sample-level-plots.md):
 - [Taxon-to-function
@@ -28,12 +34,3 @@
   figures](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plot-export.md):
 - [Input checks and
   troubleshooting](https://bioscinema.github.io/MicroFun_website_tutorials/articles/troubleshooting.md):
-
-### Demonstration studies
-
-- [Demonstration Study
-  (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md):
-- [Demonstration Study
-  (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.md):
-- [Demonstration
-  studies](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-study.md):

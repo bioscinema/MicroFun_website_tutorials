@@ -1,20 +1,45 @@
 # Function-to-taxon visualizations
 
-Start here when a function is your point of interest. A pooled
-functional profile may tell you that the community differs, but it does
-not tell you whether the same taxa contribute in both groups.
-Function-centered analysis lets us examine those contributors directly.
+Use this guide to adjust figures after the [function-centered
+analysis](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#function-centered).
+It reuses that study’s fitted results and inputs rather than creating
+another example analysis.
 
-The figures follow the same principles as the taxon-centered workflow,
-with the roles reversed. The statistical analysis must also be
-function-centered. Redrawing a taxon-centered result with the nodes
-swapped would not answer the same question.
+The example selects candidate KOs and retains all fitted class
+contributors, including Alphaproteobacteria and Candidatus_Peribacteria.
+It does not inherit the taxon-centered exclusions.
 
-Use the result list fitted with `direction = "function"`; do not
-transpose taxon-oriented fitted results. Run [the shared
-setup](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.md)
-first. Figures are collected in [the stratified
-demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#function-centered).
+Keep `ps`, `fun_strat_path`, `study_tree`, `result_fun`,
+`result_fun_box`, `ko_candidates`, `group_col`, the group contrast and
+output directory from the study. Select a small set of functions before
+creating any plot.
+
+## Select functions before plotting
+
+Choose a few functions before creating any function-to-taxon diagram.
+The source table contains 8,881 KOs; the demonstration fits a
+biologically motivated set of 24 rather than drawing the full library.
+Keep the full result saved and make a smaller plotting list. The code
+below preserves the recorded analysis settings.
+
+``` r
+available_functions <- names(result_fun)[vapply(result_fun, nrow, integer(1)) > 0L]
+functions_of_interest <- intersect(ko_candidates, available_functions)
+# Replace the selection with named KOs of interest when they are available.
+# functions_of_interest <- c("K01489", "K00432")
+stopifnot(length(functions_of_interest) > 0L,
+          all(functions_of_interest %in% names(result_fun)))
+result_fun_plot <- result_fun[functions_of_interest]
+attr(result_fun_plot, "microfun") <- attr(result_fun, "microfun")
+selected_function <- if ("K01489" %in% functions_of_interest) "K01489" else functions_of_interest[1]
+stopifnot(selected_function %in% functions_of_interest)
+```
+
+All examples below use this filtered list. To fit the real study results
+first, follow the [function-centered
+analysis](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#function-centered),
+which fits the 24 selected candidate KOs at Class level. The full
+8,881-KO library is a separate, much longer option.
 
 ## Sankey
 
@@ -29,12 +54,11 @@ Functions appear on the left and taxa on the right. Set
 ASV phylogeny appears on the taxon side.
 
 ``` r
-p_fun_sankey <- fun2tax_sankey(
-  result_fun, pathway = "KO", group_functions = FALSE,
-  tree_mode = "phylogeny", physeq = ps, phylo_tree = demo$phylo_tree
+p_fun_phylogeny <- fun2tax_sankey(
+  result_fun_plot, pathway = "KO", group_functions = FALSE,
+  tree_mode = "phylogeny", physeq = ps, phylo_tree = study_tree
 )
-save_sankey(p_fun_sankey, file.path(out, "fun2tax_sankey.html"))
-save_sankey(p_fun_sankey, file.path(out, "fun2tax_sankey.pdf"))
+save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_sankey.html"))
 ```
 
 ## Chord
@@ -42,28 +66,32 @@ save_sankey(p_fun_sankey, file.path(out, "fun2tax_sankey.pdf"))
 Use Chord to compare the predicted contributions behind the selected
 relationships. A broad ribbon identifies a large mean contribution in
 the plotted subset, while the outer bar describes the absolute modeled
-effect. Neither should be substituted for the other.
+effect.
 
-The example below narrows the view to one KO. This is often a helpful
-first step when a full diagram is crowded. Select a function you can
-interpret, inspect its contributors, then broaden the view if needed.
+Inspect the selected functions in HTML first. A dense full PDF can load
+slowly, so choose an interesting function, regenerate a smaller diagram
+and export that selection to PDF.
 
 The contribution weighting, effect colours, taxonomy bands and export
 interfaces match the taxon-to-function Chord. Use function-oriented
 results and select relevant function IDs.
 
 ``` r
-hexokinase <- data.frame(
-  function_id = "K00844", function_group = "Carbohydrate metabolism",
-  function_name = "Hexokinase"
-)
 p_fun_chord <- fun2tax_chord(
-  result_fun, strat_path, ps, group = group_col,
-  contrast = c(reference, target), functions = "K00844",
-  max_taxa_per_function = 2, function_table = hexokinase, draw = FALSE
+  result_fun_plot, fun_strat_path, ps, group = group_col,
+  contrast = c(reference, target), functions = functions_of_interest,
+  draw = FALSE
 )
-save_chord(p_fun_chord, file.path(out, "fun2tax_chord.png"))
-save_chord(p_fun_chord, file.path(out, "fun2tax_chord.pdf"))
+save_chord(p_fun_chord, file.path(out, "fun2tax_chord.html"))
+
+# After inspecting HTML, select one function for a focused PDF.
+p_fun_focus <- fun2tax_chord(
+  result_fun_plot, fun_strat_path, ps, group = group_col,
+  contrast = c(reference, target), functions = selected_function,
+  max_taxa_per_function = 5, draw = FALSE
+)
+save_chord(p_fun_focus, file.path(out, "fun2tax_chord_focus.html"))
+save_chord(p_fun_focus, file.path(out, "fun2tax_chord_focus.pdf"))
 ```
 
 ## Contribution boxplots
@@ -78,11 +106,15 @@ An ungrouped call returns one named plot per function. The y-axis is
 `log10(contribution + 1e-6)`.
 
 ``` r
+result_fun_box <- result_fun_plot[selected_function]
+z <- result_fun_box[[selected_function]]
+result_fun_box[[selected_function]] <- head(z[order(z$p_adjust), , drop = FALSE], 5L)
+attr(result_fun_box, "microfun") <- attr(result_fun_plot, "microfun")
 fun_boxes <- fun2tax_box(
-  strat_path, result_fun, ps, group = group_col,
+  fun_strat_path, result_fun_box, ps, group = group_col,
   pathway = "KO", group_functions = FALSE
 )
-p_fun_box <- fun_boxes[["K00844"]]
+p_fun_box <- fun_boxes[[selected_function]]
 ggplot2::ggsave(file.path(out, "fun2tax_box.pdf"), p_fun_box,
                 width = 9, height = 6)
 ```
@@ -100,7 +132,7 @@ Functions label branches, and contributing taxa label the leaves.
 
 ``` r
 p_fun_dendro <- fun2tax_dendro(
-  result_fun, top_n_per_function = 3, label_size = 2.6,
+  result_fun_plot, top_n_per_function = 3, label_size = 2.6,
   wrap_width = 20
 )$plot
 p_fun_dendro <- p_fun_dendro +
@@ -114,20 +146,19 @@ ggplot2::ggsave(file.path(out, "fun2tax_dendrogram.pdf"), p_fun_dendro,
 A signed-effect plot brings the contrast into focus. Which taxa have
 positive effects for the selected function, and which have negative
 effects? Read the model scale and reference group before comparing bar
-lengths, and remember that a large coefficient does not by itself imply
-the largest absolute contribution.
+lengths, then compare the selected taxa.
 
 ``` r
-fun_effects <- fun2tax_logfc(result_fun, top_n = 3)
-p_fun_effect <- fun_effects[["K00844"]] +
+fun_effects <- fun2tax_logfc(result_fun_plot, top_n = 3)
+p_fun_effect <- fun_effects[[selected_function]] +
   ggplot2::labs(y = "MaAsLin2 AST coefficient")
 ggplot2::ggsave(file.path(out, "fun2tax_effect.pdf"), p_fun_effect,
                 width = 8, height = 5)
 ```
 
 Choose names from `names(result_fun)` and record the reference/target
-contrast. Signed effects are backend-dependent model estimates; MaAsLin2
-AST coefficients are not literal log fold changes.
+contrast. The axis label records the model estimate used by the fitted
+backend.
 
 ## When you return to the community-level result
 
