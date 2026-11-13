@@ -47,7 +47,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 imports <- read.dcf(file.path(source_dir, "DESCRIPTION"), fields = "Imports")[1, 1]
 dependencies <- trimws(strsplit(imports, ",", fixed = TRUE)[[1]])
 dependencies <- sub("[[:space:]]*\\(.*$", "", dependencies)
-dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "ComplexHeatmap", "svglite"))
+dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "svglite"))
 BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
 install.packages(source_dir, repos = NULL, type = "source")
 
@@ -67,8 +67,9 @@ version for your R release.
 
 ## R packages used by MicroFun
 
-The following packages are declared in the MicroFun source. “Latest
-compatible” records the version policy, not an exact-version pin.
+The table lists the current source imports together with vegan, which is
+required by this workflow. “Latest compatible” records the version
+policy, not an exact-version pin.
 
 Table 2. R packages used by MicroFun
 
@@ -112,31 +113,23 @@ Table 2. R packages used by MicroFun
 | `grid`                 | Bundled with the installed R release  |
 | `vegan`                | **2.7.2 / 2.7-2; fixed**              |
 
-## Optional and documentation dependencies
+## Optional and website dependencies
 
 Table 3. Optional and documentation packages
 
-| Package          | Version policy                        |
-|------------------|---------------------------------------|
-| `rsvg`           | Latest compatible release; not pinned |
-| `svglite`        | Latest compatible release; not pinned |
-| `qpdf`           | Latest compatible release; not pinned |
-| `Biobase`        | Latest compatible release; not pinned |
-| `KEGGREST`       | Latest compatible release; not pinned |
-| `ComplexHeatmap` | Latest compatible release; not pinned |
-| `BiocGenerics`   | Latest compatible release; not pinned |
-| `utils`          | Bundled with R                        |
-| `knitr`          | Latest compatible release; not pinned |
-| `rmarkdown`      | Latest compatible release; not pinned |
-| `testthat`       | Latest compatible release; not pinned |
-| `forcats`        | Latest compatible release; not pinned |
-| `rlang`          | Latest compatible release; not pinned |
-| `R.utils`        | Latest compatible release; not pinned |
-| `xml2`           | Latest compatible release; not pinned |
+| Package     | Version policy                        |
+|-------------|---------------------------------------|
+| `rsvg`      | Latest compatible release; not pinned |
+| `svglite`   | Latest compatible release; not pinned |
+| `qpdf`      | Latest compatible release; not pinned |
+| `KEGGREST`  | Latest compatible release; not pinned |
+| `utils`     | Bundled with R                        |
+| `knitr`     | Latest compatible release; not pinned |
+| `rmarkdown` | Latest compatible release; not pinned |
+| `R.utils`   | Latest compatible release; not pinned |
 
 `rsvg` enables tree Sankey PNG/PDF export; `qpdf` enables
-continuation-page PDF export; `ComplexHeatmap` is used for metagenome
-comparison heatmaps. `svglite` is used by
+continuation-page PDF export. `svglite` is used by
 [`ggsave()`](https://ggplot2.tidyverse.org/reference/ggsave.html) for
 the Standard SVG figures. Chord SVG/HTML uses R’s Cairo SVG device. On
 macOS, if export reports a missing `/opt/X11` library or a failed Cairo
@@ -211,3 +204,10 @@ Continue with [Study data and
 downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md),
 or [prepare your own
 study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.md).
+
+The current source also supports MaAsLin2 transformations,
+mean-contribution `top_n` boxplot selection, and scientific-notation
+error-bar p-value labels. See [analysis
+options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md).
+Function-centered descriptive labels in the demonstration are explicitly
+supplied for presentation, not new analysis identifiers.

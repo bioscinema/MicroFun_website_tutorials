@@ -6,16 +6,15 @@ demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/
 The study contains the full workflow and representative results; this
 page focuses on plotting controls and selections.
 
-The demonstration defaults to Class and selects Actinomycetes for an
-individual panel. Reuse `ps`, `strat_path`, `study_tree`,
-`result_taxa_box`, `result_taxa`, the group contrast and output
-directory from that study. Choose a taxon from the fitted results when
-making an individual panel.
+The demonstration defaults to Genus and selects Cloacibacterium for an
+individual panel. Reuse `ps_taxa`, `taxa_strat_path`, `result_taxa_box`,
+`result_taxa`, the group contrast and output directory from that study.
+Choose a taxon from the fitted results when making an individual panel.
 
 ``` r
 available_taxa <- names(result_taxa)[vapply(result_taxa, nrow, integer(1)) > 0L]
 stopifnot(length(available_taxa) > 0L)
-selected_taxon <- if ("Actinomycetes" %in% available_taxa) "Actinomycetes" else available_taxa[1]
+selected_taxon <- if ("Cloacibacterium" %in% available_taxa) "Cloacibacterium" else available_taxa[1]
 ```
 
 ## Sankey
@@ -25,11 +24,8 @@ taxon, and where do the selected associations concentrate? Read a wide
 ribbon as more displayed associations in this view. It is not a direct
 abundance measurement.
 
-The taxon-centered demonstration selects Class labels in `result_taxa`,
-omitting Alphaproteobacteria and Candidatus_Peribacteria from this
-direction. Its boxplots, Chord, dendrogram and signed-effect views reuse
-the same selection. The function-centered example keeps those classes as
-possible contributors.
+The Genus demonstration starts with the 27 project-related genera. This
+list is not applied to function-centered contributors.
 
 The taxonomy side tree helps you place taxa within their classification.
 The phylogeny mode instead uses relationships among the matching ASVs.
@@ -42,15 +38,15 @@ phylogeny are optional side-tree modes.
 
 ``` r
 p_tax_taxonomy <- tax2fun_sankey(
-  result_taxa, tree_mode = "taxonomy", physeq = ps,
+  result_taxa, tree_mode = "taxonomy", physeq = ps_taxa,
   tree_options = list(font_size = 16)
 )
 save_sankey(p_tax_taxonomy, file.path(out, "tax2fun_sankey.html"))
 
 
 p_tax_phylogeny <- tax2fun_sankey(
-  result_taxa, tree_mode = "phylogeny", physeq = ps,
-  phylo_tree = study_tree
+  result_taxa, tree_mode = "phylogeny", physeq = ps_taxa,
+  phylo_tree = phy_tree(ps_taxa)
 )
 ```
 
@@ -79,7 +75,7 @@ subset and rank as the fitted analysis.
 
 ``` r
 p_tax_chord <- tax2fun_chord(
-  result_taxa, strat_path, ps, group = group_col,
+  result_taxa, taxa_strat_path, ps_taxa, group = group_col,
   contrast = c(reference, target), max_functions_per_taxon = 10,
   draw = FALSE
 )
@@ -88,7 +84,7 @@ save_chord(p_tax_chord, file.path(out, "tax2fun_chord.html"))
 # Pick taxa and functions after inspecting the HTML overview.
 chord_taxa <- head(unique(p_tax_chord$links$taxon), 3L)
 p_tax_focus <- tax2fun_chord(
-  result_taxa, strat_path, ps, group = group_col,
+  result_taxa, taxa_strat_path, ps_taxa, group = group_col,
   contrast = c(reference, target), taxa_list = chord_taxa,
   max_functions_per_taxon = 10, draw = FALSE
 )
@@ -116,12 +112,8 @@ contrast; these are group colours, not individual effect signs.
 
 ``` r
 result_taxa_box <- result_taxa[selected_taxon]
-z <- result_taxa_box[[selected_taxon]]
-box_functions <- intersect(c("ko02010", "ko00230", "ko03010", "ko00240", "ko02020"), z$feature)
-if (!length(box_functions)) box_functions <- head(z$feature[order(z$p_adjust)], 5L)
-result_taxa_box[[selected_taxon]] <- z[match(box_functions, z$feature), , drop = FALSE]
 attr(result_taxa_box, "microfun") <- attr(result_taxa, "microfun")
-tax_boxes <- tax2fun_box(strat_path, result_taxa_box, ps, group = group_col)
+tax_boxes <- tax2fun_box(taxa_strat_path, result_taxa_box, ps_taxa, group = group_col, top_n = 5)
 p_tax_box <- tax_boxes[[selected_taxon]]
 ggplot2::ggsave(file.path(out, "tax2fun_box.pdf"), p_tax_box,
                 width = 10, height = 6)
@@ -167,8 +159,7 @@ For the MaAsLin2 example, the axis is labelled with its AST coefficient.
 
 ``` r
 tax_effects <- tax2fun_logfc(result_taxa, top_n = 3)
-p_tax_effect <- tax_effects[[selected_taxon]] +
-  ggplot2::labs(y = "MaAsLin2 AST coefficient")
+p_tax_effect <- tax_effects[[selected_taxon]]
 ggplot2::ggsave(file.path(out, "tax2fun_effect.pdf"), p_tax_effect,
                 width = 8, height = 5)
 ```

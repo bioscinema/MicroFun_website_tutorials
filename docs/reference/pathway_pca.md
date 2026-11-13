@@ -89,18 +89,4 @@ pca_plot <- pathway_pca(
   "group",
   colors = c("blue", "red")  # One color per group
 )
-
-if (FALSE) { # \dontrun{
-# Example with real data
-data("metacyc_abundance")  # Load example pathway abundance data
-data("metadata")          # Load example metadata
-
-# Generate PCA plot
-pathway_pca(
-  metacyc_abundance %>% column_to_rownames("pathway"),
-  metadata,
-  "Environment",
-  colors = c("green", "purple")
-)
-} # }
 ```

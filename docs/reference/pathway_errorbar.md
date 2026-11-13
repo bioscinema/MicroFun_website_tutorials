@@ -80,13 +80,11 @@ metadata <- read_delim(
   trim_ws = TRUE
 )
 
-# data(metadata)
 
 kegg_abundance <- ko2kegg_abundance(
   "path/to/your/pred_metagenome_unstrat.tsv"
 )
 
-# data(kegg_abundance)
 
 # Please change group to "your_group_column" if you are not using example dataset
 group <- "Environment"
@@ -136,11 +134,9 @@ metadata <- read_delim(
   escape_double = FALSE,
   trim_ws = TRUE
 )
-# data(metadata)
 
 metacyc_abundance <- read.delim("path/to/your/metacyc_abundance.tsv")
 
-# data(metacyc_abundance)
 
 group <- "Environment"
 

@@ -8,7 +8,8 @@ these tables pool the ASV contributions within each sample.
 
 Before running this study, follow [Study data and
 downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.md).
-The code uses the extracted `MicroFun_demonstration_data` folder.
+The code uses the extracted `MicroFun_demonstration_data_filtered`
+folder.
 
 ## 1. Prepare the community profiles
 
@@ -18,7 +19,7 @@ library(MicroFun)
 stopifnot(requireNamespace("vegan", quietly = TRUE),
           getNamespaceVersion("vegan") == package_version("2.7.2"))
 
-data_dir <- normalizePath("MicroFun_demonstration_data", mustWork = TRUE)
+data_dir <- normalizePath("MicroFun_demonstration_data_filtered", mustWork = TRUE)
 study <- new.env()
 load(file.path(data_dir, "phyloseq_asv.RData"), envir = study)
 meta <- study$metadata
@@ -52,9 +53,9 @@ dir.create(out, recursive = TRUE, showWarnings = FALSE)
 
 The reader removes the `ko:` prefix from KO IDs so they match the local
 annotations and supplied feature lists. The KO and metadata files use
-the same new sample identifiers. The bundled mapping reproduces the
-displayed KEGG PCA proportions and contains all 30 pathway IDs selected
-for the heatmap. The separately supplied `KEGG_2026-11-04.tsv.gz` is an
+the same new sample identifiers. The figures and code now use the
+filtered release. KO-to-pathway aggregation uses the installed package’s
+bundled mapping. The separately supplied `KEGG_2026-11-04.tsv.gz` is an
 alternative pathway snapshot with different membership coverage; it is
 not the input used for these displayed KEGG figures.
 
@@ -64,9 +65,9 @@ The examples below use Maaslin2, with STS as the reference. Set
 `chosen_method` to another supported backend if it matches your input
 and study design. [Differential analysis
 options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md)
-lists LinDA, Lefser and the other available choices. Figures on this
-page are the supplied study exports; use the saved settings and result
-tables when matching a particular numerical export.
+lists LinDA, Lefser and the other available choices. PCA and heatmaps
+below use the filtered inputs. The error-bar panels are supplied study
+exports.
 
 ``` r
 chosen_method <- "Maaslin2"
@@ -141,8 +142,8 @@ profiles](../examples/study/standard/ko-pca.svg)
 
 Figure 1. Community-level PCA of KO profiles
 
-The first two components explain 29.3% and 14.0% of the variation,
-together accounting for 43.3%. Many LTS samples appear toward lower PC1
+The first two components explain 28.6% and 15.4% of the variation,
+together accounting for 44.0%. Many LTS samples appear toward lower PC1
 and higher PC2 values, while many STS samples occupy the opposite part
 of the projection. The groups overlap and both include dispersed
 observations. This view summarizes variation across KO profiles; it is
@@ -165,8 +166,8 @@ profiles](../examples/study/standard/kegg-pca.svg)
 
 Figure 2. Community-level PCA of KEGG pathway profiles
 
-At pathway resolution, PC1 explains 57.1% and PC2 explains 12.2%, for a
-total of 69.3%. The broad group pattern remains visible, with overlap
+At pathway resolution, PC1 explains 56.0% and PC2 explains 14.3%, for a
+total of 70.3%. The broad group pattern remains visible, with overlap
 and several samples away from the main concentrations. The larger
 percentage on PC1 describes a different feature space after aggregation;
 it should not be read as evidence that this analysis is more
@@ -222,11 +223,10 @@ abundance.
 
 ## 5. Examine group abundance summaries
 
-The code leaves the p-value label panel off because its formatter can
-truncate scientific notation. Read exact adjusted p-values from
-`KO_annotated_results.csv` and `KEGG_annotated_results.csv` in
-`MicroFun_standard_study`. The abundance summaries and significance
-filter still use the numeric results.
+The current package displays adjusted p-values in scientific notation
+with `p_value_bar = TRUE`. Exact numeric values are also saved in
+`KO_annotated_results.csv` and `KEGG_annotated_results.csv` inside
+`MicroFun_standard_study`.
 
 ### Error-bar plot at KO level
 
@@ -235,7 +235,7 @@ p_ko_errorbar <- pathway_errorbar(
   abundance = ko_abundance, daa_results_df = daa_ko,
   Group = sample_groups, select = ko_features,
   p_values_threshold = 0.05, order = "p_values",
-  ko_to_kegg = FALSE, x_lab = "description", p_value_bar = FALSE
+  ko_to_kegg = FALSE, x_lab = "description", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KO_errorbar.svg"), p_ko_errorbar,
                 width = 16, height = 14)
@@ -253,10 +253,6 @@ STS as the first factor level, a negative ratio means a larger mean in
 LTS. The function normalizes each sample using the full abundance table
 before selecting features.
 
-The adjusted-p labels in this supplied KO export include values above 1
-and await a corrected export. Use the abundance and direction panels
-here; those displayed labels cannot be interpreted as valid p-values.
-
 ### Error-bar plot at KEGG pathway level
 
 ``` r
@@ -268,7 +264,7 @@ p_kegg_errorbar <- pathway_errorbar(
   abundance = kegg_abundance, daa_results_df = daa_kegg,
   Group = kegg_groups, select = kegg_features,
   p_values_threshold = 0.05, order = "p_values",
-  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = FALSE
+  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KEGG_errorbar.svg"), p_kegg_errorbar,
                 width = 16, height = 14)
@@ -283,9 +279,8 @@ The pathway panel connects predicted abundance summaries to readable
 functional labels. A larger bar indicates a larger group mean, not
 necessarily the strongest modeled effect. Whiskers in this function
 extend from zero to the mean plus one standard deviation; they are not
-confidence intervals. Adjusted-p labels rounded to `0.000` indicate
-limited display precision and should not be reported as exactly zero.
-Use the original result table for exact values.
+confidence intervals. Adjusted p-values are displayed in scientific
+notation. Use the exported result table for full numeric precision.
 
 Community-level differences summarize all contributors together.
 Continue with the [Stratified

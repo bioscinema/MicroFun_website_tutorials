@@ -154,30 +154,6 @@ for effect size information.
 
 ``` r
 # \donttest{
-# Load example data
-data(ko_abundance)
-data(metadata)
-
-# Prepare abundance data
-abundance_data <- as.data.frame(ko_abundance)
-rownames(abundance_data) <- abundance_data[, "#NAME"]
-abundance_data <- abundance_data[, -1]
-
-# Run differential abundance analysis using ALDEx2
-results <- pathway_daa(
-  abundance = abundance_data,
-  metadata = metadata,
-  group = "Environment"
-)
-
-# Using a different method (DESeq2)
-deseq_results <- pathway_daa(
-  abundance = abundance_data,
-  metadata = metadata,
-  group = "Environment",
-  daa_method = "DESeq2"
-)
-
 # Create example data with more samples
 abundance <- data.frame(
   sample1 = c(10, 20, 30),

@@ -49,7 +49,7 @@ adjustment fields.
 ``` r
 chosen_method <- "Maaslin2"
 result_taxa <- pathway_sdaa(
-  stratified_path = strat_path, physeq = ps,
+  stratified_path = taxa_strat_path, physeq = ps_taxa,
   group = "group", taxon_level = rank,
   direction = "taxa", pathway = "KO",
   daa_method = chosen_method, reference = "STS",
@@ -71,12 +71,33 @@ explains how to inspect and save a focused result.
 With Maaslin2, pass metadata column names such as
 `confounders = c("Age", "Batch")` to
 [`pathway_sdaa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_sdaa.md)
-when those variables belong in your study design. This backend uses
-total-sum scaling and an arcsine square-root transformation. Its signed
-estimates are AST coefficients, with the target compared against the
-recorded reference.
+when those variables belong in your study design. By default, this
+backend uses total-sum scaling and an arcsine square-root
+transformation. Its default signed estimates are AST coefficients, with
+the target compared against the recorded reference.
 
 In the stratified workflows, BH adjustment is applied within each fitted
 table. The two analysis directions fit separate models and collections
 of tests. Save the result list as RDS to retain its `microfun` settings,
 including rank and direction.
+
+## Choose a MaAsLin2 transformation
+
+`maaslin2_transform` accepts `"AST"` (default), `"LOG"`, `"LOGIT"` and
+`"NONE"` in both
+[`pathway_daa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_daa.md)
+and
+[`pathway_sdaa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_sdaa.md).
+For example, add `maaslin2_transform = "LOG"` to a MaAsLin2 call and
+refit before plotting. This argument is specific to MaAsLin2; omit it
+for other backends. MicroFun records the transformation and uses it in
+signed-effect labels, so signed-effect labels follow the fitted model.
+
+`top_n` in
+[`tax2fun_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/tax2fun_box.md)
+and
+[`fun2tax_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_box.md)
+ranks features by the average of group mean contributions. Use
+`top_n = 5` for a focused panel or leave the default `Inf` to retain all
+eligible features. This display ranking leaves the fitted p-values
+unchanged.

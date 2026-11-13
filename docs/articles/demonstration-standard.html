@@ -94,7 +94,7 @@ features and their group summaries. Unlike the <a href="demonstration-stratified
 tables pool the ASV contributions within each sample.</p>
 <p>Before running this study, follow <a href="study-data.html">Study
 data and downloads</a>. The code uses the extracted
-<code>MicroFun_demonstration_data</code> folder.</p>
+<code>MicroFun_demonstration_data_filtered</code> folder.</p>
 <div class="section level2">
 <h2 id="prepare-the-community-profiles">1. Prepare the community profiles<a class="anchor" aria-label="anchor" href="#prepare-the-community-profiles"></a>
 </h2>
@@ -104,7 +104,7 @@ data and downloads</a>. The code uses the extracted
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"vegan"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/ns-reflect.html" class="external-link">getNamespaceVersion</a></span><span class="op">(</span><span class="st">"vegan"</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"2.7.2"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">data_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/normalizePath.html" class="external-link">normalizePath</a></span><span class="op">(</span><span class="st">"MicroFun_demonstration_data"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/normalizePath.html" class="external-link">normalizePath</a></span><span class="op">(</span><span class="st">"MicroFun_demonstration_data_filtered"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">study</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_dir</span>, <span class="st">"phyloseq_asv.RData"</span><span class="op">)</span>, envir <span class="op">=</span> <span class="va">study</span><span class="op">)</span></span>
 <span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="va">study</span><span class="op">$</span><span class="va">metadata</span></span>
@@ -136,9 +136,9 @@ data and downloads</a>. The code uses the extracted
 <span><span class="fu"><a href="https://rdrr.io/r/base/files2.html" class="external-link">dir.create</a></span><span class="op">(</span><span class="va">out</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>The reader removes the <code>ko:</code> prefix from KO IDs so they
 match the local annotations and supplied feature lists. The KO and
-metadata files use the same new sample identifiers. The bundled mapping
-reproduces the displayed KEGG PCA proportions and contains all 30
-pathway IDs selected for the heatmap. The separately supplied
+metadata files use the same new sample identifiers. The figures and code
+now use the filtered release. KO-to-pathway aggregation uses the
+installed package’s bundled mapping. The separately supplied
 <code>KEGG_2026-11-04.tsv.gz</code> is an alternative pathway snapshot
 with different membership coverage; it is not the input used for these
 displayed KEGG figures.</p>
@@ -149,9 +149,9 @@ displayed KEGG figures.</p>
 <p>The examples below use Maaslin2, with STS as the reference. Set
 <code>chosen_method</code> to another supported backend if it matches
 your input and study design. <a href="analysis-options.html">Differential analysis options</a> lists
-LinDA, Lefser and the other available choices. Figures on this page are
-the supplied study exports; use the saved settings and result tables
-when matching a particular numerical export.</p>
+LinDA, Lefser and the other available choices. PCA and heatmaps below
+use the filtered inputs. The error-bar panels are supplied study
+exports.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chosen_method</span> <span class="op">&lt;-</span> <span class="st">"Maaslin2"</span></span>
 <span><span class="va">daa_ko_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_daa.html">pathway_daa</a></span><span class="op">(</span></span>
@@ -216,8 +216,8 @@ files.</p>
 <img src="../examples/study/standard/ko-pca.svg" alt="Figure 1. Community-level PCA of KO profiles"><div class="figcaption">Figure 1. Community-level PCA of KO
 profiles</div>
 </div>
-<p>The first two components explain 29.3% and 14.0% of the variation,
-together accounting for 43.3%. Many LTS samples appear toward lower PC1
+<p>The first two components explain 28.6% and 15.4% of the variation,
+together accounting for 44.0%. Many LTS samples appear toward lower PC1
 and higher PC2 values, while many STS samples occupy the opposite part
 of the projection. The groups overlap and both include dispersed
 observations. This view summarizes variation across KO profiles; it is
@@ -238,8 +238,8 @@ not itself a test of a group difference.</p>
 <img src="../examples/study/standard/kegg-pca.svg" alt="Figure 2. Community-level PCA of KEGG pathway profiles"><div class="figcaption">Figure 2. Community-level PCA of KEGG pathway
 profiles</div>
 </div>
-<p>At pathway resolution, PC1 explains 57.1% and PC2 explains 12.2%, for
-a total of 69.3%. The broad group pattern remains visible, with overlap
+<p>At pathway resolution, PC1 explains 56.0% and PC2 explains 14.3%, for
+a total of 70.3%. The broad group pattern remains visible, with overlap
 and several samples away from the main concentrations. The larger
 percentage on PC1 describes a different feature space after aggregation;
 it should not be read as evidence that this analysis is more
@@ -296,12 +296,11 @@ abundance.</p>
 <div class="section level2">
 <h2 id="examine-group-abundance-summaries">5. Examine group abundance summaries<a class="anchor" aria-label="anchor" href="#examine-group-abundance-summaries"></a>
 </h2>
-<p>The code leaves the p-value label panel off because its formatter can
-truncate scientific notation. Read exact adjusted p-values from
-<code>KO_annotated_results.csv</code> and
-<code>KEGG_annotated_results.csv</code> in
-<code>MicroFun_standard_study</code>. The abundance summaries and
-significance filter still use the numeric results.</p>
+<p>The current package displays adjusted p-values in scientific notation
+with <code>p_value_bar = TRUE</code>. Exact numeric values are also
+saved in <code>KO_annotated_results.csv</code> and
+<code>KEGG_annotated_results.csv</code> inside
+<code>MicroFun_standard_study</code>.</p>
 <div class="section level3">
 <h3 id="error-bar-plot-at-ko-level">Error-bar plot at KO level<a class="anchor" aria-label="anchor" href="#error-bar-plot-at-ko-level"></a>
 </h3>
@@ -310,7 +309,7 @@ significance filter still use the numeric results.</p>
 <span>  abundance <span class="op">=</span> <span class="va">ko_abundance</span>, daa_results_df <span class="op">=</span> <span class="va">daa_ko</span>,</span>
 <span>  Group <span class="op">=</span> <span class="va">sample_groups</span>, select <span class="op">=</span> <span class="va">ko_features</span>,</span>
 <span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>, order <span class="op">=</span> <span class="st">"p_values"</span>,</span>
-<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>, x_lab <span class="op">=</span> <span class="st">"description"</span>, p_value_bar <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>, x_lab <span class="op">=</span> <span class="st">"description"</span>, p_value_bar <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"KO_errorbar.svg"</span><span class="op">)</span>, <span class="va">p_ko_errorbar</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">16</span>, height <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></code></pre></div>
@@ -324,10 +323,6 @@ descriptive log2 ratio, whose direction follows the group order. With
 STS as the first factor level, a negative ratio means a larger mean in
 LTS. The function normalizes each sample using the full abundance table
 before selecting features.</p>
-<p>The adjusted-p labels in this supplied KO export include values above
-1 and await a corrected export. Use the abundance and direction panels
-here; those displayed labels cannot be interpreted as valid
-p-values.</p>
 </div>
 <div class="section level3">
 <h3 id="error-bar-plot-at-kegg-pathway-level">Error-bar plot at KEGG pathway level<a class="anchor" aria-label="anchor" href="#error-bar-plot-at-kegg-pathway-level"></a>
@@ -341,7 +336,7 @@ p-values.</p>
 <span>  abundance <span class="op">=</span> <span class="va">kegg_abundance</span>, daa_results_df <span class="op">=</span> <span class="va">daa_kegg</span>,</span>
 <span>  Group <span class="op">=</span> <span class="va">kegg_groups</span>, select <span class="op">=</span> <span class="va">kegg_features</span>,</span>
 <span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>, order <span class="op">=</span> <span class="st">"p_values"</span>,</span>
-<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>, x_lab <span class="op">=</span> <span class="st">"pathway_name"</span>, p_value_bar <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  ko_to_kegg <span class="op">=</span> <span class="cn">FALSE</span>, x_lab <span class="op">=</span> <span class="st">"pathway_name"</span>, p_value_bar <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"KEGG_errorbar.svg"</span><span class="op">)</span>, <span class="va">p_kegg_errorbar</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">16</span>, height <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span></code></pre></div>
@@ -353,9 +348,8 @@ selected KEGG pathways</div>
 functional labels. A larger bar indicates a larger group mean, not
 necessarily the strongest modeled effect. Whiskers in this function
 extend from zero to the mean plus one standard deviation; they are not
-confidence intervals. Adjusted-p labels rounded to <code>0.000</code>
-indicate limited display precision and should not be reported as exactly
-zero. Use the original result table for exact values.</p>
+confidence intervals. Adjusted p-values are displayed in scientific
+notation. Use the exported result table for full numeric precision.</p>
 <p>Community-level differences summarize all contributors together.
 Continue with the <a href="demonstration-stratified.html">Stratified
 study</a> to ask which genera and functions are linked within that
@@ -369,7 +363,7 @@ total.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

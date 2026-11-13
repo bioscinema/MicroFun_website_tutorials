@@ -38,7 +38,7 @@ if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
 imports <- read.dcf(file.path(source_dir, "DESCRIPTION"), fields = "Imports")[1, 1]
 dependencies <- trimws(strsplit(imports, ",", fixed = TRUE)[[1]])
 dependencies <- sub("[[:space:]]*\\(.*$", "", dependencies)
-dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "ComplexHeatmap", "svglite"))
+dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "svglite"))
 BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
 install.packages(source_dir, repos = NULL, type = "source")
 
@@ -53,7 +53,7 @@ If vegan was already loaded, restart R after changing its version before running
 
 ## R packages used by MicroFun
 
-The following packages are declared in the MicroFun source. “Latest compatible” records the version policy, not an exact-version pin.
+The table lists the current source imports together with vegan, which is required by this workflow. “Latest compatible” records the version policy, not an exact-version pin.
 
 <div class="microfun-table-caption">Table 2. R packages used by MicroFun</div>
 
@@ -97,7 +97,7 @@ The following packages are declared in the MicroFun source. “Latest compatible
 | `grid` | Bundled with the installed R release |
 | `vegan` | **2.7.2 / 2.7-2; fixed** |
 
-## Optional and documentation dependencies
+## Optional and website dependencies
 
 <div class="microfun-table-caption">Table 3. Optional and documentation packages</div>
 
@@ -106,20 +106,13 @@ The following packages are declared in the MicroFun source. “Latest compatible
 | `rsvg` | Latest compatible release; not pinned |
 | `svglite` | Latest compatible release; not pinned |
 | `qpdf` | Latest compatible release; not pinned |
-| `Biobase` | Latest compatible release; not pinned |
 | `KEGGREST` | Latest compatible release; not pinned |
-| `ComplexHeatmap` | Latest compatible release; not pinned |
-| `BiocGenerics` | Latest compatible release; not pinned |
 | `utils` | Bundled with R |
 | `knitr` | Latest compatible release; not pinned |
 | `rmarkdown` | Latest compatible release; not pinned |
-| `testthat` | Latest compatible release; not pinned |
-| `forcats` | Latest compatible release; not pinned |
-| `rlang` | Latest compatible release; not pinned |
 | `R.utils` | Latest compatible release; not pinned |
-| `xml2` | Latest compatible release; not pinned |
 
-`rsvg` enables tree Sankey PNG/PDF export; `qpdf` enables continuation-page PDF export; `ComplexHeatmap` is used for metagenome comparison heatmaps. `svglite` is used by `ggsave()` for the Standard SVG figures. Chord SVG/HTML uses R’s Cairo SVG device. On macOS, if export reports a missing `/opt/X11` library or a failed Cairo DLL, install [XQuartz](https://www.xquartz.org/) and restart R before exporting.
+`rsvg` enables tree Sankey PNG/PDF export; `qpdf` enables continuation-page PDF export. `svglite` is used by `ggsave()` for the Standard SVG figures. Chord SVG/HTML uses R’s Cairo SVG device. On macOS, if export reports a missing `/opt/X11` library or a failed Cairo DLL, install [XQuartz](https://www.xquartz.org/) and restart R before exporting.
 
 ## Local KO–KEGG mapping and online annotation {#kegg-mapping-and-annotation}
 
@@ -155,3 +148,5 @@ writeLines(capture.output(sessionInfo()), "MicroFun_sessionInfo.txt")
 ```
 
 Continue with [Study data and downloads](study-data.html), or [prepare your own study](prepare-your-data.html).
+
+The current source also supports MaAsLin2 transformations, mean-contribution `top_n` boxplot selection, and scientific-notation error-bar p-value labels. See [analysis options](analysis-options.html). Function-centered descriptive labels in the demonstration are explicitly supplied for presentation, not new analysis identifiers.

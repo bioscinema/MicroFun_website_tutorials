@@ -91,36 +91,37 @@
 <p>Use this guide to adjust figures after the <a href="demonstration-stratified.html#function-centered">function-centered
 analysis</a>. It reuses that study’s fitted results and inputs rather
 than creating another example analysis.</p>
-<p>The example selects candidate KOs and retains all fitted class
-contributors, including Alphaproteobacteria and Candidatus_Peribacteria.
-It does not inherit the taxon-centered exclusions.</p>
+<p>The example selects KOs and retains all fitted genus contributors in
+the filtered dataset. It does not apply <code>keep_genera</code>. Names
+added to the supplied presentation are author-supplied labels; KO IDs
+remain the analysis keys.</p>
 <p>Keep <code>ps</code>, <code>fun_strat_path</code>,
-<code>study_tree</code>, <code>result_fun</code>,
-<code>result_fun_box</code>, <code>ko_candidates</code>,
-<code>group_col</code>, the group contrast and output directory from the
-study. Select a small set of functions before creating any plot.</p>
+<code>result_fun</code>, <code>result_fun_box</code>,
+<code>keep_kos</code>, <code>group_col</code>, the group contrast and
+output directory from the study. Select a small set of functions before
+creating any plot.</p>
 <div class="section level2">
 <h2 id="select-functions-before-plotting">Select functions before plotting<a class="anchor" aria-label="anchor" href="#select-functions-before-plotting"></a>
 </h2>
 <p>Choose a few functions before creating any function-to-taxon diagram.
 The source table contains 8,881 KOs; the demonstration fits a
-biologically motivated set of 24 rather than drawing the full library.
+biologically motivated set of 23 rather than drawing the full library.
 Keep the full result saved and make a smaller plotting list. The code
 below preserves the recorded analysis settings.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">available_functions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">result_fun</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="va">result_fun</span>, <span class="va">nrow</span>, <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0L</span><span class="op">]</span></span>
-<span><span class="va">functions_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="va">ko_candidates</span>, <span class="va">available_functions</span><span class="op">)</span></span>
+<span><span class="va">functions_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="va">keep_kos</span>, <span class="va">available_functions</span><span class="op">)</span></span>
 <span><span class="co"># Replace the selection with named KOs of interest when they are available.</span></span>
-<span><span class="co"># functions_of_interest &lt;- c("K01489", "K00432")</span></span>
+<span><span class="co"># functions_of_interest &lt;- c("K00995", "K01489")</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">functions_of_interest</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0L</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">functions_of_interest</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">result_fun</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">result_fun_plot</span> <span class="op">&lt;-</span> <span class="va">result_fun</span><span class="op">[</span><span class="va">functions_of_interest</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, <span class="st">"microfun"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun</span>, <span class="st">"microfun"</span><span class="op">)</span></span>
-<span><span class="va">selected_function</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="st">"K01489"</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">functions_of_interest</span><span class="op">)</span> <span class="st">"K01489"</span> <span class="kw">else</span> <span class="va">functions_of_interest</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="va">selected_function</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="st">"K00995"</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">functions_of_interest</span><span class="op">)</span> <span class="st">"K00995"</span> <span class="kw">else</span> <span class="va">functions_of_interest</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="va">selected_function</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">functions_of_interest</span><span class="op">)</span></span></code></pre></div>
 <p>All examples below use this filtered list. To fit the real study
 results first, follow the <a href="demonstration-stratified.html#function-centered">function-centered
-analysis</a>, which fits the 24 selected candidate KOs at Class level.
+analysis</a>, which fits the 23 selected candidate KOs at Genus level.
 The full 8,881-KO library is a separate, much longer option.</p>
 </div>
 <div class="section level2">
@@ -137,7 +138,7 @@ taxonomy or ASV phylogeny appears on the taxon side.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_phylogeny</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun_plot</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  tree_mode <span class="op">=</span> <span class="st">"phylogeny"</span>, physeq <span class="op">=</span> <span class="va">ps</span>, phylo_tree <span class="op">=</span> <span class="va">study_tree</span></span>
+<span>  tree_mode <span class="op">=</span> <span class="st">"phylogeny"</span>, physeq <span class="op">=</span> <span class="va">ps</span>, phylo_tree <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/phy_tree-methods.html" class="external-link">phy_tree</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_sankey.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -183,12 +184,10 @@ original contribution units.</p>
 <code>log10(contribution + 1e-6)</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_fun_box</span> <span class="op">&lt;-</span> <span class="va">result_fun_plot</span><span class="op">[</span><span class="va">selected_function</span><span class="op">]</span></span>
-<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="va">result_fun_box</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span></span>
-<span><span class="va">result_fun_box</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">z</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">z</span><span class="op">$</span><span class="va">p_adjust</span><span class="op">)</span>, , drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="fl">5L</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun_box</span>, <span class="st">"microfun"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, <span class="st">"microfun"</span><span class="op">)</span></span>
 <span><span class="va">fun_boxes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_box.html">fun2tax_box</a></span><span class="op">(</span></span>
 <span>  <span class="va">fun_strat_path</span>, <span class="va">result_fun_box</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
-<span>  pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>, top_n <span class="op">=</span> <span class="fl">5</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">p_fun_box</span> <span class="op">&lt;-</span> <span class="va">fun_boxes</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_box.pdf"</span><span class="op">)</span>, <span class="va">p_fun_box</span>,</span>
@@ -224,8 +223,7 @@ effects? Read the model scale and reference group before comparing bar
 lengths, then compare the selected taxa.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fun_effects</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_logfc.html">fun2tax_logfc</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, top_n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="va">p_fun_effect</span> <span class="op">&lt;-</span> <span class="va">fun_effects</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"MaAsLin2 AST coefficient"</span><span class="op">)</span></span>
+<span><span class="va">p_fun_effect</span> <span class="op">&lt;-</span> <span class="va">fun_effects</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_effect.pdf"</span><span class="op">)</span>, <span class="va">p_fun_effect</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
 <p>Choose names from <code>names(result_fun)</code> and record the
@@ -249,7 +247,7 @@ rather than identical measurements.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

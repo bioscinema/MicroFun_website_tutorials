@@ -59,8 +59,8 @@ make individual labels easier to read.
 Use the study’s `daa_kegg` result table. `select` controls the displayed
 IDs and `p_values_threshold` controls the significance filter. Keep the
 full abundance matrix as input so sample normalization precedes feature
-selection. As in Standard, leave `p_value_bar = FALSE` and use the
-exported CSV tables for exact adjusted p-values.
+selection. Use `p_value_bar = TRUE` to display adjusted p-values in
+scientific notation; the CSV tables retain their numeric values.
 
 ``` r
 sample_groups <- factor(
@@ -71,7 +71,7 @@ p_errorbar <- pathway_errorbar(
   abundance = kegg_abundance, daa_results_df = daa_kegg,
   Group = sample_groups, select = selected_pathways,
   p_values_threshold = 0.05, order = "p_values",
-  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = FALSE
+  ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = TRUE
 )
 ```
 

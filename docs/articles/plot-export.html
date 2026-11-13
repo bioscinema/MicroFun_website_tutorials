@@ -174,7 +174,7 @@ functions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">taxa_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">p_tax_chord</span><span class="op">$</span><span class="va">links</span><span class="op">$</span><span class="va">taxon</span><span class="op">)</span>, <span class="fl">3L</span><span class="op">)</span></span>
 <span><span class="va">p_focus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_chord.html">tax2fun_chord</a></span><span class="op">(</span></span>
-<span>  <span class="va">result_taxa</span>, <span class="va">strat_path</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
+<span>  <span class="va">result_taxa</span>, <span class="va">taxa_strat_path</span>, <span class="va">ps_taxa</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
 <span>  contrast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span>,</span>
 <span>  taxa_list <span class="op">=</span> <span class="va">taxa_of_interest</span>, max_functions_per_taxon <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  draw <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -203,7 +203,7 @@ to the same analysis and redraw a different selection later.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

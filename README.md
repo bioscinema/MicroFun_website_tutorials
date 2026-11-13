@@ -64,3 +64,5 @@ or setup workflow.
 
 PICRUSt2 input generation and checks are consolidated in `articles/prepare-your-data.Rmd`.
 The separate workflow pages and link-only demonstration overview have been retired.
+
+The current demonstration uses the Incertae-sedis-filtered release (2,487 ASVs), Genus-level project taxa and 23 selected KOs. Function-centered analysis retains all genus contributors. Source snapshot synchronized with MicroFun commit 4dcb5dfb9011f3b03122e4ff8c82ec22072063e6.

@@ -40,11 +40,11 @@ Table 2. Objects used by the guides
 | From the study | Objects used in the guide |
 |----|----|
 | Standard | `ko_abundance`, `kegg_abundance`, `meta`, `daa_ko`, `daa_kegg`, `kegg_features`, `reference`, `target`, `out`. |
-| Stratified taxon-centered route | `ps`, `strat_path`, `study_tree`, `result_taxa`, `result_taxa_box`, `rank`, `group_col`, `reference`, `target`, `out`. |
-| Stratified function-centered route | The same sample and grouping objects, plus `fun_strat_path`, `result_fun`, `result_fun_box`, `ko_candidates` and the selected function list. |
+| Stratified taxon-centered route | `ps_taxa`, `taxa_strat_path`, `result_taxa`, `result_taxa_box`, `rank`, `group_col`, `reference`, `target`, `out`. |
+| Stratified function-centered route | The full filtered `ps` object and sample contrast, plus `fun_strat_path`, `result_fun`, `result_fun_box`, `keep_kos` and the selected function list. |
 
 All input paths are resolved from the extracted
-`MicroFun_demonstration_data` folder. The [download
+`MicroFun_demonstration_data_filtered` folder. The [download
 page](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.html#files-after-extraction)
 lists the archive contents and exact filenames; fitted result and figure
 output paths are defined in each study.

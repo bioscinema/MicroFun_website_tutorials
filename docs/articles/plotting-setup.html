@@ -181,22 +181,22 @@ Table 2. Objects used by the guides
 <tr class="even">
 <td>Stratified taxon-centered route</td>
 <td>
-<code>ps</code>, <code>strat_path</code>, <code>study_tree</code>,
+<code>ps_taxa</code>, <code>taxa_strat_path</code>,
 <code>result_taxa</code>, <code>result_taxa_box</code>,
 <code>rank</code>, <code>group_col</code>, <code>reference</code>,
 <code>target</code>, <code>out</code>.</td>
 </tr>
 <tr class="odd">
 <td>Stratified function-centered route</td>
-<td>The same sample and grouping objects, plus
+<td>The full filtered <code>ps</code> object and sample contrast, plus
 <code>fun_strat_path</code>, <code>result_fun</code>,
-<code>result_fun_box</code>, <code>ko_candidates</code> and the selected
+<code>result_fun_box</code>, <code>keep_kos</code> and the selected
 function list.</td>
 </tr>
 </tbody>
 </table>
 <p>All input paths are resolved from the extracted
-<code>MicroFun_demonstration_data</code> folder. The <a href="study-data.html#files-after-extraction">download page</a> lists
+<code>MicroFun_demonstration_data_filtered</code> folder. The <a href="study-data.html#files-after-extraction">download page</a> lists
 the archive contents and exact filenames; fitted result and figure
 output paths are defined in each study.</p>
 </div>
@@ -207,7 +207,7 @@ output paths are defined in each study.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

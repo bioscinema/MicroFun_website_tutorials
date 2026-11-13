@@ -46,18 +46,11 @@
 - [`pathway_sdaa()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_sdaa.md)
   : Stratified pathway-level DAA workflow for PICRUSt2 outputs
 
-## Data preparation and comparison
+## Abundance aggregation
 
 - [`ko2kegg_abundance()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko2kegg_abundance.md)
   : Convert KO abundance in picrust2 export files to KEGG pathway
   abundance
-- [`import_MicrobiomeAnalyst_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/import_MicrobiomeAnalyst_daa_results.md)
-  : Import Differential Abundance Analysis (DAA) results from
-  MicrobiomeAnalyst
-- [`compare_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_daa_results.md)
-  : Compare the Consistency of Statistically Significant Features
-- [`compare_metagenome_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_metagenome_results.md)
-  : Compare Metagenome Results
 
 ## Export and appearance
 
@@ -72,14 +65,6 @@
 
 ## Example datasets and other helpers
 
-- [`compare_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_daa_results.md)
-  : Compare the Consistency of Statistically Significant Features
-- [`compare_metagenome_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/compare_metagenome_results.md)
-  : Compare Metagenome Results
-- [`daa_annotated_results_df`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/daa_annotated_results_df.md)
-  : Differentially Abundant Analysis Results with Annotation
-- [`daa_results_df`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/daa_results_df.md)
-  : DAA Results Dataset
 - [`fun2tax_box()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_box.md)
   : Plot function-to-taxon contributions as grouped boxplots
 - [`fun2tax_chord()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_chord.md)
@@ -90,20 +75,9 @@
   : Plot signed taxon effects for each function
 - [`fun2tax_sankey()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/fun2tax_sankey.md)
   : Sankey diagram: functions (KO/EC/MetaCyc) to taxa/features
-- [`import_MicrobiomeAnalyst_daa_results`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/import_MicrobiomeAnalyst_daa_results.md)
-  : Import Differential Abundance Analysis (DAA) results from
-  MicrobiomeAnalyst
-- [`kegg_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/kegg_abundance.md)
-  : KEGG Abundance Dataset
 - [`ko2kegg_abundance()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko2kegg_abundance.md)
   : Convert KO abundance in picrust2 export files to KEGG pathway
   abundance
-- [`ko_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/ko_abundance.md)
-  : KO Abundance Dataset
-- [`metacyc_abundance`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/metacyc_abundance.md)
-  : MetaCyc Abundance Dataset
-- [`metadata`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/metadata.md)
-  : Metadata for ggpicrust2 Demonstration
 - [`microfun_palette()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/microfun_palette.md)
   : MicroFun categorical palettes
 - [`pathway_annotation()`](https://bioscinema.github.io/MicroFun_website_tutorials/reference/pathway_annotation.md)

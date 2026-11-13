@@ -91,7 +91,7 @@
 <p>Use this page when adapting MicroFun to your own study. If you want
 to try the published example first, start with <a href="study-data.html">Study data and downloads</a>, then follow <a href="demonstration-standard.html">Standard</a> or <a href="demonstration-stratified.html">Stratified</a>.</p>
 <p>The shared workflow supports Phylum, Class, Order, Family, Genus and
-Species when annotations are available. The demonstration uses Class;
+Species when annotations are available. The demonstration uses Genus;
 the downloaded Species column is empty, so its deepest usable rank is
 Genus. Keep the original ASV-level object and change <code>rank</code>
 before refitting.</p>
@@ -253,7 +253,7 @@ compatible backend. Keep contributions finite and nonnegative.</p>
 <span><span class="va">strat_path</span> <span class="op">&lt;-</span> <span class="st">"my_study/KO_contrib.tsv.gz"</span></span>
 <span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"my_study/phyloseq_asv.rds"</span><span class="op">)</span></span>
 <span><span class="va">group_col</span> <span class="op">&lt;-</span> <span class="st">"group"</span></span>
-<span><span class="va">rank</span> <span class="op">&lt;-</span> <span class="st">"Class"</span></span>
+<span><span class="va">rank</span> <span class="op">&lt;-</span> <span class="st">"Genus"</span></span>
 <span><span class="va">reference</span> <span class="op">&lt;-</span> <span class="st">"Control"</span></span>
 <span><span class="va">target</span> <span class="op">&lt;-</span> <span class="st">"Treatment"</span></span>
 <span></span>
@@ -299,15 +299,20 @@ represented.</p>
 <div class="section level2">
 <h2 id="continue-with-your-own-inputs">Continue with your own inputs<a class="anchor" aria-label="anchor" href="#continue-with-your-own-inputs"></a>
 </h2>
-<p>In the <a href="demonstration-stratified.html#taxon-centered">Stratified
-study</a>, replace the demonstration preparation block with the checked
-objects above. Set <code>study_tree &lt;- phy_tree(ps)</code> for
-phylogeny views and create an output directory before saving results.
-Fit the taxon-centered direction first. For the optional
-function-centered route, use
-<code>fun_strat_path &lt;- strat_path</code> in place of the
-demonstration file-loading lines. That route can take considerably
-longer.</p>
+<p>Reuse the preparation logic in the <a href="demonstration-stratified.html#prepare-the-data-and-project-selections">Stratified
+study</a>, replacing its study-loading lines with the checked
+<code>ps</code>, <code>strat_path</code>, rank and contrast above.
+Replace <code>keep_genera</code> and <code>keep_kos</code> with
+selections suited to your project. The remaining preparation creates
+<code>ps_taxa</code>, <code>taxa_strat_path</code> and
+<code>fun_strat_path</code> before either analysis is fitted. For a rank
+other than Genus, the demonstrated preparation uses all assigned taxa at
+that rank.</p>
+<p>Fit the taxon-centered direction first. The optional
+function-centered route uses the full <code>ps</code> and only the
+selected functions. Always select functions before fitting and plotting;
+analyzing an entire function library can take substantially longer. Keep
+the original ASV tree in <code>ps</code> for phylogeny views.</p>
 <p>Use <a href="analysis-options.html">Differential analysis options</a>
 to choose a method suited to your data and design. After fitting, use <a href="plotting-setup.html">Visualization guides</a> for figure
 selection, parameters and export. These guides work with your fitted
@@ -320,7 +325,7 @@ study objects as well as the demonstration results.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -9,7 +9,7 @@ vignette: >
 
 Use this page when adapting MicroFun to your own study. If you want to try the published example first, start with [Study data and downloads](study-data.html), then follow [Standard](demonstration-standard.html) or [Stratified](demonstration-stratified.html).
 
-The shared workflow supports Phylum, Class, Order, Family, Genus and Species when annotations are available. The demonstration uses Class; the downloaded Species column is empty, so its deepest usable rank is Genus. Keep the original ASV-level object and change `rank` before refitting.
+The shared workflow supports Phylum, Class, Order, Family, Genus and Species when annotations are available. The demonstration uses Genus; the downloaded Species column is empty, so its deepest usable rank is Genus. Keep the original ASV-level object and change `rank` before refitting.
 
 ## Choose the PICRUSt2 output
 
@@ -96,7 +96,7 @@ library(phyloseq)
 strat_path <- "my_study/KO_contrib.tsv.gz"
 ps <- readRDS("my_study/phyloseq_asv.rds")
 group_col <- "group"
-rank <- "Class"
+rank <- "Genus"
 reference <- "Control"
 target <- "Treatment"
 
@@ -137,6 +137,8 @@ Review the overlap before fitting. If IDs use different prefixes or representati
 
 ## Continue with your own inputs
 
-In the [Stratified study](demonstration-stratified.html#taxon-centered), replace the demonstration preparation block with the checked objects above. Set `study_tree <- phy_tree(ps)` for phylogeny views and create an output directory before saving results. Fit the taxon-centered direction first. For the optional function-centered route, use `fun_strat_path <- strat_path` in place of the demonstration file-loading lines. That route can take considerably longer.
+Reuse the preparation logic in the [Stratified study](demonstration-stratified.html#prepare-the-data-and-project-selections), replacing its study-loading lines with the checked `ps`, `strat_path`, rank and contrast above. Replace `keep_genera` and `keep_kos` with selections suited to your project. The remaining preparation creates `ps_taxa`, `taxa_strat_path` and `fun_strat_path` before either analysis is fitted. For a rank other than Genus, the demonstrated preparation uses all assigned taxa at that rank.
+
+Fit the taxon-centered direction first. The optional function-centered route uses the full `ps` and only the selected functions. Always select functions before fitting and plotting; analyzing an entire function library can take substantially longer. Keep the original ASV tree in `ps` for phylogeny views.
 
 Use [Differential analysis options](analysis-options.html) to choose a method suited to your data and design. After fitting, use [Visualization guides](plotting-setup.html) for figure selection, parameters and export. These guides work with your fitted study objects as well as the demonstration results.

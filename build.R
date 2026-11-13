@@ -328,6 +328,20 @@ dir.create(
   showWarnings = FALSE
 )
 
+# Remove generated pages whose topics/articles were retired from the current source.
+# Keep other assets and the stable preview directory intact.
+for (section in c("reference", "articles")) {
+  fresh_pages <- list.files(file.path(run_root, "site", section),
+                            pattern = "[.]html$", full.names = FALSE)
+  old_pages <- list.files(file.path(destination, section),
+                          pattern = "[.]html$", full.names = FALSE)
+  retired_pages <- setdiff(old_pages, fresh_pages)
+  if (length(retired_pages)) {
+    unlink(file.path(destination, section, retired_pages))
+    message("Removed retired ", section, " pages: ", paste(retired_pages, collapse = ", "))
+  }
+}
+
 site_entries <- list.files(
   file.path(run_root, "site"),
   all.files = TRUE,
@@ -341,7 +355,8 @@ stopifnot(
       site_entries,
       destination,
       recursive = TRUE,
-      overwrite = TRUE
+      overwrite = TRUE,
+      copy.mode = FALSE
     )
   )
 )
@@ -374,10 +389,10 @@ if (file.exists(generated_homepage)) {
     warn = FALSE
   )
   
-  if (any(grepl("microfun-hero-logo", homepage_html, fixed = TRUE))) {
+  if (any(grepl("microfun-home-logo", homepage_html, fixed = TRUE))) {
     message("Homepage logo reference found.")
   } else {
-    warning("Homepage does not contain microfun-hero-logo.")
+    warning("Homepage does not contain microfun-home-logo.")
   }
   
 }

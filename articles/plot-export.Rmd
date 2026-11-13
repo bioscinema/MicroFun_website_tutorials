@@ -50,7 +50,7 @@ A full Chord can contain many sectors and ribbons. Start with HTML to inspect th
 ```r
 taxa_of_interest <- head(unique(p_tax_chord$links$taxon), 3L)
 p_focus <- tax2fun_chord(
-  result_taxa, strat_path, ps, group = group_col,
+  result_taxa, taxa_strat_path, ps_taxa, group = group_col,
   contrast = c(reference, target),
   taxa_list = taxa_of_interest, max_functions_per_taxon = 10,
   draw = FALSE

@@ -120,13 +120,11 @@
 <span>  trim_ws <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># data(metadata)</span></span>
 <span></span>
 <span><span class="va">kegg_abundance</span> <span class="op">&lt;-</span> <span class="fu"><a href="ko2kegg_abundance.html">ko2kegg_abundance</a></span><span class="op">(</span></span>
 <span>  <span class="st">"path/to/your/pred_metagenome_unstrat.tsv"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># data(kegg_abundance)</span></span>
 <span></span>
 <span><span class="co"># Please change group to "your_group_column" if you are not using example dataset</span></span>
 <span><span class="va">group</span> <span class="op">&lt;-</span> <span class="st">"Environment"</span></span>
@@ -159,10 +157,10 @@
 <span>  Group <span class="op">=</span> <span class="va">Group</span>,</span>
 <span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  order <span class="op">=</span> <span class="st">"pathway_class"</span>,</span>
-<span>  select <span class="op">=</span> <span class="va">daa_annotated_sub_method_results_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">p_adjust</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"feature"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  select <span class="op">=</span> <span class="va">daa_annotated_sub_method_results_df</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">arrange</span><span class="op">(</span><span class="va">p_adjust</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="st">"feature"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">pull</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  ko_to_kegg <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  p_value_bar <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  colors <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -176,16 +174,14 @@
 <span>  escape_double <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  trim_ws <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># data(metadata)</span></span>
 <span></span>
 <span><span class="va">metacyc_abundance</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span><span class="st">"path/to/your/metacyc_abundance.tsv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># data(metacyc_abundance)</span></span>
 <span></span>
 <span><span class="va">group</span> <span class="op">&lt;-</span> <span class="st">"Environment"</span></span>
 <span></span>
 <span><span class="va">daa_results_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="pathway_daa.html">pathway_daa</a></span><span class="op">(</span></span>
-<span>  abundance <span class="op">=</span> <span class="va">metacyc_abundance</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">column_to_rownames</a></span><span class="op">(</span><span class="st">"pathway"</span><span class="op">)</span>,</span>
+<span>  abundance <span class="op">=</span> <span class="va">metacyc_abundance</span> <span class="op">%&gt;%</span> <span class="fu">column_to_rownames</span><span class="op">(</span><span class="st">"pathway"</span><span class="op">)</span>,</span>
 <span>  metadata <span class="op">=</span> <span class="va">metadata</span>,</span>
 <span>  group <span class="op">=</span> <span class="va">group</span>,</span>
 <span>  daa_method <span class="op">=</span> <span class="st">"LinDA"</span>,</span>
@@ -203,7 +199,7 @@
 <span><span class="va">Group</span> <span class="op">&lt;-</span> <span class="va">metadata</span><span class="op">$</span><span class="va">Environment</span></span>
 <span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">pathway_errorbar</span><span class="op">(</span></span>
-<span>  abundance <span class="op">=</span> <span class="va">metacyc_abundance</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">column_to_rownames</a></span><span class="op">(</span><span class="st">"pathway"</span><span class="op">)</span>,</span>
+<span>  abundance <span class="op">=</span> <span class="va">metacyc_abundance</span> <span class="op">%&gt;%</span> <span class="fu">column_to_rownames</span><span class="op">(</span><span class="st">"pathway"</span><span class="op">)</span>,</span>
 <span>  daa_results_df <span class="op">=</span> <span class="va">daa_annotated_results_df</span>,</span>
 <span>  Group <span class="op">=</span> <span class="va">Group</span>,</span>
 <span>  p_values_threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -221,7 +217,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

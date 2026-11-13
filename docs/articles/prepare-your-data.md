@@ -9,7 +9,7 @@ or
 [Stratified](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md).
 
 The shared workflow supports Phylum, Class, Order, Family, Genus and
-Species when annotations are available. The demonstration uses Class;
+Species when annotations are available. The demonstration uses Genus;
 the downloaded Species column is empty, so its deepest usable rank is
 Genus. Keep the original ASV-level object and change `rank` before
 refitting.
@@ -130,7 +130,7 @@ library(phyloseq)
 strat_path <- "my_study/KO_contrib.tsv.gz"
 ps <- readRDS("my_study/phyloseq_asv.rds")
 group_col <- "group"
-rank <- "Class"
+rank <- "Genus"
 reference <- "Control"
 target <- "Treatment"
 
@@ -176,14 +176,20 @@ samples in a table, with at least two groups represented.
 
 ## Continue with your own inputs
 
-In the [Stratified
-study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered),
-replace the demonstration preparation block with the checked objects
-above. Set `study_tree <- phy_tree(ps)` for phylogeny views and create
-an output directory before saving results. Fit the taxon-centered
-direction first. For the optional function-centered route, use
-`fun_strat_path <- strat_path` in place of the demonstration
-file-loading lines. That route can take considerably longer.
+Reuse the preparation logic in the [Stratified
+study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#prepare-the-data-and-project-selections),
+replacing its study-loading lines with the checked `ps`, `strat_path`,
+rank and contrast above. Replace `keep_genera` and `keep_kos` with
+selections suited to your project. The remaining preparation creates
+`ps_taxa`, `taxa_strat_path` and `fun_strat_path` before either analysis
+is fitted. For a rank other than Genus, the demonstrated preparation
+uses all assigned taxa at that rank.
+
+Fit the taxon-centered direction first. The optional function-centered
+route uses the full `ps` and only the selected functions. Always select
+functions before fitting and plotting; analyzing an entire function
+library can take substantially longer. Keep the original ASV tree in
+`ps` for phylogeny views.
 
 Use [Differential analysis
 options](https://bioscinema.github.io/MicroFun_website_tutorials/articles/analysis-options.md)

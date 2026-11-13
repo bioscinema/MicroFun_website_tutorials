@@ -111,7 +111,7 @@
 <li>
 <strong>Contribution box plots</strong> compare predicted contributions across groups, organized by <a href="articles/taxon-to-function.html#tax2fun-box">taxon</a> or <a href="articles/function-to-taxon.html#fun2tax-box">function</a>.</li>
 <li>
-<strong>Signed-effect plots and association dendrograms</strong> show model effects and organize selected relationships in both analysis directions. For MaAsLin2, signed effects are AST coefficients. For evolutionary relationships, use the phylogeny mode of Sankey.</li>
+<strong>Signed-effect plots and association dendrograms</strong> show model effects and organize selected relationships in both analysis directions. For MaAsLin2, effect labels follow the chosen transformation. For evolutionary relationships, use the phylogeny mode of Sankey.</li>
 </ul>
 <p>By bringing data preparation, statistical testing, annotation and plotting into one workflow, MicroFun helps users explore functional differences together with their microbial contributors.</p>
 <figure class="microfun-graphical-abstract"><a href="images/microfun_abstract.png"><img src="images/microfun_abstract.png" alt="MicroFun graphical abstract connecting microbial communities, predicted functions and visualizations" loading="lazy"></a>
@@ -137,9 +137,9 @@
 <div class="section level2">
 <h2 id="explore-microfun-visualizations">Explore MicroFun visualizations<a class="anchor" aria-label="anchor" href="#explore-microfun-visualizations"></a>
 </h2>
-<p>Three representative views of predicted functional contributions. Select a figure to explore the corresponding result; see the <a href="articles/demonstration-stratified.html">stratified demonstration</a> for boxplots, signed effects and additional views.</p>
+<p>Three representative Genus-level views of predicted functional contributions. Select a figure to explore the corresponding result; see the <a href="articles/demonstration-stratified.html">stratified demonstration</a> for boxplots, signed effects and additional views.</p>
 <div class="microfun-gallery">
-<figure class="microfun-result"><a class="microfun-result-image" href="examples/study/class/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/class/images/tax2fun-chord.svg" alt="Chord showing predicted taxon-function contributions" loading="lazy"></a>
+<figure class="microfun-result"><a class="microfun-result-image" href="examples/study/genus/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/genus/images/tax2fun-chord.svg" alt="Genus-level Chord showing predicted taxon-function contributions" loading="lazy"></a>
 <figcaption><h3>
 Chord diagram
 </h3>
@@ -147,22 +147,22 @@ Chord diagram
 Compare predicted contributions and model-effect direction.
 </p>
 <a href="articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights">Explore the example →</a>
-</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="articles/demonstration-stratified.html#class-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/class/images/tax2fun-dendrogram-class.svg" alt="Class-level overview of taxon-function associations" loading="lazy"></a>
+</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/genus/images/tax2fun-dendrogram-genus.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>
 <figcaption><h3>
 Association dendrogram
 </h3>
 <p>
-Explore the association overview across retained classes.
+Explore the association overview across selected genera.
 </p>
-<a href="articles/demonstration-stratified.html#class-dendrogram-overview">Explore the example →</a>
-</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="examples/study/class/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/class/images/tax2fun-taxonomy.svg" alt="Sankey with a taxonomic side tree" loading="lazy"></a>
+<a href="articles/demonstration-stratified.html#genus-dendrogram-overview">Explore the example →</a>
+</figcaption></figure><figure class="microfun-result"><a class="microfun-result-image" href="examples/study/genus/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/genus/images/tax2fun-taxonomy.svg" alt="Genus-level Sankey with a taxonomic side tree" loading="lazy"></a>
 <figcaption><h3>
 Sankey diagram
 </h3>
 <p>
 Trace selected taxa–function associations with taxonomy context.
 </p>
-<a href="articles/demonstration-stratified.html#taxon-centered">Explore the example →</a>
+<a href="articles/demonstration-stratified.html#sankey-overviews-of-the-selected-genera">Explore the example →</a>
 </figcaption></figure>
 </div>
 </div>
@@ -212,11 +212,12 @@ Trace selected taxa–function associations with taxonomy context.
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Zilin Li <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Ruitao Liu <br><small class="roles"> Author </small>   </li>
 <li>Yaoran Yu <br><small class="roles"> Author </small>   </li>
 <li>Chenyu Liu <br><small class="roles"> Author </small>   </li>
-<li>Ruitao Liu <br><small class="roles"> Author </small>   </li>
-<li>Liangliang Zhang <br><small class="roles"> Author </small>   </li>
+<li>Zilin Li <br><small class="roles"> Author, maintainer </small>   </li>
+<li>Liangliang Zhang <br><small class="roles"> Author, copyright holder </small>   </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
@@ -225,7 +226,7 @@ Trace selected taxa–function associations with taxonomy context.
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

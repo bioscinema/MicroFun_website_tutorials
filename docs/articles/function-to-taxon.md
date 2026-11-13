@@ -5,40 +5,40 @@ analysis](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demon
 It reuses that study’s fitted results and inputs rather than creating
 another example analysis.
 
-The example selects candidate KOs and retains all fitted class
-contributors, including Alphaproteobacteria and Candidatus_Peribacteria.
-It does not inherit the taxon-centered exclusions.
+The example selects KOs and retains all fitted genus contributors in the
+filtered dataset. It does not apply `keep_genera`. Names added to the
+supplied presentation are author-supplied labels; KO IDs remain the
+analysis keys.
 
-Keep `ps`, `fun_strat_path`, `study_tree`, `result_fun`,
-`result_fun_box`, `ko_candidates`, `group_col`, the group contrast and
-output directory from the study. Select a small set of functions before
-creating any plot.
+Keep `ps`, `fun_strat_path`, `result_fun`, `result_fun_box`, `keep_kos`,
+`group_col`, the group contrast and output directory from the study.
+Select a small set of functions before creating any plot.
 
 ## Select functions before plotting
 
 Choose a few functions before creating any function-to-taxon diagram.
 The source table contains 8,881 KOs; the demonstration fits a
-biologically motivated set of 24 rather than drawing the full library.
+biologically motivated set of 23 rather than drawing the full library.
 Keep the full result saved and make a smaller plotting list. The code
 below preserves the recorded analysis settings.
 
 ``` r
 available_functions <- names(result_fun)[vapply(result_fun, nrow, integer(1)) > 0L]
-functions_of_interest <- intersect(ko_candidates, available_functions)
+functions_of_interest <- intersect(keep_kos, available_functions)
 # Replace the selection with named KOs of interest when they are available.
-# functions_of_interest <- c("K01489", "K00432")
+# functions_of_interest <- c("K00995", "K01489")
 stopifnot(length(functions_of_interest) > 0L,
           all(functions_of_interest %in% names(result_fun)))
 result_fun_plot <- result_fun[functions_of_interest]
 attr(result_fun_plot, "microfun") <- attr(result_fun, "microfun")
-selected_function <- if ("K01489" %in% functions_of_interest) "K01489" else functions_of_interest[1]
+selected_function <- if ("K00995" %in% functions_of_interest) "K00995" else functions_of_interest[1]
 stopifnot(selected_function %in% functions_of_interest)
 ```
 
 All examples below use this filtered list. To fit the real study results
 first, follow the [function-centered
 analysis](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#function-centered),
-which fits the 24 selected candidate KOs at Class level. The full
+which fits the 23 selected candidate KOs at Genus level. The full
 8,881-KO library is a separate, much longer option.
 
 ## Sankey
@@ -56,7 +56,7 @@ ASV phylogeny appears on the taxon side.
 ``` r
 p_fun_phylogeny <- fun2tax_sankey(
   result_fun_plot, pathway = "KO", group_functions = FALSE,
-  tree_mode = "phylogeny", physeq = ps, phylo_tree = study_tree
+  tree_mode = "phylogeny", physeq = ps, phylo_tree = phy_tree(ps)
 )
 save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_sankey.html"))
 ```
@@ -107,12 +107,10 @@ An ungrouped call returns one named plot per function. The y-axis is
 
 ``` r
 result_fun_box <- result_fun_plot[selected_function]
-z <- result_fun_box[[selected_function]]
-result_fun_box[[selected_function]] <- head(z[order(z$p_adjust), , drop = FALSE], 5L)
 attr(result_fun_box, "microfun") <- attr(result_fun_plot, "microfun")
 fun_boxes <- fun2tax_box(
   fun_strat_path, result_fun_box, ps, group = group_col,
-  pathway = "KO", group_functions = FALSE
+  pathway = "KO", group_functions = FALSE, top_n = 5
 )
 p_fun_box <- fun_boxes[[selected_function]]
 ggplot2::ggsave(file.path(out, "fun2tax_box.pdf"), p_fun_box,
@@ -150,8 +148,7 @@ lengths, then compare the selected taxa.
 
 ``` r
 fun_effects <- fun2tax_logfc(result_fun_plot, top_n = 3)
-p_fun_effect <- fun_effects[[selected_function]] +
-  ggplot2::labs(y = "MaAsLin2 AST coefficient")
+p_fun_effect <- fun_effects[[selected_function]]
 ggplot2::ggsave(file.path(out, "fun2tax_effect.pdf"), p_fun_effect,
                 width = 8, height = 5)
 ```

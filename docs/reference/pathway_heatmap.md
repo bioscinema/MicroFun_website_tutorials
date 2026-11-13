@@ -80,34 +80,6 @@ custom_colors <- c("skyblue", "salmon")
 # Create a heatmap using custom colors for facet strips
 pathway_heatmap(kegg_abundance_example, metadata_example, "group", colors = custom_colors)
 
-# Use real dataset
-data("metacyc_abundance")
-data("metadata")
-metacyc_daa_results_df <- pathway_daa(
-  abundance = metacyc_abundance %>% column_to_rownames("pathway"),
-  metadata = metadata,
-  group = "Environment",
-  daa_method = "LinDA"
-)
-annotated_metacyc_daa_results_df <- pathway_annotation(
-  pathway = "MetaCyc",
-  daa_results_df = metacyc_daa_results_df,
-  ko_to_kegg = FALSE
-)
-feature_with_p_0.05 <- metacyc_daa_results_df %>% filter(p_adjust < 0.05)
-pathway_heatmap(
-  abundance = metacyc_abundance %>%
-    right_join(
-      annotated_metacyc_daa_results_df %>%
-      select(all_of(c("feature","description"))),
-      by = c("pathway" = "feature")
-    ) %>%
-    filter(pathway %in% feature_with_p_0.05$feature) %>%
-    select(-"pathway") %>%
-    column_to_rownames("description"),
-  metadata = metadata,
-  group = "Environment",
-  colors = custom_colors
-)
+
 } # }
 ```

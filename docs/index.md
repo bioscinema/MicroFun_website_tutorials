@@ -68,8 +68,8 @@ group comparisons.
   [function](https://bioscinema.github.io/MicroFun_website_tutorials/articles/function-to-taxon.html#fun2tax-box).
 - **Signed-effect plots and association dendrograms** show model effects
   and organize selected relationships in both analysis directions. For
-  MaAsLin2, signed effects are AST coefficients. For evolutionary
-  relationships, use the phylogeny mode of Sankey.
+  MaAsLin2, effect labels follow the chosen transformation. For
+  evolutionary relationships, use the phylogeny mode of Sankey.
 
 By bringing data preparation, statistical testing, annotation and
 plotting into one workflow, MicroFun helps users explore functional
@@ -102,13 +102,14 @@ for the setup instructions.
 
 ## Explore MicroFun visualizations
 
-Three representative views of predicted functional contributions. Select
-a figure to explore the corresponding result; see the [stratified
+Three representative Genus-level views of predicted functional
+contributions. Select a figure to explore the corresponding result; see
+the [stratified
 demonstration](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.md)
 for boxplots, signed effects and additional views.
 
-[![Chord showing predicted taxon-function
-contributions](examples/study/class/images/tax2fun-chord.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/images/tax2fun-chord.svg)
+[![Genus-level Chord showing predicted taxon-function
+contributions](examples/study/genus/images/tax2fun-chord.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/images/tax2fun-chord.svg)
 
 ### Chord diagram
 
@@ -117,25 +118,25 @@ Compare predicted contributions and model-effect direction.
 [Explore the example
 →](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights)
 
-[![Class-level overview of taxon-function
-associations](examples/study/class/images/tax2fun-dendrogram-class.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#class-dendrogram-overview)
+[![Genus-level overview of taxon-function
+associations](examples/study/genus/images/tax2fun-dendrogram-genus.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
 
 ### Association dendrogram
 
-Explore the association overview across retained classes.
+Explore the association overview across selected genera.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#class-dendrogram-overview)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
 
-[![Sankey with a taxonomic side
-tree](examples/study/class/images/tax2fun-taxonomy.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/class/images/tax2fun-taxonomy.svg)
+[![Genus-level Sankey with a taxonomic side
+tree](examples/study/genus/images/tax2fun-taxonomy.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/images/tax2fun-taxonomy.svg)
 
 ### Sankey diagram
 
 Trace selected taxa–function associations with taxonomy context.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#taxon-centered)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#sankey-overviews-of-the-selected-genera)
 
 ## Documentation
 

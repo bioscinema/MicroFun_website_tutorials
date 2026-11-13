@@ -180,7 +180,7 @@ and retain its original effect and adjustment fields.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chosen_method</span> <span class="op">&lt;-</span> <span class="st">"Maaslin2"</span></span>
 <span><span class="va">result_taxa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_sdaa.html">pathway_sdaa</a></span><span class="op">(</span></span>
-<span>  stratified_path <span class="op">=</span> <span class="va">strat_path</span>, physeq <span class="op">=</span> <span class="va">ps</span>,</span>
+<span>  stratified_path <span class="op">=</span> <span class="va">taxa_strat_path</span>, physeq <span class="op">=</span> <span class="va">ps_taxa</span>,</span>
 <span>  group <span class="op">=</span> <span class="st">"group"</span>, taxon_level <span class="op">=</span> <span class="va">rank</span>,</span>
 <span>  direction <span class="op">=</span> <span class="st">"taxa"</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>,</span>
 <span>  daa_method <span class="op">=</span> <span class="va">chosen_method</span>, reference <span class="op">=</span> <span class="st">"STS"</span>,</span>
@@ -199,13 +199,31 @@ save a focused result.</p>
 <p>With Maaslin2, pass metadata column names such as
 <code>confounders = c("Age", "Batch")</code> to
 <code><a href="../reference/pathway_sdaa.html">pathway_sdaa()</a></code> when those variables belong in your study
-design. This backend uses total-sum scaling and an arcsine square-root
-transformation. Its signed estimates are AST coefficients, with the
-target compared against the recorded reference.</p>
+design. By default, this backend uses total-sum scaling and an arcsine
+square-root transformation. Its default signed estimates are AST
+coefficients, with the target compared against the recorded
+reference.</p>
 <p>In the stratified workflows, BH adjustment is applied within each
 fitted table. The two analysis directions fit separate models and
 collections of tests. Save the result list as RDS to retain its
 <code>microfun</code> settings, including rank and direction.</p>
+</div>
+<div class="section level2">
+<h2 id="choose-a-maaslin2-transformation">Choose a MaAsLin2 transformation<a class="anchor" aria-label="anchor" href="#choose-a-maaslin2-transformation"></a>
+</h2>
+<p><code>maaslin2_transform</code> accepts <code>"AST"</code> (default),
+<code>"LOG"</code>, <code>"LOGIT"</code> and <code>"NONE"</code> in both
+<code><a href="../reference/pathway_daa.html">pathway_daa()</a></code> and <code><a href="../reference/pathway_sdaa.html">pathway_sdaa()</a></code>. For example,
+add <code>maaslin2_transform = "LOG"</code> to a MaAsLin2 call and refit
+before plotting. This argument is specific to MaAsLin2; omit it for
+other backends. MicroFun records the transformation and uses it in
+signed-effect labels, so signed-effect labels follow the fitted
+model.</p>
+<p><code>top_n</code> in <code><a href="../reference/tax2fun_box.html">tax2fun_box()</a></code> and
+<code><a href="../reference/fun2tax_box.html">fun2tax_box()</a></code> ranks features by the average of group mean
+contributions. Use <code>top_n = 5</code> for a focused panel or leave
+the default <code>Inf</code> to retain all eligible features. This
+display ranking leaves the fitted p-values unchanged.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -214,7 +232,7 @@ collections of tests. Save the result list as RDS to retain its
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">

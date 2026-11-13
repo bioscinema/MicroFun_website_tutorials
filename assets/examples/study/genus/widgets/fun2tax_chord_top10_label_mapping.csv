@@ -1,0 +1,97 @@
+"key","side","rank","full_name","code","display_label","colour","abbreviated","leader","visible"
+"Taxa|Phylum|Actinomycetota","Taxa","Phylum","Actinomycetota","","Actinomycetota","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Phylum|Bacillota","Taxa","Phylum","Bacillota","","Bacillota","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Phylum|Bacteroidota","Taxa","Phylum","Bacteroidota","BQ","","#F5D8B7",TRUE,FALSE,FALSE
+"Taxa|Phylum|Clostridiota","Taxa","Phylum","Clostridiota","BR","","#F1D0C6",TRUE,FALSE,FALSE
+"Taxa|Phylum|Pseudomonadota","Taxa","Phylum","Pseudomonadota","","Pseudomonadota","#DDAEAB",FALSE,FALSE,TRUE
+"Taxa|Class|Actinomycetota|Actinomycetes","Taxa","Class","Actinomycetes","","Actinomycetes","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Class|Actinomycetota|Coriobacteriia","Taxa","Class","Coriobacteriia","","Coriobacteriia","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Class|Bacillota|Bacilli","Taxa","Class","Bacilli","","Bacilli","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Class|Bacteroidota|Cytophagia","Taxa","Class","Cytophagia","AC","","#F5D8B7",TRUE,FALSE,FALSE
+"Taxa|Class|Clostridiota|Clostridia","Taxa","Class","Clostridia","AD","","#F1D0C6",TRUE,FALSE,FALSE
+"Taxa|Class|Pseudomonadota|Gammaproteobacteria","Taxa","Class","Gammaproteobacteria","","Gammaproteobacteria","#DDAEAB",FALSE,FALSE,TRUE
+"Taxa|Order|Actinomycetota|Actinomycetes|Actinopolysporales","Taxa","Order","Actinopolysporales","","Actinopolysporales","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Order|Actinomycetota|Actinomycetes|Cellulomonadales","Taxa","Order","Cellulomonadales","AZ","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|Order|Actinomycetota|Actinomycetes|Kitasatosporales","Taxa","Order","Kitasatosporales","","Kitasatosporales","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Order|Actinomycetota|Actinomycetes|Mycobacteriales","Taxa","Order","Mycobacteriales","BB","BB","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|Order|Actinomycetota|Actinomycetes|Streptosporangiales","Taxa","Order","Streptosporangiales","BC","BC","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|Order|Actinomycetota|Coriobacteriia|Coriobacteriales","Taxa","Order","Coriobacteriales","","Coriobacteriales","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Bacillales--other","Taxa","Order","Bacillales--other","BE","BE","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Lactobacillales","Taxa","Order","Lactobacillales","BF","BF","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Paenibacillales","Taxa","Order","Paenibacillales","BG","BG","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Staphylococcales","Taxa","Order","Staphylococcales","BH","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|Order|Bacillota|Bacilli|Tepidibacillales","Taxa","Order","Tepidibacillales","","Tepidibacillales","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Order|Bacillota|Bacilli|Thermoactinomycetales","Taxa","Order","Thermoactinomycetales","BJ","BJ","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Order|Bacteroidota|Cytophagia|Cytophagales","Taxa","Order","Cytophagales","BK","","#F5D8B7",TRUE,FALSE,FALSE
+"Taxa|Order|Clostridiota|Clostridia|Acetivibrionales","Taxa","Order","Acetivibrionales","BL","","#F1D0C6",TRUE,FALSE,FALSE
+"Taxa|Order|Pseudomonadota|Gammaproteobacteria|Enterobacterales","Taxa","Order","Enterobacterales","BM","BM","#DDAEAB",TRUE,FALSE,TRUE
+"Taxa|Order|Pseudomonadota|Gammaproteobacteria|Lysobacterales","Taxa","Order","Lysobacterales","","Lysobacterales","#DDAEAB",FALSE,FALSE,TRUE
+"Taxa|Family|Actinomycetota|Actinomycetes|Actinopolysporales|Actinopolysporaceae","Taxa","Family","Actinopolysporaceae","","Actinopolysporaceae","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Family|Actinomycetota|Actinomycetes|Cellulomonadales|Cellulomonadaceae","Taxa","Family","Cellulomonadaceae","AG","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|Family|Actinomycetota|Actinomycetes|Kitasatosporales|Streptomycetaceae","Taxa","Family","Streptomycetaceae","AH","AH","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|Family|Actinomycetota|Actinomycetes|Mycobacteriales|Corynebacteriaceae","Taxa","Family","Corynebacteriaceae","AI","AI","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|Family|Actinomycetota|Actinomycetes|Streptosporangiales|Carbonactinosporaceae","Taxa","Family","Carbonactinosporaceae","AJ","AJ","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|Family|Actinomycetota|Actinomycetes|Streptosporangiales|Nocardiopsidaceae","Taxa","Family","Nocardiopsidaceae","AK","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|Family|Actinomycetota|Actinomycetes|Streptosporangiales|Streptosporangiaceae","Taxa","Family","Streptosporangiaceae","AL","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|Family|Actinomycetota|Coriobacteriia|Coriobacteriales|Coriobacteriaceae","Taxa","Family","Coriobacteriaceae","","Coriobacteriaceae","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|Family|Bacillota|Bacilli|Bacillales--other|Aeribacillaceae","Taxa","Family","Aeribacillaceae","AN","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|Family|Bacillota|Bacilli|Bacillales--other|Bacillaceae--other","Taxa","Family","Bacillaceae--other","AO","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|Family|Bacillota|Bacilli|Lactobacillales|Lactobacillaceae","Taxa","Family","Lactobacillaceae","AP","AP","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Family|Bacillota|Bacilli|Paenibacillales|Paenibacillaceae","Taxa","Family","Paenibacillaceae","AQ","AQ","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Family|Bacillota|Bacilli|Staphylococcales|Staphylococcaceae","Taxa","Family","Staphylococcaceae","AR","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|Family|Bacillota|Bacilli|Tepidibacillales|Anaerobacillaceae","Taxa","Family","Anaerobacillaceae","","Anaerobacillaceae","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|Family|Bacillota|Bacilli|Thermoactinomycetales|Thermoactinomycetaceae","Taxa","Family","Thermoactinomycetaceae","AT","AT","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|Family|Bacteroidota|Cytophagia|Cytophagales|Spirosomataceae","Taxa","Family","Spirosomataceae","AU","","#F5D8B7",TRUE,FALSE,FALSE
+"Taxa|Family|Clostridiota|Clostridia|Acetivibrionales|Lachnospiraceae","Taxa","Family","Lachnospiraceae","AV","","#F1D0C6",TRUE,FALSE,FALSE
+"Taxa|Family|Pseudomonadota|Gammaproteobacteria|Enterobacterales|Enterobacteriaceae","Taxa","Family","Enterobacteriaceae","AW","AW","#DDAEAB",TRUE,FALSE,TRUE
+"Taxa|Family|Pseudomonadota|Gammaproteobacteria|Lysobacterales|Lysobacteraceae","Taxa","Family","Lysobacteraceae","AX","AX","#DDAEAB",TRUE,FALSE,TRUE
+"Function|group|Ambiguous annotation","Function","Group","Ambiguous annotation","","Ambiguous annotation","#D8A0C1",FALSE,FALSE,TRUE
+"Function|group|Metabolism","Function","Group","Metabolism","","Metabolism","#6E8FB2",FALSE,FALSE,TRUE
+"Taxa|terminal|Faenia","Taxa","Genus","Faenia","CA","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Saccharomonospora","Taxa","Genus","Saccharomonospora","CF","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Saccharopolyspora","Taxa","Genus","Saccharopolyspora","CG","CG","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|terminal|Saccharopolyspora--other","Taxa","Genus","Saccharopolyspora--other","CH","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Cellulomonas","Taxa","Genus","Cellulomonas","BV","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Streptomyces","Taxa","Genus","Streptomyces","CJ","CJ","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|terminal|Corynebacterium","Taxa","Genus","Corynebacterium","BX","BX","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|terminal|Thermobispora","Taxa","Genus","Thermobispora","CM","CM","#B5C3D7",TRUE,FALSE,TRUE
+"Taxa|terminal|Nocardiopsis--other","Taxa","Genus","Nocardiopsis--other","CC","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Thermobifida","Taxa","Genus","Thermobifida","CL","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Thermopolyspora","Taxa","Genus","Thermopolyspora","CN","","#B5C3D7",TRUE,FALSE,FALSE
+"Taxa|terminal|Collinsella","Taxa","Genus","Collinsella","","Collinsella","#B5C3D7",FALSE,FALSE,TRUE
+"Taxa|terminal|Aeribacillus","Taxa","Genus","Aeribacillus","BT","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|terminal|Ureibacillus","Taxa","Genus","Ureibacillus","CP","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|terminal|Weizmannia","Taxa","Genus","Weizmannia","CR","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|terminal|Weissella","Taxa","Genus","Weissella","CQ","CQ","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|terminal|Brevibacillus","Taxa","Genus","Brevibacillus","BU","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|terminal|Thermobacillus","Taxa","Genus","Thermobacillus","CK","CK","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|terminal|Mammaliicoccus","Taxa","Genus","Mammaliicoccus","CB","","#B6C9C0",TRUE,FALSE,FALSE
+"Taxa|terminal|Shouchella","Taxa","Genus","Shouchella","","Shouchella","#B6C9C0",FALSE,FALSE,TRUE
+"Taxa|terminal|Planifilum","Taxa","Genus","Planifilum","CD","CD","#B6C9C0",TRUE,FALSE,TRUE
+"Taxa|terminal|Dyadobacter","Taxa","Genus","Dyadobacter","BY","","#F5D8B7",TRUE,FALSE,FALSE
+"Taxa|terminal|Tyzzerella","Taxa","Genus","Tyzzerella","CO","","#F1D0C6",TRUE,FALSE,FALSE
+"Taxa|terminal|Escherichia-Shigella","Taxa","Genus","Escherichia-Shigella","BZ","BZ","#DDAEAB",TRUE,FALSE,TRUE
+"Taxa|terminal|Pseudoxanthomonas","Taxa","Genus","Pseudoxanthomonas","CE","CE","#DDAEAB",TRUE,FALSE,TRUE
+"Function|terminal|K00027","Function","KO","ME2, sfcA, maeA; malate dehydrogenase (oxaloacetate-decarboxylating) [EC:1.1.1.38][K00027]","C","C","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00239","Function","KO","sdhA, frdA; succinate dehydrogenase / fumarate reductase, flavoprotein subunit [EC:1.3.5.1 1.3.5.4][K00239]","E","E","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00681","Function","KO","ggt; gamma-glutamyltranspeptidase / glutathione hydrolase [EC:2.3.2.2 3.4.19.13][K00681]","G","G","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00812","Function","KO","aspB; aspartate aminotransferase [EC:2.6.1.1][K00812]","K","K","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00820","Function","KO","glmS, GFPT; glutamine---fructose-6-phosphate transaminase (isomerizing) [EC:2.6.1.16][K00820]","L","L","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00826","Function","KO","E2.6.1.42, ilvE; branched-chain amino acid aminotransferase [EC:2.6.1.42][K00826]","M","M","#D8A0C1",TRUE,FALSE,TRUE
+"Function|terminal|K00074","Function","KO","paaH, hbd, fadB, mmgB; 3-hydroxybutyryl-CoA dehydrogenase [EC:1.1.1.157][K00074]","D","D","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00453","Function","KO","TDO2, kynA; tryptophan 2,3-dioxygenase [EC:1.13.11.11][K00453]","F","F","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00761","Function","KO","upp, UPRT; uracil phosphoribosyltransferase [EC:2.4.2.9][K00761]","H","H","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00794","Function","KO","ribH, RIB4; 6,7-dimethyl-8-ribityllumazine synthase [EC:2.5.1.78][K00794]","I","I","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00797","Function","KO","speE, SRM, SPE3; spermidine synthase [EC:2.5.1.16][K00797]","J","J","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00845","Function","KO","glk; glucokinase [EC:2.7.1.2][K00845]","N","N","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K00995","Function","KO","pgsA, PGS1; CDP-diacylglycerol---glycerol-3-phosphate 3-phosphatidyltransferase [EC:2.7.8.5][K00995]","O","O","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01489","Function","KO","cdd, CDA; cytidine deaminase [EC:3.5.4.5][K01489]","P","P","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01491","Function","KO","folD; methylenetetrahydrofolate dehydrogenase (NADP+) / methenyltetrahydrofolate cyclohydrolase [EC:1.5.1.5 3.5.4.9][K01491]","Q","Q","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01609","Function","KO","trpC; indole-3-glycerol phosphate synthase [EC:4.1.1.48][K01609]","R","R","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01647","Function","KO","CS, gltA; citrate synthase [EC:2.3.3.1][K01647]","S","S","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01738","Function","KO","cysK; cysteine synthase [EC:2.5.1.47][K01738]","T","T","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01756","Function","KO","purB, ADSL; adenylosuccinate lyase [EC:4.3.2.2][K01756]","U","U","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01808","Function","KO","rpiB; ribose 5-phosphate isomerase B [EC:5.3.1.6][K01808]","V","V","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K01966","Function","KO","PCCB, pccB; propionyl-CoA carboxylase beta chain [EC:6.4.1.3 2.1.3.15][K01966]","W","W","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K06215","Function","KO","pdxS, pdx1; pyridoxal 5'-phosphate synthase pdxS subunit [EC:4.3.3.6][K06215]","X","X","#6E8FB2",TRUE,FALSE,TRUE
+"Function|terminal|K11754","Function","KO","folC; dihydrofolate synthase / folylpolyglutamate synthase [EC:6.3.2.12 6.3.2.17][K11754]","Y","Y","#6E8FB2",TRUE,FALSE,TRUE

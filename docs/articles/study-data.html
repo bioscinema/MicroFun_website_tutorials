@@ -98,11 +98,12 @@ Influence Pancreatic Cancer Outcomes</em>, Cell (2019), DOI <a href="https://doi
 Please cite the original paper when using these data. The downloads
 below provide processed PICRUSt2 inputs for testing MicroFun. For
 additional study information, contact Dr. Liangliang Zhang at <a href="mailto:lxz716@case.edu">lxz716@case.edu</a>.</p>
-<p>The dataset contains 68 samples and 2,777 ASVs. The MDA discovery
-cohort has 43 samples, with 22 STS and 21 LTS. The JHU validation cohort
-has 25 samples, with 10 STS and 15 LTS. The demonstration code defaults
-to MDA, matching the 43-sample Standard figure exports. Change the
-cohort explicitly to analyze JHU separately.</p>
+<p>The dataset contains 68 samples and 2,487 ASVs after excluding 290
+ASVs assigned to Genus Incertae sedis. The MDA discovery cohort has 43
+samples, with 22 STS and 21 LTS. The JHU validation cohort has 25
+samples, with 10 STS and 15 LTS. The demonstration code defaults to MDA,
+matching the 43-sample Standard figure exports. Change the cohort
+explicitly to analyze JHU separately.</p>
 <div class="microfun-table-caption">
 Table 1. Cohorts in the processed demonstration data
 </div>
@@ -146,6 +147,24 @@ replacement is used in the abundance tables, contribution tables, OTU
 table and phyloseq object.</p>
 </div>
 <div class="section level2">
+<h2 id="why-genus-incertae-sedis-was-removed">Why Genus Incertae sedis was removed<a class="anchor" aria-label="anchor" href="#why-genus-incertae-sedis-was-removed"></a>
+</h2>
+<p>Incertae sedis denotes uncertain taxonomic placement rather than a
+resolved genus. Combining ASVs under that placeholder would treat
+potentially distinct lineages as a single biological contributor. We
+removed the 290 ASVs carrying this Genus label so the genus-level
+comparison focuses on interpretable, assigned genera. This is a
+taxonomic scope decision, not evidence of contamination or absence of
+biological function. See the <a href="https://www.ncbi.nlm.nih.gov/books/NBK53758/" class="external-link">NCBI Taxonomy
+description of uncertain placement</a>.</p>
+<p>The filter was applied consistently to the phyloseq object, taxonomy,
+OTU table, tree and all contribution tables. Standard profiles were
+regenerated from the filtered contributions. The core archive includes
+<code>filter_summary.csv</code> and <code>removed_ASVs.csv</code> to
+document the excluded ASVs. Sample groups and sample identifiers are
+unchanged.</p>
+</div>
+<div class="section level2">
 <h2 id="choose-the-files-for-your-analysis">Choose the files for your analysis<a class="anchor" aria-label="anchor" href="#choose-the-files-for-your-analysis"></a>
 </h2>
 <p>Complete <a href="installation.html">installation and
@@ -153,8 +172,8 @@ dependencies</a> in a fresh R session before running the code below.</p>
 <p>Start with the core archive for the <a href="demonstration-standard.html">Standard demonstration</a>. For the
 <a href="demonstration-stratified.html">Stratified demonstration</a>,
 also download both KO contribution parts. The taxon-centered route
-aggregates KOs into pathways; the function-centered example selects 24
-candidate KOs from the same file. The dated KEGG, EC and MetaCyc
+aggregates KOs into pathways; the function-centered example selects 23
+project-related KOs from the same file. The dated KEGG, EC and MetaCyc
 contributions are available for alternative workflows.</p>
 <div class="microfun-table-caption">
 Table 2. Downloadable demonstration inputs
@@ -172,41 +191,41 @@ Table 2. Downloadable demonstration inputs
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><a href="../downloads/study/MicroFun_study_core.zip">Core
+<td><a href="../downloads/study/MicroFun_filtered_core.zip">Core
 data</a></td>
-<td>2.8 MiB</td>
+<td>2.2 MiB</td>
 <td>All Standard profiles, deidentified metadata, phyloseq/R data, OTU
 table, taxonomy, ASV tree and assembly script.</td>
 </tr>
 <tr class="even">
-<td><a href="../downloads/study/MicroFun_study_KEGG_2026-11-04_stratified.zip">KEGG
+<td><a href="../downloads/study/MicroFun_filtered_KEGG_2026-11-04_stratified.zip">KEGG
 Stratified contributions</a></td>
-<td>16.4 MiB</td>
+<td>14.7 MiB</td>
 <td>An alternative preaggregated KEGG pathway snapshot.</td>
 </tr>
 <tr class="odd">
-<td><a href="../downloads/study/MicroFun_study_KO_stratified_part01.zip">KO
+<td><a href="../downloads/study/MicroFun_filtered_KO_part01.zip">KO
 Stratified part 1</a></td>
 <td>80.0 MiB</td>
 <td>First transfer part of the KO contribution table. Both parts are
 required.</td>
 </tr>
 <tr class="even">
-<td><a href="../downloads/study/MicroFun_study_KO_stratified_part02.zip">KO
+<td><a href="../downloads/study/MicroFun_filtered_KO_part02.zip">KO
 Stratified part 2</a></td>
-<td>49.6 MiB</td>
+<td>32.3 MiB</td>
 <td>Second transfer part of the same KO contribution table.</td>
 </tr>
 <tr class="odd">
-<td><a href="../downloads/study/MicroFun_study_EC_stratified.zip">EC
+<td><a href="../downloads/study/MicroFun_filtered_EC_stratified.zip">EC
 Stratified contributions</a></td>
-<td>63.0 MiB</td>
+<td>55.0 MiB</td>
 <td>EC contribution table.</td>
 </tr>
 <tr class="even">
-<td><a href="../downloads/study/MicroFun_study_MetaCyc_stratified.zip">MetaCyc
+<td><a href="../downloads/study/MicroFun_filtered_MetaCyc_stratified.zip">MetaCyc
 Stratified contributions</a></td>
-<td>47.0 MiB</td>
+<td>42.2 MiB</td>
 <td>MetaCyc contribution table.</td>
 </tr>
 </tbody>
@@ -215,12 +234,14 @@ Stratified contributions</a></td>
 directory unchanged. Run <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code> to see where R expects the
 ZIP files. Download files with the filenames shown below and leave them
 zipped until running the extraction code.</p>
-<p>Each ZIP contains a folder named
-<code>MicroFun_demonstration_data</code>. Save your chosen archives in
-the R working directory, then extract them into the same location. The
-two KO parts are transfer fragments, not separate input tables. The
-included script reconstructs one complete gzip file and verifies its
-checksum.</p>
+<p>Use these updated archives together in a fresh project folder. Do not
+combine them with an earlier demonstration-data release. Each ZIP
+contains a folder named
+<code>MicroFun_demonstration_data_filtered</code>. Save your chosen
+archives in the R working directory, then extract them into the same
+location. The two KO parts are transfer fragments, not separate input
+tables. The included script reconstructs one complete gzip file and
+verifies its checksum.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install the software first using the installation guide.</span></span>
 <span><span class="co"># Use the fixed vegan release in a fresh R session.</span></span>
@@ -228,19 +249,19 @@ checksum.</p>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/ns-reflect.html" class="external-link">getNamespaceVersion</a></span><span class="op">(</span><span class="st">"vegan"</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"2.7.2"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Core data for both demonstrations.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="st">"MicroFun_study_core.zip"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_study_core.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="st">"MicroFun_filtered_core.zip"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_filtered_core.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">data_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/normalizePath.html" class="external-link">normalizePath</a></span><span class="op">(</span><span class="st">"MicroFun_demonstration_data"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">data_dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/normalizePath.html" class="external-link">normalizePath</a></span><span class="op">(</span><span class="st">"MicroFun_demonstration_data_filtered"</span>, mustWork <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_dir</span>, <span class="st">"assemble-data.R"</span><span class="op">)</span>, local <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a></span><span class="op">(</span><span class="op">)</span>, chdir <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>For either stratified analysis, download both KO parts and run these
 additional lines.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ko_archives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MicroFun_study_KO_stratified_part01.zip"</span>,</span>
-<span>                 <span class="st">"MicroFun_study_KO_stratified_part02.zip"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ko_archives</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MicroFun_filtered_KO_part01.zip"</span>,</span>
+<span>                 <span class="st">"MicroFun_filtered_KO_part02.zip"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">ko_archives</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_study_KO_stratified_part01.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_study_KO_stratified_part02.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_filtered_KO_part01.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"MicroFun_filtered_KO_part02.zip"</span>, exdir <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_dir</span>, <span class="st">"assemble-data.R"</span><span class="op">)</span>, local <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html" class="external-link">new.env</a></span><span class="op">(</span><span class="op">)</span>, chdir <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">data_dir</span>, <span class="st">"stratified"</span>, <span class="st">"KO_contrib.tsv.gz"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -256,7 +277,8 @@ Table 3. Paths used by the demonstrations
 <col width="50%">
 </colgroup>
 <thead><tr class="header">
-<th>Relative path inside <code>MicroFun_demonstration_data</code>
+<th>Relative path inside
+<code>MicroFun_demonstration_data_filtered</code>
 </th>
 <th>Description</th>
 </tr></thead>
@@ -313,7 +335,18 @@ analyses.</td>
 </tr>
 <tr class="even">
 <td><code>manifest.csv</code></td>
-<td>File sizes, feature counts and MD5 checksums.</td>
+<td>Included file sizes and MD5 checksums.</td>
+</tr>
+<tr class="odd">
+<td>
+<code>filter_summary.csv</code>, <code>removed_ASVs.csv</code>
+</td>
+<td>Taxonomic filtering summary and removed ASV identifiers.</td>
+</tr>
+<tr class="even">
+<td><code>KO_display_labels.csv</code></td>
+<td>Optional author-supplied KO display names for Chord presentation. KO
+IDs remain the analysis keys.</td>
 </tr>
 </tbody>
 </table>
@@ -323,7 +356,7 @@ this download. To keep the displayed examples consistent, the Standard
 and taxon-centered demonstrations aggregate KOs with the bundled
 mapping. The dated 234-pathway snapshot has different coverage; it does
 not reproduce the displayed KEGG PCA. With the bundled mapping and MDA
-samples, the first two KEGG PCA axes explain 57.1% and 12.2%. See <a href="installation.html#kegg-mapping-and-annotation">mapping and
+samples, the first two KEGG PCA axes explain 56.0% and 14.3%. See <a href="installation.html#kegg-mapping-and-annotation">mapping and
 annotation</a> before choosing another mapping.</p>
 </div>
 <div class="section level2">
@@ -345,9 +378,10 @@ sample identifiers to subset the corresponding inputs.</p>
 <p>Continue with <a href="demonstration-standard.html">Demonstration
 Study (Standard)</a>, then <a href="demonstration-stratified.html">Demonstration Study
 (Stratified)</a>, using the same R project folder.</p>
-<p>The Stratified demonstration uses Class-level aggregation to keep the
-example practical. Its function-centered route selects 24 candidate KOs
-motivated by disease-related questions. Standard remains a
+<p>The Stratified demonstration uses Genus-level aggregation. Its
+taxon-centered route selects 27 project-related genera, while its
+function-centered route selects 23 project-related KOs and retains all
+genus contributors in the filtered data. Standard remains a
 community-level analysis. The source taxonomy supports Phylum through
 Genus; its Species column is entirely unassigned.</p>
 </div>
@@ -358,7 +392,7 @@ Genus; its Species column is entirely unassigned.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Zilin Li, Yaoran Yu, Chenyu Liu, Ruitao Liu, Liangliang Zhang.</p>
+  <p>Developed by Ruitao Liu, Yaoran Yu, Chenyu Liu, Zilin Li, Liangliang Zhang.</p>
 </div>
 
 <div class="pkgdown-footer-right">
