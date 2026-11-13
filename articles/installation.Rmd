@@ -7,17 +7,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-## Software and version policy
+## Software versions
 
-<div class="microfun-table-caption">Table 1. Software requirements</div>
+These tables record the environment used to validate the tutorials. Keep vegan at **2.7.2**; the other version numbers document the tested environment.
 
-| Software | Version used or required | Version policy |
+<div class="microfun-table-caption">Table 1. Software used for tutorial validation</div>
+
+| Software | Version | Role |
 |---|---|---|
-| MicroFun | Source package | Package documented on this website |
-| R | Latest stable release compatible with the chosen Bioconductor release | Not pinned |
-| RStudio (optional) | Latest stable release | Not pinned |
-| vegan | **2.7.2** (CRAN package spelling **2.7-2**) | **Fixed version** |
-| Other CRAN/Bioconductor dependencies | Latest compatible release | Not pinned |
+| MicroFun | 0.1.0 | Package documented on this website |
+| R | 4.5.3 Patched (r90083) | Analysis runtime |
+| Bioconductor | 3.22 | Bioconductor release in the validation environment |
+| RStudio (optional) | 2024.09.1+394 | Installed IDE and bundled Pandoc |
+| vegan | **2.7.2** (CRAN spelling **2.7-2**) | **Required exact version** |
 
 The only dependency with an exact-version requirement is vegan. This pin matters for the stratified workflow, where some genera have zero contributions in individual samples. Use a fresh R session after installing it. The [CRAN archive](https://cran.r-project.org/src/contrib/Archive/vegan/) distributes the required release as `vegan_2.7-2.tar.gz`; R treats `2.7.2` and `2.7-2` as the same package version. Record the exact versions resolved in your own analysis session with `sessionInfo()`.
 
@@ -42,7 +44,7 @@ dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "s
 BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
 install.packages(source_dir, repos = NULL, type = "source")
 
-# Pin only vegan; keep other dependencies on compatible current releases.
+# Install the required vegan release.
 remotes::install_version("vegan", version = "2.7-2",
                          repos = "https://cloud.r-project.org", upgrade = "never")
 stopifnot(packageVersion("vegan") == package_version("2.7.2"))
@@ -51,66 +53,84 @@ library(MicroFun)
 
 If vegan was already loaded, restart R after changing its version before running an analysis. Installing this archived release from source requires a working compiler toolchain. On macOS, use the matching Fortran compiler from the [R for macOS tools page](https://mac.r-project.org/tools/); on Windows, use the Rtools version for your R release.
 
+### If dependency installation fails
+
+If installation reports missing or unavailable Bioconductor dependencies, install the following packages with `BiocManager`, then retry installing MicroFun. See the [Bioconductor installation guide](https://www.bioconductor.org/install/) for repository and installation help.
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+BiocManager::install(
+  c("ALDEx2", "DESeq2", "edgeR", "lefser", "limma", "Maaslin2", "metagenomeSeq"),
+  update = FALSE, ask = FALSE
+)
+install.packages(source_dir, repos = NULL, type = "source")
+```
+
 ## R packages used by MicroFun
 
-The table lists the current source imports together with vegan, which is required by this workflow. “Latest compatible” records the version policy, not an exact-version pin.
+The table lists the installed versions of the current source imports and vegan used in the validation environment.
 
 <div class="microfun-table-caption">Table 2. R packages used by MicroFun</div>
 
-| Package | Version policy |
+| Package | Version |
 |---|---|
-| `ALDEx2` | Latest compatible release; not pinned |
-| `aplot` | Latest compatible release; not pinned |
-| `ape` | Latest compatible release; not pinned |
-| `DESeq2` | Latest compatible release; not pinned |
-| `dplyr` | Latest compatible release; not pinned |
-| `edgeR` | Latest compatible release; not pinned |
-| `GGally` | Latest compatible release; not pinned |
-| `ggplot2` | Latest compatible release; not pinned |
-| `ggh4x` | Latest compatible release; not pinned |
-| `lefser` | Latest compatible release; not pinned |
-| `limma` | Latest compatible release; not pinned |
-| `Maaslin2` | Latest compatible release; not pinned |
-| `metagenomeSeq` | Latest compatible release; not pinned |
-| `MicrobiomeStat` | Latest compatible release; not pinned |
-| `readr` | Latest compatible release; not pinned |
-| `SummarizedExperiment` | Latest compatible release; not pinned |
-| `tibble` | Latest compatible release; not pinned |
-| `tidyr` | Latest compatible release; not pinned |
-| `ggprism` | Latest compatible release; not pinned |
-| `patchwork` | Latest compatible release; not pinned |
-| `circlize` | Latest compatible release; not pinned |
-| `data.table` | Latest compatible release; not pinned |
-| `ggplotify` | Latest compatible release; not pinned |
-| `magrittr` | Latest compatible release; not pinned |
-| `networkD3` | Latest compatible release; not pinned |
-| `phyloseq` | Latest compatible release; not pinned |
-| `reshape2` | Latest compatible release; not pinned |
-| `stringr` | Latest compatible release; not pinned |
-| `RColorBrewer` | Latest compatible release; not pinned |
-| `ggraph` | Latest compatible release; not pinned |
-| `igraph` | Latest compatible release; not pinned |
-| `scales` | Latest compatible release; not pinned |
-| `htmlwidgets` | Latest compatible release; not pinned |
-| `jsonlite` | Latest compatible release; not pinned |
-| `progress` | Latest compatible release; not pinned |
-| `grid` | Bundled with the installed R release |
-| `vegan` | **2.7.2 / 2.7-2; fixed** |
+| `ALDEx2` | 1.42.0 |
+| `aplot` | 0.2.9 |
+| `ape` | 5.8.1 |
+| `DESeq2` | 1.50.2 |
+| `dplyr` | 1.2.1 |
+| `edgeR` | 4.8.2 |
+| `GGally` | 2.4.0 |
+| `ggplot2` | 4.0.3 |
+| `ggh4x` | 0.3.1 |
+| `lefser` | 1.20.2 |
+| `limma` | 3.66.0 |
+| `Maaslin2` | 1.24.1 |
+| `metagenomeSeq` | 1.52.0 |
+| `MicrobiomeStat` | 1.4 |
+| `readr` | 2.2.0 |
+| `SummarizedExperiment` | 1.40.0 |
+| `tibble` | 3.3.1 |
+| `tidyr` | 1.3.2 |
+| `ggprism` | 1.0.7 |
+| `patchwork` | 1.3.2 |
+| `circlize` | 0.4.18 |
+| `data.table` | 1.18.4 |
+| `ggplotify` | 0.1.3 |
+| `magrittr` | 2.0.5 |
+| `networkD3` | 0.4.1 |
+| `phyloseq` | 1.54.2 |
+| `reshape2` | 1.4.5 |
+| `stringr` | 1.6.0 |
+| `RColorBrewer` | 1.1.3 |
+| `ggraph` | 2.2.2 |
+| `igraph` | 2.3.2 |
+| `scales` | 1.4.0 |
+| `htmlwidgets` | 1.6.4 |
+| `jsonlite` | 2.0.0 |
+| `progress` | 1.2.3 |
+| `grid` | 4.5.3 |
+| `vegan` | **2.7.2** (required) |
 
 ## Optional and website dependencies
 
+These installed versions support figure export, dependency installation and website rendering.
+
 <div class="microfun-table-caption">Table 3. Optional and documentation packages</div>
 
-| Package | Version policy |
+| Package | Version |
 |---|---|
-| `rsvg` | Latest compatible release; not pinned |
-| `svglite` | Latest compatible release; not pinned |
-| `qpdf` | Latest compatible release; not pinned |
-| `KEGGREST` | Latest compatible release; not pinned |
-| `utils` | Bundled with R |
-| `knitr` | Latest compatible release; not pinned |
-| `rmarkdown` | Latest compatible release; not pinned |
-| `R.utils` | Latest compatible release; not pinned |
+| `rsvg` | 2.7.0 |
+| `svglite` | 2.2.2 |
+| `qpdf` | 1.4.1 |
+| `KEGGREST` | 1.50.0 |
+| `utils` | 4.5.3 |
+| `knitr` | 1.51 |
+| `rmarkdown` | 2.31 |
+| `R.utils` | 2.13.0 |
+| `BiocManager` | 1.30.27 |
+| `remotes` | 2.5.0 |
+| `pkgdown` | 2.2.1 |
 
 `rsvg` enables tree Sankey PNG/PDF export; `qpdf` enables continuation-page PDF export. `svglite` is used by `ggsave()` for the Standard SVG figures. Chord SVG/HTML uses R’s Cairo SVG device. On macOS, if export reports a missing `/opt/X11` library or a failed Cairo DLL, install [XQuartz](https://www.xquartz.org/) and restart R before exporting.
 
