@@ -54,6 +54,10 @@ Tree tips must match the ASV identifiers in the unagglomerated taxonomy.
 The tree and taxon endpoint labels share `tree_options$font_size`; long
 labels retain full hover text.
 
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
+
 ## Chord
 
 What if you want to see how much each selected relationship contributes,
@@ -102,6 +106,10 @@ Functional labels use `Function name[function ID]`. Narrow sectors may
 use letter codes; consult the companion label mapping CSV and legend.
 Category colours encode identity, separately from signed effects. Adjust
 ribbon and bar opacity using `link_alpha` and `bar_alpha`.
+
+See the [Chord layer key in the
+study](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights)
+for the meaning of each ring.
 
 ## Contribution boxplots
 

@@ -61,6 +61,10 @@ p_fun_phylogeny <- fun2tax_sankey(
 save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_sankey.html"))
 ```
 
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
+
 ## Chord
 
 Use Chord to compare the predicted contributions behind the selected

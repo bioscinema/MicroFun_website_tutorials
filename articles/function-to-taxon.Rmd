@@ -47,6 +47,8 @@ save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_sankey.html"))
 
 ```
 
+Hover over a truncated label in the HTML view to read its full name. Hover over a taxon or function node to highlight its connected links and dim unrelated links.
+
 ## Chord {#fun2tax-chord}
 
 Use Chord to compare the predicted contributions behind the selected relationships. A broad ribbon identifies a large mean contribution in the plotted subset, while the outer bar describes the absolute modeled effect.

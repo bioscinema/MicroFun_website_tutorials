@@ -118,15 +118,15 @@ Compare predicted contributions and model-effect direction.
 [Explore the example
 →](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights)
 
-[![Genus-level overview of taxon-function
-associations](examples/study/genus/images/tax2fun-dendrogram-genus.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+[![Selected KOs and their Genus-level contributor
+associations](examples/study/genus/images/fun2tax-dendrogram.png)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#association-dendrogram-for-the-selected-kos)
 
 ### Association dendrogram
 
-Explore the association overview across selected genera.
+Explore genus contributors to the selected KOs.
 
 [Explore the example
-→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#genus-dendrogram-overview)
+→](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html#association-dendrogram-for-the-selected-kos)
 
 [![Genus-level Sankey with a taxonomic side
 tree](examples/study/genus/images/tax2fun-taxonomy.svg)](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/images/tax2fun-taxonomy.svg)

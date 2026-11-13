@@ -183,7 +183,7 @@ p_ko_heatmap <- pathway_heatmap(
   group = "group", font_size = 8
 )
 ggplot2::ggsave(file.path(out, "KO_heatmap.svg"), p_ko_heatmap,
-                width = 11, height = 10)
+                width = 9, height = 6)
 ```
 
 ![Figure 3. Heatmap of the 30 selected KO
@@ -206,7 +206,7 @@ p_kegg_heatmap <- pathway_heatmap(
   group = "group", font_size = 8
 )
 ggplot2::ggsave(file.path(out, "KEGG_heatmap.svg"), p_kegg_heatmap,
-                width = 11, height = 10)
+                width = 9, height = 6)
 ```
 
 ![Figure 4. Heatmap of the 30 selected KEGG
@@ -238,7 +238,7 @@ p_ko_errorbar <- pathway_errorbar(
   ko_to_kegg = FALSE, x_lab = "description", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KO_errorbar.svg"), p_ko_errorbar,
-                width = 16, height = 14)
+                width = 14, height = 10)
 ```
 
 ![Figure 5. Group abundance summaries for the selected
@@ -267,7 +267,7 @@ p_kegg_errorbar <- pathway_errorbar(
   ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KEGG_errorbar.svg"), p_kegg_errorbar,
-                width = 16, height = 14)
+                width = 14, height = 10)
 ```
 
 ![Figure 6. Group abundance summaries for the selected KEGG

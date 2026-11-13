@@ -117,7 +117,7 @@ ggplot2::ggsave(file.path(out, "KO_pca.svg"), p_ko_pca,
                 width = 11, height = 9)
 ```
 
-![Figure 1. Community-level PCA of KO profiles](../examples/study/standard/ko-pca.svg)
+![Figure 1. Community-level PCA of KO profiles](../examples/study/standard/ko-pca.svg){width=792 height=648}
 
 The first two components explain 28.6% and 15.4% of the variation, together accounting for 44.0%. Many LTS samples appear toward lower PC1 and higher PC2 values, while many STS samples occupy the opposite part of the projection. The groups overlap and both include dispersed observations. This view summarizes variation across KO profiles; it is not itself a test of a group difference.
 
@@ -133,7 +133,7 @@ ggplot2::ggsave(file.path(out, "KEGG_pca.svg"), p_kegg_pca,
                 width = 11, height = 9)
 ```
 
-![Figure 2. Community-level PCA of KEGG pathway profiles](../examples/study/standard/kegg-pca.svg)
+![Figure 2. Community-level PCA of KEGG pathway profiles](../examples/study/standard/kegg-pca.svg){width=792 height=648}
 
 At pathway resolution, PC1 explains 56.0% and PC2 explains 14.3%, for a total of 70.3%. The broad group pattern remains visible, with overlap and several samples away from the main concentrations. The larger percentage on PC1 describes a different feature space after aggregation; it should not be read as evidence that this analysis is more statistically significant than the KO analysis.
 
@@ -147,10 +147,10 @@ p_ko_heatmap <- pathway_heatmap(
   group = "group", font_size = 8
 )
 ggplot2::ggsave(file.path(out, "KO_heatmap.svg"), p_ko_heatmap,
-                width = 11, height = 10)
+                width = 9, height = 6)
 ```
 
-![Figure 3. Heatmap of the 30 selected KO features](../examples/study/standard/ko-heatmap.svg)
+![Figure 3. Heatmap of the 30 selected KO features](../examples/study/standard/ko-heatmap.svg){width=648 height=432}
 
 Each row is a KO and each column a sample, arranged by STS/LTS group. Look for shifts shared by several samples as well as isolated high values. The row-wise z-score scale describes variation within each KO; a warm row is not necessarily more abundant than another row. Selection from differential results also means this panel is a view of selected features rather than an independent confirmation of group separation.
 
@@ -162,10 +162,10 @@ p_kegg_heatmap <- pathway_heatmap(
   group = "group", font_size = 8
 )
 ggplot2::ggsave(file.path(out, "KEGG_heatmap.svg"), p_kegg_heatmap,
-                width = 11, height = 10)
+                width = 9, height = 6)
 ```
 
-![Figure 4. Heatmap of the 30 selected KEGG pathways](../examples/study/standard/kegg-heatmap.svg)
+![Figure 4. Heatmap of the 30 selected KEGG pathways](../examples/study/standard/kegg-heatmap.svg){width=648 height=432}
 
 The pathway view gives a broader functional summary of the selected differences. Compare samples within each row and inspect whether the direction is consistent within a group. Related patterns across several pathways may partly reflect shared member KOs; the rows do not represent mutually exclusive portions of the community's predicted functional abundance.
 
@@ -183,10 +183,10 @@ p_ko_errorbar <- pathway_errorbar(
   ko_to_kegg = FALSE, x_lab = "description", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KO_errorbar.svg"), p_ko_errorbar,
-                width = 16, height = 14)
+                width = 14, height = 10)
 ```
 
-![Figure 5. Group abundance summaries for the selected KOs](../examples/study/standard/ko-errorbar.svg)
+![Figure 5. Group abundance summaries for the selected KOs](../examples/study/standard/ko-errorbar.svg){width=1008 height=720}
 
 The supplied KO export shows larger mean relative abundances in LTS for many of these features. Read the abundance panel together with the descriptive log2 ratio, whose direction follows the group order. With STS as the first factor level, a negative ratio means a larger mean in LTS. The function normalizes each sample using the full abundance table before selecting features.
 
@@ -204,10 +204,10 @@ p_kegg_errorbar <- pathway_errorbar(
   ko_to_kegg = FALSE, x_lab = "pathway_name", p_value_bar = TRUE
 )
 ggplot2::ggsave(file.path(out, "KEGG_errorbar.svg"), p_kegg_errorbar,
-                width = 16, height = 14)
+                width = 14, height = 10)
 ```
 
-![Figure 6. Group abundance summaries for the selected KEGG pathways](../examples/study/standard/kegg-errorbar.svg)
+![Figure 6. Group abundance summaries for the selected KEGG pathways](../examples/study/standard/kegg-errorbar.svg){width=1008 height=720}
 
 The pathway panel connects predicted abundance summaries to readable functional labels. A larger bar indicates a larger group mean, not necessarily the strongest modeled effect. Whiskers in this function extend from zero to the mean plus one standard deviation; they are not confidence intervals. Adjusted p-values are displayed in scientific notation. Use the exported result table for full numeric precision.
 

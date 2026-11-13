@@ -138,17 +138,16 @@ fitting them again.
 ### 2.1 Sankey overviews of the selected genera
 
 ``` r
+sankey_options <- list(
+  font_size = 18,
+  node_gap = 12,
+  tree_width = 1000
+)
 p_tax_taxonomy <- tax2fun_sankey(
   result_taxa, tree_mode = "taxonomy", physeq = ps_taxa,
-  height = NULL, width = NULL, tree_options = list(font_size = 12)
+  height = NULL, width = 2400, tree_options = sankey_options
 )
 save_sankey(p_tax_taxonomy, file.path(out, "tax2fun_taxonomy.html"))
-p_tax_phylogeny <- tax2fun_sankey(
-  result_taxa, tree_mode = "phylogeny", physeq = ps_taxa,
-  phylo_tree = phy_tree(ps_taxa), height = NULL, width = NULL,
-  tree_options = list(font_size = 12)
-)
-save_sankey(p_tax_phylogeny, file.path(out, "tax2fun_phylogeny.html"))
 ```
 
 ![Figure 1. Selected genera and their functional associations with
@@ -162,12 +161,43 @@ counts retained associations and the tree provides taxonomic context.
 The selected genus list defines this view; it is not an overview of
 every tested organism.
 
+[Open the interactive taxonomy
+Sankey](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/widgets/tax2fun_taxonomy.md).
+
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
+
+Long labels are shortened in the static figure to avoid overlap. Adjust
+`sankey_options$tree_width` to give the tree more horizontal space and
+`font_size` or `node_gap` to change label size or node spacing. The
+example uses `tree_options = sankey_options` with `font_size = 18`,
+`node_gap = 12` and `tree_width = 1000`. A wider tree leaves less room
+for the Sankey connections at a fixed canvas width, so the example also
+sets `width = 2400`. Increase the overall `width` further when needed.
+
 Compare the ASV phylogeny view
+
+``` r
+p_tax_phylogeny <- tax2fun_sankey(
+  result_taxa, tree_mode = "phylogeny", physeq = ps_taxa,
+  phylo_tree = phy_tree(ps_taxa), height = NULL, width = NULL,
+  tree_options = list(font_size = 12)
+)
+save_sankey(p_tax_phylogeny, file.path(out, "tax2fun_phylogeny.html"))
+```
 
 ![Figure 2. Selected genera with their ASV
 phylogeny](../examples/study/genus/images/tax2fun-phylogeny.svg)
 
 Figure 2. Selected genera with their ASV phylogeny
+
+[Open the interactive ASV phylogeny
+Sankey](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/widgets/tax2fun_phylogeny.md).
+
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
 
 ``` r
 p_tax_plain <- tax2fun_sankey(result_taxa, tree_mode = "none")
@@ -207,6 +237,28 @@ functions per genus, ranked by contribution. Inspect HTML first, then
 choose genera for a focused PDF. [Open the Chord and
 legends](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/widgets/tax2fun_chord_top10.md).
 
+Read the taxon half from the outside toward the centre.
+
+Table 1. Layers in the genus-to-function Chord
+
+| Layer | Meaning |
+|----|----|
+| Outermost bars | Each bar represents the absolute model effect for one displayed genus–pathway association. Taller bars indicate larger absolute effects. |
+| First classification ring | Phylum groups the selected genera by their broad lineage. |
+| Second classification ring | Class shows the next level within those lineages. |
+| Third classification ring | Order groups more closely related genera. |
+| Fourth classification ring | Family provides the closest ancestral classification shown above Genus. |
+| Innermost label ring | Individual genus names identify the endpoints of the ribbons. On the function half, this ring identifies pathways by name and ID. |
+| Central ribbons | Each ribbon joins a genus to a retained pathway association. Its width represents predicted contribution averaged equally across the two group means. |
+
+On the function half, coloured category blocks span the classification
+bands and group pathways by KEGG functional category. These blocks do
+not represent additional taxonomic ranks. Classification colours
+identify groups; ribbon and bar colours instead describe effect
+direction. In this STS-reference/LTS-target comparison, yellow/orange
+indicates a positive LTS-versus-STS effect and blue indicates a negative
+effect.
+
 In the HTML view, search for a taxon or function in the legend and click
 its entry. An outline highlights the corresponding sector on its ring so
 you can locate it even in a crowded diagram. Click **Clear selection**
@@ -237,11 +289,23 @@ differences in typical contribution.
 ### 2.4 Genus association dendrogram
 
 ``` r
-p_tax_overview <- tax2fun_dendro(result_taxa, taxon_level = rank,
-                               top_n_per_taxon = 5, label_size = 2,
-                               wrap_width = 36)$plot
-ggplot2::ggsave(file.path(out, paste0("tax2fun_dendrogram_", tolower(rank), ".svg")),
-                p_tax_overview, width = 14, height = 13, bg = "white")
+p_tax_overview <- tax2fun_dendro(
+  result_taxa,
+  taxon_level = rank,
+  top_n_per_taxon = 5,
+  label_size = 2,
+  wrap_width = 36
+)$plot +
+  ggplot2::labs(title = NULL) +
+  ggplot2::theme(plot.title = ggplot2::element_blank())
+
+ggplot2::ggsave(
+  file.path(out, paste0("tax2fun_dendrogram_", tolower(rank), ".svg")),
+  p_tax_overview,
+  width = 14,
+  height = 13,
+  bg = "white"
+)
 ```
 
 ![Figure 6. Association dendrogram for the selected
@@ -338,12 +402,6 @@ p_fun_phylogeny <- fun2tax_sankey(
   height = NULL, width = NULL, tree_options = list(font_size = 12)
 )
 save_sankey(p_fun_phylogeny, file.path(out, "fun2tax_phylogeny.html"))
-p_fun_taxonomy <- fun2tax_sankey(
-  result_fun_plot, pathway = "KO", group_functions = FALSE,
-  tree_mode = "taxonomy", physeq = ps,
-  height = NULL, width = NULL, tree_options = list(font_size = 12)
-)
-save_sankey(p_fun_taxonomy, file.path(out, "fun2tax_taxonomy.html"))
 ```
 
 ![Figure 9. Selected KOs and all retained genus contributors with
@@ -357,13 +415,36 @@ updated filtered data and keep genera outside the taxon-centered project
 list. The identifiers are KOs; any added descriptive labels are
 presentation annotations.
 
+[Open the interactive function-to-taxon phylogeny
+Sankey](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/widgets/fun2tax_phylogeny.md).
+
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
+
 Compare the taxonomy view
+
+``` r
+p_fun_taxonomy <- fun2tax_sankey(
+  result_fun_plot, pathway = "KO", group_functions = FALSE,
+  tree_mode = "taxonomy", physeq = ps,
+  height = NULL, width = NULL, tree_options = list(font_size = 12)
+)
+save_sankey(p_fun_taxonomy, file.path(out, "fun2tax_taxonomy.html"))
+```
 
 ![Figure 10. Selected KOs and their genus contributors with taxonomy
 context](../examples/study/genus/images/fun2tax-taxonomy.svg)
 
 Figure 10. Selected KOs and their genus contributors with taxonomy
 context
+
+[Open the interactive function-to-taxon taxonomy
+Sankey](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/widgets/fun2tax_taxonomy.md).
+
+Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.
 
 ``` r
 p_fun_plain <- fun2tax_sankey(result_fun_plot, pathway = "KO", group_functions = FALSE,
@@ -448,13 +529,27 @@ eligible; Incertae sedis is absent from the filtered inputs.
 ### 3.4 Association dendrogram for the selected KOs
 
 ``` r
-p_fun_dendro <- fun2tax_dendro(result_fun_plot, top_n_per_function = 10,
-                              label_size = 2.6, wrap_width = 20)$plot
+p_fun_dendro <- fun2tax_dendro(
+  result_fun_plot,
+  top_n_per_function = 10,
+  label_size = 2.6,
+  wrap_width = 20
+)$plot +
+  ggplot2::labs(title = NULL) +
+  ggplot2::theme(plot.title = ggplot2::element_blank())
+
 p_fun_dendro <- p_fun_dendro + ggplot2::coord_fixed(
-  xlim = c(-1.6, 1.6), ylim = c(-1.6, 1.6), clip = "off"
+  xlim = c(-1.6, 1.6),
+  ylim = c(-1.6, 1.6),
+  clip = "off"
 )
-ggplot2::ggsave(file.path(out, "fun2tax_dendrogram_top10.pdf"), p_fun_dendro,
-                width = 14, height = 11)
+
+ggplot2::ggsave(
+  file.path(out, "fun2tax_dendrogram_top10.pdf"),
+  p_fun_dendro,
+  width = 10,
+  height = 8
+)
 ```
 
 ![Figure 14. Selected KOs and up to ten genus associations per
@@ -464,7 +559,8 @@ Figure 14. Selected KOs and up to ten genus associations per function
 
 Branches organize the selected KO–genus relationships. Point size
 represents absolute model effect. All displayed associations use the
-filtered input data.
+filtered input data. [Open the full-size
+PDF](https://bioscinema.github.io/MicroFun_website_tutorials/examples/study/genus/fun2tax_dendrogram_top10.pdf).
 
 ### 3.5 Signed effects for K00995
 

@@ -36,7 +36,7 @@ MicroFun combines these analyses with complementary visualizations that keep tax
 By bringing data preparation, statistical testing, annotation and plotting into one workflow, MicroFun helps users explore functional differences together with their microbial contributors.
 
 <figure class="microfun-graphical-abstract">
-<a href="images/microfun_abstract.png"><img src="images/microfun_abstract.png" alt="MicroFun graphical abstract connecting microbial communities, predicted functions and visualizations" loading="lazy"></a>
+<a href="images/microfun_abstract.png"><img src="images/microfun_abstract.png" width="8325" height="5580" alt="MicroFun graphical abstract connecting microbial communities, predicted functions and visualizations" loading="lazy"></a>
 </figure>
 
 ## Installation
@@ -55,15 +55,15 @@ Three representative Genus-level views of predicted functional contributions. Se
 
 <div class="microfun-gallery">
 <figure class="microfun-result">
-<a class="microfun-result-image" href="examples/study/genus/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/genus/images/tax2fun-chord.svg" alt="Genus-level Chord showing predicted taxon-function contributions" loading="lazy"></a>
+<a class="microfun-result-image" href="examples/study/genus/images/tax2fun-chord.svg" aria-label="View full-size Chord diagram"><img src="examples/study/genus/images/tax2fun-chord.svg" width="1296" height="1152" alt="Genus-level Chord showing predicted taxon-function contributions" loading="lazy"></a>
 <figcaption><h3>Chord diagram</h3><p>Compare predicted contributions and model-effect direction.</p><a href="articles/demonstration-stratified.html#chord-diagrams-add-contribution-weights">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
-<a class="microfun-result-image" href="articles/demonstration-stratified.html#genus-dendrogram-overview" aria-label="View full-size Association dendrogram"><img src="examples/study/genus/images/tax2fun-dendrogram-genus.svg" alt="Genus-level overview of taxon-function associations" loading="lazy"></a>
-<figcaption><h3>Association dendrogram</h3><p>Explore the association overview across selected genera.</p><a href="articles/demonstration-stratified.html#genus-dendrogram-overview">Explore the example &rarr;</a></figcaption>
+<a class="microfun-result-image" href="articles/demonstration-stratified.html#association-dendrogram-for-the-selected-kos" aria-label="View full-size Association dendrogram"><img src="examples/study/genus/images/fun2tax-dendrogram.png" width="1440" height="1152" alt="Selected KOs and their Genus-level contributor associations" loading="lazy"></a>
+<figcaption><h3>Association dendrogram</h3><p>Explore genus contributors to the selected KOs.</p><a href="articles/demonstration-stratified.html#association-dendrogram-for-the-selected-kos">Explore the example &rarr;</a></figcaption>
 </figure>
 <figure class="microfun-result">
-<a class="microfun-result-image" href="examples/study/genus/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/genus/images/tax2fun-taxonomy.svg" alt="Genus-level Sankey with a taxonomic side tree" loading="lazy"></a>
+<a class="microfun-result-image" href="examples/study/genus/images/tax2fun-taxonomy.svg" aria-label="View full-size Sankey diagram"><img src="examples/study/genus/images/tax2fun-taxonomy.svg" width="2400" height="894" alt="Genus-level Sankey with a taxonomic side tree" loading="lazy"></a>
 <figcaption><h3>Sankey diagram</h3><p>Trace selected taxa–function associations with taxonomy context.</p><a href="articles/demonstration-stratified.html#sankey-overviews-of-the-selected-genera">Explore the example &rarr;</a></figcaption>
 </figure>
 </div>

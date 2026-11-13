@@ -7,45 +7,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-## Software versions
+## Install from GitHub
 
-These tables record the environment used to validate the tutorials. Keep vegan at **2.7.2**; the other version numbers document the tested environment.
-
-The only dependency with an exact-version requirement is vegan. This pin matters for the stratified workflow, where some genera have zero contributions in individual samples. Use a fresh R session after installing it. The [CRAN archive](https://cran.r-project.org/src/contrib/Archive/vegan/) distributes the required release as `vegan_2.7-2.tar.gz`; R treats `2.7.2` and `2.7-2` as the same package version. Record the exact versions resolved in your own analysis session with `sessionInfo()`.
-
-## Why install from a source folder?
-
-The source folder contains the functions, reference tables and documentation that belong together. Installing that folder helps ensure you are using one consistent copy. The folder itself should contain `DESCRIPTION`; pointing R at its parent folder is a common cause of installation errors.
-
-## Install the source package
-
-Download the source ZIP from the [MicroFun repository](https://github.com/bioscinema/MicroFun_0.1.0). Extract it into a folder containing `DESCRIPTION`, `NAMESPACE` and `R/`. Replace `path/to/MicroFun` below with that folder. Restart R before replacing a loaded package.
+Install MicroFun directly from the GitHub repository.
 
 ```r
-source_dir <- "path/to/MicroFun"
-stopifnot(file.exists(file.path(source_dir, "DESCRIPTION")))
-if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
-
-imports <- read.dcf(file.path(source_dir, "DESCRIPTION"), fields = "Imports")[1, 1]
-dependencies <- trimws(strsplit(imports, ",", fixed = TRUE)[[1]])
-dependencies <- sub("[[:space:]]*\\(.*$", "", dependencies)
-dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "svglite"))
-BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
-install.packages(source_dir, repos = NULL, type = "source")
-
-# Install the required vegan release.
-remotes::install_version("vegan", version = "2.7-2",
-                         repos = "https://cloud.r-project.org", upgrade = "never")
-stopifnot(packageVersion("vegan") == package_version("2.7.2"))
+install.packages("remotes")
+remotes::install_github("bioscinema/MicroFun_0.1.0", dependencies = TRUE)
 library(MicroFun)
 ```
 
-If vegan was already loaded, restart R after changing its version before running an analysis. Installing this archived release from source requires a working compiler toolchain. On macOS, use the matching Fortran compiler from the [R for macOS tools page](https://mac.r-project.org/tools/); on Windows, use the Rtools version for your R release.
-
 ### If dependency installation fails
 
-If installation reports missing or unavailable Bioconductor dependencies, install the following packages with `BiocManager`, then retry installing MicroFun. See the [Bioconductor installation guide](https://www.bioconductor.org/install/) for repository and installation help.
+If installation reports missing or unavailable Bioconductor dependencies, install them with `BiocManager`, then retry installing MicroFun. See the [Bioconductor installation guide](https://www.bioconductor.org/install/) for repository and installation help.
 
 ```r
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -53,8 +27,59 @@ BiocManager::install(
   c("ALDEx2", "DESeq2", "edgeR", "lefser", "limma", "Maaslin2", "metagenomeSeq"),
   update = FALSE, ask = FALSE
 )
+remotes::install_github(
+  "bioscinema/MicroFun_0.1.0", dependencies = TRUE, upgrade = "never"
+)
+```
+
+## Check and repair the vegan version
+
+The workflows require **vegan 2.7.2**. Check the installed version before starting an analysis.
+
+```r
+packageVersion("vegan")
+```
+
+If vegan is missing or the result is not `2.7.2`, restart R and run the following code before loading MicroFun. R reads the CRAN release name `2.7-2` as package version `2.7.2`.
+
+```r
+if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+remotes::install_version(
+  "vegan", version = "2.7-2",
+  repos = "https://cloud.r-project.org", upgrade = "never"
+)
+```
+
+Restart R again after installation so a previously loaded version is not retained in memory. Check both the installed and loaded versions in the fresh session.
+
+```r
+library(vegan)
+stopifnot(
+  packageVersion("vegan") == package_version("2.7.2"),
+  getNamespaceVersion("vegan") == package_version("2.7.2")
+)
+library(MicroFun)
+```
+
+The archived release is available from the [CRAN vegan archive](https://cran.r-project.org/src/contrib/Archive/vegan/). Installing it from source requires a working compiler toolchain. On macOS, use the matching Fortran compiler from the [R for macOS tools page](https://mac.r-project.org/tools/); on Windows, use the Rtools version for your R release.
+
+## Install from a local source folder {#install-the-source-package}
+
+You can also download the ZIP from the [MicroFun repository](https://github.com/bioscinema/MicroFun_0.1.0) and extract it. Replace `path/to/MicroFun` with the folder containing `DESCRIPTION`, `NAMESPACE` and `R/`. Restart R before replacing a loaded package.
+
+```r
+source_dir <- "path/to/MicroFun"
+stopifnot(file.exists(file.path(source_dir, "DESCRIPTION")))
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+imports <- read.dcf(file.path(source_dir, "DESCRIPTION"), fields = "Imports")[1, 1]
+dependencies <- trimws(strsplit(imports, ",", fixed = TRUE)[[1]])
+dependencies <- sub("[[:space:]]*\\(.*$", "", dependencies)
+dependencies <- unique(c(dependencies, "KEGGREST", "R.utils", "rsvg", "qpdf", "svglite"))
+BiocManager::install(setdiff(dependencies, "vegan"), ask = FALSE, update = FALSE)
 install.packages(source_dir, repos = NULL, type = "source")
 ```
+
+Apply the vegan version check above after either installation route. The version tables below document the environment used to validate the tutorials. Only vegan has an exact-version requirement.
 
 ## R packages used by MicroFun
 

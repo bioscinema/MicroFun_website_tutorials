@@ -116,7 +116,7 @@ contribution table, taxonomy and phylogenetic tree.</p>
 <p>Download and assemble the inputs following <a href="study-data.html">Study data and downloads</a>, then run the
 preparation below.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">MicroFun</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bioscinema/MicroFun_0.1.0" class="external-link">MicroFun</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://dx.plos.org/10.1371/journal.pone.0061217" class="external-link">phyloseq</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"vegan"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/ns-reflect.html" class="external-link">getNamespaceVersion</a></span><span class="op">(</span><span class="st">"vegan"</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric_version.html" class="external-link">package_version</a></span><span class="op">(</span><span class="st">"2.7.2"</span><span class="op">)</span><span class="op">)</span></span>
@@ -218,32 +218,58 @@ fitting them again.</p>
 <h3 id="sankey-overviews-of-the-selected-genera">2.1 Sankey overviews of the selected genera<a class="anchor" aria-label="anchor" href="#sankey-overviews-of-the-selected-genera"></a>
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p_tax_taxonomy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">sankey_options</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  font_size <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>  node_gap <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>  tree_width <span class="op">=</span> <span class="fl">1000</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">p_tax_taxonomy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_taxa</span>, tree_mode <span class="op">=</span> <span class="st">"taxonomy"</span>, physeq <span class="op">=</span> <span class="va">ps_taxa</span>,</span>
-<span>  height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="fl">2400</span>, tree_options <span class="op">=</span> <span class="va">sankey_options</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p_tax_phylogeny</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span></span>
-<span>  <span class="va">result_taxa</span>, tree_mode <span class="op">=</span> <span class="st">"phylogeny"</span>, physeq <span class="op">=</span> <span class="va">ps_taxa</span>,</span>
-<span>  phylo_tree <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/phy_tree-methods.html" class="external-link">phy_tree</a></span><span class="op">(</span><span class="va">ps_taxa</span><span class="op">)</span>, height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/tax2fun-taxonomy.svg" alt="Figure 1. Selected genera and their functional associations with taxonomy context"><div class="figcaption">Figure 1. Selected genera and their functional
+<img src="../examples/study/genus/images/tax2fun-taxonomy.svg" width="2400" height="894" alt="Figure 1. Selected genera and their functional associations with taxonomy context"><div class="figcaption">Figure 1. Selected genera and their functional
 associations with taxonomy context</div>
 </div>
 <p>Follow a genus to the displayed functional categories. Ribbon width
 counts retained associations and the tree provides taxonomic context.
 The selected genus list defines this view; it is not an overview of
 every tested organism.</p>
+<p><a href="../examples/study/genus/widgets/tax2fun_taxonomy.html">Open
+the interactive taxonomy Sankey</a>.</p>
+<p>Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.</p>
+<p>Long labels are shortened in the static figure to avoid overlap.
+Adjust <code>sankey_options$tree_width</code> to give the tree more
+horizontal space and <code>font_size</code> or <code>node_gap</code> to
+change label size or node spacing. The example uses
+<code>tree_options = sankey_options</code> with
+<code>font_size = 18</code>, <code>node_gap = 12</code> and
+<code>tree_width = 1000</code>. A wider tree leaves less room for the
+Sankey connections at a fixed canvas width, so the example also sets
+<code>width = 2400</code>. Increase the overall <code>width</code>
+further when needed.</p>
 <details><summary>
 Compare the ASV phylogeny view
-</summary><div class="float">
-<img src="../examples/study/genus/images/tax2fun-phylogeny.svg" alt="Figure 2. Selected genera with their ASV phylogeny"><div class="figcaption">Figure 2. Selected genera with their ASV
+</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_tax_phylogeny</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_taxa</span>, tree_mode <span class="op">=</span> <span class="st">"phylogeny"</span>, physeq <span class="op">=</span> <span class="va">ps_taxa</span>,</span>
+<span>  phylo_tree <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/phy_tree-methods.html" class="external-link">phy_tree</a></span><span class="op">(</span><span class="va">ps_taxa</span><span class="op">)</span>, height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="../examples/study/genus/images/tax2fun-phylogeny.svg" width="1500" height="905" alt="Figure 2. Selected genera with their ASV phylogeny"><div class="figcaption">Figure 2. Selected genera with their ASV
 phylogeny</div>
 </div>
-</details><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p><a href="../examples/study/genus/widgets/tax2fun_phylogeny.html">Open
+the interactive ASV phylogeny Sankey</a>.</p>
+<p>Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.</p>
+</details><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_tax_plain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_sankey.html">tax2fun_sankey</a></span><span class="op">(</span><span class="va">result_taxa</span>, tree_mode <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_tax_plain</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"tax2fun_draggable.html"</span><span class="op">)</span>, selfcontained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <figure class="microfun-interactive-figure"><iframe class="microfun-widget" title="Draggable genus-to-function Sankey" src="../examples/study/genus/widgets/tax2fun_draggable.html" sandbox="allow-scripts" loading="lazy">
@@ -259,7 +285,7 @@ diagram</a>.</p>
 <div class="section level3">
 <h3 id="chord-diagrams-add-contribution-weights">2.2 Contribution-weighted Chord<a class="anchor" aria-label="anchor" href="#chord-diagrams-add-contribution-weights"></a>
 </h3>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_tax_chord</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_chord.html">tax2fun_chord</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_taxa</span>, <span class="va">taxa_strat_path</span>, <span class="va">ps_taxa</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
 <span>  contrast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span>, max_functions_per_taxon <span class="op">=</span> <span class="fl">10</span>, draw <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -282,6 +308,63 @@ bars describe absolute model effect. The overview keeps up to ten
 functions per genus, ranked by contribution. Inspect HTML first, then
 choose genera for a focused PDF. <a href="../examples/study/genus/widgets/tax2fun_chord_top10.html">Open the
 Chord and legends</a>.</p>
+<p>Read the taxon half from the outside toward the centre.</p>
+<div class="microfun-table-caption">
+Table 1. Layers in the genus-to-function Chord
+</div>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr class="header">
+<th>Layer</th>
+<th>Meaning</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Outermost bars</td>
+<td>Each bar represents the absolute model effect for one displayed
+genus–pathway association. Taller bars indicate larger absolute
+effects.</td>
+</tr>
+<tr class="even">
+<td>First classification ring</td>
+<td>Phylum groups the selected genera by their broad lineage.</td>
+</tr>
+<tr class="odd">
+<td>Second classification ring</td>
+<td>Class shows the next level within those lineages.</td>
+</tr>
+<tr class="even">
+<td>Third classification ring</td>
+<td>Order groups more closely related genera.</td>
+</tr>
+<tr class="odd">
+<td>Fourth classification ring</td>
+<td>Family provides the closest ancestral classification shown above
+Genus.</td>
+</tr>
+<tr class="even">
+<td>Innermost label ring</td>
+<td>Individual genus names identify the endpoints of the ribbons. On the
+function half, this ring identifies pathways by name and ID.</td>
+</tr>
+<tr class="odd">
+<td>Central ribbons</td>
+<td>Each ribbon joins a genus to a retained pathway association. Its
+width represents predicted contribution averaged equally across the two
+group means.</td>
+</tr>
+</tbody>
+</table>
+<p>On the function half, coloured category blocks span the
+classification bands and group pathways by KEGG functional category.
+These blocks do not represent additional taxonomic ranks. Classification
+colours identify groups; ribbon and bar colours instead describe effect
+direction. In this STS-reference/LTS-target comparison, yellow/orange
+indicates a positive LTS-versus-STS effect and blue indicates a negative
+effect.</p>
 <p>In the HTML view, search for a taxon or function in the legend and
 click its entry. An outline highlights the corresponding sector on its
 ring so you can locate it even in a crowded diagram. Click <strong>Clear
@@ -290,7 +373,7 @@ selection</strong> to remove the highlight.</p>
 <div class="section level3">
 <h3 id="contribution-distributions-within-cloacibacterium">2.3 Contribution distributions within Cloacibacterium<a class="anchor" aria-label="anchor" href="#contribution-distributions-within-cloacibacterium"></a>
 </h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_taxa_box</span> <span class="op">&lt;-</span> <span class="va">result_taxa</span><span class="op">[</span><span class="va">selected_taxon</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_taxa_box</span>, <span class="st">"microfun"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_taxa</span>, <span class="st">"microfun"</span><span class="op">)</span></span>
 <span><span class="va">tax_boxes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_box.html">tax2fun_box</a></span><span class="op">(</span><span class="va">taxa_strat_path</span>, <span class="va">result_taxa_box</span>, <span class="va">ps_taxa</span>,</span>
@@ -299,7 +382,7 @@ selection</strong> to remove the highlight.</p>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"tax2fun_box_top5_"</span>, <span class="va">selected_taxon</span>, <span class="st">".pdf"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                <span class="va">p_tax_box</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/tax2fun-box.png" alt="Figure 5. Five abundant retained pathways within Cloacibacterium"><div class="figcaption">Figure 5. Five abundant retained pathways within
+<img src="../examples/study/genus/images/tax2fun-box.png" width="1440" height="864" alt="Figure 5. Five abundant retained pathways within Cloacibacterium"><div class="figcaption">Figure 5. Five abundant retained pathways within
 Cloacibacterium</div>
 </div>
 <p><code>top_n = 5</code> selects pathways by the average of the group
@@ -310,14 +393,26 @@ well as differences in typical contribution.</p>
 <div class="section level3">
 <h3 id="genus-dendrogram-overview">2.4 Genus association dendrogram<a class="anchor" aria-label="anchor" href="#genus-dendrogram-overview"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p_tax_overview</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_dendro.html">tax2fun_dendro</a></span><span class="op">(</span><span class="va">result_taxa</span>, taxon_level <span class="op">=</span> <span class="va">rank</span>,</span>
-<span>                               top_n_per_taxon <span class="op">=</span> <span class="fl">5</span>, label_size <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>                               wrap_width <span class="op">=</span> <span class="fl">36</span><span class="op">)</span><span class="op">$</span><span class="va">plot</span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"tax2fun_dendrogram_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">rank</span><span class="op">)</span>, <span class="st">".svg"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                <span class="va">p_tax_overview</span>, width <span class="op">=</span> <span class="fl">14</span>, height <span class="op">=</span> <span class="fl">13</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_tax_overview</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_dendro.html">tax2fun_dendro</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_taxa</span>,</span>
+<span>  taxon_level <span class="op">=</span> <span class="va">rank</span>,</span>
+<span>  top_n_per_taxon <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  wrap_width <span class="op">=</span> <span class="fl">36</span></span>
+<span><span class="op">)</span><span class="op">$</span><span class="va">plot</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"tax2fun_dendrogram_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/chartr.html" class="external-link">tolower</a></span><span class="op">(</span><span class="va">rank</span><span class="op">)</span>, <span class="st">".svg"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="va">p_tax_overview</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">14</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">13</span>,</span>
+<span>  bg <span class="op">=</span> <span class="st">"white"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/tax2fun-dendrogram-genus.svg" alt="Figure 6. Association dendrogram for the selected genera"><div class="figcaption">Figure 6. Association dendrogram for the
+<img src="../examples/study/genus/images/tax2fun-dendrogram-genus.svg" width="1008" height="936" alt="Figure 6. Association dendrogram for the selected genera"><div class="figcaption">Figure 6. Association dendrogram for the
 selected genera</div>
 </div>
 <p>Branches organize genera and their retained pathways; point size
@@ -329,7 +424,7 @@ the full-size diagram</a>.</p>
 <div class="section level3">
 <h3 id="signed-effects-within-individual-genera">2.5 Signed effects within individual genera<a class="anchor" aria-label="anchor" href="#signed-effects-within-individual-genera"></a>
 </h3>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tax_effects</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tax2fun_logfc.html">tax2fun_logfc</a></span><span class="op">(</span><span class="va">result_taxa</span>, top_n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">effect_genera</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cloacibacterium"</span>, <span class="st">"Collinsella"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tax_effects</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">taxon</span> <span class="kw">in</span> <span class="va">effect_genera</span><span class="op">)</span> <span class="op">{</span></span>
@@ -337,11 +432,11 @@ the full-size diagram</a>.</p>
 <span>                  <span class="va">tax_effects</span><span class="op">[[</span><span class="va">taxon</span><span class="op">]</span><span class="op">]</span>, width <span class="op">=</span> <span class="fl">9</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/tax2fun-effect-cloacibacterium.png" alt="Figure 7. Signed effects within Cloacibacterium"><div class="figcaption">Figure 7. Signed effects within
+<img src="../examples/study/genus/images/tax2fun-effect-cloacibacterium.png" width="1296" height="864" alt="Figure 7. Signed effects within Cloacibacterium"><div class="figcaption">Figure 7. Signed effects within
 Cloacibacterium</div>
 </div>
 <div class="float">
-<img src="../examples/study/genus/images/tax2fun-effect-collinsella.png" alt="Figure 8. Signed effects within Collinsella"><div class="figcaption">Figure 8. Signed effects within
+<img src="../examples/study/genus/images/tax2fun-effect-collinsella.png" width="1296" height="864" alt="Figure 8. Signed effects within Collinsella"><div class="figcaption">Figure 8. Signed effects within
 Collinsella</div>
 </div>
 <p>Read direction using STS as reference and LTS as target. Effect
@@ -365,7 +460,7 @@ added by the authors. The analysis is keyed by KO ID, and ungrouped
 Sankey output displays KO IDs by default. Optional Chord display names
 are added explicitly below; they do not rename the fitted KO keys or
 constitute new biological evidence.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_fun</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pathway_sdaa.html">pathway_sdaa</a></span><span class="op">(</span></span>
 <span>  stratified_path <span class="op">=</span> <span class="va">fun_strat_path</span>, physeq <span class="op">=</span> <span class="va">ps</span>,</span>
 <span>  taxon_level <span class="op">=</span> <span class="va">rank</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
@@ -399,34 +494,45 @@ is a separate, longer option.</p>
 <div class="section level3">
 <h3 id="sankey-overviews-of-all-retained-contributors">3.1 Sankey overviews of all retained contributors<a class="anchor" aria-label="anchor" href="#sankey-overviews-of-all-retained-contributors"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_phylogeny</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun_plot</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  tree_mode <span class="op">=</span> <span class="st">"phylogeny"</span>, physeq <span class="op">=</span> <span class="va">ps</span>, phylo_tree <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/phy_tree-methods.html" class="external-link">phy_tree</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span>,</span>
 <span>  height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p_fun_taxonomy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
-<span>  <span class="va">result_fun_plot</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  tree_mode <span class="op">=</span> <span class="st">"taxonomy"</span>, physeq <span class="op">=</span> <span class="va">ps</span>,</span>
-<span>  height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_phylogeny</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_phylogeny.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/fun2tax-phylogeny.svg" alt="Figure 9. Selected KOs and all retained genus contributors with phylogeny context"><div class="figcaption">Figure 9. Selected KOs and all retained genus
+<img src="../examples/study/genus/images/fun2tax-phylogeny.svg" width="1500" height="1287" alt="Figure 9. Selected KOs and all retained genus contributors with phylogeny context"><div class="figcaption">Figure 9. Selected KOs and all retained genus
 contributors with phylogeny context</div>
 </div>
 <p>Follow a KO to its significant contributors. These diagrams use the
 updated filtered data and keep genera outside the taxon-centered project
 list. The identifiers are KOs; any added descriptive labels are
 presentation annotations.</p>
+<p><a href="../examples/study/genus/widgets/fun2tax_phylogeny.html">Open
+the interactive function-to-taxon phylogeny Sankey</a>.</p>
+<p>Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.</p>
 <details><summary>
 Compare the taxonomy view
-</summary><div class="float">
-<img src="../examples/study/genus/images/fun2tax-taxonomy.svg" alt="Figure 10. Selected KOs and their genus contributors with taxonomy context"><div class="figcaption">Figure 10. Selected KOs and their genus
+</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_fun_taxonomy</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_fun_plot</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  tree_mode <span class="op">=</span> <span class="st">"taxonomy"</span>, physeq <span class="op">=</span> <span class="va">ps</span>,</span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span>, tree_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_taxonomy</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_taxonomy.html"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="../examples/study/genus/images/fun2tax-taxonomy.svg" width="1500" height="1297" alt="Figure 10. Selected KOs and their genus contributors with taxonomy context"><div class="figcaption">Figure 10. Selected KOs and their genus
 contributors with taxonomy context</div>
 </div>
-</details><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p><a href="../examples/study/genus/widgets/fun2tax_taxonomy.html">Open
+the interactive function-to-taxon taxonomy Sankey</a>.</p>
+<p>Hover over a truncated label in the HTML view to read its full name.
+Hover over a taxon or function node to highlight its connected links and
+dim unrelated links.</p>
+</details><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_plain</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_sankey.html">fun2tax_sankey</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, pathway <span class="op">=</span> <span class="st">"KO"</span>, group_functions <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>                             tree_mode <span class="op">=</span> <span class="st">"none"</span>, height <span class="op">=</span> <span class="cn">NULL</span>, width <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/save_sankey.html">save_sankey</a></span><span class="op">(</span><span class="va">p_fun_plain</span>, <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_draggable.html"</span><span class="op">)</span>, selfcontained <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
@@ -440,7 +546,7 @@ diagram</a>.</p>
 <div class="section level3">
 <h3 id="contribution-weighted-chord-for-the-selected-kos">3.2 Contribution-weighted Chord for the selected KOs<a class="anchor" aria-label="anchor" href="#contribution-weighted-chord-for-the-selected-kos"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_fun_chord</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_chord.html">fun2tax_chord</a></span><span class="op">(</span></span>
 <span>  <span class="va">result_fun_plot</span>, <span class="va">fun_strat_path</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
 <span>  contrast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">reference</span>, <span class="va">target</span><span class="op">)</span>, functions <span class="op">=</span> <span class="va">functions_of_interest</span>,</span>
@@ -483,7 +589,7 @@ selection</strong> to remove the highlight.</p>
 <div class="section level3">
 <h3 id="detailed-contributions-to-k00995">3.3 Detailed contributions to K00995<a class="anchor" aria-label="anchor" href="#detailed-contributions-to-k00995"></a>
 </h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">result_fun_box</span> <span class="op">&lt;-</span> <span class="va">result_fun_plot</span><span class="op">[</span><span class="va">selected_function</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun_box</span>, <span class="st">"microfun"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, <span class="st">"microfun"</span><span class="op">)</span></span>
 <span><span class="va">fun_boxes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_box.html">fun2tax_box</a></span><span class="op">(</span><span class="va">fun_strat_path</span>, <span class="va">result_fun_box</span>, <span class="va">ps</span>, group <span class="op">=</span> <span class="va">group_col</span>,</span>
@@ -492,7 +598,7 @@ selection</strong> to remove the highlight.</p>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">selected_function</span>, <span class="st">"_boxplot_top5.pdf"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                <span class="va">p_fun_box</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/fun2tax-box.png" alt="Figure 13. Five abundant retained genus contributors to K00995"><div class="figcaption">Figure 13. Five abundant retained genus
+<img src="../examples/study/genus/images/fun2tax-box.png" width="1600" height="960" alt="Figure 13. Five abundant retained genus contributors to K00995"><div class="figcaption">Figure 13. Five abundant retained genus
 contributors to K00995</div>
 </div>
 <p><code>top_n = 5</code> ranks genera by the average of their group
@@ -508,32 +614,47 @@ eligible; Incertae sedis is absent from the filtered inputs.</p>
 <div class="section level3">
 <h3 id="association-dendrogram-for-the-selected-kos">3.4 Association dendrogram for the selected KOs<a class="anchor" aria-label="anchor" href="#association-dendrogram-for-the-selected-kos"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p_fun_dendro</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_dendro.html">fun2tax_dendro</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, top_n_per_function <span class="op">=</span> <span class="fl">10</span>,</span>
-<span>                              label_size <span class="op">=</span> <span class="fl">2.6</span>, wrap_width <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">$</span><span class="va">plot</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p_fun_dendro</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_dendro.html">fun2tax_dendro</a></span><span class="op">(</span></span>
+<span>  <span class="va">result_fun_plot</span>,</span>
+<span>  top_n_per_function <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  label_size <span class="op">=</span> <span class="fl">2.6</span>,</span>
+<span>  wrap_width <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span><span class="op">$</span><span class="va">plot</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">p_fun_dendro</span> <span class="op">&lt;-</span> <span class="va">p_fun_dendro</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span></span>
-<span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span></span>
+<span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>,</span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1.6</span>, <span class="fl">1.6</span><span class="op">)</span>,</span>
+<span>  clip <span class="op">=</span> <span class="st">"off"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_dendrogram_top10.pdf"</span><span class="op">)</span>, <span class="va">p_fun_dendro</span>,</span>
-<span>                width <span class="op">=</span> <span class="fl">14</span>, height <span class="op">=</span> <span class="fl">11</span><span class="op">)</span></span></code></pre></div>
+<span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="st">"fun2tax_dendrogram_top10.pdf"</span><span class="op">)</span>,</span>
+<span>  <span class="va">p_fun_dendro</span>,</span>
+<span>  width <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  height <span class="op">=</span> <span class="fl">8</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/fun2tax-dendrogram.png" alt="Figure 14. Selected KOs and up to ten genus associations per function"><div class="figcaption">Figure 14. Selected KOs and up to ten genus
+<img src="../examples/study/genus/images/fun2tax-dendrogram.png" width="1440" height="1152" alt="Figure 14. Selected KOs and up to ten genus associations per function"><div class="figcaption">Figure 14. Selected KOs and up to ten genus
 associations per function</div>
 </div>
 <p>Branches organize the selected KO–genus relationships. Point size
 represents absolute model effect. All displayed associations use the
-filtered input data.</p>
+filtered input data. <a href="../examples/study/genus/fun2tax_dendrogram_top10.pdf">Open the
+full-size PDF</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="signed-effects-for-k00995">3.5 Signed effects for K00995<a class="anchor" aria-label="anchor" href="#signed-effects-for-k00995"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fun_effects</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fun2tax_logfc.html">fun2tax_logfc</a></span><span class="op">(</span><span class="va">result_fun_plot</span>, top_n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">p_fun_effect</span> <span class="op">&lt;-</span> <span class="va">fun_effects</span><span class="op">[[</span><span class="va">selected_function</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">selected_function</span>, <span class="st">"_signed_effects_top10.pdf"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                <span class="va">p_fun_effect</span>, width <span class="op">=</span> <span class="fl">9</span>, height <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="../examples/study/genus/images/fun2tax-effect.png" alt="Figure 15. Signed genus effects for K00995"><div class="figcaption">Figure 15. Signed genus effects for K00995</div>
+<img src="../examples/study/genus/images/fun2tax-effect.png" width="1600" height="960" alt="Figure 15. Signed genus effects for K00995"><div class="figcaption">Figure 15. Signed genus effects for K00995</div>
 </div>
 <p>Read direction using STS as reference and LTS as target. The effect
 label records the fitted transformation. Use these associations to guide
