@@ -76,6 +76,11 @@ The contribution weighting, effect colours, taxonomy bands and export
 interfaces match the taxon-to-function Chord. Use function-oriented
 results and select relevant function IDs.
 
+In the HTML view, search for a taxon or function in the legend and click
+its entry. An outline highlights the corresponding sector on its ring so
+you can locate it even in a crowded diagram. Click **Clear selection**
+to remove the highlight.
+
 ``` r
 p_fun_chord <- fun2tax_chord(
   result_fun_plot, fun_strat_path, ps, group = group_col,

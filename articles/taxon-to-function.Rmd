@@ -53,6 +53,8 @@ This preview keeps up to ten functions per taxon. Set `max_functions_per_taxon =
 
 Chord width is the mean predicted contribution, with equal weight assigned to the two group means by default. Ribbon colour encodes effect sign; outer bar height encodes absolute effect. Use the same sample subset and rank as the fitted analysis.
 
+In the HTML view, search for a taxon or function in the legend and click its entry. An outline highlights the corresponding sector on its ring so you can locate it even in a crowded diagram. Click **Clear selection** to remove the highlight.
+
 ```r
 p_tax_chord <- tax2fun_chord(
   result_taxa, taxa_strat_path, ps_taxa, group = group_col,

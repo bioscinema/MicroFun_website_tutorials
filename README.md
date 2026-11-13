@@ -1,68 +1,44 @@
 # MicroFun Website and Tutorials
 
-<img src="assets/logo.png"
-     alt="MicroFun logo"
-     width="150"
-     align="right">
-     
-This repository contains the official documentation website and tutorials for **MicroFun**, an R package for statistical analysis and visualization of taxon-resolved functional contributions in microbiome research.
+<img src="assets/logo.png" alt="MicroFun logo" width="140" align="right">
 
-- **R package:** [bioscinema/MicroFun](https://github.com/bioscinema/MicroFun_0.1.0)
-- **Website:** [bioscinema.github.io/MicroFun_website_tutorials](https://bioscinema.github.io/MicroFun_website_tutorials/)
+Documentation and tutorials for **MicroFun**, an R package for analysis and visualization of standard and stratified PICRUSt2 predictions, linking microbial taxa to predicted functions.
 
-The website is maintained separately from the R package, allowing documentation, tutorials, and examples to be updated independently of package development.
+[Website](https://bioscinema.github.io/MicroFun_website_tutorials/) · [R package](https://github.com/bioscinema/MicroFun_0.1.0) · [Report a package issue](https://github.com/bioscinema/MicroFun_0.1.0/issues)
 
-## Website Content
+## Explore the documentation
 
-The website provides:
+Start with [Study data and downloads](https://bioscinema.github.io/MicroFun_website_tutorials/articles/study-data.html), then follow [Demonstration Study (Standard)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-standard.html) and [Demonstration Study (Stratified)](https://bioscinema.github.io/MicroFun_website_tutorials/articles/demonstration-stratified.html).
 
-- **Overview:** Introduction to MicroFun, its motivation, and main features.
-- **Getting Started:** Installation instructions and basic usage.
-- **Function Reference:** Documentation of available functions and their arguments.
-- **Tutorials:** Examples of taxon-centered and function-centered analyses.
-- **Demonstrations:** Example workflows, statistical analyses, and visualizations.
+Use the [Visualization guides](https://bioscinema.github.io/MicroFun_website_tutorials/articles/plotting-setup.html) to adjust figures, explore interactive diagrams and export results. For your own analysis, see [Prepare your own data](https://bioscinema.github.io/MicroFun_website_tutorials/articles/prepare-your-data.html).
 
-## Repository Structure
+## Edit the website
 
-| File or Directory | Description |
+| Source | Purpose |
 |---|---|
-| `index.md` | Website homepage |
-| `articles/*.Rmd` | Tutorials and demonstration pages |
-| `_pkgdown.yml` | Website configuration and navigation |
-| `assets/extra.css` | Custom website styling |
-| `assets/examples/` | Images and interactive figures |
-| `NEWS.md` | Website changelog |
-| `source/MicroFun_0.1.0.zip` | Local package snapshot used to build function reference pages |
-| `build.R` | Script for building the website |
-| `docs/` | Generated website files published through GitHub Pages |
+| `index.md` | Homepage |
+| `articles/*.Rmd` | Tutorials and demonstration studies |
+| `_pkgdown.yml` | Navigation and website configuration |
+| `assets/` | Styling, images, interactive figures and study downloads |
+| `source/MicroFun_0.1.0.zip` | Package snapshot used for function reference and author information |
+| `build.R` | Website build script |
+| `docs/` | Generated website for GitHub Pages |
 
-The website is built using [pkgdown](https://pkgdown.r-lib.org/).
+Edit the source files and rebuild to update `docs/`. Package functions and author information are maintained in the R package source.
 
-## Software and Citation
+## Build and preview locally
 
-For the MicroFun source code, software updates, issue reporting, and citation information, please visit the [main MicroFun repository](https://github.com/bioscinema/MicroFun_0.1.0).
+Install MicroFun and its dependencies using the [installation guide](https://bioscinema.github.io/MicroFun_website_tutorials/articles/installation.html). Building the website also requires Pandoc, available with RStudio, and these R packages.
 
-## Build tools and study downloads
+```r
+install.packages(c("pkgdown", "rmarkdown", "knitr"))
+```
 
-The site is currently built with pkgdown 2.2.1. Install or update pkgdown with
-`install.packages("pkgdown")` before rebuilding. A project-local installation in
-`.build/library/` is used when available; that directory is not committed.
+From the repository root, build the site and start a local preview server.
 
-The processed public study downloads are stored in `assets/downloads/study/` and
-copied to `docs/downloads/study/` by the build. Each download is below GitHub's
-100 MiB single-file limit. KO contributions are transferred in two parts and
-reassembled with the included R script. The private original-to-demo sample-ID
-lookup is not included in the website or the download archives.
+```sh
+Rscript build.R
+python3 -m http.server 8000 --directory docs
+```
 
-## Learning flow
-
-Start with Study data and downloads, then follow the Standard and Stratified
-demonstration studies. Dataset provenance, cohort descriptions and download
-instructions are maintained on the data page. Visualization guides are a plotting
-reference that reuses the study objects; they have no independent example dataset
-or setup workflow.
-
-PICRUSt2 input generation and checks are consolidated in `articles/prepare-your-data.Rmd`.
-The separate workflow pages and link-only demonstration overview have been retired.
-
-The current demonstration uses the Incertae-sedis-filtered release (2,487 ASVs), Genus-level project taxa and 23 selected KOs. Function-centered analysis retains all genus contributors. Source snapshot synchronized with MicroFun commit 4dcb5dfb9011f3b03122e4ff8c82ec22072063e6.
+Open [http://localhost:8000](http://localhost:8000) in a browser. After editing, run `Rscript build.R` again and refresh the page. The website is built with [pkgdown](https://pkgdown.r-lib.org/).
