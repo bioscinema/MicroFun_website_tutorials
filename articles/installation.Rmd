@@ -11,16 +11,6 @@ vignette: >
 
 These tables record the environment used to validate the tutorials. Keep vegan at **2.7.2**; the other version numbers document the tested environment.
 
-<div class="microfun-table-caption">Table 1. Software used for tutorial validation</div>
-
-| Software | Version | Role |
-|---|---|---|
-| MicroFun | 0.1.0 | Package documented on this website |
-| R | 4.5.3 Patched (r90083) | Analysis runtime |
-| Bioconductor | 3.22 | Bioconductor release in the validation environment |
-| RStudio (optional) | 2024.09.1+394 | Installed IDE and bundled Pandoc |
-| vegan | **2.7.2** (CRAN spelling **2.7-2**) | **Required exact version** |
-
 The only dependency with an exact-version requirement is vegan. This pin matters for the stratified workflow, where some genera have zero contributions in individual samples. Use a fresh R session after installing it. The [CRAN archive](https://cran.r-project.org/src/contrib/Archive/vegan/) distributes the required release as `vegan_2.7-2.tar.gz`; R treats `2.7.2` and `2.7-2` as the same package version. Record the exact versions resolved in your own analysis session with `sessionInfo()`.
 
 ## Why install from a source folder?
@@ -70,7 +60,7 @@ install.packages(source_dir, repos = NULL, type = "source")
 
 The table lists the installed versions of the current source imports and vegan used in the validation environment.
 
-<div class="microfun-table-caption">Table 2. R packages used by MicroFun</div>
+<div class="microfun-table-caption">Table 1. R packages used by MicroFun</div>
 
 | Package | Version |
 |---|---|
@@ -116,7 +106,7 @@ The table lists the installed versions of the current source imports and vegan u
 
 These installed versions support figure export, dependency installation and website rendering.
 
-<div class="microfun-table-caption">Table 3. Optional and documentation packages</div>
+<div class="microfun-table-caption">Table 2. Optional and documentation packages</div>
 
 | Package | Version |
 |---|---|
@@ -138,7 +128,7 @@ These installed versions support figure export, dependency installation and webs
 
 Mapping and annotation answer different questions. The KO-to-KEGG pathway mapping defines which KOs belong to each pathway and is used to sum their predicted abundances. Annotation adds readable names and categories to the resulting identifiers.
 
-<div class="microfun-table-caption">Table 4. Local reference data and KEGG network access</div>
+<div class="microfun-table-caption">Table 3. Local reference data and KEGG network access</div>
 
 | Step | Data source and behaviour | KEGG connection required |
 |---|---|---|

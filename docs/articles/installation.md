@@ -6,16 +6,6 @@ These tables record the environment used to validate the tutorials. Keep
 vegan at **2.7.2**; the other version numbers document the tested
 environment.
 
-Table 1. Software used for tutorial validation
-
-| Software | Version | Role |
-|----|----|----|
-| MicroFun | 0.1.0 | Package documented on this website |
-| R | 4.5.3 Patched (r90083) | Analysis runtime |
-| Bioconductor | 3.22 | Bioconductor release in the validation environment |
-| RStudio (optional) | 2024.09.1+394 | Installed IDE and bundled Pandoc |
-| vegan | **2.7.2** (CRAN spelling **2.7-2**) | **Required exact version** |
-
 The only dependency with an exact-version requirement is vegan. This pin
 matters for the stratified workflow, where some genera have zero
 contributions in individual samples. Use a fresh R session after
@@ -91,7 +81,7 @@ install.packages(source_dir, repos = NULL, type = "source")
 The table lists the installed versions of the current source imports and
 vegan used in the validation environment.
 
-Table 2. R packages used by MicroFun
+Table 1. R packages used by MicroFun
 
 | Package                | Version              |
 |------------------------|----------------------|
@@ -138,7 +128,7 @@ Table 2. R packages used by MicroFun
 These installed versions support figure export, dependency installation
 and website rendering.
 
-Table 3. Optional and documentation packages
+Table 2. Optional and documentation packages
 
 | Package       | Version |
 |---------------|---------|
@@ -169,7 +159,7 @@ pathway mapping defines which KOs belong to each pathway and is used to
 sum their predicted abundances. Annotation adds readable names and
 categories to the resulting identifiers.
 
-Table 4. Local reference data and KEGG network access
+Table 3. Local reference data and KEGG network access
 
 | Step | Data source and behaviour | KEGG connection required |
 |----|----|----|

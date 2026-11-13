@@ -94,49 +94,6 @@
 <p>These tables record the environment used to validate the tutorials.
 Keep vegan at <strong>2.7.2</strong>; the other version numbers document
 the tested environment.</p>
-<div class="microfun-table-caption">
-Table 1. Software used for tutorial validation
-</div>
-<table class="table">
-<colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
-</colgroup>
-<thead><tr class="header">
-<th>Software</th>
-<th>Version</th>
-<th>Role</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>MicroFun</td>
-<td>0.1.0</td>
-<td>Package documented on this website</td>
-</tr>
-<tr class="even">
-<td>R</td>
-<td>4.5.3 Patched (r90083)</td>
-<td>Analysis runtime</td>
-</tr>
-<tr class="odd">
-<td>Bioconductor</td>
-<td>3.22</td>
-<td>Bioconductor release in the validation environment</td>
-</tr>
-<tr class="even">
-<td>RStudio (optional)</td>
-<td>2024.09.1+394</td>
-<td>Installed IDE and bundled Pandoc</td>
-</tr>
-<tr class="odd">
-<td>vegan</td>
-<td>
-<strong>2.7.2</strong> (CRAN spelling <strong>2.7-2</strong>)</td>
-<td><strong>Required exact version</strong></td>
-</tr>
-</tbody>
-</table>
 <p>The only dependency with an exact-version requirement is vegan. This
 pin matters for the stratified workflow, where some genera have zero
 contributions in individual samples. Use a fresh R session after
@@ -210,7 +167,7 @@ guide</a> for repository and installation help.</p>
 <p>The table lists the installed versions of the current source imports
 and vegan used in the validation environment.</p>
 <div class="microfun-table-caption">
-Table 2. R packages used by MicroFun
+Table 1. R packages used by MicroFun
 </div>
 <table class="table">
 <thead><tr class="header">
@@ -376,7 +333,7 @@ Table 2. R packages used by MicroFun
 <p>These installed versions support figure export, dependency
 installation and website rendering.</p>
 <div class="microfun-table-caption">
-Table 3. Optional and documentation packages
+Table 2. Optional and documentation packages
 </div>
 <table class="table">
 <thead><tr class="header">
@@ -446,7 +403,7 @@ pathway mapping defines which KOs belong to each pathway and is used to
 sum their predicted abundances. Annotation adds readable names and
 categories to the resulting identifiers.</p>
 <div class="microfun-table-caption">
-Table 4. Local reference data and KEGG network access
+Table 3. Local reference data and KEGG network access
 </div>
 <table class="table">
 <colgroup>
